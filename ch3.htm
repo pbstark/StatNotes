@@ -1,0 +1,1319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:pref="http://www.w3.org/2002/Math/preference"
+      pref:renderer="css">
+
+<head>
+<script language="JavaScript1.4" type="text/javascript"><!--
+        pageModDate = "Monday 15 February 2010 10:10 PST";
+        // copyright 1997-2010 by P.B. Stark, statistics.berkeley.edu/~stark.
+    // All rights reserved.
+// -->
+</script>
+
+
+<script language="JavaScript1.4" type="text/javascript" src="../../../Java/irGrade.js">
+</script>
+<script language="JavaScript1.4" type="text/javascript"><!--
+    var cNum = "240.3";
+    writeChapterHead('SeEd',cNum,'Statistics 240 Notes, part 3',false,'../../../SticiGui/',false);
+// -->
+</script>
+</head>
+
+<body onload="setApplets()" onunload="killApplets()">
+<script language="JavaScript1.4" type="text/javascript"><!--
+//    writeChapterNav('../..');
+    writeChapterTitle();
+// -->
+</script>
+<noscript>
+    You need a browser that supports JavaScript and Java to use this site,
+    and you must enable JavaScript and Java in your browser.
+</noscript>
+
+<meta HTTP-EQUIV="expires" CONTENT="0">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<form method="post">
+
+<ul>
+    <li>
+        The randomization model for comparing two treatments (including a treatment against
+        control), for quantitative responses.
+        Alternative hypotheses: shift, dispersion, omnibus.
+        The ticket model: two fixed numbers per individual.
+        Strong and weak null hypotheses.
+    </li>
+    <li>
+        Permutation test based on the sample sum of the responses of the treatment group.
+        Approximating <em>P</em>-values by simulation; connection to bootstrap tests.
+    </li>
+    <li>
+        The 2-sample <em>t</em>-test in the randomization model.
+        The permutation <em>t</em>-test.
+    </li>
+    <li>
+        Fisher's Exact Test and its normal approximation; the
+        <em>Lady Tasting Tea</em> experiment
+    </li>
+</ul>
+
+<p>
+        References: Lehmann, E.L., 1998. <em>Nonparametrics: Statistical
+        Methods Based on Ranks</em>. Upper Saddle River, N.J.: Prentice Hall;
+        <a href="http://statistics.berkeley.edu/~stark/SticiGui">SticiGui</a>
+        <a href="http://statistics.berkeley.edu/~stark/SticiGui/Text/ch19.htm">Chapter 19</a>.
+</p>
+
+
+
+<h2>Comparing two treatments (e.g., treatment and control) in the randomization model</h2>
+
+<p>
+    There are <em>N</em> subjects.
+    The subjects are given; they are not necessarily a sample from some larger population.
+    We assign a simple random sample of size <em>n</em> of the <em>N</em> subjects to treatment,
+    and the remaining <em>m</em>=<em>N</em>&minus;<em>n</em> subjects to control.
+    For each subject, we observe a quantitative response.
+    There is no assumption about the values of that quantitative response;
+    they need not follow any particular distribution.
+    The null hypothesis is that treatment does not matter.
+    Several alternatives are interesting.
+    The most common are the shift alternative, the dispersion alternative, and the
+    omnibus alternative.
+    The shift alternative is that treatment changes the mean response.
+    (There are left-sided, right-sided and two-sided versions of the shift alternative.)
+    The dispersion alternative is that treatment changes the scatter of the responses.
+    The omnibus alternative is that treatment changes the response in some
+    way&mdash;any way whatsoever.
+</p>
+
+<p>
+    Because of the deliberate randomization, whether treatment affects
+    the response within the group of <em>N</em> subjects can be addressed rigorously.
+    Up to sampling error&mdash;which can be quantified&mdash;differences between the responses
+    of the treatment and control groups must be due to the effect of treatment; the
+    randomization tends to balance other factors that affect the responses, and that
+    otherwise would lead to confounding.
+    However, conclusions about the effect of treatment among the <em>N</em> subjects
+    cannot be extrapolated to any other population, because we do not know where the
+    subjects came from (how they came to be part of the experiment).
+</p>
+
+<p>
+    We model the experiment as follows: Each of the <em>N</em> subjects is represented by
+    a ticket with two numbers on it, a left and a right number.
+    The left number is the response the subject would have if assigned to the control group;
+    the right number is the response the subject would have if assigned to the treatment group.
+    These numbers are written on the tickets before the experiment starts.
+    Assigning the subject to treatment or control only determines whether we observe the left
+    or the right number for that subject.
+    Let <em>x</em><sub><em>j</em></sub> be the left number on the <em>j</em>th ticket and
+    let <em>y</em><sub><em>j</em></sub> be the right number on the <em>j</em>th ticket.
+    The strong null hypothesis is
+</p>
+
+<p class="math">
+    <em>x</em><sub><em>j</em></sub> = <em>y</em><sub><em>j</em></sub>, &nbsp;&nbsp;
+     <em>j</em> = 1, 2,
+    &hellip; , <em>N</em>.
+</p>
+
+<p>
+    That is, the strong null hypothesis is that the left and right numbers on each ticket
+    are equal.
+    Subject by subject, treatment makes no difference at all.
+    The weak null hypothesis is that the average of the left numbers equals the average
+    of the right numbers:
+</p>
+
+<p class="math">
+    (<em>x</em><sub>1</sub> + <em>x</em><sub>2</sub> + &hellip; +
+    <em>x</em><sub><em>N</em></sub>)/<em>N</em> &nbsp;=&nbsp;
+    (<em>y</em><sub>1</sub> + <em>y</em><sub>2</sub> + &hellip; +
+    <em>y</em><sub><em>N</em></sub>)/<em>N</em>.
+</p>
+
+<p>
+    In the weak null hypothesis, treatment makes no difference <em>on average</em>:
+    treatment might increase the responses for some individuals, provided it decreases
+    the responses of other individuals by a balancing amount.
+</p>
+
+<p>
+    In this ticket model, if the strong null hypothesis is true, the assignment
+    to treatment or control is an arbitrary random labeling of the subjects.
+    The <em>N</em> responses are the same no matter which subjects are assigned
+    to treatment.
+    Let {<em>Y</em><sub>1</sub>, &hellip; , <em>Y</em><sub><em>n</em></sub>}
+    denote the responses of the <em>n</em> treated subjects.
+    Under the strong null hypothesis, <em>x</em><sub><em>j</em></sub> =
+    <em>y</em><sub><em>j</em></sub>, <em>j</em> = 1,
+    &hellip; , <em>N</em>, where <em>x</em><sub><em>j</em></sub>
+    is the observed response of the <em>j</em>th subject.
+    Now
+</p>
+
+<p class="math">
+    <em>Y</em><sub><em>j</em></sub> = <em>x</em><sub><em>k</em><sub><em>j</em></sub></sub>,
+    &nbsp;&nbsp;
+    <em>j</em> = 1, &hellip; , <em>n</em>,
+</p>
+
+<p>
+    where {<em>k</em><sub><em>j</em></sub>: <em>j</em>=1, 2, &hellip; , <em>n</em>}
+    is a subset of size <em>n</em> of the integers {1, 2, &hellip; , <em>N</em>}.
+    Consider the sum of the treatment responses, the statistic
+</p>
+
+<p class="math">
+    <em>Y</em> = <em>Y</em><sub>1</sub> + <em>Y</em><sub>2</sub> + &hellip; +
+    <em>Y</em><sub><em>n</em></sub>.
+</p>
+
+<p>
+    Under the strong null hypothesis, the expected value of <em>Y</em> is <em>n</em>
+    times the average of all <em>N</em> responses.
+    (For a review of the probability distribution of the sample sum of random draws
+    from a finite population of numbers, see Chapters 12-15 of
+    <a href="../../../SticiGui/index.htm">SticiGui</a>.)
+    If treatment tends to increase the response, we would expect <em>Y</em> to be larger
+    than that; if treatment tends to decrease the response, we would expect <em>Y</em>
+    to be smaller than that.
+    We can use <em>Y</em> as the test statistic to test the strong null hypothesis.
+    For the alternative hypothesis that treatment increases the response, the test would
+    be of the form
+</p>
+
+<p align="center">
+    Reject the strong null hypothesis if <em>Y</em> &ge; <em>c</em>,
+</p>
+
+<p>
+    where <em>c</em> is chosen so that the test has the desired significance level &alpha;,
+    i.e., so that if the strong null hypothesis is true,
+</p>
+
+<p class="math">
+    P(<em>Y</em> &gt; <em>c</em>) &le; &alpha;.
+</p>
+
+<p>
+	This is a <em>permutation test</em> based on <em>Y</em>, the sum of
+    the treatment responses.
+    Note that the null distribution of <em>Y</em> (and thus the critical value <em>c</em>)
+    depends on the observed responses.
+    Similarly, to test against the alternative that treatment decreases the response,
+    the test would be of the form
+</p>
+
+<p align="center">
+    Reject the strong null hypothesis if <em>Y</em> &le; <em>c</em>,
+</p>
+
+<p>
+    with <em>c</em> chosen to attain the desired significance level.
+    To test against the alternative that treatment increases <em>or</em> decreases
+    the response, we could use a test of the form
+</p>
+
+<p align="center">
+    Reject the strong null hypothesis if <em>Y</em>&nbsp;&lt;&nbsp;<em>c</em><sub>1</sub> or
+    <em>Y</em>&nbsp;&gt;&nbsp;<em>c</em><sub>2</sub>.
+</p>
+
+<p>
+    There is some latitude in choosing <em>c</em><sub>1</sub> and <em>c</em><sub>2</sub>; two
+    standard choices are to pick them symmetrically about the expected value of <em>Y</em> under
+    the null hypothesis, or to pick them so that under the null hypothesis
+</p>
+
+<p class="math">
+    P(<em>Y</em>&nbsp;&lt;&nbsp;<em>c</em><sub>1</sub>) is as close as possible to
+    P(<em>Y</em>&nbsp;&gt;&nbsp;<em>c</em><sub>2</sub>),
+</p>
+
+<p>
+    subject to the constraint that the significance level is attained.
+    (Because the permutation distribution of <em>Y</em> is discrete, it can happen that
+    no <em>c</em>, or (<em>c</em><sub>1</sub>, <em>c</em><sub>2</sub>) yields exactly the
+    desired significance level.
+    Then one either can choose the largest attainable significance level that does not
+    exceed the nominal significance level, or one can use a randomized test to attain the
+    desired significance level exactly.
+    We won't worry about this much.)
+</p>
+
+<p>
+    For example, suppose that <em>N</em>=5, <em>n</em>=2, <em>m</em>=3, and the responses
+    are as follows:
+</p>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var header = ['Treatment', 'Control'];
+    var list = new Array(2);
+    list[0] = ['3', '4', ''];
+    list[1] = ['1', '2', '4'];
+    listToTable(header, list, 'transpose', 'center');
+// -->
+</script>
+
+<p>
+    The two treated subjects have response values 3 and 4, and the three
+    controls have response values 1, 2, and 4.
+    So the observed value of <em>Y</em> is 7.
+    Under the strong null hypothesis, the possible values of
+    <em>Y</em> are 3, 4, 5, 6, 7, and 8, because (if the strong null hypothesis is true)
+    the treatment responses are a simple random sample of size 2 from the set {1, 2, 3, 4, 4}.
+    There are <sub>5</sub>C<sub>2</sub> = 10 ways of assigning two subjects to treatment
+    and the others to control.
+    Each has probability 1/10 by design.
+    The null distribution of <em>T</em> is given in
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    citeTable();
+// -->
+</script>
+</p>
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var qStr = 'Null probability distribution of the sample sum <em>Y</em> ' +
+               'of the responses of the treated subjects.';
+    writeTableCaption(qStr);
+// -->
+</script>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"> <!--
+    var N = 5;
+    var n = 2;
+    var m = N - n;
+    var header = ['<em>y</em>', 'P(<em>Y</em>=<em>y</em>)'];
+    // possible values 1, 2, 3, 4, 4.
+    var list = new Array(2);
+    list[0] = ['3', '4', '5', '6', '7', '8'];
+    list[1] = ['1/10', '1/10', '3/10', '2/10', '2/10', '1/10'];
+    listToTable(header, list, 'transpose', 'center');
+// -->
+</script>
+
+<p>
+    Under the strong null, the probability that <em>Y</em> is 7 or greater is 0.3;
+    this is the <em>P</em>-value for a one-sided permutation test
+    against the alternative that treatment increases the response, based on <em>Y</em>,
+    the sum of the responses of the treatment group.
+</p>
+
+<p>
+    For larger data sets, working out the null distribution of <em>Y</em>
+    analytically can be difficult.
+    For example, if we have 100 subjects of whom
+    50 are to be assigned to treatment, there are about 10<sup>29</sup> possible
+    assignments of subjects to treatment or control.
+    Each assignment requires on the order of 50 floating point
+    operations to compute <em>Y</em>.
+    Using a computer that can calculate at the rate 1GFlop/s (10<sup>9</sup>
+    floating point
+    operations per second), it would take about 1.6&times;10<sup>14</sup> years to
+    compute all the values of <em>Y</em>.
+    The universe is about 1.5&times;10<sup>10</sup> years old.
+    For <em>N</em>=50, <em>n</em>=25, there are
+    <sub>50</sub>C<sub>25</sub> possible ways to assign the subjects to treatment,
+    which could give as many as 10<sup>14</sup> different values for <em>Y</em>; it would
+    take a couple of months to compute all the values of <em>Y</em> at that rate.
+    In such situations, calculating the null distribution exactly is impossible, but
+    we still can approximate the null probability distribution of <em>Y</em>
+    with a variety of numerical simulations.
+</p>
+
+<p>
+    The most straightforward conceptually is to generate simple random samples of size <em>n</em>
+    from the <em>N</em> (pooled control and treatment) responses repeatedly,
+    calculate <em>Y</em> for each, and
+    find the empirical distribution of those &quot;observed&quot; values.
+    This approximates the null distribution of <em>Y</em> for the permutation test.
+    Alternatively, we might sample <em>n</em> of the responses <em>with</em> replacement;
+    this leads to a <em>bootstrap</em> test.
+    When <em>N</em> is large and <em>n</em> is small compared to <em>N</em>, it does not
+    make much difference whether sampling is with or without replacement: the
+    permutation and bootstrap tests should give similar <em>P</em>-values.
+    When <em>N</em> is small and when <em>n</em> is an appreciable fraction of <em>N</em>,
+    the tests differ.
+    (See Romano, J.P., 1989. Bootstrap and randomization tests of some nonparametric hypotheses,
+     <em>Ann. Stat.</em>, <strong>17</strong>, 141&ndash;159.  More on this later.)
+</p>
+
+<p>
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    citeFig();
+// -->
+</script>
+    is an applet that allows you to simulate the sampling distribution of the sum
+    of <em>n</em> draws with or without replacement from a population of <em>N</em>
+    values.
+    That lets you simulate the null distribution of the permutation test and
+    the bootstrap test based on the sum of the treatment responses.
+</p>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var qStr = 'Simulated null distribution of the sample sum <em>Y</em> of ' +
+               'the treatment responses.';
+    writeFigureCaption(qStr);
+// -->
+</script>
+
+<p align="center">
+    <applet code="SampleDist.class" codebase="../../../Java/" align="baseline" width="640"
+       archive="PbsGui.zip" height="360">
+    <param name="variables" value="sum">
+    <param name="startWith" value="sum">
+    <param name="boxContents" value="1,2,3,4,4">
+    <param name="showBoxHist" value="false">
+    <param name="boxHistControl" value="false">
+    <param name="sources" value="box">
+    <param name="bins" value="10">
+    <param name="replaceControl" value="true">
+    <param name="replace" value="false">
+    <param name="curveControls" value="false">
+    <param name="showCurve" value="false">
+    <param name="sampleSize" value="2">
+    You need Java to see this.
+    </applet>
+</p>
+
+<p>
+    Each time you press the Take Sample button at the top of the applet, the computer
+    draws a pseudorandom sample from the box on the right, calculates the sample sum,
+    and adds its contribution to a histogram of observed values in the middle.
+    A tic box at the top controls whether the sampling is with or without replacement
+    (sampling without replacement corresponds to the permutation test; sampling with
+    replacement corresponds to the bootstrap test).
+    Press the Take Sample button a few times to get the feel, then change the
+    Take ______ Samples box at the bottom of the plot from 1 to 1000, and press
+    the Take Sample button until you have drawn 10,000 samples of size 2.
+    The observed relative frequencies of the values of the sample sum should be quite
+    close to the probabilities in table
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    citeTable(tCtr-1);
+    document.writeln('. ');
+// -->
+</script>
+</p>
+
+<p>
+    The applet also lets you simulate the null distribution of <em>Y</em> in situations
+    in which working out the null distribution analytically would be impractical.
+    How accurate is the simulation?
+    Ignoring issues with the pseudorandom number generator (not all algorithms for
+    simulating random numbers behave well), we can get a handle on the
+    probable accuracy of the simulation as follows:
+    The standard error of the empirical probability in <em>k</em> independent trials with the
+    same true probability <em>p</em> of success is
+</p>
+
+<p class="math">
+    (<em>p</em>(1&minus;<em>p</em>)/<em>k</em>)<sup>1/2</sup> &le; 1/(2<em>k</em><sup>1/2</sup>).
+</p>
+
+<p>
+    For <em>k</em>=10,000 trials, this bound on the standard error is half a percent.
+</p>
+
+
+
+<div class="callout">
+<h2>
+	Pseudo-Random Number Generators
+</h2>
+
+<p>
+	Most computers cannot generate truly random numbers, although
+	there is special equipment that can (usually, these rely on
+	a physical source of &quot;noise,&quot; such as a resistor or a
+	radiation detector).
+	Most so-called random numbers generated by computers are really
+	&quot;pseudo-random&quot; numbers, sequences generated by a software algorithm
+	from a starting point, called a seed.
+	Pseudo-random numbers behave much like random numbers for many purposes.
+</p>
+
+<p>
+	The seed of a pseudo-random number generator can be thought of as the state
+	of the algorithm.
+	Each time the algorithm produces a number, the it alters its state&mdash;deterministically.
+	If you start a given algorithm from the same seed, you will get
+	the same sequence of pseudo-random numbers.
+	Each pseudo-random number generator has only finitely many states.
+	Eventually&mdash;after the <em>period</em> of the generator, the generator
+	gets back to its initial state and the sequence repeats.
+</p>
+
+<p>
+	Better generators have more states and longer periods, but that comes
+	at a price: speed.
+    There is a tradeoff between the computational efficiency of a pseudo-random
+    number generator and the difficulty of telling that its output is not really
+    random (measured, for example, by the number of bits one must examine).
+    See http://csrc.nist.gov/rng/ for a suite of tests of pseudo-random number
+	generators.
+	Tests can be based on statistics such as the number of zero and one bits in a
+	block or sequence, the number of runs in sequences of differing lengths,
+	the length of the longest run, spectral properties, compressibility (the less
+	random a sequence is, the easier it is to compress), and so on.
+</p>
+
+<p>
+    No pseudo-random number generator is best for all purposes.
+    You should check which algorithm is used by any software package you rely on
+    for simulations.
+	The Linear Congruential Generator, which used to be quite common, is best avoided.
+	(It tends to have a short period, and the sequences it generates have underlying
+	regularity that can spoil its performance for many purposes.)
+	For statistical simulations, a particularly good pseudo-random number generator
+	is the Mersenne Twister.
+	For cryptography, a higher level of randomness is needed than for most
+	statistical simulations.
+</p>
+</div>
+
+<p>
+    Here is a Matlab function to estimate by simulation the <em>P</em>-value for a
+    permutation test based on the sum of the treatment responses.
+    The alternative is one-sided: that treatment increases the response.
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        function p = simPermuTest(x, y, iter)
+        % function p = simPermuTest(x, y, iter)
+        %
+        % P.B. Stark, statistics.berkeley.edu/~stark 9/12/05
+        % simulated P-value for a one-sided permutation test based on the sum of
+        % the treatment responses for the strong null hypothesis that treatment
+        % has no effect whatsoever
+        %
+        % x is the vector of control observations
+        % y is the vector of treatment observations
+        % the lengths of x and y determine the sizes of the control and treatment
+        %  groups
+        % iter is the number of replications.
+        %
+            ts = sum(y);                      % test statistic
+            z = [x y];                        % pooled responses
+            dist = zeros(1, iter);            % holds results of simulation
+            for i=1:iter                      % loop over permutations of responses
+                zp = z(randperm(length(z)));  % random permutation of responses
+                dist(j) = sum(zp(1:length(y))); % value of the test statistic here
+            end;
+            p = sum(dist >= ts)/iter;         % simulated P-value, one-sided test
+        return;
+    </pre>
+</p>
+</div>
+
+
+<p>
+    Here is a terse R version of the same algorithm:
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        simPermuTest <- function(x, y, iter) {
+            ts <- sum(y)                 # test statistic
+            z <- c(x, y)                 # pooled responses
+            sum(replicate(iter, (sum(sample(z)[1:length(y)]) >= ts)))/iter
+        }
+    </pre>
+</p>
+</div>
+
+<p>
+    We have been working with the sum <em>Y</em> of the treatment responses.
+    We could just have well worked with the difference between the mean of
+    the treatment responses and the mean of the control responses:
+</p>
+
+<p class="math">
+    <em>D</em> = <big>(</big><em>Y</em><sub>1</sub> + <em>Y</em><sub>2</sub> + &hellip; +
+    <em>Y</em><sub><em>n</em></sub><big>)</big>/<em>n</em> &minus;
+    <big>(</big><em>X</em><sub>1</sub> + <em>X</em><sub>2</sub> + &hellip; +
+    <em>X</em><sub><em>m</em></sub><big>)</big>/<em>m</em>,
+ </p>
+
+ <p>
+    where the <em>X</em>'s are the control responses.
+    This leads to a permutation test based on the difference in mean responses,
+    instead of a permutation test based on the sum of the treatment responses.
+    The two tests are equivalent&mdash;they reject for exactly the same data sets&mdash;because
+    there is a monotonic, 1:1 mapping between values of <em>Y</em> and values of <em>D</em>:
+    let <em>x</em>=<em>x</em><sub>1</sub> + <em>x</em><sub>2</sub> + &hellip; +
+    <em>x</em><sub><em>N</em></sub> be the total of the responses of all <em>N</em>
+    individuals.
+    Then
+ </p>
+
+<p class="math">
+    <em>D</em> = <em>Y</em>/<em>n</em> &minus; <em>X</em>/<em>m</em>
+</p>
+<p class="math">
+   = <em>Y</em>/<em>n</em> &minus; (<em>x</em> &minus; <em>Y</em>)/<em>m</em>
+</p>
+<p class="math">
+   = (1/<em>n</em> + 1/<em>m</em>) <em>Y</em> &minus; <em>x</em>/<em>m</em>.
+</p>
+
+<p>
+    Thus <em>D</em> can be computed from <em>Y</em> and the total response, and
+    increases monotonically with <em>Y</em>.
+    Specifying which <em>n</em> of the {<em>x</em><sub><em>j</em></sub>} are
+    treatment responses determines the sum of the treatment responses, and also
+    determines the difference of mean responses.
+    Increasing the sum of the trestment responses increases the mean of the treatment
+    responses, and that increase is at the expense of the mean of the control responses.
+</p>
+
+
+<h3>Power of the permutation test based on <em>Y</em></h3>
+
+<p>
+    Generally, we have to make pretty strong assumptions to find the power of the permutation
+    test, and it is easier to do in the population model we study in the next chapter.
+    However, consider the power against the shift alternative that treatment increases
+    every subject's response by the same amount <em>d</em>.
+    This alternative is rather far-fetched, but it is strong enough to specify the
+    distribution of the test statistic <em>Y</em>:
+    Under this alternative, the right number on each ticket is the left number
+    on the ticket, plus <em>d</em>.
+    Because we know either the left or right number for each ticket, we actually know
+    both numbers on all the tickets: The right numbers on the tickets for the
+    treatment group were observed; the left numbers on those tickets are the right numbers
+    minus <em>d</em>.
+    The left numbers on the tickets for the control group were observed; the right numbers
+    on those tickets are the left numbers plus <em>d</em>.
+    Under random assignment to control or treatment, we can find the probability distribution
+    of the sum of the right numbers on <em>n</em> of the tickets.
+    The difficulty in translating this sampling distribution into the power is that
+    the critical value of <em>Y</em> for the test depends on the observations:
+    The critical value is the 1&minus;<em>a</em> quantile of the sampling distribution of <em>Y</em>
+    on the assumption that the strong null hypothesis is true&mdash;conditional
+    on the observed values&mdash;but that assumption leads to a different critical value depending
+    on which subjects are assigned to treatment.
+    The simulation thus needs to include the step of estimating the critical value, for
+    each random assignment of subjects to treatment and control.
+</p>
+
+<p>
+    Here is a <a href="http://www.mathworks.com">Matlab</a>
+    script to approximate the power of a permutation test based on <em>Y</em> against the
+    shift alternative using nested simulations.
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        function p = simPermuSumPower(x, y, d, alpha, iter)
+        % function p = simPermuSumPower(x, y, d, alpha, iter)
+        %
+        % P.B. Stark, statistics.berkeley.edu/~stark 9/11/05
+        % finds the approximate power of a one-sided level alpha permutation
+        % test based on the sample sum for the alternative hypothesis
+        % that treatment shifts the response by exactly d for all subjects.
+        %
+        % x is the vector of control observations
+        % y is the vector of treatment observations
+        % the lengths of x and y determine the sizes of the control and treatment
+        %  groups
+        % alpha is the significance level
+        % iter is the number of replications of each simulation--note: there are
+        %  two nested simulations.
+            p = 0;                            % simulated power
+            z = [x y-d];                      % control responses, under shift alternative
+            for i=1:iter                      % loop over sampling from responses
+                dist = zeros(1,iter);         % storage for empirical distribution
+                zp = z(randperm(length(z)));  % randomize
+                xp = zp(1:length(x));         % control responses in this iteration
+                yp = zp(length(x)+1:length(x)+length(y)) + d;  % treatment responses
+                for j = 1:iter                % loop to simulate critical value
+                    zp = [xp yp];             % population of responses in this simulation
+                    zp = zp(randperm(length(zp)));   % randomize
+                    dist(j) = sum(zp(1:length(yp))); % value of the test statistic here
+                end;                          % end loop to simulate critical value
+                if (sum(dist >= sum(yp))/iter <= alpha)  % reject this time?
+                    p = p+1;                  % yes; add a rejection
+                end;
+            end;
+            p = p/iter;                       % estimate of P(reject| shift alternative)
+        return;
+    </pre>
+</p>
+</div>
+
+<p>
+    Here is an R version of the same algorithm:
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        simPermuSumPower <- function(x, y, d, alpha, iter) {
+        # P.B. Stark, statistics.berkeley.edu/~stark 10/27/05
+        # finds the approximate power of a one-sided level alpha permutation
+        # test based on the sample sum for the alternative hypothesis
+        # that treatment shifts the response by exactly d for all subjects.
+            z <- c(x, y-d)               # pooled responses, treatment effect removed
+            test <- function(z, n, d, alpha, iter) {
+                z[1:n] <- z[1:n] + d;    # restore treatment effect
+                ts <- sum(z[1:n]);       # test statistic
+                sum(replicate(iter, ( sum(sample(z)[1:n]) >= ts) )/iter) < alpha
+            }
+            sum(replicate(iter, test(sample(z), length(y), d, alpha, iter) ))/iter
+        }
+    </pre>
+</p>
+</div>
+
+<p>
+    We can simulate the distribution of <em>Y</em> under the shift alternative using the
+    sampling applet as follows: Add <em>d</em> to each control response.
+    Pool those <em>m</em> numbers and the <em>n</em> treatment responses; these are the
+    right numbers on all <em>N</em>=<em>n</em>+<em>m</em> tickets.
+    Put these <em>N</em> numbers into the &quot;box&quot; on the right side of the applet.
+    The distribution of the sample sum of <em>n</em> numbers drawn at random from this
+    population of numbers is the distribution of <em>Y</em> under the shift alternative.
+    Note that this alternative hypothesis&mdash;that treatment adds exactly the same amount
+    to the response for each subject&mdash;is absurdly restrictive.
+    In the population model, discussed later, we can find the power under more realistic
+    assumptions.
+</p>
+
+<h2>Comparison with the 2-sample <em>t</em>-test</h2>
+
+<p>
+    It is common to use the <em>t</em>-test to compare two groups.
+    In the randomization model, the nominal significance level of
+    the <em>t</em>-test derived from Student's <em>t</em> distribution
+    can be off by a lot, especially when the control and treatment groups
+    are small.
+    The null hypothesis for the <em>t</em>-test is that the
+    control and treatment responses are an iid random sample from a normal
+    distribution with unknown mean and variance.
+    In the randomization model, there is no reason to think that the subjects
+    are a random sample from any population, much less one in which responses
+    have a normal distribution.
+    And in the randomization model, responses are not independent, because
+    putting a subject into the treatment group excludes that subject from the
+    control group, and vice versa.
+</p>
+
+<p>
+    By simulation, we can approximate the significance level of a 2-sample <em>t</em>-test
+    in the randomization model.
+    Here is R code that does it.
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        simPermuTSig <- function(x, y, sig, iter) {
+        # P.B. Stark, statistics.berkeley.edu/~stark 11/9/05
+        # simulated true significance level of a nominal level-sig 1-sided
+        # 2-sample t-test under the randomization model.
+            z <- c(x, y)                 # pooled responses
+            n <- length(y)
+            N <- length(z)
+            sum(replicate(iter, {zp <- sample(z);
+                                 tst <- t.test(zp[1:n], zp[(n+1):N],
+                                               var.equal=TRUE,
+                                               alternative="greater");
+                                 as.integer(tst$p.value <= sig)
+                                 }))/iter
+        }
+    </pre>
+</p>
+</div>
+
+<p>
+    When the control and treatment groups
+    are large, provided the responses are not highly skewed, the
+    significance level of the 2-sample <em>t</em>-test as a test of the strong
+    null hypothesis in the randomization model is often
+    quite close to the nominal level of the test, even though the null hypothesis
+    of the <em>t</em>-test has little connection to the strong null hypothesis in the
+    randomization model.
+    However, the actual and nominal significance levels need not be close.
+    For example, for the data we have been using&mdash;treatment responses 3 and 4 and
+    control responses 1, 2, and 4&mdash;the significance of a nominal level 0.1
+    2-sample <em>t</em>-test is very close to 0.1.
+    But the real significance level of a nominal level 0.05
+    2-sample <em>t</em>-test is also very close to 0.1 (not to 0.05).
+    There are only <sub>5</sub>C<sub>2</sub>=10 possible samples, and some
+    of those are indistinguishable because the value 4 occurs twice among
+    the responses.
+    Thus the null distribution of the <em>t</em>-statistic under the strong
+    null hypothesis in the randomization model must be quite chunky, while
+    the Student <em>t</em>-distribution is continuous.
+    The discreteness of the null distribution limits the number of
+    significance levels that are attainable.
+    Table
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    citeTable()
+// -->
+</script>
+    illustrates the problem.
+</p>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var qStr = 'Simulated real significance level of 2-sample 1-sided <em>t</em>-test ' +
+               ' in the randomization model based on 10,000 iterations. ' +
+               'Treatment responses 3, 4; control responses 1, 2, 4.';
+    writeTableCaption(qStr);
+// -->
+</script>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"> <!--
+    var header = ['nominal level', 'simulated level'];
+    var list = new Array(2);
+    list[0] = ['0.03', '0.04', '0.05', '0.10', '0.20', '0.21', '0.30', '0.41', '0.42'];
+    list[1] = ['0.00', '0.10', '0.10', '0.10', '0.10', '0.30', '0.30', '0.30', '0.50'];
+    listToTable(header, list, 'transpose', 'center');
+// -->
+</script>
+
+<p>
+    Of course, we could base a test on the sampling distribution of the 2-sample
+    <em>t</em>-statistic under the randomization model, rather than on
+    Student's <em>t</em> distribution.
+    The resulting test is called a <em>permutation t-test</em>.
+    It differs from permutation tests based on the sample sum or the
+    difference of sample means, but often not by much.
+</p>
+
+<p>
+    Here is R code to find the simulated <em>P</em>-value of a 1-sided 2-sample
+    permutation <em>t</em>-test.
+</p>
+
+<div class="code">
+<p>
+   <pre>
+        simPermuTTest <- function(x, y, iter) {
+            tStat <- function(z, n) {
+                N <- length(z);
+                m <- N-n;
+                sPool <- sqrt(((m-1)*var(z[1:m])+(n-1)*var(z[(m+1):N]))/(N-2));
+                (mean(z[(m+1):N])-mean(z[1:m]))/(sPool*sqrt(1/n + 1/m))
+            }
+            n <- length(y);              # number of treated subjects
+            z <- c(x, y)                 # pooled responses
+            ts <- tStat(z,n)             # test statistic
+            sum(replicate(iter, (tStat(sample(z),n)>=ts)))/iter
+        }
+    </pre>
+</p>
+</div>
+
+
+<h2>Fisher's Exact Test and its Normal Approximation</h2>
+
+<p>
+    A special case of the permutation test based on the sample sum
+    occurs when the only possible responses are 0 and 1.
+    The distribution of the test statistic under the strong null hypothesis is then
+    hypergeometric,  which leads to Fisher's Exact test.
+    The following material is adapted from
+    <a href="http://statistics.berkeley.edu/~stark/SticiGui">SticiGui</a>.
+</p>
+
+<p>
+    Suppose we own a start-up company that offers e-tailers a service for
+    targeting their web advertising.
+    Consumers register with our service by filling
+    out a form indicating their likes and dislikes, gender, age, <em>etc</em>.
+    We put &quot;cookies&quot; on their computers to keep track of who they are.
+    When they get to the website of any of our clients, we use their likes
+    and dislikes to select (from a collection of the client's ads)
+    the ad we think they are most likely to respond to.
+    The service is free to consumers; we charge the e-tailers.
+</p>
+
+<p>
+    We can raise venture capital if we can show that targeting makes e-tailers'
+    advertisements more effective.
+    To measure the effectiveness, we offer our service for free
+    to a large e-tailer.
+    The e-tailer has a collection of web ads that it usually uses in rotation:
+    each time a consumer arrives at the site, the e-tailer's server selects
+    the next ad in the sequence to show to the consumer, then starts over
+    when it runs out of ads.
+</p>
+
+<p>
+    We install our software on the e-tailer's server, in the following way:
+    each time a consumer arrives at the site, with probability 50% the server shows
+    the consumer the ad our targeting software suggests, and with probability 50%
+    the server shows the consumer the next ad in the rotation, the way the e-tailer
+    used to choose which
+    ad to show.
+    For each consumer, the software records which strategy was used
+    (target or rotation), and whether the consumer buys anything.
+    We call the consumers who were shown the targeted ad the <em>treatment group</em>;
+    we call the other consumers the <em>control group</em>.
+    If a consumer visits the site more than once during the trial period, we ignore
+    all of that consumer's visits but the first.
+</p>
+
+<p>
+    Suppose that <em>N</em> consumers visit the site during the trial, that
+    <em>n</em> of them are assigned to the treatment group,
+    that <em>m</em> of them are assigned to the control
+    group, and that <em>N</em><sub>S</sub> of the consumers buy something.
+    In essence, we want to know whether there would have been more
+    purchases if everyone had been shown the targeted ad than if everyone
+    had been shown the control ad.
+    Only some of the consumers saw the targeted ad, and only some
+    saw the control ad, so answering this question involves extrapolating
+    from the data to an hypothetical counterfactual situation.
+    Of course, we really want to extrapolate further, to people who have not
+    yet visited the site, to decide whether more product would be sold if
+    those people are shown the targeted ad.
+</p>
+
+<p>
+    We can think of the experiment in the following way: the <em>i</em>th
+    consumer has a ticket with two numbers on it:
+    the first number (<em>x</em><sub><em>i</em></sub>) is 1 if the consumer
+    would have bought something if shown the control ad, and 0 if not.
+    The second number (<em>y</em><sub><em>i</em></sub>)
+    is 1 if the consumer would have bought something if shown
+    the targeted ad, and 0 if not.
+    There are <em>N</em> tickets in all.
+</p>
+
+<p>
+    For each consumer <em>i</em> who visits the site, we observe either
+    <em>x</em><sub><em>i</em></sub> or <em>y</em><sub><em>i</em></sub>, but not
+    both.
+    The percentage of consumers who would have made purchases if every consumer
+    had been shown the control ads is
+</p>
+
+<p class="math">
+    <em>p</em><sub><em>c</em></sub> = <big>(</big>
+    <em>x</em><sub>1</sub> + <em>x</em><sub>2</sub> + &nbsp;&hellip;&nbsp; +
+    <em>x</em><sub><em>N</em></sub> <big>)</big>/<em>N</em>.
+</p>
+
+<p>
+    Similarly, the percentage of consumers who would have made purchases if every
+    consumer had been shown the targeted ads is
+</p>
+
+<p class="math">
+    <em>p</em><sub><em>t</em></sub> = <big>(</big>
+    <em>y</em><sub>1</sub> + <em>y</em><sub>2</sub> + &nbsp;&hellip;&nbsp; +
+    <em>y</em><sub><em>N</em></sub> <big>)</big>/<em>N</em>.
+</p>
+
+<p>
+   Let
+</p>
+
+<p class="math">
+    &micro;&nbsp;=&nbsp;<em>p</em><sub><em>t</em></sub>
+    &minus; <em>p</em><sub><em>c</em></sub>
+</p>
+
+<p>
+    be the difference between the rate at which consumers would have bought had all of them
+    been shown the targeted ad, and the rate at which consumers would have bought had
+    all of them been in the control group.
+    The null hypothesis, that targeting does not make a difference,
+    is that &micro;&nbsp;=&nbsp;0.
+    (The strong null hypothesis is that
+    <em>x</em><sub><em>i</em></sub> = <em>y</em><sub><em>i</em></sub>,
+    for <em>i</em>=1, 2, &hellip; , <em>N</em>.)
+    The alternative hypothesis, that targeting helps, is that
+    &micro;&nbsp;&gt;&nbsp;0.
+    We would like to test the null hypothesis at significance level 5%.
+</p>
+
+<p>
+    Let <em>m</em> be the number of consumers in the control
+    group, and let <em>n</em> be the number of consumers in the
+    treatment group, so
+</p>
+
+<p class="math">
+    <em>N</em>&nbsp;=&nbsp;<em>m</em> +
+    <em>n</em>.
+</p>
+
+<p>
+    Let <em>N</em><sub>S</sub> be the total number of sales to the treatment and control
+    groups.
+    Let <em>Y</em> be the number of sales to consumers in the treatment group.
+    Under the strong null hypothesis (which implies that &micro;&nbsp;=&nbsp;0),
+    for any fixed value of <em>N</em><sub>S</sub>,
+    <em>Y</em> has an hypergeometric distribution
+    with parameters <em>N</em>, <em>N</em><sub>S</sub>, and <em>n</em>
+    (we consider <em>N</em> to be fixed):
+</p>
+
+<p class="math">
+    P(<em>Y</em>=<em>y</em>) = <sub><em>N</em><sub>S</sub></sub>C<sub><em>y</em></sub> &times;
+        <sub><em>N</em>&minus;<em>N</em><sub>S</sub></sub>C<sub><em>n</em>&minus;<em>y</em></sub>/<sub><em>N</em></sub>C<sub><em>n</em></sub>.
+</p>
+
+<div class="indent">
+<p class="inline">
+    This is a situation with many tied data, because there are only two possible
+    responses for each subject: 0 if the subject does not buy anything, and 1 if the
+    subject buys something.
+    If the alternative hypothesis is true, <em>Y</em> will tend to be larger than it would
+    if the null hypothesis be true,
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var fStr = 'Technically, it is <em>stochastically larger</em>: for every <em>y</em>, ' +
+           'the chance that <em>Y</em>&nbsp;&gt;&nbsp;<em>y</em> is at least as large ' +
+           'if the alternative hypothesis be true as if the null hypothesis be true.';
+    writeFootnote(fCtr++, fCtr.toString(), fStr);
+// -->
+</script>
+    so we should design our test to reject the null hypothesis
+    for large values of <em>Y</em>.
+    That is, our rejection region should
+    contain all values above some threshold value <em>y</em>;
+    we will reject the null hypothesis
+    if <em>Y</em>&nbsp;&gt;&nbsp;<em>y</em>.
+</p>
+</div>
+
+<p>
+    We cannot calculate the critical value <em>y</em> until we know
+    <em>N</em>, <em>n</em>, and
+    <em>N</em><sub>S</sub>.
+    Once we observe them, we can find the smallest value <em>y</em> so that
+    the probability that <em>Y</em> is larger than <em>y</em> if the null hypothesis
+    be true is at most 5%, the significance level we chose for the test.
+    Our rule for testing the null hypothesis then would be to reject the null hypothesis if
+    <em>Y</em>&nbsp;&gt;&nbsp;<em>y</em>, and not to reject the null hypothesis otherwise.
+    This is called <em>Fisher's exact test</em> for
+    the equality of two percentages (against the one-sided alternative that treatment
+    increases the response).
+    It is a permutation test, and it is also essentially a (mid-) rank test (discussed in the
+    next chapter), because there are only
+    two possible values for each response.
+</p>
+
+<h3>
+    <a id="fisherNormApprox"></a>
+    The Normal Approximation to Fisher's Exact Test
+</h3>
+
+<p>
+    If <em>N</em> is large and <em>n</em> is neither close to
+    zero nor close to <em>N</em>, computing the hypergeometric probabilities
+    will be difficult, but the normal approximation to the hypergeometric
+    distribution should be accurate provided <em>N</em><sub>S</sub> is neither too
+    close to zero nor too close to <em>n</em>.
+    To use the normal approximation, we need to convert to
+    standard units, which requires that we
+    know the expected value
+    and standard error of <em>Y</em>.
+    The expected value of <em>Y</em> is
+</p>
+
+<p class="math">
+    <strong>E</strong>(<em>Y</em>) = <em>n</em> &times; <em>N</em><sub>S</sub>/<em>N</em>,
+</p>
+
+<p>
+    and the standard error of <em>Y</em> is
+</p>
+
+<p class="math">
+    SE(<em>Y</em>) = <em>f</em> &times; <em>n</em><sup>&frac12;</sup>
+    &times; SD,
+</p>
+
+<p>
+    where <em>f</em> is the <em>finite population correction</em>
+</p>
+
+<p class="math">
+    <em>f</em> =
+    <big>(</big>
+    (<em>N</em> &minus; <em>n</em>)/(<em>N</em> &minus; 1)
+    <big>)</big><sup>&frac12;</sup>,
+</p>
+
+<p>
+    and SD is the standard deviation of a list
+    of <em>N</em> values of which <em>N</em><sub>S</sub> equal one and
+    (<em>N</em> &minus; <em>N</em><sub>S</sub>) equal zero:
+</p>
+
+<p class="math">
+    SD =
+    <big>(</big> <em>N</em><sub>S</sub>/<em>N</em> &times;
+    (1 &minus; <em>N</em><sub>S</sub>/<em>N</em>) <big>)</big><sup>&frac12;</sup>.
+</p>
+
+<p>
+    In standard units, <em>Y</em> is
+</p>
+
+<p class="math">
+    <em>Z</em> = (<em>Y</em> &minus; <strong>E</strong>(<em>Y</em>))/SE(<em>Y</em>)
+</p>
+
+<p class="math">
+    =  <big>(</big> <em>Y</em> &minus;
+    <em>n</em> &times; <em>N</em><sub>S</sub>/<em>N</em>
+       <big>)</big>/(<em>f</em> &times; <em>n</em><sup>&frac12;</sup>
+       &times; SD).
+</p>
+
+<div class="indent">
+<p class="inline">
+    The area under the normal curve to the right of 1.645 standard units is 5%,
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var fStr = 'Here is the picture:</p><p align="center">' +
+           '<applet code="NormHiLite.class" codebase="../../../Java/" align="baseline" ' +
+           'width="600" archive="PbsGui.zip" height="320">' +
+           '<param name="hiLiteLo" value="-10">' +
+           '<param name="hiLiteHi" value="1.645">You need Java to see this</applet>' +
+           '</p>';
+    writeFootnote(fCtr++, fCtr.toString(), fStr);
+// -->
+</script>
+    which corresponds to the threshold value
+</p>
+</div>
+
+<p class="math">
+    <em>y</em> = <strong>E</strong>(<em>Y</em>) + 1.645 &times; SE(<em>Y</em>)
+</p>
+
+<p class="math">
+    = <em>n</em> &times; <em>N</em><sub>S</sub>/<em>N</em> +
+    1.645 &times; <em>f</em> &times; <em>n</em><sup>&frac12;</sup>
+    &times; SD
+</p>
+
+<p>
+    in the original units, so if we reject the null hypothesis when
+</p>
+
+<p class="math">
+    <em>Z</em> &gt; 1.645
+</p>
+
+<p>
+    or, equivalently,
+</p>
+
+<p class="math">
+    <em>Y</em> &gt; <em>n</em> &times; <em>N</em><sub>S</sub>/<em>N</em> +
+    1.645 &times; <em>f</em> &times;  <em>n</em><sup>&frac12;</sup> &times; SD,
+</p>
+
+<p>
+    we have an (approximate) 5% significance level test of the null hypothesis that
+    ad targeting and ad rotation are equally effective.
+    This is <em>the normal approximation to Fisher's exact test</em>;
+    <em>Z</em> is called the <em>Z</em> statistic,
+    and the observed value of <em>Z</em> is called the
+    <em>z</em> score.
+</p>
+
+<h2>Fisher's <em>Lady Tasting Tea</em> Experiment</h2>
+<a id="fisherTea"></a>
+
+<p>
+    In his 1935 book, <em>The Design of Experiments</em>
+    (London, Oliver and Boyd, 260pp.),
+    Sir R.A. Fisher writes:
+</p>
+
+<blockquote>
+    <p>
+    A <small>LADY</small> declares that by tasting a cup of tea made with milk
+    she can discriminate whether the milk or the tea infusion was first added to
+    the cup.
+    We will consider the problem of designing an experiment by means of which this
+    assertion can be tested. &hellip;
+    </p>
+    <p>
+    Our experiment consists in mixing eight cups of tea, four in one way and four in
+    the other, and presenting them to the subject for judgment in a
+    random order.
+    The subject has been told in advance of what the test will consist, namely that
+    she will be asked to taste eight cups, that these shall be four of each kind,
+    and that they shall be presented to her in a random order, that is in an
+    order not determined arbitrarily by human choice, but by the actual manipulation
+    of the physical apparatus used in games of chance, cards, dice, roulettes,
+    etc., &hellip;
+    Her task is to divide the 8 cups into two sets of 4, agreeing, if possible,
+    with the treatments received.
+    </p>
+</blockquote>
+
+<p>
+    There are <sub>8</sub>C<sub>4</sub>&nbsp;=&nbsp;70 ways to distribute the four
+    &quot;milk-first&quot; cups among the 8.
+    Under the null hypothesis that the lady cannot taste any difference, her labeling of the 8 cups&mdash;4
+    milk-first and 4 tea-infusion-first&mdash;can be thought of as fixed in advance.
+    The probability that her labeling exactly matches the truth is thus 1/70.
+    A test that rejects the null hypothesis only when she matches all 8 cups has significance level
+    1/70&nbsp;=&nbsp;1.4%.
+    If she misses one cup, she must in fact miss at least two, because she will have
+    mislabeled a milk-first as tea-first, and vice versa.
+    The possible numbers of &quot;hits&quot; are 0, 2, 4, 6, and 8.
+    To get 6 hits, she must label as milk-first three of the four true milk-first cups, and
+    must mislabel as milk-first one of the four tea-first cups.
+    The number of arrangements that give exactly 6 hits is thus
+</p>
+
+<p class="math">
+    <sub>4</sub>C<sub>3</sub>&times;<sub>4</sub>C<sub>1</sub>&nbsp;=&nbsp;16.
+</p>
+
+<p>
+    Thus if we reject the null hypothesis when she correctly identifies 6 of the 8 cups or all 8 of the 8
+    cups, the significance level of the test is (16+1)/70&nbsp;=&nbsp;24.3%.
+    Such good performance is pretty likely to occur by chance&mdash;about as likely as getting
+    two heads in two tosses of a fair coin&mdash;even if the lady and the tea are in different
+    parlors.
+</p>
+
+<p>
+    There are other experiments we might construct to test this hypothesis.
+    Lindley (1984, A Bayesian Lady Tasting Tea, in
+    <em>Statistics, an Appraisal</em>, H.A.&nbsp;David and H.T.&nbsp;David, eds., Iowa
+    State Univ. Press) lists two, which he attributes to Neyman:
+</p>
+
+<ol>
+    <li>
+        Present the lady with <em>n</em> pairs of cups of tea with milk, where one cup in each pair
+        (determined randomly) has milk added first and one has tea added first.
+        Tell the lady that each pair has one of each kind of cup; ask her to identify which
+        member of each pair had the milk added first.
+        Count the number of pairs she categorizes correctly.
+        (This approach is sometimes called <em>two-alternative forced choice</em> in the
+        study of perception in the psychometric literature: each trial has two alternative
+        responses, the subject is forced to pick one.)
+    </li>
+    <li>
+        Present the lady with <em>n</em> cups of tea with milk, each of which has probability 1/2 of
+        having the milk added first and probability 1/2 of having the tea added first.
+        Do not tell the lady how many of each sort of cup there are.
+        Ask her to identify for each cup whether milk or tea was added first.
+        Count the number of cups she categorizes correctly.
+    </li>
+</ol>
+
+<p>
+    These experiments lead to different tests.
+    A permutation test for the first of them is straightforward; to base a permutation test
+    on the second requires conditioning on the number of cups she categorizes each way and
+    on the number of cups that had the milk added first.
+</p>
+
+
+<h2>Strong and weak null hypotheses</h2>
+
+<p>
+	We are in the randomization model: each subject has a ticket with two
+	numbers on it.
+	Those <em>2&times;N</em> numbers are the parameters of the model.
+	If the subject is assigned to control, the number on the right
+	is revealed.
+	Assignment to treatment reveals the number on the left.
+	The assignment is by simple random sample.
+</p>
+
+<p>
+	In the randomization model, the <em>strong null hypothesis</em> is that
+	the two numbers on each ticket are equal: treatment makes no difference
+	whatsoever,
+	subject by subject.
+</p>
+
+<p>
+	This is not a very realistic hypothesis, but it leads to simple theory.
+	If the strong null is true,
+	when you see one number on each ticket, you know both numbers on each
+	ticket&mdash;all <em>2N</em> parameters in the model&mdash;because the
+	two numbers on each ticket are equal.
+	If the strong null is true, once the data have been collected, you
+	know everything there is to know.
+	Since tickets are put into treatment by simple random
+	sampling, that completely specifies the probability distribution of
+	every test statistic.
+</p>
+
+<p>
+	The strong null <em>implies</em> a variety of weaker null hypotheses&mdash;but
+	those hypotheses do not completely specify the probability distribution of
+	every test statistic.
+	For example, if the strong null is true, so is the weaker null that the
+	mean of all <em>N</em> subjects' responses to treatment is equal to the mean
+	of all <em>N</em> subjects' responses to control: the mean of all the left numbers
+	is equal to the mean of all the right numbers.
+	That's a natural &quot;weak null&quot; when
+	the alternative is that treatment tends to increase (or to decrease)
+	the response.
+	That weak null does not uniquely determine the probability distribution of
+	the statistics we have considered, because it does not determine all
+	the parameters in the model:
+	under that weak null, we have <em>N+1</em> constraints (we observe one number
+	on each ticket, and we know that the two population means are the
+	same)&mdash;but we need to have <em>2N</em> constraints to determine all
+	<em>2N</em> parameters in the model.
+</p>
+
+<p>
+	Because the strong null plus the data determine all the parameters in
+	the randomization model, under the strong null, it's easy to calculate the
+	distribution of the test statistic, set critical values and find P-values, etc.
+	If the strong null is true, so is the weak null&mdash;but the strong null can be
+	false while the weak null is true.
+	There are parameter values that satisfy the weak null but not the strong null.
+	So, if we test the weak null using a
+	test designed for the strong null,  we may well reject too often&mdash;the
+	significance level could be larger than we claim.
+	For parameters that satisfy the weak null but not the strong null,
+	the chance that the test statistic exceeds the nominal level-alpha critical
+	value could be much larger than for any parameters that satisfy the strong null.
+</p>
+
+<p>
+	The &quot;weakening&quot; that is interesting depends partly on the alternative.
+	The idea is that the weak null is implied by the strong null
+	(hence, &quot;weaker&quot;) but is false if the alternative is true (hence,
+	would make a reasonable null in contrast to the alternative of interest).
+</p>
+
+<p>
+	If the alternative is that treatment tends to increase the response, a natural
+	weakening is that the two population means are equal. (If the strong
+	null holds, so does this weakening.  If the alternative holds, this weak null
+	is false.)  If the alternative is that treatment tends to change the
+	variability,
+	a natural weakening is that the two population variances are equal. (Again,
+	if the strong null is true, so is this weakening; but if the alternative holds,
+	this weakening is false.) If the alternative is that treatment has any effect
+	whatsoever on the distribution of responses, a natural weakening is that the
+	cdfs of the two populations are equal. And so on.
+</p>
+
+</form>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    writeMiscFooter(false);
+// -->
+</script>
+</body>
+</html>

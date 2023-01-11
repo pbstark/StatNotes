@@ -1,0 +1,1611 @@
+ID,Class,Gender,Age,number.online.courses.taken,TA,Question,Likert.Score,Theme,ScoreNegPos
+1,3,female,21,3,Jesse,Facilitated.learning,4,teaching,1
+1,3,female,21,3,Jesse,Provided.helpful.feedback,5,teaching,2
+1,3,female,21,3,Jesse,Is.an.expert,4,knowledge,1
+1,3,female,21,3,Jesse,Graded.in.a.timely.manner,5,professional,2
+1,3,female,21,3,Jesse,Graded.Fairly,5,teaching,2
+1,3,female,21,3,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+1,3,female,21,3,Jesse,Knowledgable.of.course.content,5,knowledge,2
+1,3,female,21,3,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+1,3,female,21,3,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+1,3,female,21,3,Jesse,Considerate.in.communication,5,approachable,2
+1,3,female,21,3,Jesse,Treated.me.with.respect,5,approachable,2
+1,3,female,21,3,Jesse,Enthusiastic,5,approachable,2
+1,3,female,21,3,Jesse,Professional,5,professional,2
+1,3,female,21,3,Jesse,TA.again,4,teaching,1
+2,2,female,19,> 5,Jesse,Facilitated.learning,4,teaching,1
+2,2,female,19,> 5,Jesse,Provided.helpful.feedback,5,teaching,2
+2,2,female,19,> 5,Jesse,Is.an.expert,5,knowledge,2
+2,2,female,19,> 5,Jesse,Graded.in.a.timely.manner,4,professional,1
+2,2,female,19,> 5,Jesse,Graded.Fairly,4,teaching,1
+2,2,female,19,> 5,Jesse,Did.NOT.respond.to.email.promptly,2,professional,-1
+2,2,female,19,> 5,Jesse,Knowledgable.of.course.content,4,knowledge,1
+2,2,female,19,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+2,2,female,19,> 5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+2,2,female,19,> 5,Jesse,Considerate.in.communication,5,approachable,2
+2,2,female,19,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+2,2,female,19,> 5,Jesse,Enthusiastic,5,approachable,2
+2,2,female,19,> 5,Jesse,Professional,5,professional,2
+2,2,female,19,> 5,Jesse,TA.again,5,teaching,2
+3,5,female,23,0,Jesse,Facilitated.learning,5,teaching,2
+3,5,female,23,0,Jesse,Provided.helpful.feedback,5,teaching,2
+3,5,female,23,0,Jesse,Is.an.expert,5,knowledge,2
+3,5,female,23,0,Jesse,Graded.in.a.timely.manner,5,professional,2
+3,5,female,23,0,Jesse,Graded.Fairly,5,teaching,2
+3,5,female,23,0,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+3,5,female,23,0,Jesse,Knowledgable.of.course.content,5,knowledge,2
+3,5,female,23,0,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+3,5,female,23,0,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+3,5,female,23,0,Jesse,Considerate.in.communication,5,approachable,2
+3,5,female,23,0,Jesse,Treated.me.with.respect,5,approachable,2
+3,5,female,23,0,Jesse,Enthusiastic,5,approachable,2
+3,5,female,23,0,Jesse,Professional,5,professional,2
+3,5,female,23,0,Jesse,TA.again,5,teaching,2
+4,4,male,23,> 5,Jesse,Facilitated.learning,4,teaching,1
+4,4,male,23,> 5,Jesse,Provided.helpful.feedback,4,teaching,1
+4,4,male,23,> 5,Jesse,Is.an.expert,4,knowledge,1
+4,4,male,23,> 5,Jesse,Graded.in.a.timely.manner,4,professional,1
+4,4,male,23,> 5,Jesse,Graded.Fairly,4,teaching,1
+4,4,male,23,> 5,Jesse,Did.NOT.respond.to.email.promptly,4,professional,1
+4,4,male,23,> 5,Jesse,Knowledgable.of.course.content,5,knowledge,2
+4,4,male,23,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+4,4,male,23,> 5,Jesse,Consistently.fulfilled.responsibilities,4,professional,1
+4,4,male,23,> 5,Jesse,Considerate.in.communication,4,approachable,1
+4,4,male,23,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+4,4,male,23,> 5,Jesse,Enthusiastic,4,approachable,1
+4,4,male,23,> 5,Jesse,Professional,5,professional,2
+4,4,male,23,> 5,Jesse,TA.again,4,teaching,1
+5,4,male,old,3,Emily,Facilitated.learning,4,teaching,1
+5,4,male,old,3,Emily,Provided.helpful.feedback,4,teaching,1
+5,4,male,old,3,Emily,Is.an.expert,3,knowledge,0
+5,4,male,old,3,Emily,Graded.in.a.timely.manner,4,professional,1
+5,4,male,old,3,Emily,Graded.Fairly,2,teaching,-1
+5,4,male,old,3,Emily,Did.NOT.respond.to.email.promptly,4,professional,1
+5,4,male,old,3,Emily,Knowledgable.of.course.content,3,knowledge,0
+5,4,male,old,3,Emily,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+5,4,male,old,3,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+5,4,male,old,3,Emily,Considerate.in.communication,3,approachable,0
+5,4,male,old,3,Emily,Treated.me.with.respect,3,approachable,0
+5,4,male,old,3,Emily,Enthusiastic,3,approachable,0
+5,4,male,old,3,Emily,Professional,4,professional,1
+5,4,male,old,3,Emily,TA.again,3,teaching,0
+6,4,female,21,3,Emily,Facilitated.learning,3,teaching,0
+6,4,female,21,3,Emily,Provided.helpful.feedback,4,teaching,1
+6,4,female,21,3,Emily,Is.an.expert,3,knowledge,0
+6,4,female,21,3,Emily,Graded.in.a.timely.manner,4,professional,1
+6,4,female,21,3,Emily,Graded.Fairly,4,teaching,1
+6,4,female,21,3,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+6,4,female,21,3,Emily,Knowledgable.of.course.content,4,knowledge,1
+6,4,female,21,3,Emily,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+6,4,female,21,3,Emily,Consistently.fulfilled.responsibilities,4,professional,1
+6,4,female,21,3,Emily,Considerate.in.communication,3,approachable,0
+6,4,female,21,3,Emily,Treated.me.with.respect,3,approachable,0
+6,4,female,21,3,Emily,Enthusiastic,3,approachable,0
+6,4,female,21,3,Emily,Professional,3,professional,0
+6,4,female,21,3,Emily,TA.again,4,teaching,1
+7,1,male,18,> 5,Emily,Facilitated.learning,4,teaching,1
+7,1,male,18,> 5,Emily,Provided.helpful.feedback,5,teaching,2
+7,1,male,18,> 5,Emily,Is.an.expert,4,knowledge,1
+7,1,male,18,> 5,Emily,Graded.in.a.timely.manner,5,professional,2
+7,1,male,18,> 5,Emily,Graded.Fairly,3,teaching,0
+7,1,male,18,> 5,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+7,1,male,18,> 5,Emily,Knowledgable.of.course.content,4,knowledge,1
+7,1,male,18,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+7,1,male,18,> 5,Emily,Consistently.fulfilled.responsibilities,4,professional,1
+7,1,male,18,> 5,Emily,Considerate.in.communication,4,approachable,1
+7,1,male,18,> 5,Emily,Treated.me.with.respect,4,approachable,1
+7,1,male,18,> 5,Emily,Enthusiastic,4,approachable,1
+7,1,male,18,> 5,Emily,Professional,5,professional,2
+7,1,male,18,> 5,Emily,TA.again,3,teaching,0
+8,4,female,21,5,Jesse,Facilitated.learning,4,teaching,1
+8,4,female,21,5,Jesse,Provided.helpful.feedback,5,teaching,2
+8,4,female,21,5,Jesse,Is.an.expert,4,knowledge,1
+8,4,female,21,5,Jesse,Graded.in.a.timely.manner,5,professional,2
+8,4,female,21,5,Jesse,Graded.Fairly,5,teaching,2
+8,4,female,21,5,Jesse,Did.NOT.respond.to.email.promptly,3,professional,0
+8,4,female,21,5,Jesse,Knowledgable.of.course.content,4,knowledge,1
+8,4,female,21,5,Jesse,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+8,4,female,21,5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+8,4,female,21,5,Jesse,Considerate.in.communication,5,approachable,2
+8,4,female,21,5,Jesse,Treated.me.with.respect,5,approachable,2
+8,4,female,21,5,Jesse,Enthusiastic,4,approachable,1
+8,4,female,21,5,Jesse,Professional,5,professional,2
+8,4,female,21,5,Jesse,TA.again,4,teaching,1
+9,4,female,21,> 5,Jesse,Facilitated.learning,5,teaching,2
+9,4,female,21,> 5,Jesse,Provided.helpful.feedback,4,teaching,1
+9,4,female,21,> 5,Jesse,Is.an.expert,5,knowledge,2
+9,4,female,21,> 5,Jesse,Graded.in.a.timely.manner,4,professional,1
+9,4,female,21,> 5,Jesse,Graded.Fairly,4,teaching,1
+9,4,female,21,> 5,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+9,4,female,21,> 5,Jesse,Knowledgable.of.course.content,5,knowledge,2
+9,4,female,21,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+9,4,female,21,> 5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+9,4,female,21,> 5,Jesse,Considerate.in.communication,5,approachable,2
+9,4,female,21,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+9,4,female,21,> 5,Jesse,Enthusiastic,5,approachable,2
+9,4,female,21,> 5,Jesse,Professional,5,professional,2
+9,4,female,21,> 5,Jesse,TA.again,5,teaching,2
+10,5,male,22,5,Jesse,Facilitated.learning,5,teaching,2
+10,5,male,22,5,Jesse,Provided.helpful.feedback,5,teaching,2
+10,5,male,22,5,Jesse,Is.an.expert,5,knowledge,2
+10,5,male,22,5,Jesse,Graded.in.a.timely.manner,5,professional,2
+10,5,male,22,5,Jesse,Graded.Fairly,5,teaching,2
+10,5,male,22,5,Jesse,Did.NOT.respond.to.email.promptly,1,professional,-2
+10,5,male,22,5,Jesse,Knowledgable.of.course.content,5,knowledge,2
+10,5,male,22,5,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+10,5,male,22,5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+10,5,male,22,5,Jesse,Considerate.in.communication,5,approachable,2
+10,5,male,22,5,Jesse,Treated.me.with.respect,5,approachable,2
+10,5,male,22,5,Jesse,Enthusiastic,5,approachable,2
+10,5,male,22,5,Jesse,Professional,5,professional,2
+10,5,male,22,5,Jesse,TA.again,5,teaching,2
+11,4,female,21,3,Emily,Facilitated.learning,3,teaching,0
+11,4,female,21,3,Emily,Provided.helpful.feedback,3,teaching,0
+11,4,female,21,3,Emily,Is.an.expert,4,knowledge,1
+11,4,female,21,3,Emily,Graded.in.a.timely.manner,3,professional,0
+11,4,female,21,3,Emily,Graded.Fairly,2,teaching,-1
+11,4,female,21,3,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+11,4,female,21,3,Emily,Knowledgable.of.course.content,3,knowledge,0
+11,4,female,21,3,Emily,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+11,4,female,21,3,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+11,4,female,21,3,Emily,Considerate.in.communication,5,approachable,2
+11,4,female,21,3,Emily,Treated.me.with.respect,5,approachable,2
+11,4,female,21,3,Emily,Enthusiastic,5,approachable,2
+11,4,female,21,3,Emily,Professional,3,professional,0
+11,4,female,21,3,Emily,TA.again,1,teaching,-2
+12,2,female,19,4,Emily,Facilitated.learning,5,teaching,2
+12,2,female,19,4,Emily,Provided.helpful.feedback,5,teaching,2
+12,2,female,19,4,Emily,Is.an.expert,5,knowledge,2
+12,2,female,19,4,Emily,Graded.in.a.timely.manner,5,professional,2
+12,2,female,19,4,Emily,Graded.Fairly,5,teaching,2
+12,2,female,19,4,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+12,2,female,19,4,Emily,Knowledgable.of.course.content,5,knowledge,2
+12,2,female,19,4,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+12,2,female,19,4,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+12,2,female,19,4,Emily,Considerate.in.communication,5,approachable,2
+12,2,female,19,4,Emily,Treated.me.with.respect,5,approachable,2
+12,2,female,19,4,Emily,Enthusiastic,5,approachable,2
+12,2,female,19,4,Emily,Professional,5,professional,2
+12,2,female,19,4,Emily,TA.again,5,teaching,2
+13,4,female,21,> 5,Emily,Facilitated.learning,3,teaching,0
+13,4,female,21,> 5,Emily,Provided.helpful.feedback,4,teaching,1
+13,4,female,21,> 5,Emily,Is.an.expert,4,knowledge,1
+13,4,female,21,> 5,Emily,Graded.in.a.timely.manner,2,professional,-1
+13,4,female,21,> 5,Emily,Graded.Fairly,3,teaching,0
+13,4,female,21,> 5,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+13,4,female,21,> 5,Emily,Knowledgable.of.course.content,5,knowledge,2
+13,4,female,21,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+13,4,female,21,> 5,Emily,Consistently.fulfilled.responsibilities,4,professional,1
+13,4,female,21,> 5,Emily,Considerate.in.communication,5,approachable,2
+13,4,female,21,> 5,Emily,Treated.me.with.respect,5,approachable,2
+13,4,female,21,> 5,Emily,Enthusiastic,4,approachable,1
+13,4,female,21,> 5,Emily,Professional,5,professional,2
+13,4,female,21,> 5,Emily,TA.again,3,teaching,0
+14,2,female,20,2,Jesse,Facilitated.learning,4,teaching,1
+14,2,female,20,2,Jesse,Provided.helpful.feedback,5,teaching,2
+14,2,female,20,2,Jesse,Is.an.expert,5,knowledge,2
+14,2,female,20,2,Jesse,Graded.in.a.timely.manner,5,professional,2
+14,2,female,20,2,Jesse,Graded.Fairly,4,teaching,1
+14,2,female,20,2,Jesse,Did.NOT.respond.to.email.promptly,3,professional,0
+14,2,female,20,2,Jesse,Knowledgable.of.course.content,5,knowledge,2
+14,2,female,20,2,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+14,2,female,20,2,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+14,2,female,20,2,Jesse,Considerate.in.communication,5,approachable,2
+14,2,female,20,2,Jesse,Treated.me.with.respect,5,approachable,2
+14,2,female,20,2,Jesse,Enthusiastic,5,approachable,2
+14,2,female,20,2,Jesse,Professional,5,professional,2
+14,2,female,20,2,Jesse,TA.again,4,teaching,1
+15,3,female,20,5,Jesse,Facilitated.learning,3,teaching,0
+15,3,female,20,5,Jesse,Provided.helpful.feedback,4,teaching,1
+15,3,female,20,5,Jesse,Is.an.expert,5,knowledge,2
+15,3,female,20,5,Jesse,Graded.in.a.timely.manner,5,professional,2
+15,3,female,20,5,Jesse,Graded.Fairly,2,teaching,-1
+15,3,female,20,5,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+15,3,female,20,5,Jesse,Knowledgable.of.course.content,5,knowledge,2
+15,3,female,20,5,Jesse,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+15,3,female,20,5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+15,3,female,20,5,Jesse,Considerate.in.communication,3,approachable,0
+15,3,female,20,5,Jesse,Treated.me.with.respect,3,approachable,0
+15,3,female,20,5,Jesse,Enthusiastic,3,approachable,0
+15,3,female,20,5,Jesse,Professional,5,professional,2
+15,3,female,20,5,Jesse,TA.again,3,teaching,0
+16,4,female,21,> 5,Emily,Facilitated.learning,4,teaching,1
+16,4,female,21,> 5,Emily,Provided.helpful.feedback,5,teaching,2
+16,4,female,21,> 5,Emily,Is.an.expert,3,knowledge,0
+16,4,female,21,> 5,Emily,Graded.in.a.timely.manner,4,professional,1
+16,4,female,21,> 5,Emily,Graded.Fairly,4,teaching,1
+16,4,female,21,> 5,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+16,4,female,21,> 5,Emily,Knowledgable.of.course.content,3,knowledge,0
+16,4,female,21,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+16,4,female,21,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+16,4,female,21,> 5,Emily,Considerate.in.communication,5,approachable,2
+16,4,female,21,> 5,Emily,Treated.me.with.respect,5,approachable,2
+16,4,female,21,> 5,Emily,Enthusiastic,5,approachable,2
+16,4,female,21,> 5,Emily,Professional,5,professional,2
+16,4,female,21,> 5,Emily,TA.again,4,teaching,1
+17,3,male,20,4,Jesse,Facilitated.learning,4,teaching,1
+17,3,male,20,4,Jesse,Provided.helpful.feedback,4,teaching,1
+17,3,male,20,4,Jesse,Is.an.expert,4,knowledge,1
+17,3,male,20,4,Jesse,Graded.in.a.timely.manner,4,professional,1
+17,3,male,20,4,Jesse,Graded.Fairly,3,teaching,0
+17,3,male,20,4,Jesse,Did.NOT.respond.to.email.promptly,2,professional,-1
+17,3,male,20,4,Jesse,Knowledgable.of.course.content,4,knowledge,1
+17,3,male,20,4,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+17,3,male,20,4,Jesse,Consistently.fulfilled.responsibilities,4,professional,1
+17,3,male,20,4,Jesse,Considerate.in.communication,4,approachable,1
+17,3,male,20,4,Jesse,Treated.me.with.respect,4,approachable,1
+17,3,male,20,4,Jesse,Enthusiastic,4,approachable,1
+17,3,male,20,4,Jesse,Professional,4,professional,1
+17,3,male,20,4,Jesse,TA.again,4,teaching,1
+18,4,female,34,> 5,Emily,Facilitated.learning,3,teaching,0
+18,4,female,34,> 5,Emily,Provided.helpful.feedback,5,teaching,2
+18,4,female,34,> 5,Emily,Is.an.expert,5,knowledge,2
+18,4,female,34,> 5,Emily,Graded.in.a.timely.manner,5,professional,2
+18,4,female,34,> 5,Emily,Graded.Fairly,5,teaching,2
+18,4,female,34,> 5,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+18,4,female,34,> 5,Emily,Knowledgable.of.course.content,5,knowledge,2
+18,4,female,34,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+18,4,female,34,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+18,4,female,34,> 5,Emily,Considerate.in.communication,5,approachable,2
+18,4,female,34,> 5,Emily,Treated.me.with.respect,5,approachable,2
+18,4,female,34,> 5,Emily,Enthusiastic,3,approachable,0
+18,4,female,34,> 5,Emily,Professional,5,professional,2
+18,4,female,34,> 5,Emily,TA.again,5,teaching,2
+19,2,female,20,> 5,Emily,Facilitated.learning,5,teaching,2
+19,2,female,20,> 5,Emily,Provided.helpful.feedback,5,teaching,2
+19,2,female,20,> 5,Emily,Is.an.expert,5,knowledge,2
+19,2,female,20,> 5,Emily,Graded.in.a.timely.manner,3,professional,0
+19,2,female,20,> 5,Emily,Graded.Fairly,5,teaching,2
+19,2,female,20,> 5,Emily,Did.NOT.respond.to.email.promptly,4,professional,1
+19,2,female,20,> 5,Emily,Knowledgable.of.course.content,5,knowledge,2
+19,2,female,20,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+19,2,female,20,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+19,2,female,20,> 5,Emily,Considerate.in.communication,5,approachable,2
+19,2,female,20,> 5,Emily,Treated.me.with.respect,5,approachable,2
+19,2,female,20,> 5,Emily,Enthusiastic,5,approachable,2
+19,2,female,20,> 5,Emily,Professional,5,professional,2
+19,2,female,20,> 5,Emily,TA.again,4,teaching,1
+20,5,male,22,> 5,Jesse,Facilitated.learning,4,teaching,1
+20,5,male,22,> 5,Jesse,Provided.helpful.feedback,5,teaching,2
+20,5,male,22,> 5,Jesse,Is.an.expert,3,knowledge,0
+20,5,male,22,> 5,Jesse,Graded.in.a.timely.manner,4,professional,1
+20,5,male,22,> 5,Jesse,Graded.Fairly,5,teaching,2
+20,5,male,22,> 5,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+20,5,male,22,> 5,Jesse,Knowledgable.of.course.content,5,knowledge,2
+20,5,male,22,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+20,5,male,22,> 5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+20,5,male,22,> 5,Jesse,Considerate.in.communication,5,approachable,2
+20,5,male,22,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+20,5,male,22,> 5,Jesse,Enthusiastic,5,approachable,2
+20,5,male,22,> 5,Jesse,Professional,5,professional,2
+20,5,male,22,> 5,Jesse,TA.again,5,teaching,2
+21,3,female,21,3,Emily,Facilitated.learning,5,teaching,2
+21,3,female,21,3,Emily,Provided.helpful.feedback,4,teaching,1
+21,3,female,21,3,Emily,Is.an.expert,4,knowledge,1
+21,3,female,21,3,Emily,Graded.in.a.timely.manner,4,professional,1
+21,3,female,21,3,Emily,Graded.Fairly,4,teaching,1
+21,3,female,21,3,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+21,3,female,21,3,Emily,Knowledgable.of.course.content,5,knowledge,2
+21,3,female,21,3,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+21,3,female,21,3,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+21,3,female,21,3,Emily,Considerate.in.communication,5,approachable,2
+21,3,female,21,3,Emily,Treated.me.with.respect,5,approachable,2
+21,3,female,21,3,Emily,Enthusiastic,5,approachable,2
+21,3,female,21,3,Emily,Professional,5,professional,2
+21,3,female,21,3,Emily,TA.again,4,teaching,1
+22,3,female,21,4,Jesse,Facilitated.learning,4,teaching,1
+22,3,female,21,4,Jesse,Provided.helpful.feedback,2,teaching,-1
+22,3,female,21,4,Jesse,Is.an.expert,4,knowledge,1
+22,3,female,21,4,Jesse,Graded.in.a.timely.manner,4,professional,1
+22,3,female,21,4,Jesse,Graded.Fairly,4,teaching,1
+22,3,female,21,4,Jesse,Did.NOT.respond.to.email.promptly,3,professional,0
+22,3,female,21,4,Jesse,Knowledgable.of.course.content,5,knowledge,2
+22,3,female,21,4,Jesse,Helpful.feedback.vias.Canvas.discussion,2,teaching,-1
+22,3,female,21,4,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+22,3,female,21,4,Jesse,Considerate.in.communication,4,approachable,1
+22,3,female,21,4,Jesse,Treated.me.with.respect,5,approachable,2
+22,3,female,21,4,Jesse,Enthusiastic,3,approachable,0
+22,3,female,21,4,Jesse,Professional,5,professional,2
+22,3,female,21,4,Jesse,TA.again,3,teaching,0
+23,3,female,21,4,Jesse,Facilitated.learning,3,teaching,0
+23,3,female,21,4,Jesse,Provided.helpful.feedback,5,teaching,2
+23,3,female,21,4,Jesse,Is.an.expert,3,knowledge,0
+23,3,female,21,4,Jesse,Graded.in.a.timely.manner,5,professional,2
+23,3,female,21,4,Jesse,Graded.Fairly,5,teaching,2
+23,3,female,21,4,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+23,3,female,21,4,Jesse,Knowledgable.of.course.content,4,knowledge,1
+23,3,female,21,4,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+23,3,female,21,4,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+23,3,female,21,4,Jesse,Considerate.in.communication,5,approachable,2
+23,3,female,21,4,Jesse,Treated.me.with.respect,5,approachable,2
+23,3,female,21,4,Jesse,Enthusiastic,3,approachable,0
+23,3,female,21,4,Jesse,Professional,5,professional,2
+23,3,female,21,4,Jesse,TA.again,4,teaching,1
+24,3,male,19,> 5,Jesse,Facilitated.learning,4,teaching,1
+24,3,male,19,> 5,Jesse,Provided.helpful.feedback,4,teaching,1
+24,3,male,19,> 5,Jesse,Is.an.expert,4,knowledge,1
+24,3,male,19,> 5,Jesse,Graded.in.a.timely.manner,3,professional,0
+24,3,male,19,> 5,Jesse,Graded.Fairly,4,teaching,1
+24,3,male,19,> 5,Jesse,Did.NOT.respond.to.email.promptly,4,professional,1
+24,3,male,19,> 5,Jesse,Knowledgable.of.course.content,5,knowledge,2
+24,3,male,19,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+24,3,male,19,> 5,Jesse,Consistently.fulfilled.responsibilities,4,professional,1
+24,3,male,19,> 5,Jesse,Considerate.in.communication,5,approachable,2
+24,3,male,19,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+24,3,male,19,> 5,Jesse,Enthusiastic,5,approachable,2
+24,3,male,19,> 5,Jesse,Professional,5,professional,2
+24,3,male,19,> 5,Jesse,TA.again,4,teaching,1
+25,3,female,20,> 5,Jesse,Facilitated.learning,5,teaching,2
+25,3,female,20,> 5,Jesse,Provided.helpful.feedback,5,teaching,2
+25,3,female,20,> 5,Jesse,Is.an.expert,4,knowledge,1
+25,3,female,20,> 5,Jesse,Graded.in.a.timely.manner,5,professional,2
+25,3,female,20,> 5,Jesse,Graded.Fairly,5,teaching,2
+25,3,female,20,> 5,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+25,3,female,20,> 5,Jesse,Knowledgable.of.course.content,5,knowledge,2
+25,3,female,20,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+25,3,female,20,> 5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+25,3,female,20,> 5,Jesse,Considerate.in.communication,5,approachable,2
+25,3,female,20,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+25,3,female,20,> 5,Jesse,Enthusiastic,4,approachable,1
+25,3,female,20,> 5,Jesse,Professional,5,professional,2
+25,3,female,20,> 5,Jesse,TA.again,5,teaching,2
+26,4,male,20,> 5,Emily,Facilitated.learning,5,teaching,2
+26,4,male,20,> 5,Emily,Provided.helpful.feedback,5,teaching,2
+26,4,male,20,> 5,Emily,Is.an.expert,5,knowledge,2
+26,4,male,20,> 5,Emily,Graded.in.a.timely.manner,5,professional,2
+26,4,male,20,> 5,Emily,Graded.Fairly,5,teaching,2
+26,4,male,20,> 5,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+26,4,male,20,> 5,Emily,Knowledgable.of.course.content,5,knowledge,2
+26,4,male,20,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+26,4,male,20,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+26,4,male,20,> 5,Emily,Considerate.in.communication,5,approachable,2
+26,4,male,20,> 5,Emily,Treated.me.with.respect,5,approachable,2
+26,4,male,20,> 5,Emily,Enthusiastic,5,approachable,2
+26,4,male,20,> 5,Emily,Professional,5,professional,2
+26,4,male,20,> 5,Emily,TA.again,5,teaching,2
+27,3,female,21,4,Jesse,Facilitated.learning,4,teaching,1
+27,3,female,21,4,Jesse,Provided.helpful.feedback,4,teaching,1
+27,3,female,21,4,Jesse,Is.an.expert,4,knowledge,1
+27,3,female,21,4,Jesse,Graded.in.a.timely.manner,4,professional,1
+27,3,female,21,4,Jesse,Graded.Fairly,4,teaching,1
+27,3,female,21,4,Jesse,Did.NOT.respond.to.email.promptly,3,professional,0
+27,3,female,21,4,Jesse,Knowledgable.of.course.content,3,knowledge,0
+27,3,female,21,4,Jesse,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+27,3,female,21,4,Jesse,Consistently.fulfilled.responsibilities,4,professional,1
+27,3,female,21,4,Jesse,Considerate.in.communication,4,approachable,1
+27,3,female,21,4,Jesse,Treated.me.with.respect,4,approachable,1
+27,3,female,21,4,Jesse,Enthusiastic,4,approachable,1
+27,3,female,21,4,Jesse,Professional,3,professional,0
+27,3,female,21,4,Jesse,TA.again,2,teaching,-1
+28,4,female,22,> 5,Emily,Facilitated.learning,1,teaching,-2
+28,4,female,22,> 5,Emily,Provided.helpful.feedback,1,teaching,-2
+28,4,female,22,> 5,Emily,Is.an.expert,1,knowledge,-2
+28,4,female,22,> 5,Emily,Graded.in.a.timely.manner,4,professional,1
+28,4,female,22,> 5,Emily,Graded.Fairly,1,teaching,-2
+28,4,female,22,> 5,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+28,4,female,22,> 5,Emily,Knowledgable.of.course.content,1,knowledge,-2
+28,4,female,22,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,2,teaching,-1
+28,4,female,22,> 5,Emily,Consistently.fulfilled.responsibilities,3,professional,0
+28,4,female,22,> 5,Emily,Considerate.in.communication,1,approachable,-2
+28,4,female,22,> 5,Emily,Treated.me.with.respect,2,approachable,-1
+28,4,female,22,> 5,Emily,Enthusiastic,2,approachable,-1
+28,4,female,22,> 5,Emily,Professional,2,professional,-1
+28,4,female,22,> 5,Emily,TA.again,1,teaching,-2
+29,4,female,21,1,Jesse,Facilitated.learning,5,teaching,2
+29,4,female,21,1,Jesse,Provided.helpful.feedback,5,teaching,2
+29,4,female,21,1,Jesse,Is.an.expert,4,knowledge,1
+29,4,female,21,1,Jesse,Graded.in.a.timely.manner,5,professional,2
+29,4,female,21,1,Jesse,Graded.Fairly,4,teaching,1
+29,4,female,21,1,Jesse,Did.NOT.respond.to.email.promptly,4,professional,1
+29,4,female,21,1,Jesse,Knowledgable.of.course.content,5,knowledge,2
+29,4,female,21,1,Jesse,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+29,4,female,21,1,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+29,4,female,21,1,Jesse,Considerate.in.communication,5,approachable,2
+29,4,female,21,1,Jesse,Treated.me.with.respect,5,approachable,2
+29,4,female,21,1,Jesse,Enthusiastic,5,approachable,2
+29,4,female,21,1,Jesse,Professional,5,professional,2
+29,4,female,21,1,Jesse,TA.again,4,teaching,1
+30,4,female,23,> 5,Jesse,Facilitated.learning,4,teaching,1
+30,4,female,23,> 5,Jesse,Provided.helpful.feedback,5,teaching,2
+30,4,female,23,> 5,Jesse,Is.an.expert,4,knowledge,1
+30,4,female,23,> 5,Jesse,Graded.in.a.timely.manner,4,professional,1
+30,4,female,23,> 5,Jesse,Graded.Fairly,2,teaching,-1
+30,4,female,23,> 5,Jesse,Did.NOT.respond.to.email.promptly,2,professional,-1
+30,4,female,23,> 5,Jesse,Knowledgable.of.course.content,4,knowledge,1
+30,4,female,23,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+30,4,female,23,> 5,Jesse,Consistently.fulfilled.responsibilities,4,professional,1
+30,4,female,23,> 5,Jesse,Considerate.in.communication,4,approachable,1
+30,4,female,23,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+30,4,female,23,> 5,Jesse,Enthusiastic,4,approachable,1
+30,4,female,23,> 5,Jesse,Professional,5,professional,2
+30,4,female,23,> 5,Jesse,TA.again,3,teaching,0
+31,1,female,18,0,Emily,Facilitated.learning,4,teaching,1
+31,1,female,18,0,Emily,Provided.helpful.feedback,4,teaching,1
+31,1,female,18,0,Emily,Is.an.expert,5,knowledge,2
+31,1,female,18,0,Emily,Graded.in.a.timely.manner,5,professional,2
+31,1,female,18,0,Emily,Graded.Fairly,4,teaching,1
+31,1,female,18,0,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+31,1,female,18,0,Emily,Knowledgable.of.course.content,5,knowledge,2
+31,1,female,18,0,Emily,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+31,1,female,18,0,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+31,1,female,18,0,Emily,Considerate.in.communication,5,approachable,2
+31,1,female,18,0,Emily,Treated.me.with.respect,5,approachable,2
+31,1,female,18,0,Emily,Enthusiastic,4,approachable,1
+31,1,female,18,0,Emily,Professional,5,professional,2
+31,1,female,18,0,Emily,TA.again,4,teaching,1
+32,4,female,21,> 5,Jesse,Facilitated.learning,4,teaching,1
+32,4,female,21,> 5,Jesse,Provided.helpful.feedback,4,teaching,1
+32,4,female,21,> 5,Jesse,Is.an.expert,4,knowledge,1
+32,4,female,21,> 5,Jesse,Graded.in.a.timely.manner,4,professional,1
+32,4,female,21,> 5,Jesse,Graded.Fairly,4,teaching,1
+32,4,female,21,> 5,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+32,4,female,21,> 5,Jesse,Knowledgable.of.course.content,4,knowledge,1
+32,4,female,21,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+32,4,female,21,> 5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+32,4,female,21,> 5,Jesse,Considerate.in.communication,5,approachable,2
+32,4,female,21,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+32,4,female,21,> 5,Jesse,Enthusiastic,5,approachable,2
+32,4,female,21,> 5,Jesse,Professional,5,professional,2
+32,4,female,21,> 5,Jesse,TA.again,4,teaching,1
+33,4,female,21,> 5,Jesse,Facilitated.learning,2,teaching,-1
+33,4,female,21,> 5,Jesse,Provided.helpful.feedback,5,teaching,2
+33,4,female,21,> 5,Jesse,Is.an.expert,4,knowledge,1
+33,4,female,21,> 5,Jesse,Graded.in.a.timely.manner,5,professional,2
+33,4,female,21,> 5,Jesse,Graded.Fairly,3,teaching,0
+33,4,female,21,> 5,Jesse,Did.NOT.respond.to.email.promptly,3,professional,0
+33,4,female,21,> 5,Jesse,Knowledgable.of.course.content,5,knowledge,2
+33,4,female,21,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+33,4,female,21,> 5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+33,4,female,21,> 5,Jesse,Considerate.in.communication,5,approachable,2
+33,4,female,21,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+33,4,female,21,> 5,Jesse,Enthusiastic,3,approachable,0
+33,4,female,21,> 5,Jesse,Professional,5,professional,2
+33,4,female,21,> 5,Jesse,TA.again,2,teaching,-1
+34,4,female,32,> 5,Emily,Facilitated.learning,4,teaching,1
+34,4,female,32,> 5,Emily,Provided.helpful.feedback,4,teaching,1
+34,4,female,32,> 5,Emily,Is.an.expert,4,knowledge,1
+34,4,female,32,> 5,Emily,Graded.in.a.timely.manner,5,professional,2
+34,4,female,32,> 5,Emily,Graded.Fairly,4,teaching,1
+34,4,female,32,> 5,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+34,4,female,32,> 5,Emily,Knowledgable.of.course.content,4,knowledge,1
+34,4,female,32,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+34,4,female,32,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+34,4,female,32,> 5,Emily,Considerate.in.communication,4,approachable,1
+34,4,female,32,> 5,Emily,Treated.me.with.respect,5,approachable,2
+34,4,female,32,> 5,Emily,Enthusiastic,5,approachable,2
+34,4,female,32,> 5,Emily,Professional,5,professional,2
+34,4,female,32,> 5,Emily,TA.again,3,teaching,0
+35,4,female,20,> 5,Emily,Facilitated.learning,2,teaching,-1
+35,4,female,20,> 5,Emily,Provided.helpful.feedback,2,teaching,-1
+35,4,female,20,> 5,Emily,Is.an.expert,4,knowledge,1
+35,4,female,20,> 5,Emily,Graded.in.a.timely.manner,4,professional,1
+35,4,female,20,> 5,Emily,Graded.Fairly,2,teaching,-1
+35,4,female,20,> 5,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+35,4,female,20,> 5,Emily,Knowledgable.of.course.content,4,knowledge,1
+35,4,female,20,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+35,4,female,20,> 5,Emily,Consistently.fulfilled.responsibilities,4,professional,1
+35,4,female,20,> 5,Emily,Considerate.in.communication,3,approachable,0
+35,4,female,20,> 5,Emily,Treated.me.with.respect,3,approachable,0
+35,4,female,20,> 5,Emily,Enthusiastic,3,approachable,0
+35,4,female,20,> 5,Emily,Professional,4,professional,1
+35,4,female,20,> 5,Emily,TA.again,2,teaching,-1
+36,2,male,19,> 5,Emily,Facilitated.learning,3,teaching,0
+36,2,male,19,> 5,Emily,Provided.helpful.feedback,4,teaching,1
+36,2,male,19,> 5,Emily,Is.an.expert,4,knowledge,1
+36,2,male,19,> 5,Emily,Graded.in.a.timely.manner,4,professional,1
+36,2,male,19,> 5,Emily,Graded.Fairly,4,teaching,1
+36,2,male,19,> 5,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+36,2,male,19,> 5,Emily,Knowledgable.of.course.content,4,knowledge,1
+36,2,male,19,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+36,2,male,19,> 5,Emily,Consistently.fulfilled.responsibilities,4,professional,1
+36,2,male,19,> 5,Emily,Considerate.in.communication,5,approachable,2
+36,2,male,19,> 5,Emily,Treated.me.with.respect,5,approachable,2
+36,2,male,19,> 5,Emily,Enthusiastic,5,approachable,2
+36,2,male,19,> 5,Emily,Professional,5,professional,2
+36,2,male,19,> 5,Emily,TA.again,4,teaching,1
+37,3,female,20,> 5,Jesse,Facilitated.learning,4,teaching,1
+37,3,female,20,> 5,Jesse,Provided.helpful.feedback,4,teaching,1
+37,3,female,20,> 5,Jesse,Is.an.expert,5,knowledge,2
+37,3,female,20,> 5,Jesse,Graded.in.a.timely.manner,4,professional,1
+37,3,female,20,> 5,Jesse,Graded.Fairly,5,teaching,2
+37,3,female,20,> 5,Jesse,Did.NOT.respond.to.email.promptly,4,professional,1
+37,3,female,20,> 5,Jesse,Knowledgable.of.course.content,5,knowledge,2
+37,3,female,20,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+37,3,female,20,> 5,Jesse,Consistently.fulfilled.responsibilities,4,professional,1
+37,3,female,20,> 5,Jesse,Considerate.in.communication,4,approachable,1
+37,3,female,20,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+37,3,female,20,> 5,Jesse,Enthusiastic,5,approachable,2
+37,3,female,20,> 5,Jesse,Professional,5,professional,2
+37,3,female,20,> 5,Jesse,TA.again,4,teaching,1
+38,4,male,23,> 5,Jesse,Facilitated.learning,4,teaching,1
+38,4,male,23,> 5,Jesse,Provided.helpful.feedback,3,teaching,0
+38,4,male,23,> 5,Jesse,Is.an.expert,3,knowledge,0
+38,4,male,23,> 5,Jesse,Graded.in.a.timely.manner,4,professional,1
+38,4,male,23,> 5,Jesse,Graded.Fairly,3,teaching,0
+38,4,male,23,> 5,Jesse,Did.NOT.respond.to.email.promptly,3,professional,0
+38,4,male,23,> 5,Jesse,Knowledgable.of.course.content,3,knowledge,0
+38,4,male,23,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+38,4,male,23,> 5,Jesse,Consistently.fulfilled.responsibilities,3,professional,0
+38,4,male,23,> 5,Jesse,Considerate.in.communication,3,approachable,0
+38,4,male,23,> 5,Jesse,Treated.me.with.respect,3,approachable,0
+38,4,male,23,> 5,Jesse,Enthusiastic,4,approachable,1
+38,4,male,23,> 5,Jesse,Professional,3,professional,0
+38,4,male,23,> 5,Jesse,TA.again,2,teaching,-1
+39,2,female,20,4,Emily,Facilitated.learning,5,teaching,2
+39,2,female,20,4,Emily,Provided.helpful.feedback,5,teaching,2
+39,2,female,20,4,Emily,Is.an.expert,5,knowledge,2
+39,2,female,20,4,Emily,Graded.in.a.timely.manner,5,professional,2
+39,2,female,20,4,Emily,Graded.Fairly,4,teaching,1
+39,2,female,20,4,Emily,Did.NOT.respond.to.email.promptly,1,professional,-2
+39,2,female,20,4,Emily,Knowledgable.of.course.content,5,knowledge,2
+39,2,female,20,4,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+39,2,female,20,4,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+39,2,female,20,4,Emily,Considerate.in.communication,5,approachable,2
+39,2,female,20,4,Emily,Treated.me.with.respect,5,approachable,2
+39,2,female,20,4,Emily,Enthusiastic,5,approachable,2
+39,2,female,20,4,Emily,Professional,5,professional,2
+39,2,female,20,4,Emily,TA.again,5,teaching,2
+40,2,female,19,> 5,Emily,Facilitated.learning,4,teaching,1
+40,2,female,19,> 5,Emily,Provided.helpful.feedback,5,teaching,2
+40,2,female,19,> 5,Emily,Is.an.expert,5,knowledge,2
+40,2,female,19,> 5,Emily,Graded.in.a.timely.manner,5,professional,2
+40,2,female,19,> 5,Emily,Graded.Fairly,5,teaching,2
+40,2,female,19,> 5,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+40,2,female,19,> 5,Emily,Knowledgable.of.course.content,5,knowledge,2
+40,2,female,19,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+40,2,female,19,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+40,2,female,19,> 5,Emily,Considerate.in.communication,5,approachable,2
+40,2,female,19,> 5,Emily,Treated.me.with.respect,5,approachable,2
+40,2,female,19,> 5,Emily,Enthusiastic,5,approachable,2
+40,2,female,19,> 5,Emily,Professional,5,professional,2
+40,2,female,19,> 5,Emily,TA.again,5,teaching,2
+41,3,male,27,5,Jesse,Facilitated.learning,3,teaching,0
+41,3,male,27,5,Jesse,Provided.helpful.feedback,3,teaching,0
+41,3,male,27,5,Jesse,Is.an.expert,3,knowledge,0
+41,3,male,27,5,Jesse,Graded.in.a.timely.manner,4,professional,1
+41,3,male,27,5,Jesse,Graded.Fairly,1,teaching,-2
+41,3,male,27,5,Jesse,Did.NOT.respond.to.email.promptly,2,professional,-1
+41,3,male,27,5,Jesse,Knowledgable.of.course.content,3,knowledge,0
+41,3,male,27,5,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+41,3,male,27,5,Jesse,Consistently.fulfilled.responsibilities,2,professional,-1
+41,3,male,27,5,Jesse,Considerate.in.communication,4,approachable,1
+41,3,male,27,5,Jesse,Treated.me.with.respect,2,approachable,-1
+41,3,male,27,5,Jesse,Enthusiastic,3,approachable,0
+41,3,male,27,5,Jesse,Professional,3,professional,0
+41,3,male,27,5,Jesse,TA.again,1,teaching,-2
+42,2,female,20,> 5,Jesse,Facilitated.learning,3,teaching,0
+42,2,female,20,> 5,Jesse,Provided.helpful.feedback,5,teaching,2
+42,2,female,20,> 5,Jesse,Is.an.expert,3,knowledge,0
+42,2,female,20,> 5,Jesse,Graded.in.a.timely.manner,4,professional,1
+42,2,female,20,> 5,Jesse,Graded.Fairly,4,teaching,1
+42,2,female,20,> 5,Jesse,Did.NOT.respond.to.email.promptly,4,professional,1
+42,2,female,20,> 5,Jesse,Knowledgable.of.course.content,3,knowledge,0
+42,2,female,20,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+42,2,female,20,> 5,Jesse,Consistently.fulfilled.responsibilities,4,professional,1
+42,2,female,20,> 5,Jesse,Considerate.in.communication,4,approachable,1
+42,2,female,20,> 5,Jesse,Treated.me.with.respect,4,approachable,1
+42,2,female,20,> 5,Jesse,Enthusiastic,3,approachable,0
+42,2,female,20,> 5,Jesse,Professional,5,professional,2
+42,2,female,20,> 5,Jesse,TA.again,4,teaching,1
+43,3,female,34,> 5,Emily,Facilitated.learning,1,teaching,-2
+43,3,female,34,> 5,Emily,Provided.helpful.feedback,2,teaching,-1
+43,3,female,34,> 5,Emily,Is.an.expert,1,knowledge,-2
+43,3,female,34,> 5,Emily,Graded.in.a.timely.manner,1,professional,-2
+43,3,female,34,> 5,Emily,Graded.Fairly,2,teaching,-1
+43,3,female,34,> 5,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+43,3,female,34,> 5,Emily,Knowledgable.of.course.content,3,knowledge,0
+43,3,female,34,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,1,teaching,-2
+43,3,female,34,> 5,Emily,Consistently.fulfilled.responsibilities,3,professional,0
+43,3,female,34,> 5,Emily,Considerate.in.communication,3,approachable,0
+43,3,female,34,> 5,Emily,Treated.me.with.respect,3,approachable,0
+43,3,female,34,> 5,Emily,Enthusiastic,1,approachable,-2
+43,3,female,34,> 5,Emily,Professional,3,professional,0
+43,3,female,34,> 5,Emily,TA.again,2,teaching,-1
+44,3,male,26,4,Jesse,Facilitated.learning,4,teaching,1
+44,3,male,26,4,Jesse,Provided.helpful.feedback,5,teaching,2
+44,3,male,26,4,Jesse,Is.an.expert,3,knowledge,0
+44,3,male,26,4,Jesse,Graded.in.a.timely.manner,4,professional,1
+44,3,male,26,4,Jesse,Graded.Fairly,4,teaching,1
+44,3,male,26,4,Jesse,Did.NOT.respond.to.email.promptly,4,professional,1
+44,3,male,26,4,Jesse,Knowledgable.of.course.content,3,knowledge,0
+44,3,male,26,4,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+44,3,male,26,4,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+44,3,male,26,4,Jesse,Considerate.in.communication,5,approachable,2
+44,3,male,26,4,Jesse,Treated.me.with.respect,5,approachable,2
+44,3,male,26,4,Jesse,Enthusiastic,5,approachable,2
+44,3,male,26,4,Jesse,Professional,5,professional,2
+44,3,male,26,4,Jesse,TA.again,3,teaching,0
+45,3,female,20,> 5,Jesse,Facilitated.learning,4,teaching,1
+45,3,female,20,> 5,Jesse,Provided.helpful.feedback,4,teaching,1
+45,3,female,20,> 5,Jesse,Is.an.expert,4,knowledge,1
+45,3,female,20,> 5,Jesse,Graded.in.a.timely.manner,5,professional,2
+45,3,female,20,> 5,Jesse,Graded.Fairly,4,teaching,1
+45,3,female,20,> 5,Jesse,Did.NOT.respond.to.email.promptly,3,professional,0
+45,3,female,20,> 5,Jesse,Knowledgable.of.course.content,4,knowledge,1
+45,3,female,20,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+45,3,female,20,> 5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+45,3,female,20,> 5,Jesse,Considerate.in.communication,4,approachable,1
+45,3,female,20,> 5,Jesse,Treated.me.with.respect,4,approachable,1
+45,3,female,20,> 5,Jesse,Enthusiastic,4,approachable,1
+45,3,female,20,> 5,Jesse,Professional,4,professional,1
+45,3,female,20,> 5,Jesse,TA.again,4,teaching,1
+46,5,female,35,> 5,Jesse,Facilitated.learning,4,teaching,1
+46,5,female,35,> 5,Jesse,Provided.helpful.feedback,4,teaching,1
+46,5,female,35,> 5,Jesse,Is.an.expert,4,knowledge,1
+46,5,female,35,> 5,Jesse,Graded.in.a.timely.manner,4,professional,1
+46,5,female,35,> 5,Jesse,Graded.Fairly,4,teaching,1
+46,5,female,35,> 5,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+46,5,female,35,> 5,Jesse,Knowledgable.of.course.content,4,knowledge,1
+46,5,female,35,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+46,5,female,35,> 5,Jesse,Consistently.fulfilled.responsibilities,4,professional,1
+46,5,female,35,> 5,Jesse,Considerate.in.communication,4,approachable,1
+46,5,female,35,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+46,5,female,35,> 5,Jesse,Enthusiastic,4,approachable,1
+46,5,female,35,> 5,Jesse,Professional,5,professional,2
+46,5,female,35,> 5,Jesse,TA.again,4,teaching,1
+47,4,male,21,> 5,Jesse,Facilitated.learning,5,teaching,2
+47,4,male,21,> 5,Jesse,Provided.helpful.feedback,4,teaching,1
+47,4,male,21,> 5,Jesse,Is.an.expert,4,knowledge,1
+47,4,male,21,> 5,Jesse,Graded.in.a.timely.manner,5,professional,2
+47,4,male,21,> 5,Jesse,Graded.Fairly,5,teaching,2
+47,4,male,21,> 5,Jesse,Did.NOT.respond.to.email.promptly,3,professional,0
+47,4,male,21,> 5,Jesse,Knowledgable.of.course.content,5,knowledge,2
+47,4,male,21,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+47,4,male,21,> 5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+47,4,male,21,> 5,Jesse,Considerate.in.communication,5,approachable,2
+47,4,male,21,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+47,4,male,21,> 5,Jesse,Enthusiastic,4,approachable,1
+47,4,male,21,> 5,Jesse,Professional,5,professional,2
+47,4,male,21,> 5,Jesse,TA.again,4,teaching,1
+48,3,male,19,3,Jesse,Facilitated.learning,3,teaching,0
+48,3,male,19,3,Jesse,Provided.helpful.feedback,2,teaching,-1
+48,3,male,19,3,Jesse,Is.an.expert,2,knowledge,-1
+48,3,male,19,3,Jesse,Graded.in.a.timely.manner,4,professional,1
+48,3,male,19,3,Jesse,Graded.Fairly,2,teaching,-1
+48,3,male,19,3,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+48,3,male,19,3,Jesse,Knowledgable.of.course.content,3,knowledge,0
+48,3,male,19,3,Jesse,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+48,3,male,19,3,Jesse,Consistently.fulfilled.responsibilities,4,professional,1
+48,3,male,19,3,Jesse,Considerate.in.communication,4,approachable,1
+48,3,male,19,3,Jesse,Treated.me.with.respect,5,approachable,2
+48,3,male,19,3,Jesse,Enthusiastic,3,approachable,0
+48,3,male,19,3,Jesse,Professional,4,professional,1
+48,3,male,19,3,Jesse,TA.again,2,teaching,-1
+49,3,female,20,3,Jesse,Facilitated.learning,5,teaching,2
+49,3,female,20,3,Jesse,Provided.helpful.feedback,5,teaching,2
+49,3,female,20,3,Jesse,Is.an.expert,5,knowledge,2
+49,3,female,20,3,Jesse,Graded.in.a.timely.manner,5,professional,2
+49,3,female,20,3,Jesse,Graded.Fairly,5,teaching,2
+49,3,female,20,3,Jesse,Did.NOT.respond.to.email.promptly,1,professional,-2
+49,3,female,20,3,Jesse,Knowledgable.of.course.content,5,knowledge,2
+49,3,female,20,3,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+49,3,female,20,3,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+49,3,female,20,3,Jesse,Considerate.in.communication,5,approachable,2
+49,3,female,20,3,Jesse,Treated.me.with.respect,5,approachable,2
+49,3,female,20,3,Jesse,Enthusiastic,5,approachable,2
+49,3,female,20,3,Jesse,Professional,5,professional,2
+49,3,female,20,3,Jesse,TA.again,4,teaching,1
+50,5,female,22,2,Emily,Facilitated.learning,5,teaching,2
+50,5,female,22,2,Emily,Provided.helpful.feedback,5,teaching,2
+50,5,female,22,2,Emily,Is.an.expert,4,knowledge,1
+50,5,female,22,2,Emily,Graded.in.a.timely.manner,3,professional,0
+50,5,female,22,2,Emily,Graded.Fairly,3,teaching,0
+50,5,female,22,2,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+50,5,female,22,2,Emily,Knowledgable.of.course.content,4,knowledge,1
+50,5,female,22,2,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+50,5,female,22,2,Emily,Consistently.fulfilled.responsibilities,4,professional,1
+50,5,female,22,2,Emily,Considerate.in.communication,3,approachable,0
+50,5,female,22,2,Emily,Treated.me.with.respect,4,approachable,1
+50,5,female,22,2,Emily,Enthusiastic,4,approachable,1
+50,5,female,22,2,Emily,Professional,4,professional,1
+50,5,female,22,2,Emily,TA.again,3,teaching,0
+51,4,male,21,> 5,Emily,Facilitated.learning,5,teaching,2
+51,4,male,21,> 5,Emily,Provided.helpful.feedback,5,teaching,2
+51,4,male,21,> 5,Emily,Is.an.expert,4,knowledge,1
+51,4,male,21,> 5,Emily,Graded.in.a.timely.manner,4,professional,1
+51,4,male,21,> 5,Emily,Graded.Fairly,4,teaching,1
+51,4,male,21,> 5,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+51,4,male,21,> 5,Emily,Knowledgable.of.course.content,4,knowledge,1
+51,4,male,21,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+51,4,male,21,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+51,4,male,21,> 5,Emily,Considerate.in.communication,4,approachable,1
+51,4,male,21,> 5,Emily,Treated.me.with.respect,5,approachable,2
+51,4,male,21,> 5,Emily,Enthusiastic,5,approachable,2
+51,4,male,21,> 5,Emily,Professional,5,professional,2
+51,4,male,21,> 5,Emily,TA.again,4,teaching,1
+52,3,female,25,1,Emily,Facilitated.learning,5,teaching,2
+52,3,female,25,1,Emily,Provided.helpful.feedback,5,teaching,2
+52,3,female,25,1,Emily,Is.an.expert,3,knowledge,0
+52,3,female,25,1,Emily,Graded.in.a.timely.manner,4,professional,1
+52,3,female,25,1,Emily,Graded.Fairly,5,teaching,2
+52,3,female,25,1,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+52,3,female,25,1,Emily,Knowledgable.of.course.content,5,knowledge,2
+52,3,female,25,1,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+52,3,female,25,1,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+52,3,female,25,1,Emily,Considerate.in.communication,5,approachable,2
+52,3,female,25,1,Emily,Treated.me.with.respect,5,approachable,2
+52,3,female,25,1,Emily,Enthusiastic,5,approachable,2
+52,3,female,25,1,Emily,Professional,5,professional,2
+52,3,female,25,1,Emily,TA.again,5,teaching,2
+53,3,female,39,> 5,Jesse,Facilitated.learning,3,teaching,0
+53,3,female,39,> 5,Jesse,Provided.helpful.feedback,4,teaching,1
+53,3,female,39,> 5,Jesse,Is.an.expert,3,knowledge,0
+53,3,female,39,> 5,Jesse,Graded.in.a.timely.manner,2,professional,-1
+53,3,female,39,> 5,Jesse,Graded.Fairly,4,teaching,1
+53,3,female,39,> 5,Jesse,Did.NOT.respond.to.email.promptly,4,professional,1
+53,3,female,39,> 5,Jesse,Knowledgable.of.course.content,3,knowledge,0
+53,3,female,39,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+53,3,female,39,> 5,Jesse,Consistently.fulfilled.responsibilities,3,professional,0
+53,3,female,39,> 5,Jesse,Considerate.in.communication,4,approachable,1
+53,3,female,39,> 5,Jesse,Treated.me.with.respect,4,approachable,1
+53,3,female,39,> 5,Jesse,Enthusiastic,4,approachable,1
+53,3,female,39,> 5,Jesse,Professional,4,professional,1
+53,3,female,39,> 5,Jesse,TA.again,3,teaching,0
+54,2,female,19,4,Emily,Facilitated.learning,4,teaching,1
+54,2,female,19,4,Emily,Provided.helpful.feedback,5,teaching,2
+54,2,female,19,4,Emily,Is.an.expert,5,knowledge,2
+54,2,female,19,4,Emily,Graded.in.a.timely.manner,5,professional,2
+54,2,female,19,4,Emily,Graded.Fairly,5,teaching,2
+54,2,female,19,4,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+54,2,female,19,4,Emily,Knowledgable.of.course.content,5,knowledge,2
+54,2,female,19,4,Emily,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+54,2,female,19,4,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+54,2,female,19,4,Emily,Considerate.in.communication,4,approachable,1
+54,2,female,19,4,Emily,Treated.me.with.respect,5,approachable,2
+54,2,female,19,4,Emily,Enthusiastic,5,approachable,2
+54,2,female,19,4,Emily,Professional,5,professional,2
+54,2,female,19,4,Emily,TA.again,3,teaching,0
+55,3,male,28,4,Emily,Facilitated.learning,4,teaching,1
+55,3,male,28,4,Emily,Provided.helpful.feedback,5,teaching,2
+55,3,male,28,4,Emily,Is.an.expert,5,knowledge,2
+55,3,male,28,4,Emily,Graded.in.a.timely.manner,5,professional,2
+55,3,male,28,4,Emily,Graded.Fairly,5,teaching,2
+55,3,male,28,4,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+55,3,male,28,4,Emily,Knowledgable.of.course.content,5,knowledge,2
+55,3,male,28,4,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+55,3,male,28,4,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+55,3,male,28,4,Emily,Considerate.in.communication,5,approachable,2
+55,3,male,28,4,Emily,Treated.me.with.respect,5,approachable,2
+55,3,male,28,4,Emily,Enthusiastic,4,approachable,1
+55,3,male,28,4,Emily,Professional,5,professional,2
+55,3,male,28,4,Emily,TA.again,5,teaching,2
+56,3,male,21,> 5,Emily,Facilitated.learning,3,teaching,0
+56,3,male,21,> 5,Emily,Provided.helpful.feedback,2,teaching,-1
+56,3,male,21,> 5,Emily,Is.an.expert,2,knowledge,-1
+56,3,male,21,> 5,Emily,Graded.in.a.timely.manner,4,professional,1
+56,3,male,21,> 5,Emily,Graded.Fairly,1,teaching,-2
+56,3,male,21,> 5,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+56,3,male,21,> 5,Emily,Knowledgable.of.course.content,4,knowledge,1
+56,3,male,21,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,2,teaching,-1
+56,3,male,21,> 5,Emily,Consistently.fulfilled.responsibilities,4,professional,1
+56,3,male,21,> 5,Emily,Considerate.in.communication,3,approachable,0
+56,3,male,21,> 5,Emily,Treated.me.with.respect,3,approachable,0
+56,3,male,21,> 5,Emily,Enthusiastic,3,approachable,0
+56,3,male,21,> 5,Emily,Professional,2,professional,-1
+56,3,male,21,> 5,Emily,TA.again,3,teaching,0
+57,3,female,19,3,Emily,Facilitated.learning,1,teaching,-2
+57,3,female,19,3,Emily,Provided.helpful.feedback,1,teaching,-2
+57,3,female,19,3,Emily,Is.an.expert,1,knowledge,-2
+57,3,female,19,3,Emily,Graded.in.a.timely.manner,5,professional,2
+57,3,female,19,3,Emily,Graded.Fairly,2,teaching,-1
+57,3,female,19,3,Emily,Did.NOT.respond.to.email.promptly,1,professional,-2
+57,3,female,19,3,Emily,Knowledgable.of.course.content,3,knowledge,0
+57,3,female,19,3,Emily,Helpful.feedback.vias.Canvas.discussion,1,teaching,-2
+57,3,female,19,3,Emily,Consistently.fulfilled.responsibilities,3,professional,0
+57,3,female,19,3,Emily,Considerate.in.communication,3,approachable,0
+57,3,female,19,3,Emily,Treated.me.with.respect,3,approachable,0
+57,3,female,19,3,Emily,Enthusiastic,1,approachable,-2
+57,3,female,19,3,Emily,Professional,3,professional,0
+57,3,female,19,3,Emily,TA.again,1,teaching,-2
+58,3,female,40,> 5,Emily,Facilitated.learning,2,teaching,-1
+58,3,female,40,> 5,Emily,Provided.helpful.feedback,2,teaching,-1
+58,3,female,40,> 5,Emily,Is.an.expert,2,knowledge,-1
+58,3,female,40,> 5,Emily,Graded.in.a.timely.manner,3,professional,0
+58,3,female,40,> 5,Emily,Graded.Fairly,3,teaching,0
+58,3,female,40,> 5,Emily,Did.NOT.respond.to.email.promptly,2,professional,-1
+58,3,female,40,> 5,Emily,Knowledgable.of.course.content,3,knowledge,0
+58,3,female,40,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,2,teaching,-1
+58,3,female,40,> 5,Emily,Consistently.fulfilled.responsibilities,2,professional,-1
+58,3,female,40,> 5,Emily,Considerate.in.communication,4,approachable,1
+58,3,female,40,> 5,Emily,Treated.me.with.respect,4,approachable,1
+58,3,female,40,> 5,Emily,Enthusiastic,3,approachable,0
+58,3,female,40,> 5,Emily,Professional,3,professional,0
+58,3,female,40,> 5,Emily,TA.again,2,teaching,-1
+59,3,female,21,> 5,Emily,Facilitated.learning,5,teaching,2
+59,3,female,21,> 5,Emily,Provided.helpful.feedback,4,teaching,1
+59,3,female,21,> 5,Emily,Is.an.expert,5,knowledge,2
+59,3,female,21,> 5,Emily,Graded.in.a.timely.manner,5,professional,2
+59,3,female,21,> 5,Emily,Graded.Fairly,3,teaching,0
+59,3,female,21,> 5,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+59,3,female,21,> 5,Emily,Knowledgable.of.course.content,5,knowledge,2
+59,3,female,21,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+59,3,female,21,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+59,3,female,21,> 5,Emily,Considerate.in.communication,5,approachable,2
+59,3,female,21,> 5,Emily,Treated.me.with.respect,5,approachable,2
+59,3,female,21,> 5,Emily,Enthusiastic,5,approachable,2
+59,3,female,21,> 5,Emily,Professional,5,professional,2
+59,3,female,21,> 5,Emily,TA.again,3,teaching,0
+60,3,female,22,3,Jesse,Facilitated.learning,5,teaching,2
+60,3,female,22,3,Jesse,Provided.helpful.feedback,5,teaching,2
+60,3,female,22,3,Jesse,Is.an.expert,5,knowledge,2
+60,3,female,22,3,Jesse,Graded.in.a.timely.manner,5,professional,2
+60,3,female,22,3,Jesse,Graded.Fairly,5,teaching,2
+60,3,female,22,3,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+60,3,female,22,3,Jesse,Knowledgable.of.course.content,5,knowledge,2
+60,3,female,22,3,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+60,3,female,22,3,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+60,3,female,22,3,Jesse,Considerate.in.communication,5,approachable,2
+60,3,female,22,3,Jesse,Treated.me.with.respect,5,approachable,2
+60,3,female,22,3,Jesse,Enthusiastic,5,approachable,2
+60,3,female,22,3,Jesse,Professional,5,professional,2
+60,3,female,22,3,Jesse,TA.again,5,teaching,2
+61,3,female,20,3,Emily,Facilitated.learning,5,teaching,2
+61,3,female,20,3,Emily,Provided.helpful.feedback,5,teaching,2
+61,3,female,20,3,Emily,Is.an.expert,4,knowledge,1
+61,3,female,20,3,Emily,Graded.in.a.timely.manner,5,professional,2
+61,3,female,20,3,Emily,Graded.Fairly,5,teaching,2
+61,3,female,20,3,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+61,3,female,20,3,Emily,Knowledgable.of.course.content,4,knowledge,1
+61,3,female,20,3,Emily,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+61,3,female,20,3,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+61,3,female,20,3,Emily,Considerate.in.communication,5,approachable,2
+61,3,female,20,3,Emily,Treated.me.with.respect,5,approachable,2
+61,3,female,20,3,Emily,Enthusiastic,5,approachable,2
+61,3,female,20,3,Emily,Professional,5,professional,2
+61,3,female,20,3,Emily,TA.again,4,teaching,1
+62,3,male,23,3,Emily,Facilitated.learning,5,teaching,2
+62,3,male,23,3,Emily,Provided.helpful.feedback,5,teaching,2
+62,3,male,23,3,Emily,Is.an.expert,5,knowledge,2
+62,3,male,23,3,Emily,Graded.in.a.timely.manner,5,professional,2
+62,3,male,23,3,Emily,Graded.Fairly,5,teaching,2
+62,3,male,23,3,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+62,3,male,23,3,Emily,Knowledgable.of.course.content,5,knowledge,2
+62,3,male,23,3,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+62,3,male,23,3,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+62,3,male,23,3,Emily,Considerate.in.communication,5,approachable,2
+62,3,male,23,3,Emily,Treated.me.with.respect,5,approachable,2
+62,3,male,23,3,Emily,Enthusiastic,5,approachable,2
+62,3,male,23,3,Emily,Professional,5,professional,2
+62,3,male,23,3,Emily,TA.again,5,teaching,2
+63,2,male,19,> 5,Jesse,Facilitated.learning,4,teaching,1
+63,2,male,19,> 5,Jesse,Provided.helpful.feedback,5,teaching,2
+63,2,male,19,> 5,Jesse,Is.an.expert,4,knowledge,1
+63,2,male,19,> 5,Jesse,Graded.in.a.timely.manner,5,professional,2
+63,2,male,19,> 5,Jesse,Graded.Fairly,5,teaching,2
+63,2,male,19,> 5,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+63,2,male,19,> 5,Jesse,Knowledgable.of.course.content,4,knowledge,1
+63,2,male,19,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+63,2,male,19,> 5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+63,2,male,19,> 5,Jesse,Considerate.in.communication,5,approachable,2
+63,2,male,19,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+63,2,male,19,> 5,Jesse,Enthusiastic,5,approachable,2
+63,2,male,19,> 5,Jesse,Professional,5,professional,2
+63,2,male,19,> 5,Jesse,TA.again,5,teaching,2
+64,4,female,22,> 5,Emily,Facilitated.learning,4,teaching,1
+64,4,female,22,> 5,Emily,Provided.helpful.feedback,5,teaching,2
+64,4,female,22,> 5,Emily,Is.an.expert,5,knowledge,2
+64,4,female,22,> 5,Emily,Graded.in.a.timely.manner,4,professional,1
+64,4,female,22,> 5,Emily,Graded.Fairly,4,teaching,1
+64,4,female,22,> 5,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+64,4,female,22,> 5,Emily,Knowledgable.of.course.content,5,knowledge,2
+64,4,female,22,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+64,4,female,22,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+64,4,female,22,> 5,Emily,Considerate.in.communication,5,approachable,2
+64,4,female,22,> 5,Emily,Treated.me.with.respect,4,approachable,1
+64,4,female,22,> 5,Emily,Enthusiastic,5,approachable,2
+64,4,female,22,> 5,Emily,Professional,5,professional,2
+64,4,female,22,> 5,Emily,TA.again,4,teaching,1
+65,1,female,18,1,Jesse,Facilitated.learning,4,teaching,1
+65,1,female,18,1,Jesse,Provided.helpful.feedback,4,teaching,1
+65,1,female,18,1,Jesse,Is.an.expert,5,knowledge,2
+65,1,female,18,1,Jesse,Graded.in.a.timely.manner,5,professional,2
+65,1,female,18,1,Jesse,Graded.Fairly,4,teaching,1
+65,1,female,18,1,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+65,1,female,18,1,Jesse,Knowledgable.of.course.content,5,knowledge,2
+65,1,female,18,1,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+65,1,female,18,1,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+65,1,female,18,1,Jesse,Considerate.in.communication,5,approachable,2
+65,1,female,18,1,Jesse,Treated.me.with.respect,5,approachable,2
+65,1,female,18,1,Jesse,Enthusiastic,5,approachable,2
+65,1,female,18,1,Jesse,Professional,5,professional,2
+65,1,female,18,1,Jesse,TA.again,5,teaching,2
+66,4,male,21,> 5,Jesse,Facilitated.learning,5,teaching,2
+66,4,male,21,> 5,Jesse,Provided.helpful.feedback,5,teaching,2
+66,4,male,21,> 5,Jesse,Is.an.expert,5,knowledge,2
+66,4,male,21,> 5,Jesse,Graded.in.a.timely.manner,5,professional,2
+66,4,male,21,> 5,Jesse,Graded.Fairly,5,teaching,2
+66,4,male,21,> 5,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+66,4,male,21,> 5,Jesse,Knowledgable.of.course.content,5,knowledge,2
+66,4,male,21,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+66,4,male,21,> 5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+66,4,male,21,> 5,Jesse,Considerate.in.communication,5,approachable,2
+66,4,male,21,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+66,4,male,21,> 5,Jesse,Enthusiastic,5,approachable,2
+66,4,male,21,> 5,Jesse,Professional,5,professional,2
+66,4,male,21,> 5,Jesse,TA.again,5,teaching,2
+67,3,female,21,> 5,Jesse,Facilitated.learning,3,teaching,0
+67,3,female,21,> 5,Jesse,Provided.helpful.feedback,4,teaching,1
+67,3,female,21,> 5,Jesse,Is.an.expert,3,knowledge,0
+67,3,female,21,> 5,Jesse,Graded.in.a.timely.manner,4,professional,1
+67,3,female,21,> 5,Jesse,Graded.Fairly,3,teaching,0
+67,3,female,21,> 5,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+67,3,female,21,> 5,Jesse,Knowledgable.of.course.content,3,knowledge,0
+67,3,female,21,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+67,3,female,21,> 5,Jesse,Consistently.fulfilled.responsibilities,4,professional,1
+67,3,female,21,> 5,Jesse,Considerate.in.communication,4,approachable,1
+67,3,female,21,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+67,3,female,21,> 5,Jesse,Enthusiastic,2,approachable,-1
+67,3,female,21,> 5,Jesse,Professional,5,professional,2
+67,3,female,21,> 5,Jesse,TA.again,3,teaching,0
+68,3,female,20,1,Emily,Facilitated.learning,5,teaching,2
+68,3,female,20,1,Emily,Provided.helpful.feedback,5,teaching,2
+68,3,female,20,1,Emily,Is.an.expert,5,knowledge,2
+68,3,female,20,1,Emily,Graded.in.a.timely.manner,5,professional,2
+68,3,female,20,1,Emily,Graded.Fairly,5,teaching,2
+68,3,female,20,1,Emily,Did.NOT.respond.to.email.promptly,1,professional,-2
+68,3,female,20,1,Emily,Knowledgable.of.course.content,5,knowledge,2
+68,3,female,20,1,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+68,3,female,20,1,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+68,3,female,20,1,Emily,Considerate.in.communication,5,approachable,2
+68,3,female,20,1,Emily,Treated.me.with.respect,5,approachable,2
+68,3,female,20,1,Emily,Enthusiastic,5,approachable,2
+68,3,female,20,1,Emily,Professional,5,professional,2
+68,3,female,20,1,Emily,TA.again,5,teaching,2
+69,3,female,22,5,Emily,Facilitated.learning,3,teaching,0
+69,3,female,22,5,Emily,Provided.helpful.feedback,4,teaching,1
+69,3,female,22,5,Emily,Is.an.expert,4,knowledge,1
+69,3,female,22,5,Emily,Graded.in.a.timely.manner,5,professional,2
+69,3,female,22,5,Emily,Graded.Fairly,4,teaching,1
+69,3,female,22,5,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+69,3,female,22,5,Emily,Knowledgable.of.course.content,4,knowledge,1
+69,3,female,22,5,Emily,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+69,3,female,22,5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+69,3,female,22,5,Emily,Considerate.in.communication,4,approachable,1
+69,3,female,22,5,Emily,Treated.me.with.respect,5,approachable,2
+69,3,female,22,5,Emily,Enthusiastic,4,approachable,1
+69,3,female,22,5,Emily,Professional,5,professional,2
+69,3,female,22,5,Emily,TA.again,3,teaching,0
+70,1,male,20,0,Emily,Facilitated.learning,5,teaching,2
+70,1,male,20,0,Emily,Provided.helpful.feedback,5,teaching,2
+70,1,male,20,0,Emily,Is.an.expert,5,knowledge,2
+70,1,male,20,0,Emily,Graded.in.a.timely.manner,5,professional,2
+70,1,male,20,0,Emily,Graded.Fairly,5,teaching,2
+70,1,male,20,0,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+70,1,male,20,0,Emily,Knowledgable.of.course.content,5,knowledge,2
+70,1,male,20,0,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+70,1,male,20,0,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+70,1,male,20,0,Emily,Considerate.in.communication,5,approachable,2
+70,1,male,20,0,Emily,Treated.me.with.respect,5,approachable,2
+70,1,male,20,0,Emily,Enthusiastic,5,approachable,2
+70,1,male,20,0,Emily,Professional,5,professional,2
+70,1,male,20,0,Emily,TA.again,5,teaching,2
+71,3,female,20,4,Emily,Facilitated.learning,4,teaching,1
+71,3,female,20,4,Emily,Provided.helpful.feedback,5,teaching,2
+71,3,female,20,4,Emily,Is.an.expert,5,knowledge,2
+71,3,female,20,4,Emily,Graded.in.a.timely.manner,5,professional,2
+71,3,female,20,4,Emily,Graded.Fairly,5,teaching,2
+71,3,female,20,4,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+71,3,female,20,4,Emily,Knowledgable.of.course.content,5,knowledge,2
+71,3,female,20,4,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+71,3,female,20,4,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+71,3,female,20,4,Emily,Considerate.in.communication,5,approachable,2
+71,3,female,20,4,Emily,Treated.me.with.respect,5,approachable,2
+71,3,female,20,4,Emily,Enthusiastic,5,approachable,2
+71,3,female,20,4,Emily,Professional,5,professional,2
+71,3,female,20,4,Emily,TA.again,5,teaching,2
+72,4,female,21,> 5,Emily,Facilitated.learning,5,teaching,2
+72,4,female,21,> 5,Emily,Provided.helpful.feedback,4,teaching,1
+72,4,female,21,> 5,Emily,Is.an.expert,5,knowledge,2
+72,4,female,21,> 5,Emily,Graded.in.a.timely.manner,3,professional,0
+72,4,female,21,> 5,Emily,Graded.Fairly,4,teaching,1
+72,4,female,21,> 5,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+72,4,female,21,> 5,Emily,Knowledgable.of.course.content,5,knowledge,2
+72,4,female,21,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+72,4,female,21,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+72,4,female,21,> 5,Emily,Considerate.in.communication,5,approachable,2
+72,4,female,21,> 5,Emily,Treated.me.with.respect,5,approachable,2
+72,4,female,21,> 5,Emily,Enthusiastic,5,approachable,2
+72,4,female,21,> 5,Emily,Professional,5,professional,2
+72,4,female,21,> 5,Emily,TA.again,4,teaching,1
+73,3,female,21,3,Emily,Facilitated.learning,3,teaching,0
+73,3,female,21,3,Emily,Provided.helpful.feedback,4,teaching,1
+73,3,female,21,3,Emily,Is.an.expert,3,knowledge,0
+73,3,female,21,3,Emily,Graded.in.a.timely.manner,4,professional,1
+73,3,female,21,3,Emily,Graded.Fairly,3,teaching,0
+73,3,female,21,3,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+73,3,female,21,3,Emily,Knowledgable.of.course.content,5,knowledge,2
+73,3,female,21,3,Emily,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+73,3,female,21,3,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+73,3,female,21,3,Emily,Considerate.in.communication,5,approachable,2
+73,3,female,21,3,Emily,Treated.me.with.respect,5,approachable,2
+73,3,female,21,3,Emily,Enthusiastic,5,approachable,2
+73,3,female,21,3,Emily,Professional,5,professional,2
+73,3,female,21,3,Emily,TA.again,3,teaching,0
+74,4,male,24,> 5,Emily,Facilitated.learning,4,teaching,1
+74,4,male,24,> 5,Emily,Provided.helpful.feedback,3,teaching,0
+74,4,male,24,> 5,Emily,Is.an.expert,4,knowledge,1
+74,4,male,24,> 5,Emily,Graded.in.a.timely.manner,5,professional,2
+74,4,male,24,> 5,Emily,Graded.Fairly,5,teaching,2
+74,4,male,24,> 5,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+74,4,male,24,> 5,Emily,Knowledgable.of.course.content,5,knowledge,2
+74,4,male,24,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+74,4,male,24,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+74,4,male,24,> 5,Emily,Considerate.in.communication,5,approachable,2
+74,4,male,24,> 5,Emily,Treated.me.with.respect,5,approachable,2
+74,4,male,24,> 5,Emily,Enthusiastic,3,approachable,0
+74,4,male,24,> 5,Emily,Professional,5,professional,2
+74,4,male,24,> 5,Emily,TA.again,3,teaching,0
+75,3,male,20,2,Jesse,Facilitated.learning,4,teaching,1
+75,3,male,20,2,Jesse,Provided.helpful.feedback,5,teaching,2
+75,3,male,20,2,Jesse,Is.an.expert,4,knowledge,1
+75,3,male,20,2,Jesse,Graded.in.a.timely.manner,5,professional,2
+75,3,male,20,2,Jesse,Graded.Fairly,5,teaching,2
+75,3,male,20,2,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+75,3,male,20,2,Jesse,Knowledgable.of.course.content,5,knowledge,2
+75,3,male,20,2,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+75,3,male,20,2,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+75,3,male,20,2,Jesse,Considerate.in.communication,5,approachable,2
+75,3,male,20,2,Jesse,Treated.me.with.respect,5,approachable,2
+75,3,male,20,2,Jesse,Enthusiastic,5,approachable,2
+75,3,male,20,2,Jesse,Professional,5,professional,2
+75,3,male,20,2,Jesse,TA.again,4,teaching,1
+76,4,female,21,> 5,Jesse,Facilitated.learning,3,teaching,0
+76,4,female,21,> 5,Jesse,Provided.helpful.feedback,5,teaching,2
+76,4,female,21,> 5,Jesse,Is.an.expert,5,knowledge,2
+76,4,female,21,> 5,Jesse,Graded.in.a.timely.manner,5,professional,2
+76,4,female,21,> 5,Jesse,Graded.Fairly,5,teaching,2
+76,4,female,21,> 5,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+76,4,female,21,> 5,Jesse,Knowledgable.of.course.content,4,knowledge,1
+76,4,female,21,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+76,4,female,21,> 5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+76,4,female,21,> 5,Jesse,Considerate.in.communication,5,approachable,2
+76,4,female,21,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+76,4,female,21,> 5,Jesse,Enthusiastic,5,approachable,2
+76,4,female,21,> 5,Jesse,Professional,5,professional,2
+76,4,female,21,> 5,Jesse,TA.again,5,teaching,2
+77,4,male,21,> 5,Emily,Facilitated.learning,4,teaching,1
+77,4,male,21,> 5,Emily,Provided.helpful.feedback,5,teaching,2
+77,4,male,21,> 5,Emily,Is.an.expert,4,knowledge,1
+77,4,male,21,> 5,Emily,Graded.in.a.timely.manner,5,professional,2
+77,4,male,21,> 5,Emily,Graded.Fairly,5,teaching,2
+77,4,male,21,> 5,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+77,4,male,21,> 5,Emily,Knowledgable.of.course.content,4,knowledge,1
+77,4,male,21,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+77,4,male,21,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+77,4,male,21,> 5,Emily,Considerate.in.communication,4,approachable,1
+77,4,male,21,> 5,Emily,Treated.me.with.respect,4,approachable,1
+77,4,male,21,> 5,Emily,Enthusiastic,3,approachable,0
+77,4,male,21,> 5,Emily,Professional,4,professional,1
+77,4,male,21,> 5,Emily,TA.again,3,teaching,0
+78,3,male,19,1,Jesse,Facilitated.learning,4,teaching,1
+78,3,male,19,1,Jesse,Provided.helpful.feedback,5,teaching,2
+78,3,male,19,1,Jesse,Is.an.expert,3,knowledge,0
+78,3,male,19,1,Jesse,Graded.in.a.timely.manner,5,professional,2
+78,3,male,19,1,Jesse,Graded.Fairly,4,teaching,1
+78,3,male,19,1,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+78,3,male,19,1,Jesse,Knowledgable.of.course.content,4,knowledge,1
+78,3,male,19,1,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+78,3,male,19,1,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+78,3,male,19,1,Jesse,Considerate.in.communication,5,approachable,2
+78,3,male,19,1,Jesse,Treated.me.with.respect,5,approachable,2
+78,3,male,19,1,Jesse,Enthusiastic,3,approachable,0
+78,3,male,19,1,Jesse,Professional,5,professional,2
+78,3,male,19,1,Jesse,TA.again,5,teaching,2
+79,3,female,29,4,Emily,Facilitated.learning,4,teaching,1
+79,3,female,29,4,Emily,Provided.helpful.feedback,5,teaching,2
+79,3,female,29,4,Emily,Is.an.expert,4,knowledge,1
+79,3,female,29,4,Emily,Graded.in.a.timely.manner,5,professional,2
+79,3,female,29,4,Emily,Graded.Fairly,4,teaching,1
+79,3,female,29,4,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+79,3,female,29,4,Emily,Knowledgable.of.course.content,4,knowledge,1
+79,3,female,29,4,Emily,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+79,3,female,29,4,Emily,Consistently.fulfilled.responsibilities,4,professional,1
+79,3,female,29,4,Emily,Considerate.in.communication,5,approachable,2
+79,3,female,29,4,Emily,Treated.me.with.respect,5,approachable,2
+79,3,female,29,4,Emily,Enthusiastic,5,approachable,2
+79,3,female,29,4,Emily,Professional,5,professional,2
+79,3,female,29,4,Emily,TA.again,3,teaching,0
+80,4,female,22,1,Emily,Facilitated.learning,5,teaching,2
+80,4,female,22,1,Emily,Provided.helpful.feedback,4,teaching,1
+80,4,female,22,1,Emily,Is.an.expert,5,knowledge,2
+80,4,female,22,1,Emily,Graded.in.a.timely.manner,5,professional,2
+80,4,female,22,1,Emily,Graded.Fairly,4,teaching,1
+80,4,female,22,1,Emily,Did.NOT.respond.to.email.promptly,1,professional,-2
+80,4,female,22,1,Emily,Knowledgable.of.course.content,5,knowledge,2
+80,4,female,22,1,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+80,4,female,22,1,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+80,4,female,22,1,Emily,Considerate.in.communication,5,approachable,2
+80,4,female,22,1,Emily,Treated.me.with.respect,5,approachable,2
+80,4,female,22,1,Emily,Enthusiastic,5,approachable,2
+80,4,female,22,1,Emily,Professional,5,professional,2
+80,4,female,22,1,Emily,TA.again,5,teaching,2
+81,3,male,22,3,Jesse,Facilitated.learning,4,teaching,1
+81,3,male,22,3,Jesse,Provided.helpful.feedback,4,teaching,1
+81,3,male,22,3,Jesse,Is.an.expert,3,knowledge,0
+81,3,male,22,3,Jesse,Graded.in.a.timely.manner,5,professional,2
+81,3,male,22,3,Jesse,Graded.Fairly,5,teaching,2
+81,3,male,22,3,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+81,3,male,22,3,Jesse,Knowledgable.of.course.content,4,knowledge,1
+81,3,male,22,3,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+81,3,male,22,3,Jesse,Consistently.fulfilled.responsibilities,3,professional,0
+81,3,male,22,3,Jesse,Considerate.in.communication,3,approachable,0
+81,3,male,22,3,Jesse,Treated.me.with.respect,4,approachable,1
+81,3,male,22,3,Jesse,Enthusiastic,3,approachable,0
+81,3,male,22,3,Jesse,Professional,5,professional,2
+81,3,male,22,3,Jesse,TA.again,4,teaching,1
+82,3,male,20,3,Jesse,Facilitated.learning,5,teaching,2
+82,3,male,20,3,Jesse,Provided.helpful.feedback,5,teaching,2
+82,3,male,20,3,Jesse,Is.an.expert,5,knowledge,2
+82,3,male,20,3,Jesse,Graded.in.a.timely.manner,5,professional,2
+82,3,male,20,3,Jesse,Graded.Fairly,5,teaching,2
+82,3,male,20,3,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+82,3,male,20,3,Jesse,Knowledgable.of.course.content,5,knowledge,2
+82,3,male,20,3,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+82,3,male,20,3,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+82,3,male,20,3,Jesse,Considerate.in.communication,5,approachable,2
+82,3,male,20,3,Jesse,Treated.me.with.respect,5,approachable,2
+82,3,male,20,3,Jesse,Enthusiastic,5,approachable,2
+82,3,male,20,3,Jesse,Professional,5,professional,2
+82,3,male,20,3,Jesse,TA.again,5,teaching,2
+83,3,male,25,4,Jesse,Facilitated.learning,4,teaching,1
+83,3,male,25,4,Jesse,Provided.helpful.feedback,5,teaching,2
+83,3,male,25,4,Jesse,Is.an.expert,4,knowledge,1
+83,3,male,25,4,Jesse,Graded.in.a.timely.manner,5,professional,2
+83,3,male,25,4,Jesse,Graded.Fairly,4,teaching,1
+83,3,male,25,4,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+83,3,male,25,4,Jesse,Knowledgable.of.course.content,5,knowledge,2
+83,3,male,25,4,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+83,3,male,25,4,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+83,3,male,25,4,Jesse,Considerate.in.communication,5,approachable,2
+83,3,male,25,4,Jesse,Treated.me.with.respect,5,approachable,2
+83,3,male,25,4,Jesse,Enthusiastic,3,approachable,0
+83,3,male,25,4,Jesse,Professional,5,professional,2
+83,3,male,25,4,Jesse,TA.again,4,teaching,1
+84,3,female,22,3,Jesse,Facilitated.learning,4,teaching,1
+84,3,female,22,3,Jesse,Provided.helpful.feedback,5,teaching,2
+84,3,female,22,3,Jesse,Is.an.expert,3,knowledge,0
+84,3,female,22,3,Jesse,Graded.in.a.timely.manner,5,professional,2
+84,3,female,22,3,Jesse,Graded.Fairly,5,teaching,2
+84,3,female,22,3,Jesse,Did.NOT.respond.to.email.promptly,2,professional,-1
+84,3,female,22,3,Jesse,Knowledgable.of.course.content,4,knowledge,1
+84,3,female,22,3,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+84,3,female,22,3,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+84,3,female,22,3,Jesse,Considerate.in.communication,4,approachable,1
+84,3,female,22,3,Jesse,Treated.me.with.respect,4,approachable,1
+84,3,female,22,3,Jesse,Enthusiastic,3,approachable,0
+84,3,female,22,3,Jesse,Professional,5,professional,2
+84,3,female,22,3,Jesse,TA.again,5,teaching,2
+85,3,male,20,0,Jesse,Facilitated.learning,3,teaching,0
+85,3,male,20,0,Jesse,Provided.helpful.feedback,5,teaching,2
+85,3,male,20,0,Jesse,Is.an.expert,5,knowledge,2
+85,3,male,20,0,Jesse,Graded.in.a.timely.manner,5,professional,2
+85,3,male,20,0,Jesse,Graded.Fairly,5,teaching,2
+85,3,male,20,0,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+85,3,male,20,0,Jesse,Knowledgable.of.course.content,5,knowledge,2
+85,3,male,20,0,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+85,3,male,20,0,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+85,3,male,20,0,Jesse,Considerate.in.communication,5,approachable,2
+85,3,male,20,0,Jesse,Treated.me.with.respect,5,approachable,2
+85,3,male,20,0,Jesse,Enthusiastic,5,approachable,2
+85,3,male,20,0,Jesse,Professional,5,professional,2
+85,3,male,20,0,Jesse,TA.again,5,teaching,2
+86,3,male,20,2,Emily,Facilitated.learning,5,teaching,2
+86,3,male,20,2,Emily,Provided.helpful.feedback,5,teaching,2
+86,3,male,20,2,Emily,Is.an.expert,5,knowledge,2
+86,3,male,20,2,Emily,Graded.in.a.timely.manner,5,professional,2
+86,3,male,20,2,Emily,Graded.Fairly,5,teaching,2
+86,3,male,20,2,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+86,3,male,20,2,Emily,Knowledgable.of.course.content,5,knowledge,2
+86,3,male,20,2,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+86,3,male,20,2,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+86,3,male,20,2,Emily,Considerate.in.communication,5,approachable,2
+86,3,male,20,2,Emily,Treated.me.with.respect,5,approachable,2
+86,3,male,20,2,Emily,Enthusiastic,5,approachable,2
+86,3,male,20,2,Emily,Professional,5,professional,2
+86,3,male,20,2,Emily,TA.again,5,teaching,2
+87,3,female,19,3,Emily,Facilitated.learning,5,teaching,2
+87,3,female,19,3,Emily,Provided.helpful.feedback,5,teaching,2
+87,3,female,19,3,Emily,Is.an.expert,4,knowledge,1
+87,3,female,19,3,Emily,Graded.in.a.timely.manner,4,professional,1
+87,3,female,19,3,Emily,Graded.Fairly,4,teaching,1
+87,3,female,19,3,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+87,3,female,19,3,Emily,Knowledgable.of.course.content,5,knowledge,2
+87,3,female,19,3,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+87,3,female,19,3,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+87,3,female,19,3,Emily,Considerate.in.communication,5,approachable,2
+87,3,female,19,3,Emily,Treated.me.with.respect,5,approachable,2
+87,3,female,19,3,Emily,Enthusiastic,5,approachable,2
+87,3,female,19,3,Emily,Professional,5,professional,2
+87,3,female,19,3,Emily,TA.again,4,teaching,1
+88,4,male,35,> 5,Emily,Facilitated.learning,5,teaching,2
+88,4,male,35,> 5,Emily,Provided.helpful.feedback,4,teaching,1
+88,4,male,35,> 5,Emily,Is.an.expert,4,knowledge,1
+88,4,male,35,> 5,Emily,Graded.in.a.timely.manner,4,professional,1
+88,4,male,35,> 5,Emily,Graded.Fairly,5,teaching,2
+88,4,male,35,> 5,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+88,4,male,35,> 5,Emily,Knowledgable.of.course.content,4,knowledge,1
+88,4,male,35,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+88,4,male,35,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+88,4,male,35,> 5,Emily,Considerate.in.communication,5,approachable,2
+88,4,male,35,> 5,Emily,Treated.me.with.respect,3,approachable,0
+88,4,male,35,> 5,Emily,Enthusiastic,4,approachable,1
+88,4,male,35,> 5,Emily,Professional,5,professional,2
+88,4,male,35,> 5,Emily,TA.again,5,teaching,2
+89,4,female,27,> 5,Jesse,Facilitated.learning,3,teaching,0
+89,4,female,27,> 5,Jesse,Provided.helpful.feedback,5,teaching,2
+89,4,female,27,> 5,Jesse,Is.an.expert,3,knowledge,0
+89,4,female,27,> 5,Jesse,Graded.in.a.timely.manner,5,professional,2
+89,4,female,27,> 5,Jesse,Graded.Fairly,5,teaching,2
+89,4,female,27,> 5,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+89,4,female,27,> 5,Jesse,Knowledgable.of.course.content,4,knowledge,1
+89,4,female,27,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+89,4,female,27,> 5,Jesse,Consistently.fulfilled.responsibilities,4,professional,1
+89,4,female,27,> 5,Jesse,Considerate.in.communication,5,approachable,2
+89,4,female,27,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+89,4,female,27,> 5,Jesse,Enthusiastic,5,approachable,2
+89,4,female,27,> 5,Jesse,Professional,5,professional,2
+89,4,female,27,> 5,Jesse,TA.again,5,teaching,2
+90,1,male,19,> 5,Emily,Facilitated.learning,5,teaching,2
+90,1,male,19,> 5,Emily,Provided.helpful.feedback,5,teaching,2
+90,1,male,19,> 5,Emily,Is.an.expert,5,knowledge,2
+90,1,male,19,> 5,Emily,Graded.in.a.timely.manner,5,professional,2
+90,1,male,19,> 5,Emily,Graded.Fairly,4,teaching,1
+90,1,male,19,> 5,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+90,1,male,19,> 5,Emily,Knowledgable.of.course.content,5,knowledge,2
+90,1,male,19,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+90,1,male,19,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+90,1,male,19,> 5,Emily,Considerate.in.communication,5,approachable,2
+90,1,male,19,> 5,Emily,Treated.me.with.respect,5,approachable,2
+90,1,male,19,> 5,Emily,Enthusiastic,5,approachable,2
+90,1,male,19,> 5,Emily,Professional,5,professional,2
+90,1,male,19,> 5,Emily,TA.again,4,teaching,1
+91,4,female,26,> 5,Emily,Facilitated.learning,2,teaching,-1
+91,4,female,26,> 5,Emily,Provided.helpful.feedback,4,teaching,1
+91,4,female,26,> 5,Emily,Is.an.expert,3,knowledge,0
+91,4,female,26,> 5,Emily,Graded.in.a.timely.manner,4,professional,1
+91,4,female,26,> 5,Emily,Graded.Fairly,4,teaching,1
+91,4,female,26,> 5,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+91,4,female,26,> 5,Emily,Knowledgable.of.course.content,3,knowledge,0
+91,4,female,26,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+91,4,female,26,> 5,Emily,Consistently.fulfilled.responsibilities,4,professional,1
+91,4,female,26,> 5,Emily,Considerate.in.communication,4,approachable,1
+91,4,female,26,> 5,Emily,Treated.me.with.respect,4,approachable,1
+91,4,female,26,> 5,Emily,Enthusiastic,4,approachable,1
+91,4,female,26,> 5,Emily,Professional,4,professional,1
+91,4,female,26,> 5,Emily,TA.again,3,teaching,0
+92,3,female,20,3,Emily,Facilitated.learning,4,teaching,1
+92,3,female,20,3,Emily,Provided.helpful.feedback,2,teaching,-1
+92,3,female,20,3,Emily,Is.an.expert,3,knowledge,0
+92,3,female,20,3,Emily,Graded.in.a.timely.manner,2,professional,-1
+92,3,female,20,3,Emily,Graded.Fairly,2,teaching,-1
+92,3,female,20,3,Emily,Did.NOT.respond.to.email.promptly,4,professional,1
+92,3,female,20,3,Emily,Knowledgable.of.course.content,4,knowledge,1
+92,3,female,20,3,Emily,Helpful.feedback.vias.Canvas.discussion,2,teaching,-1
+92,3,female,20,3,Emily,Consistently.fulfilled.responsibilities,3,professional,0
+92,3,female,20,3,Emily,Considerate.in.communication,4,approachable,1
+92,3,female,20,3,Emily,Treated.me.with.respect,4,approachable,1
+92,3,female,20,3,Emily,Enthusiastic,4,approachable,1
+92,3,female,20,3,Emily,Professional,4,professional,1
+92,3,female,20,3,Emily,TA.again,2,teaching,-1
+93,3,female,20,> 5,Emily,Facilitated.learning,4,teaching,1
+93,3,female,20,> 5,Emily,Provided.helpful.feedback,5,teaching,2
+93,3,female,20,> 5,Emily,Is.an.expert,5,knowledge,2
+93,3,female,20,> 5,Emily,Graded.in.a.timely.manner,4,professional,1
+93,3,female,20,> 5,Emily,Graded.Fairly,5,teaching,2
+93,3,female,20,> 5,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+93,3,female,20,> 5,Emily,Knowledgable.of.course.content,5,knowledge,2
+93,3,female,20,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+93,3,female,20,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+93,3,female,20,> 5,Emily,Considerate.in.communication,5,approachable,2
+93,3,female,20,> 5,Emily,Treated.me.with.respect,5,approachable,2
+93,3,female,20,> 5,Emily,Enthusiastic,5,approachable,2
+93,3,female,20,> 5,Emily,Professional,5,professional,2
+93,3,female,20,> 5,Emily,TA.again,5,teaching,2
+94,3,female,20,> 5,Jesse,Facilitated.learning,5,teaching,2
+94,3,female,20,> 5,Jesse,Provided.helpful.feedback,5,teaching,2
+94,3,female,20,> 5,Jesse,Is.an.expert,5,knowledge,2
+94,3,female,20,> 5,Jesse,Graded.in.a.timely.manner,4,professional,1
+94,3,female,20,> 5,Jesse,Graded.Fairly,4,teaching,1
+94,3,female,20,> 5,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+94,3,female,20,> 5,Jesse,Knowledgable.of.course.content,5,knowledge,2
+94,3,female,20,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+94,3,female,20,> 5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+94,3,female,20,> 5,Jesse,Considerate.in.communication,5,approachable,2
+94,3,female,20,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+94,3,female,20,> 5,Jesse,Enthusiastic,5,approachable,2
+94,3,female,20,> 5,Jesse,Professional,5,professional,2
+94,3,female,20,> 5,Jesse,TA.again,5,teaching,2
+95,4,female,21,> 5,Jesse,Facilitated.learning,5,teaching,2
+95,4,female,21,> 5,Jesse,Provided.helpful.feedback,4,teaching,1
+95,4,female,21,> 5,Jesse,Is.an.expert,4,knowledge,1
+95,4,female,21,> 5,Jesse,Graded.in.a.timely.manner,5,professional,2
+95,4,female,21,> 5,Jesse,Graded.Fairly,3,teaching,0
+95,4,female,21,> 5,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+95,4,female,21,> 5,Jesse,Knowledgable.of.course.content,4,knowledge,1
+95,4,female,21,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+95,4,female,21,> 5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+95,4,female,21,> 5,Jesse,Considerate.in.communication,4,approachable,1
+95,4,female,21,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+95,4,female,21,> 5,Jesse,Enthusiastic,5,approachable,2
+95,4,female,21,> 5,Jesse,Professional,5,professional,2
+95,4,female,21,> 5,Jesse,TA.again,3,teaching,0
+96,3,male,20,3,Jesse,Facilitated.learning,5,teaching,2
+96,3,male,20,3,Jesse,Provided.helpful.feedback,5,teaching,2
+96,3,male,20,3,Jesse,Is.an.expert,5,knowledge,2
+96,3,male,20,3,Jesse,Graded.in.a.timely.manner,5,professional,2
+96,3,male,20,3,Jesse,Graded.Fairly,5,teaching,2
+96,3,male,20,3,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+96,3,male,20,3,Jesse,Knowledgable.of.course.content,5,knowledge,2
+96,3,male,20,3,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+96,3,male,20,3,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+96,3,male,20,3,Jesse,Considerate.in.communication,5,approachable,2
+96,3,male,20,3,Jesse,Treated.me.with.respect,5,approachable,2
+96,3,male,20,3,Jesse,Enthusiastic,5,approachable,2
+96,3,male,20,3,Jesse,Professional,5,professional,2
+96,3,male,20,3,Jesse,TA.again,5,teaching,2
+97,3,female,25,4,Jesse,Facilitated.learning,4,teaching,1
+97,3,female,25,4,Jesse,Provided.helpful.feedback,5,teaching,2
+97,3,female,25,4,Jesse,Is.an.expert,3,knowledge,0
+97,3,female,25,4,Jesse,Graded.in.a.timely.manner,5,professional,2
+97,3,female,25,4,Jesse,Graded.Fairly,4,teaching,1
+97,3,female,25,4,Jesse,Did.NOT.respond.to.email.promptly,3,professional,0
+97,3,female,25,4,Jesse,Knowledgable.of.course.content,4,knowledge,1
+97,3,female,25,4,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+97,3,female,25,4,Jesse,Consistently.fulfilled.responsibilities,4,professional,1
+97,3,female,25,4,Jesse,Considerate.in.communication,4,approachable,1
+97,3,female,25,4,Jesse,Treated.me.with.respect,4,approachable,1
+97,3,female,25,4,Jesse,Enthusiastic,3,approachable,0
+97,3,female,25,4,Jesse,Professional,4,professional,1
+97,3,female,25,4,Jesse,TA.again,4,teaching,1
+98,3,female,20,2,Jesse,Facilitated.learning,5,teaching,2
+98,3,female,20,2,Jesse,Provided.helpful.feedback,5,teaching,2
+98,3,female,20,2,Jesse,Is.an.expert,5,knowledge,2
+98,3,female,20,2,Jesse,Graded.in.a.timely.manner,5,professional,2
+98,3,female,20,2,Jesse,Graded.Fairly,5,teaching,2
+98,3,female,20,2,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+98,3,female,20,2,Jesse,Knowledgable.of.course.content,5,knowledge,2
+98,3,female,20,2,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+98,3,female,20,2,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+98,3,female,20,2,Jesse,Considerate.in.communication,5,approachable,2
+98,3,female,20,2,Jesse,Treated.me.with.respect,5,approachable,2
+98,3,female,20,2,Jesse,Enthusiastic,5,approachable,2
+98,3,female,20,2,Jesse,Professional,5,professional,2
+98,3,female,20,2,Jesse,TA.again,5,teaching,2
+99,3,female,20,> 5,Jesse,Facilitated.learning,4,teaching,1
+99,3,female,20,> 5,Jesse,Provided.helpful.feedback,5,teaching,2
+99,3,female,20,> 5,Jesse,Is.an.expert,4,knowledge,1
+99,3,female,20,> 5,Jesse,Graded.in.a.timely.manner,5,professional,2
+99,3,female,20,> 5,Jesse,Graded.Fairly,5,teaching,2
+99,3,female,20,> 5,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+99,3,female,20,> 5,Jesse,Knowledgable.of.course.content,5,knowledge,2
+99,3,female,20,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+99,3,female,20,> 5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+99,3,female,20,> 5,Jesse,Considerate.in.communication,5,approachable,2
+99,3,female,20,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+99,3,female,20,> 5,Jesse,Enthusiastic,5,approachable,2
+99,3,female,20,> 5,Jesse,Professional,5,professional,2
+99,3,female,20,> 5,Jesse,TA.again,5,teaching,2
+100,3,male,28,3,Jesse,Facilitated.learning,5,teaching,2
+100,3,male,28,3,Jesse,Provided.helpful.feedback,4,teaching,1
+100,3,male,28,3,Jesse,Is.an.expert,5,knowledge,2
+100,3,male,28,3,Jesse,Graded.in.a.timely.manner,4,professional,1
+100,3,male,28,3,Jesse,Graded.Fairly,4,teaching,1
+100,3,male,28,3,Jesse,Did.NOT.respond.to.email.promptly,4,professional,1
+100,3,male,28,3,Jesse,Knowledgable.of.course.content,5,knowledge,2
+100,3,male,28,3,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+100,3,male,28,3,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+100,3,male,28,3,Jesse,Considerate.in.communication,5,approachable,2
+100,3,male,28,3,Jesse,Treated.me.with.respect,5,approachable,2
+100,3,male,28,3,Jesse,Enthusiastic,4,approachable,1
+100,3,male,28,3,Jesse,Professional,5,professional,2
+100,3,male,28,3,Jesse,TA.again,4,teaching,1
+101,3,male,19,4,Jesse,Facilitated.learning,1,teaching,-2
+101,3,male,19,4,Jesse,Provided.helpful.feedback,1,teaching,-2
+101,3,male,19,4,Jesse,Is.an.expert,4,knowledge,1
+101,3,male,19,4,Jesse,Graded.in.a.timely.manner,2,professional,-1
+101,3,male,19,4,Jesse,Graded.Fairly,4,teaching,1
+101,3,male,19,4,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+101,3,male,19,4,Jesse,Knowledgable.of.course.content,4,knowledge,1
+101,3,male,19,4,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+101,3,male,19,4,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+101,3,male,19,4,Jesse,Considerate.in.communication,4,approachable,1
+101,3,male,19,4,Jesse,Treated.me.with.respect,4,approachable,1
+101,3,male,19,4,Jesse,Enthusiastic,3,approachable,0
+101,3,male,19,4,Jesse,Professional,4,professional,1
+101,3,male,19,4,Jesse,TA.again,4,teaching,1
+102,4,female,21,> 5,Emily,Facilitated.learning,5,teaching,2
+102,4,female,21,> 5,Emily,Provided.helpful.feedback,5,teaching,2
+102,4,female,21,> 5,Emily,Is.an.expert,4,knowledge,1
+102,4,female,21,> 5,Emily,Graded.in.a.timely.manner,5,professional,2
+102,4,female,21,> 5,Emily,Graded.Fairly,5,teaching,2
+102,4,female,21,> 5,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+102,4,female,21,> 5,Emily,Knowledgable.of.course.content,5,knowledge,2
+102,4,female,21,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+102,4,female,21,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+102,4,female,21,> 5,Emily,Considerate.in.communication,5,approachable,2
+102,4,female,21,> 5,Emily,Treated.me.with.respect,5,approachable,2
+102,4,female,21,> 5,Emily,Enthusiastic,5,approachable,2
+102,4,female,21,> 5,Emily,Professional,5,professional,2
+102,4,female,21,> 5,Emily,TA.again,5,teaching,2
+103,4,male,21,3,Emily,Facilitated.learning,4,teaching,1
+103,4,male,21,3,Emily,Provided.helpful.feedback,3,teaching,0
+103,4,male,21,3,Emily,Is.an.expert,3,knowledge,0
+103,4,male,21,3,Emily,Graded.in.a.timely.manner,4,professional,1
+103,4,male,21,3,Emily,Graded.Fairly,4,teaching,1
+103,4,male,21,3,Emily,Did.NOT.respond.to.email.promptly,4,professional,1
+103,4,male,21,3,Emily,Knowledgable.of.course.content,5,knowledge,2
+103,4,male,21,3,Emily,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+103,4,male,21,3,Emily,Consistently.fulfilled.responsibilities,3,professional,0
+103,4,male,21,3,Emily,Considerate.in.communication,5,approachable,2
+103,4,male,21,3,Emily,Treated.me.with.respect,5,approachable,2
+103,4,male,21,3,Emily,Enthusiastic,4,approachable,1
+103,4,male,21,3,Emily,Professional,5,professional,2
+103,4,male,21,3,Emily,TA.again,4,teaching,1
+104,3,male,21,2,Emily,Facilitated.learning,5,teaching,2
+104,3,male,21,2,Emily,Provided.helpful.feedback,5,teaching,2
+104,3,male,21,2,Emily,Is.an.expert,5,knowledge,2
+104,3,male,21,2,Emily,Graded.in.a.timely.manner,5,professional,2
+104,3,male,21,2,Emily,Graded.Fairly,5,teaching,2
+104,3,male,21,2,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+104,3,male,21,2,Emily,Knowledgable.of.course.content,5,knowledge,2
+104,3,male,21,2,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+104,3,male,21,2,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+104,3,male,21,2,Emily,Considerate.in.communication,5,approachable,2
+104,3,male,21,2,Emily,Treated.me.with.respect,5,approachable,2
+104,3,male,21,2,Emily,Enthusiastic,5,approachable,2
+104,3,male,21,2,Emily,Professional,5,professional,2
+104,3,male,21,2,Emily,TA.again,5,teaching,2
+105,3,male,33,> 5,Jesse,Facilitated.learning,3,teaching,0
+105,3,male,33,> 5,Jesse,Provided.helpful.feedback,2,teaching,-1
+105,3,male,33,> 5,Jesse,Is.an.expert,4,knowledge,1
+105,3,male,33,> 5,Jesse,Graded.in.a.timely.manner,5,professional,2
+105,3,male,33,> 5,Jesse,Graded.Fairly,1,teaching,-2
+105,3,male,33,> 5,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+105,3,male,33,> 5,Jesse,Knowledgable.of.course.content,5,knowledge,2
+105,3,male,33,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,2,teaching,-1
+105,3,male,33,> 5,Jesse,Consistently.fulfilled.responsibilities,3,professional,0
+105,3,male,33,> 5,Jesse,Considerate.in.communication,5,approachable,2
+105,3,male,33,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+105,3,male,33,> 5,Jesse,Enthusiastic,3,approachable,0
+105,3,male,33,> 5,Jesse,Professional,5,professional,2
+105,3,male,33,> 5,Jesse,TA.again,1,teaching,-2
+106,5,male,29,1,Jesse,Facilitated.learning,3,teaching,0
+106,5,male,29,1,Jesse,Provided.helpful.feedback,4,teaching,1
+106,5,male,29,1,Jesse,Is.an.expert,3,knowledge,0
+106,5,male,29,1,Jesse,Graded.in.a.timely.manner,4,professional,1
+106,5,male,29,1,Jesse,Graded.Fairly,2,teaching,-1
+106,5,male,29,1,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+106,5,male,29,1,Jesse,Knowledgable.of.course.content,3,knowledge,0
+106,5,male,29,1,Jesse,Helpful.feedback.vias.Canvas.discussion,2,teaching,-1
+106,5,male,29,1,Jesse,Consistently.fulfilled.responsibilities,3,professional,0
+106,5,male,29,1,Jesse,Considerate.in.communication,3,approachable,0
+106,5,male,29,1,Jesse,Treated.me.with.respect,3,approachable,0
+106,5,male,29,1,Jesse,Enthusiastic,3,approachable,0
+106,5,male,29,1,Jesse,Professional,3,professional,0
+106,5,male,29,1,Jesse,TA.again,3,teaching,0
+107,4,female,49,> 5,Jesse,Facilitated.learning,2,teaching,-1
+107,4,female,49,> 5,Jesse,Provided.helpful.feedback,2,teaching,-1
+107,4,female,49,> 5,Jesse,Is.an.expert,3,knowledge,0
+107,4,female,49,> 5,Jesse,Graded.in.a.timely.manner,4,professional,1
+107,4,female,49,> 5,Jesse,Graded.Fairly,5,teaching,2
+107,4,female,49,> 5,Jesse,Did.NOT.respond.to.email.promptly,2,professional,-1
+107,4,female,49,> 5,Jesse,Knowledgable.of.course.content,4,knowledge,1
+107,4,female,49,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+107,4,female,49,> 5,Jesse,Consistently.fulfilled.responsibilities,4,professional,1
+107,4,female,49,> 5,Jesse,Considerate.in.communication,5,approachable,2
+107,4,female,49,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+107,4,female,49,> 5,Jesse,Enthusiastic,4,approachable,1
+107,4,female,49,> 5,Jesse,Professional,5,professional,2
+107,4,female,49,> 5,Jesse,TA.again,3,teaching,0
+108,3,female,20,3,Emily,Facilitated.learning,5,teaching,2
+108,3,female,20,3,Emily,Provided.helpful.feedback,5,teaching,2
+108,3,female,20,3,Emily,Is.an.expert,5,knowledge,2
+108,3,female,20,3,Emily,Graded.in.a.timely.manner,5,professional,2
+108,3,female,20,3,Emily,Graded.Fairly,5,teaching,2
+108,3,female,20,3,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+108,3,female,20,3,Emily,Knowledgable.of.course.content,5,knowledge,2
+108,3,female,20,3,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+108,3,female,20,3,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+108,3,female,20,3,Emily,Considerate.in.communication,5,approachable,2
+108,3,female,20,3,Emily,Treated.me.with.respect,5,approachable,2
+108,3,female,20,3,Emily,Enthusiastic,5,approachable,2
+108,3,female,20,3,Emily,Professional,5,professional,2
+108,3,female,20,3,Emily,TA.again,5,teaching,2
+109,4,male,21,1,Emily,Facilitated.learning,5,teaching,2
+109,4,male,21,1,Emily,Provided.helpful.feedback,5,teaching,2
+109,4,male,21,1,Emily,Is.an.expert,3,knowledge,0
+109,4,male,21,1,Emily,Graded.in.a.timely.manner,5,professional,2
+109,4,male,21,1,Emily,Graded.Fairly,5,teaching,2
+109,4,male,21,1,Emily,Did.NOT.respond.to.email.promptly,3,professional,0
+109,4,male,21,1,Emily,Knowledgable.of.course.content,5,knowledge,2
+109,4,male,21,1,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+109,4,male,21,1,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+109,4,male,21,1,Emily,Considerate.in.communication,5,approachable,2
+109,4,male,21,1,Emily,Treated.me.with.respect,5,approachable,2
+109,4,male,21,1,Emily,Enthusiastic,5,approachable,2
+109,4,male,21,1,Emily,Professional,5,professional,2
+109,4,male,21,1,Emily,TA.again,5,teaching,2
+110,3,male,21,> 5,Emily,Facilitated.learning,5,teaching,2
+110,3,male,21,> 5,Emily,Provided.helpful.feedback,5,teaching,2
+110,3,male,21,> 5,Emily,Is.an.expert,5,knowledge,2
+110,3,male,21,> 5,Emily,Graded.in.a.timely.manner,5,professional,2
+110,3,male,21,> 5,Emily,Graded.Fairly,5,teaching,2
+110,3,male,21,> 5,Emily,Did.NOT.respond.to.email.promptly,5,professional,2
+110,3,male,21,> 5,Emily,Knowledgable.of.course.content,5,knowledge,2
+110,3,male,21,> 5,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+110,3,male,21,> 5,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+110,3,male,21,> 5,Emily,Considerate.in.communication,5,approachable,2
+110,3,male,21,> 5,Emily,Treated.me.with.respect,5,approachable,2
+110,3,male,21,> 5,Emily,Enthusiastic,5,approachable,2
+110,3,male,21,> 5,Emily,Professional,5,professional,2
+110,3,male,21,> 5,Emily,TA.again,5,teaching,2
+111,3,male,20,4,Emily,Facilitated.learning,4,teaching,1
+111,3,male,20,4,Emily,Provided.helpful.feedback,4,teaching,1
+111,3,male,20,4,Emily,Is.an.expert,4,knowledge,1
+111,3,male,20,4,Emily,Graded.in.a.timely.manner,4,professional,1
+111,3,male,20,4,Emily,Graded.Fairly,4,teaching,1
+111,3,male,20,4,Emily,Did.NOT.respond.to.email.promptly,4,professional,1
+111,3,male,20,4,Emily,Knowledgable.of.course.content,4,knowledge,1
+111,3,male,20,4,Emily,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+111,3,male,20,4,Emily,Consistently.fulfilled.responsibilities,5,professional,2
+111,3,male,20,4,Emily,Considerate.in.communication,5,approachable,2
+111,3,male,20,4,Emily,Treated.me.with.respect,5,approachable,2
+111,3,male,20,4,Emily,Enthusiastic,4,approachable,1
+111,3,male,20,4,Emily,Professional,5,professional,2
+111,3,male,20,4,Emily,TA.again,4,teaching,1
+112,3,male,21,5,Jesse,Facilitated.learning,5,teaching,2
+112,3,male,21,5,Jesse,Provided.helpful.feedback,4,teaching,1
+112,3,male,21,5,Jesse,Is.an.expert,4,knowledge,1
+112,3,male,21,5,Jesse,Graded.in.a.timely.manner,4,professional,1
+112,3,male,21,5,Jesse,Graded.Fairly,3,teaching,0
+112,3,male,21,5,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+112,3,male,21,5,Jesse,Knowledgable.of.course.content,4,knowledge,1
+112,3,male,21,5,Jesse,Helpful.feedback.vias.Canvas.discussion,4,teaching,1
+112,3,male,21,5,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+112,3,male,21,5,Jesse,Considerate.in.communication,5,approachable,2
+112,3,male,21,5,Jesse,Treated.me.with.respect,5,approachable,2
+112,3,male,21,5,Jesse,Enthusiastic,3,approachable,0
+112,3,male,21,5,Jesse,Professional,5,professional,2
+112,3,male,21,5,Jesse,TA.again,4,teaching,1
+113,3,female,20,> 5,Jesse,Facilitated.learning,4,teaching,1
+113,3,female,20,> 5,Jesse,Provided.helpful.feedback,3,teaching,0
+113,3,female,20,> 5,Jesse,Is.an.expert,3,knowledge,0
+113,3,female,20,> 5,Jesse,Graded.in.a.timely.manner,5,professional,2
+113,3,female,20,> 5,Jesse,Graded.Fairly,5,teaching,2
+113,3,female,20,> 5,Jesse,Did.NOT.respond.to.email.promptly,3,professional,0
+113,3,female,20,> 5,Jesse,Knowledgable.of.course.content,5,knowledge,2
+113,3,female,20,> 5,Jesse,Helpful.feedback.vias.Canvas.discussion,3,teaching,0
+113,3,female,20,> 5,Jesse,Consistently.fulfilled.responsibilities,4,professional,1
+113,3,female,20,> 5,Jesse,Considerate.in.communication,5,approachable,2
+113,3,female,20,> 5,Jesse,Treated.me.with.respect,5,approachable,2
+113,3,female,20,> 5,Jesse,Enthusiastic,5,approachable,2
+113,3,female,20,> 5,Jesse,Professional,5,professional,2
+113,3,female,20,> 5,Jesse,TA.again,4,teaching,1
+114,3,female,20,4,Jesse,Facilitated.learning,4,teaching,1
+114,3,female,20,4,Jesse,Provided.helpful.feedback,2,teaching,-1
+114,3,female,20,4,Jesse,Is.an.expert,4,knowledge,1
+114,3,female,20,4,Jesse,Graded.in.a.timely.manner,4,professional,1
+114,3,female,20,4,Jesse,Graded.Fairly,2,teaching,-1
+114,3,female,20,4,Jesse,Did.NOT.respond.to.email.promptly,3,professional,0
+114,3,female,20,4,Jesse,Knowledgable.of.course.content,4,knowledge,1
+114,3,female,20,4,Jesse,Helpful.feedback.vias.Canvas.discussion,2,teaching,-1
+114,3,female,20,4,Jesse,Consistently.fulfilled.responsibilities,4,professional,1
+114,3,female,20,4,Jesse,Considerate.in.communication,2,approachable,-1
+114,3,female,20,4,Jesse,Treated.me.with.respect,3,approachable,0
+114,3,female,20,4,Jesse,Enthusiastic,4,approachable,1
+114,3,female,20,4,Jesse,Professional,4,professional,1
+114,3,female,20,4,Jesse,TA.again,3,teaching,0
+115,4,male,21,4,Jesse,Facilitated.learning,5,teaching,2
+115,4,male,21,4,Jesse,Provided.helpful.feedback,5,teaching,2
+115,4,male,21,4,Jesse,Is.an.expert,4,knowledge,1
+115,4,male,21,4,Jesse,Graded.in.a.timely.manner,5,professional,2
+115,4,male,21,4,Jesse,Graded.Fairly,5,teaching,2
+115,4,male,21,4,Jesse,Did.NOT.respond.to.email.promptly,5,professional,2
+115,4,male,21,4,Jesse,Knowledgable.of.course.content,5,knowledge,2
+115,4,male,21,4,Jesse,Helpful.feedback.vias.Canvas.discussion,5,teaching,2
+115,4,male,21,4,Jesse,Consistently.fulfilled.responsibilities,5,professional,2
+115,4,male,21,4,Jesse,Considerate.in.communication,5,approachable,2
+115,4,male,21,4,Jesse,Treated.me.with.respect,5,approachable,2
+115,4,male,21,4,Jesse,Enthusiastic,5,approachable,2
+115,4,male,21,4,Jesse,Professional,5,professional,2
+115,4,male,21,4,Jesse,TA.again,5,teaching,2

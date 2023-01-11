@@ -1,0 +1,954 @@
+<html>
+<head>
+<title>Lecture notes set 2</title>
+<link rel="important stylesheet" href="chrome://messenger/skin/messageBody.css">
+</head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td>
+<b>Subject: </b>Lecture notes set 2</td></tr><tr><td><b>From: </b>
+"Tomas Rau" <trau@econ.Berkeley.EDU></td></tr><tr><td><b>Date: </b>
+Thu, 30 Jan 2003 17:09:39 -0500</td></tr></table><table border=0 cellspacing=0
+cellpadding=0 width="100%" class="header-part2"><tr><td>
+<b>To: </b><stark@stat.Berkeley.EDU></td></tr></table><br />
+<div class="moz-text-plain"><pre wrap>Hi Professor Stark,
+                  here is the file in html format. I've just check it out
+and it includes the smirnov test and the tables, so everything is ok. Have a
+nice weekend,
+
+Tomas
+
+</pre></div><br /><HR WIDTH="90%" SIZE=4><br /><!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; ">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./ch2_files/filelist.xml">
+<link rel=Edit-Time-Data href="./ch2_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>You need a browser that supports JavaScript and Java to use this site,
+and you must enable JavaScript and Java in your browser</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Tom+Yoya</o:Author>
+  <o:LastAuthor>Tom+Yoya</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>4</o:TotalTime>
+  <o:Created>2003-01-30T04:43:00Z</o:Created>
+  <o:LastSaved>2003-01-30T04:43:00Z</o:LastSaved>
+  <o:Pages>10</o:Pages>
+  <o:Words>3323</o:Words>
+  <o:Characters>18945</o:Characters>
+  <o:Company>Berkeley</o:Company>
+  <o:Lines>157</o:Lines>
+  <o:Paragraphs>37</o:Paragraphs>
+  <o:CharactersWithSpaces>23265</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+    {mso-style-parent:"";
+    margin:0cm;
+    margin-bottom:.0001pt;
+    mso-pagination:widow-orphan;
+    font-size:12.0pt;
+    font-family:"Times New Roman";
+    mso-fareast-font-family:"Times New Roman";}
+p
+    {font-size:12.0pt;
+    font-family:"Times New Roman";
+    mso-fareast-font-family:"Times New Roman";}
+@page Section1
+    {size:595.3pt 841.9pt;
+    margin:70.85pt 3.0cm 70.85pt 3.0cm;
+    mso-header-margin:36.0pt;
+    mso-footer-margin:36.0pt;
+    mso-paper-source:0;}
+div.Section1
+    {page:Section1;}
+ /* List Definitions */
+@list l0
+    {mso-list-id:93328931;
+    mso-list-type:hybrid;
+    mso-list-template-ids:-941983626 -1392632618 -1856333008 624062620 -1923162742 -1884767766 -1209485566 1242082766 1507874266 375283290;}
+@list l1
+    {mso-list-id:180633804;
+    mso-list-type:hybrid;
+    mso-list-template-ids:191518384 117500358 -220670146 -386386866 -116592772 -194069454 1836345468 -719961512 -1628291322 1487681912;}
+ol
+    {margin-bottom:0cm;}
+ul
+    {margin-bottom:0cm;}
+-->
+</style>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript">
+<!--
+     pageModDate = "8:52 PM Wednesday, January 29, 2003";
+     // copyright 2001-2003 by P.B. Stark, statistics.berkeley.edu/~stark.
+     // All rights reserved.
+// -->
+</script>
+
+<script language="JavaScript1.4" type="text/javascript" src="../../../Java/irGrade.js">
+</script>
+
+<script language="JavaScript1.4" type="text/javascript" src="../../../Java/class.js">
+</script>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript">
+<!--
+    var cNum = 240.2;
+    chapterSetUp('SeEd',cNum,'Statistics 240 Notes, part 2',false);
+// -->
+</script>
+</head>
+
+<body lang=EN-GB link=blue vlink=blue style='tab-interval:36.0pt'
+onload="setApplets()" onUnload="killApplets()">
+<noscript>
+
+<div class=Section1>
+
+<p class=MsoNormal>You need a browser that supports JavaScript and Java to use
+this site, and you must enable JavaScript and Java in your browser. </noscript>
+<meta http-equiv=expires content=0>
+</p>
+
+<form>
+
+<h2><span style='display:none;mso-hide:all'><script language="JavaScript1.4" type="text/javascript" type="text/javascript">
+ <!--
+    relPath = '../';
+    classLinks(relPath,'+1');
+// -->
+</script></span>Fisher's Exact Test and its Normal Approximation</h2>
+
+<p>This material is adapted from <a
+href="http://statistics.berkeley.edu/~stark/SticiGui">SticiGui</a>. </p>
+
+<p>Suppose we own a start-up company that offers e-tailers a service for
+targeting their web advertising. Consumers register with our service by filling
+out a form indicating their likes and dislikes, gender, age, <em>etc</em>. We
+put &quot;cookies&quot; on their computers to keep track of who they are. When
+they get to the website of any of our clients, we use their likes and dislikes
+to select (from a collection of the client's ads) the ad we think they are most
+likely to respond to. The service is free to consumers; we charge the
+e-tailers. </p>
+
+<p>We can raise venture capital if we can show that targeting makes e-tailers'
+advertisements more effective. To measure the effectiveness, we offer our
+service for free to a large e-tailer. The e-tailer has a collection of web ads
+that it usually uses in rotation: each time a consumer arrives at the site, the
+e-tailer's server selects the next ad in the sequence to show to the consumer,
+then starts over when it runs out of ads. </p>
+
+<p>We install our software on the e-tailer's server, in the following way: each
+time a consumer arrives at the site, with probability 50% the server shows the
+consumer the ad our targeting software suggests, and with probability 50% the
+server shows the consumer the next ad in the rotation, the way the e-tailer
+used to choose which ad to show. For each consumer, the software records which
+strategy was used (target or rotation), and whether the consumer buys anything.
+We call the consumers who were shown the targeted ad the <em>treatment group</em>;
+we call the other consumers the <em>control group</em>. If a consumer visits
+the site more than once during the trial period, we ignore all of that
+consumer's visits but the first. </p>
+
+<p>Suppose that <em>N</em> consumers visit the site during the trial, that <em>n</em>
+of them are assigned to the treatment group, that <em>m</em> of them are
+assigned to the control group, and that <em>N</em><sub>S</sub> of the consumers
+buy something. In essence, we want to know whether there would have been more
+purchases if everyone had been shown the targeted ad than if everyone had been
+shown the control ad. Only some of the consumers saw the targeted ad, and only
+some saw the control ad, so answering this question involves extrapolating from
+the data to an hypothetical counterfactual situation. Of course, we really want
+to extrapolate further, to people who have not yet visited the site, to decide
+whether more product would be sold if those people are shown the targeted ad. </p>
+
+<p>We can think of the experiment in the following way: the <em>i</em>th
+consumer has a ticket with two numbers on it: the first number (<em>x<sub>i</sub></em>)
+is 1 if the consumer would have bought something if shown the random ad, and 0
+if not. The second number (<em>y<sub>i</sub></em>) is 1 if the consumer would
+have bought something if shown the targeted ad, and 0 if not. There are <em>N</em>
+tickets in all. </p>
+
+<p>For each consumer <em>i</em> who visits the site, we observe either <em>x<sub>i</sub></em>
+or <em>y<sub>i</sub></em>, but not both. The percentage of consumers who would
+have made purchases if every consumer had been shown the control ads is </p>
+
+<p align=center style='text-align:center'><em><span lang=ES style='mso-ansi-language:
+ES'>p<sub>c</sub></span></em><span lang=ES style='mso-ansi-language:ES'> = </span><span
+lang=ES style='font-size:13.5pt;mso-ansi-language:ES'>(</span><span lang=ES
+style='mso-ansi-language:ES'> <em>x</em><sub>1</sub> + <em>x</em><sub>2</sub> +
+&nbsp;.&nbsp;.&nbsp;.&nbsp; </span>+ <em>x<sub>N</sub></em> <span
+style='font-size:13.5pt'>)</span>/<em>N</em>. </p>
+
+<p>Similarly, the percentage of consumers who would have made purchases if
+every consumer had been shown the targeted ads is </p>
+
+<p align=center style='text-align:center'><em><span lang=ES style='mso-ansi-language:
+ES'>p<sub>t</sub></span></em><span lang=ES style='mso-ansi-language:ES'> = </span><span
+lang=ES style='font-size:13.5pt;mso-ansi-language:ES'>(</span><span lang=ES
+style='mso-ansi-language:ES'> <em>y</em><sub>1</sub> + <em>y</em><sub>2</sub> +
+&nbsp;.&nbsp;.&nbsp;.&nbsp; </span>+ <em>y<sub>N</sub></em> <span
+style='font-size:13.5pt'>)</span>/<em>N</em>. </p>
+
+<p>Let </p>
+
+<p align=center style='text-align:center'>&micro;&nbsp;=&nbsp;<em>p<sub>t</sub></em>
+- <em>p<sub>c</sub></em> </p>
+
+<p>be the difference between the rate at which consumers would have bought had
+all of them been shown the targeted ad, and the rate at which consumers would
+have bought had all of them been in the control group. The null hypothesis,
+that targeting does not make a difference, is that &micro;&nbsp;=&nbsp;0. (The strong
+null hypothesis is that <em>x<sub>i</sub></em> = <em>y<sub>i</sub></em>, for <em>i</em>=1,
+2, .&nbsp;.&nbsp;. , <em>N</em>.) The alternative hypothesis, that targeting
+helps, is that &micro;&nbsp;&gt;&nbsp;0. We would like to test this null hypothesis
+at significance level 5%. </p>
+
+<p>Let <em>m</em> be the number of consumers in the control group, and let <em>n</em>
+be the number of consumers in the treatment group, so </p>
+
+<p align=center style='text-align:center'><em>N</em>&nbsp;=&nbsp;<em>m</em> + <em>n</em>.
+</p>
+
+<p>Let <em>N</em><sub>S</sub> be the total number of sales to the treatment and
+control groups. Let <em>Y</em> be the number of sales to consumers in the
+treatment group. Under the strong null hypothesis (which implies that
+&micro;&nbsp;=&nbsp;0), for any fixed value of <em>N</em><sub>S</sub>, <em>Y</em> has
+an hypergeometric distribution with parameters <em>N</em>, <em>N</em><sub>S</sub>,
+and <em>n</em> (we consider <em>N</em> to be fixed): </p>
+
+<p align=center style='text-align:center'><span lang=ES style='mso-ansi-language:
+ES'>P(<em>Y</em>=<em>y</em>) = <em><sub>N</sub></em><sub>S</sub>C<em><sub>y</sub></em>
+&times; <em><sub>N</sub></em><sub>-<em>N</em>S</sub>C<em><sub>n</sub></em><sub>-<em>y</em></sub>/<em><sub>N</sub></em>C<em><sub>n</sub></em>.
+<o:p></o:p></span></p>
+
+<p>This is a situation with many tied data, because there are only two possible
+responses for each subject: 0 if the subject does not buy anything, and 1 if
+the subject buys something. If the alternative hypothesis be true, <em>Y</em>
+will tend to be larger than it would if the null hypothesis be true, <script language="JavaScript1.4" type="text/javascript" type="text/javascript">
+<!--
+    var fStr = 'Technically, it is <em>stochastically larger</em>: for every <em>y</em>, ' +
+           'the chance that <em>Y</em>&nbsp;&gt;&nbsp;<em>y</em> is at least as large ' +
+           'if the alternative hypothesis be true as if the null hypothesis be true.';
+    writeFootnote(fCtr++, fCtr.toString(), fStr);
+// -->
+</script>so we should design our test to reject the null hypothesis for large
+values of <em>Y</em>. That is, our rejection region should contain all values
+above some threshold value <em>y</em>; we will reject the null hypothesis if <em>Y</em>&nbsp;&gt;&nbsp;<em>y</em>.
+</p>
+
+<p>We cannot calculate the critical value <em>y</em> until we know <em>N</em>, <em>n</em>,
+and <em>N</em><sub>S</sub>. Once we observe them, we can find the smallest
+value <em>y</em> so that the probability that <em>Y</em> is larger than <em>y</em>
+if the null hypothesis be true is at most 5%, the significance level we chose
+for the test. Our rule for testing the null hypothesis then would be to reject
+the null hypothesis if <em>Y</em>&nbsp;&gt;&nbsp;<em>y</em>, and not to reject
+the null hypothesis otherwise. This is called <em>Fisher's exact test</em> for
+the equality of two percentages (against the one-sided alternative that treatment
+increases the response). It is a permutation test, and it is also essentially a
+(mid-) rank test, because there are only two possible values for each response.
+</p>
+
+<h3><a id=fisherNormApprox></a>The Normal Approximation to Fisher's Exact
+Test </h3>
+
+<p>If <em>N</em> is large and <em>n</em> is neither close to zero nor close to <em>N</em>,
+computing the hypergeometric probabilities will be difficult, but the normal
+approximation to the hypergeometric distribution should be accurate provided <em>N</em><sub>S</sub>
+is neither too close to zero nor too close to <em>n</em>. To use the normal
+approximation, we need to convert to standard units, which requires that we
+know the expected value and standard error of <em>Y</em>. The expected value of
+<em>Y</em> is </p>
+
+<p align=center style='text-align:center'><span lang=ES style='mso-ansi-language:
+ES'>E(<em>Y</em>) = <em>n</em> &times; <em>N</em><sub>S</sub>/<em>N</em>, <o:p></o:p></span></p>
+
+<p>and the standard error of <em>Y</em> is </p>
+
+<p align=center style='text-align:center'><span lang=ES style='mso-ansi-language:
+ES'>SE(<em>Y</em>) = <em>f</em> &times; <em>n</em><sup>&frac12;</sup> &times; SD, <o:p></o:p></span></p>
+
+<p>where <em>f</em> is the <em>finite population correction</em> </p>
+
+<p align=center style='text-align:center'><em>f</em> = <span style='font-size:
+13.5pt'>(</span> (<em>N</em> - <em>n</em>)/(<em>N</em> - 1) <span
+style='font-size:13.5pt'>)</span><sup>&frac12;</sup>, </p>
+
+<p>and SD is the standard deviation of a list of <em>N</em> values of which <em>N</em><sub>S</sub>
+equal one and (<em>N</em> - <em>N</em><sub>S</sub>) equal zero: </p>
+
+<p align=center style='text-align:center'>SD = <span style='font-size:13.5pt'>(</span>
+<em>N</em><sub>S</sub>/<em>N</em> &times; (1 - <em>N</em><sub>S</sub>/<em>N</em>) <span
+style='font-size:13.5pt'>)</span><sup>&frac12;</sup>. </p>
+
+<p>In standard units, <em>Y</em> is </p>
+
+<p align=center style='text-align:center'><em><span lang=ES style='mso-ansi-language:
+ES'>Z</span></em><span lang=ES style='mso-ansi-language:ES'> = (<em>Y</em> - E(<em>Y</em>))/SE(<em>Y</em>)
+<o:p></o:p></span></p>
+
+<p align=center style='text-align:center'><span lang=ES style='mso-ansi-language:
+ES'>= </span><span lang=ES style='font-size:13.5pt;mso-ansi-language:ES'>(</span><span
+lang=ES style='mso-ansi-language:ES'> <em>Y</em> - <em>n</em> &times; <em>N</em><sub>S</sub>/<em>N</em>
+</span><span lang=ES style='font-size:13.5pt;mso-ansi-language:ES'>)</span><span
+lang=ES style='mso-ansi-language:ES'>/(<em>f</em> &times; <em>n</em><sup>&frac12;</sup> &times;
+SD). <o:p></o:p></span></p>
+
+<p>The area under the normal curve to the right of 1.645 standard units is 5%, <script language="JavaScript1.4" type="text/javascript" type="text/javascript">
+<!--
+    var fStr = 'Here is the picture:</p><p align="center">' +
+           '<applet code="NormHiLite.class" codebase="../../../Java/" align="baseline" ' +
+           'width="600" archive="PbsGui.zip" height="320">' +
+           '<param name="hiLiteLo" value="-10">' +
+           '<param name="hiLiteHi" value="1.645">You need Java to see this</applet>' +
+           '</p>';
+    writeFootnote(fCtr++, fCtr.toString(), fStr);
+// -->
+</script>which corresponds to the threshold value </p>
+
+<p align=center style='text-align:center'><em><span lang=ES style='mso-ansi-language:
+ES'>y</span></em><span lang=ES style='mso-ansi-language:ES'> = E(<em>Y</em>) +
+1.645 &times; SE(<em>Y</em>) <o:p></o:p></span></p>
+
+<p align=center style='text-align:center'>= <em>n</em> &times; <em>N</em><sub>S</sub>/<em>N</em>
++ 1.645 &times; <em>f</em> &times; <em>n</em><sup>&frac12;</sup> &times; SD </p>
+
+<p>in the original units, so if we reject the null hypothesis when </p>
+
+<p align=center style='text-align:center'><em>Z</em> &gt; 1.645 </p>
+
+<p>or, equivalently, </p>
+
+<p align=center style='text-align:center'><em><span lang=ES style='mso-ansi-language:
+ES'>Y</span></em><span lang=ES style='mso-ansi-language:ES'> &gt; <em>n</em> &times; <em>N</em><sub>S</sub>/<em>N</em>
++ 1.645 &times; <em>f</em> &times; <em>n</em> &times; SD, <o:p></o:p></span></p>
+
+<p>we have an (approximate) 5% significance level test of the null hypothesis
+that ad targeting and ad rotation are equally effective. This is <em>the normal
+approximation to Fisher's exact test</em>; <em>Z</em> is called the <em>Z</em>
+statistic, and the observed value of <em>Z</em> is called the <em>z</em> score.
+</p>
+
+<h2>Fisher's <em>Lady Tasting Tea</em> Experiment</h2>
+
+<p><a id=fisherTea></a>In his 1935 book, <em>The Design of Experiments</em>
+(London, Oliver and Boyd, 260pp.), Sir R.A. Fisher writes: </p>
+
+<p style='margin-right:36.0pt;margin-left:36.0pt'>A <span style='font-size:
+10.0pt'>LADY</span> declares that by tasting a cup of tea made with milk she
+can discriminate whether the milk or the tea infusion was first added to the
+cup. We will consider the problem of designing an experiment by means of which
+this assertion can be tested. .&nbsp;.&nbsp;. </p>
+
+<p style='margin-right:36.0pt;margin-left:36.0pt'>Our experiment consists in
+mixing eight cups of tea, four in one way and four in the other, and presenting
+them to the subject for judgment in a random order. The subject has been told
+in advance of what the test will consist, namely that she will be asked to
+taste eight cups, that these shall be four of each kind, and that they shall be
+presented to her in a random order, that is in an order not determined
+arbitrarily by human choice, but by the actual manipulation of the physical
+apparatus used in games of of chance, cards, dice, roulettes, etc., .&nbsp;.&nbsp;.
+Her task is to divide the 8 cups into two sets of 4, agreeing, if possible,
+with the treatments received. </p>
+
+<p>There are <sub>8</sub>C<sub>4</sub>&nbsp;=&nbsp;70 ways to distribute the
+four &quot;milk-first&quot; cups among the 8. Under the null hypothesis that
+the lady cannot taste any difference, her labeling of the 8 cups--4 milk-first
+and 4 tea-infusion-first--can be thought of as fixed in advance. The
+probability that her labeling exactly matches the truth is thus 1/70. A test
+that rejects the null hypothesis only when she matches all 8 cups has
+significance level 1/70&nbsp;=&nbsp;1.4%. If she misses one cup, she must in
+fact miss at least two, because she will have mislabeled a milk-first as
+tea-first, and vice versa. The possible numbers of &quot;hits&quot; are 0, 2,
+4, 6, and 8. To get 6 hits, she must label as milk-first three of the four true
+milk-first cups, and must mislabel as milk-first one of the four tea-first
+cups. The number of arrangements that give exactly 6 hits is thus </p>
+
+<p align=center style='text-align:center'><sub>4</sub>C<sub>3</sub>&times;<sub>4</sub>C<sub>1</sub>&nbsp;=&nbsp;16.
+</p>
+
+<p>Thus if we reject the null hypothesis when she correctly identifies 6 of the
+8 cups or all 8 of the 8 cups, the significance level of the test is
+(16+1)/70&nbsp;=&nbsp;24.3%. Such good performance is pretty likely to occur by
+chance---about as likely as getting two heads in two tosses of a fair
+coin---even if the lady and the tea are in different parlors. </p>
+
+<p>There are other experiments we might construct to test this hypothesis.
+Lindley (1984, A Bayesian Lady Tasting Tea, in <em>Statistics, an Appraisal</em>,
+H.A.&nbsp;David and H.T.&nbsp;David, eds., Iowa State Univ. Press) lists two,
+which he attributes to Neyman: </p>
+
+<ol start=1 type=1>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l1 level1 lfo1;tab-stops:list 36.0pt'>Present the lady with <em>n</em>
+     pairs of cups of tea with milk, where one cup in each pair (determined
+     randomly) has milk added first and one has tea added first. Tell the lady
+     that each pair has one of each kind of cup; ask her to identify which member
+     of each pair had the milk added first. Count the number of pairs she
+     categorizes correctly. (This approach is sometimes called <em>two-alternative
+     forced choice</em> in the psychometric literature.) </li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l1 level1 lfo1;tab-stops:list 36.0pt'>Present the lady with <em>n</em>
+     cups of tea with milk, each of which has probability 1/2 of having had the
+     milk added first and probability 1/2 of having the tea added first. Do not
+     tell the lady how many of each sort of cup there are. Ask her to identify
+     for each cup whether milk or tea was added first. Count the number of cups
+     she categorizes correctly. </li>
+</ol>
+
+<p>These experiments lead to different tests. A permutation test for the first
+of them is straightforward; to base a permutation test on the second, one needs
+to condition on the number of cups she categorizes each way and on the number
+of cups that had the milk added first. </p>
+
+<h2>The Smirnov Test</h2>
+
+<p>This material is from Lehmann (1998). </p>
+
+<p>We have considered shift and dispersion alternatives; now we move to the
+omnibus alternative. The Smirnov test, based on the difference between the
+empirical cumulative distribution functions (cdf) of the treatment responses
+and of the control responses, has some power against all kinds of violations of
+the strong null hypothesis (but less power than <em>W</em><sub>s</sub> against
+the alternatives for which the Wilcoxon rank-sum test is designed). Let <em>F<sub>Y,n</sub></em>
+denote the empirical cdf of the treatment responses: </p>
+
+<p align=center style='text-align:center'><em><span lang=ES style='mso-ansi-language:
+ES'>F<sub>Y,n</sub></span></em><span lang=ES style='mso-ansi-language:ES'>(<em>y</em>)
+= #{<em>y<sub>j</sub></em>: &nbsp; <em>y<sub>j</sub></em> &lt;= <em>y</em>}/<em>n</em>,
+<o:p></o:p></span></p>
+
+<p>and define <em>F<sub>X,m</sub></em> analogously as the empirical cdf of the
+control responses. If there are no ties within the treatment group, at each
+treatment response value, <em>F<sub>Y,n</sub></em> jumps by 1/<em>n</em>; if
+there are no ties within the control group, at each control response value, <em>F<sub>X,m</sub></em>
+jumps by 1/<em>m</em>. If <em>k</em> of the treatment responses are tied and
+equal to <em>y</em><sub>0</sub>, then <em>F<sub>Y,n</sub></em> jumps by <em>k</em>/<em>n</em>
+at <em>y</em><sub>0</sub>. The Smirnov test statistic is </p>
+
+<p align=center style='text-align:center'><em><span lang=ES style='mso-ansi-language:
+ES'>D<sub>m</sub></span></em><sub><span lang=ES style='mso-ansi-language:ES'>,<em>n</em></span></sub><span
+lang=ES style='mso-ansi-language:ES'> = sup |<em>F<sub>Y,n</sub></em>(<em>y</em>)
+- <em>F<sub>X,m</sub></em>(<em>y</em>) |, <o:p></o:p></span></p>
+
+<p>where the supremum is over all real values of <em>y</em>. It is easy to see
+that the supremum is attained at one of the data values. We can also see that
+the supremum depends only on the ranks of the data, because it matter what
+order the jumps are in, but it does not matter precisely which values of <em>y</em>
+the jumps occur at. Therefore, the test </p>
+
+<p align=center style='text-align:center'>Reject if <em>D<sub>m</sub></em><sub>,<em>n</em></sub>
+&gt; <em>c</em>, </p>
+
+<p>for an appropriately chosen value of <em>c</em>, is a nonparametric test of
+the strong null hypothesis. </p>
+
+<p>Let's calculate the null distribution of <em>D<sub>m</sub></em><sub>,<em>n</em></sub>
+for <em>n</em>=3, <em>m</em>=2. There are <sub>5</sub>C<sub>3</sub>=10 possible
+assignments of 3 of the subjects to treatment, each of which has probability
+1/10 under the strong null hypothesis. Let us assume that the 5 data are
+distinct (no ties). Then <script language="JavaScript1.4" type="text/javascript" type="text/javascript">
+<!--
+    citeTable();
+// -->
+</script>lists the possibilities and the corresponding values of <em>D<sub>m</sub></em><sub>,<em>n</em></sub>.
+</p>
+
+<p align=center style='text-align:center'><strong>Table&nbsp;240.2-1: Possible
+values of </strong><em><b>D<sub>m</sub></b></em><strong><sub>,</sub></strong><em><b><sub>n</sub></b></em><strong>
+for </strong><em><b>n</b></em><strong>=3, </strong><em><b>m</b></em><strong>=2</strong><o:p></o:p></p>
+
+<div align=center>
+
+<table border=1 cellpadding=0 style='mso-cellspacing:1.5pt;border:outset 1.5pt'>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>treatment ranks<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>control ranks<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><em>D<sub>m</sub></em><sub>,<em>n</em></sub><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1, 2, 3<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>4, 5<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1, 2, 4<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>3, 5<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>2/3<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1, 2, 5<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>3, 4<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>2/3<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1, 3, 4<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>2, 5<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1/2<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1, 3, 5<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>2, 4<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1/3<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1, 4, 5<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>2, 3<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>2/3<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>2, 3, 4<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1, 5<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1/2<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>2, 3, 5<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1, 4<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1/2<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>2, 4, 5<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1, 3<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>2/3<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>3, 4, 5<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1, 2<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1<o:p></o:p></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p><script language="JavaScript1.4" type="text/javascript" type="text/javascript">
+<!--
+    var qStr = 'Possible values of <em>D</em><sub><em>m</em>,<em>n</em></sub> for <em>n</em>=3, ' +
+               '<em>m</em>=2';
+    writeTableCaption(qStr);
+    var header = ['treatment ranks', 'control ranks', '<em>D</em><sub><em>m</em>,<em>n</em></sub>'];
+    var list = new Array(3);
+    list[0] = ['1, 2, 3', '1, 2, 4', '1, 2, 5', '1, 3, 4', '1, 3, 5',
+               '1, 4, 5', '2, 3, 4', '2, 3, 5', '2, 4, 5', '3, 4, 5'
+              ];
+    list[1] = ['4, 5',    '3, 5',    '3, 4',    '2, 5',    '2, 4',
+               '2, 3',    '1, 5',    '1, 4',    '1, 3',    '1, 2'
+              ];
+    list[2] = ['1',       '2/3',     '2/3',     '1/2',     '1/3',
+               '2/3',     '1/2',     '1/2',     '2/3',     '1'
+              ];
+    listToTable(header, list, 'transpose', 'center');
+// -->
+</script>The null probability distribution of <em>D<sub>m</sub></em><sub>,<em>n</em></sub>
+is given in Table&nbsp;240.2-2 .</p>
+
+<p align=center style='text-align:center'><strong>Table&nbsp;240.2-2: Null
+probability distribution of </strong><em><b>D</b></em><strong><sub>2, 3</sub></strong><o:p></o:p></p>
+
+<div align=center>
+
+<table border=1 cellpadding=0 style='mso-cellspacing:1.5pt;border:outset 1.5pt'>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><em>d</em><o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>P(<em>D</em><sub>2,3</sub>=<em>d</em>)<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1/3<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1/10<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1/2<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>3/10<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>2/3<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>4/10<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1<o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>2/10<o:p></o:p></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p><script language="JavaScript1.4" type="text/javascript" type="text/javascript">
+<!--
+    var qStr = 'Null probability distribution of <em>D</em><sub>2, 3</sub>';
+    writeTableCaption(qStr);
+    var header = ['<em>d</em>', 'P(<em>D</em><sub>2,3</sub>=<em>d</em>)'];
+    var list = new Array(2);
+    list[0] = ['1/3',  '1/2',   '2/3',    '1'];
+    list[1] = ['1/10', '3/10',  '4/10', '2/10'];
+    listToTable(header, list, 'transpose', 'center');
+// -->
+</script>Thus a Smirnov test (against the omnibus alternative) with
+significance level 0.2 would reject the strong null hypothesis when <em>D</em><sub>2,3</sub>=<em>d</em>=1;
+smaller significance levels are not attainable when <em>n</em> and <em>m</em>
+are so small. Critical values can be calculated analytically fairly easily when
+<em>n</em>=<em>m</em> (when the treatment and control groups are the same size)
+and the significance level is an integer multiple <em>a</em> of 1/<em>n</em>.
+Let <em>k</em> = &#8970; <em>n</em>/<em>a</em> &#8971; be the largest integer such that <em>n</em>
+- <em>k</em>&times;<em>a</em> &gt;= 0. Then, under the strong null hypothesis,
+provided there are no ties, </p>
+
+<p align=center style='text-align:center'>P(<em>D<sub>m</sub></em><sub>,<em>n</em></sub>
+&gt; <em>a</em>/<em>n</em>) = <span style='font-size:13.5pt'>(</span> <sub>2<em>n</em></sub>C<em><sub>n</sub></em><sub>-<em>a</em></sub>
+- <sub>2<em>n</em></sub>C<em><sub>n</sub></em><sub>-2<em>a</em></sub> + <sub>2<em>n</em></sub>C<em><sub>n</sub></em><sub>-3<em>a</em></sub>
+- .&nbsp;.&nbsp;. + (-1)<em><sup>k</sup></em><sup>-1</sup>&times; <sub>2<em>n</em></sub>C<em><sub>n</sub></em><sub>-<em>ka</em></sub>
+<span style='font-size:13.5pt'>)</span>/(2&times;<sub>2<em>n</em></sub>C<em><sub>n</sub></em>).
+</p>
+
+<p>When there are ties, <em>D<sub>m</sub></em><sub>,<em>n</em></sub> tends to
+be smaller, so tail probabilities from this expression still give conservative
+tests. <script language="JavaScript1.4" type="text/javascript" type="text/javascript">
+ <!--
+    var fStr = 'If both members of a tie are assigned to the same group (treatment or control)' +
+               'the tie does not change the value of <em>D</em><sub><em>m</em>,<em>n</em></sub> ' +
+               'from the value it would have had if the pair differed slightly. ' +
+               'If one member of a tie is assigned to treatment and one to control, the tie ' +
+               'can decrease the value of <em>D</em><sub><em>m</em>,<em>n</em></sub> from the ' +
+               'value it would have had if the observations differed slightly. Thus ' +
+               '<em>D</em><sub><em>m</em>,<em>n</em></sub> is stochastically smaller when there ' +
+               'are ties.';
+    writeFootnote(fCtr++, fCtr.toString(), fStr);
+// -->
+</script>There are also limit theorems that give asymptotic approximations; see
+<em>Lehmann</em> (1998, pp.&nbsp;37ff., 421). When <em>n</em>&lt;&gt;<em>m</em>,
+the calculations are harder and the asymptotics change. Of course, we can
+always approximate the null distribution of <em>D<sub>m</sub></em><sub>,<em>n</em></sub>
+by simulation. We shall study <em>D<sub>m</sub></em><sub>,<em>n</em></sub>
+further in the population model. </p>
+
+<h2>The population model</h2>
+
+<p>This material is from Lehmann (1998). </p>
+
+<p>So far, we have been considering the subjects to be given, and the
+assignment to treatment and control to be at random. This leads to simple
+probability calculations under the strong null, because the only source of
+randomness is in the assignment, which behaves like a simple random sample of
+size <em>n</em> from a fixed population of <em>N</em> subjects. However,
+conclusions about the effect of treatment apply only to the <em>N</em> subjects
+in the study group. If we wish to generalize beyond these <em>N</em> (which
+usually is desired), we need to make assumptions about how the subjects in the
+study are related to a larger population. </p>
+
+<p>Now we consider what happens if the <em>N</em> subjects are themselves a
+simple random sample from a (much, much) larger population. Of these <em>N</em>
+subjects, a random sample of size <em>n</em> is assigned to treatment, and the
+other <em>m</em> = <em>N</em>-<em>n</em> are assigned to control. As before,
+let {<em>Y</em><sub>1</sub>, .&nbsp;.&nbsp;. , <em>Y<sub>n</sub></em>} denote
+the responses of the treated subjects and let {<em>X</em><sub>1</sub>,
+.&nbsp;.&nbsp;. , <em>X<sub>m</sub></em>} denote the responses of the control
+subjects. Because the subjects are drawn at random from the population, the
+probability distribution of the responses of the treated subjects is the same,
+as is the probability distribution of the responses of the control subjects. </p>
+
+<p>The responses are not independent because the subjects are drawn without
+replacement from the larger population, but if the larger population is large
+enough compared to <em>N</em>, it is reasonable to treat the responses as if
+they were independent. Under this assimption, we have the <em>population model</em>
+for comparing two treatments. </p>
+
+<p>Let F<sub>X</sub> denote the cumulative distribution function (cdf) of the
+control responses and let F<sub>Y</sub> denote the cdf of the treatment
+responses. The strong null hypothesis in this context is that FX=F<sub>Y</sub>.
+A weaker null hypothesis is that E<em>X</em>=E<em>Y</em>, that is, that the
+expected values of the two distributions are the same. If FX and F<sub>Y</sub>
+are continuous distributions then the probability of ties among the data is
+zero. </p>
+
+<p>Let <em>N</em>=<em>n</em>+<em>m</em>. Suppose {<em>X</em><sub>1</sub>,
+.&nbsp;.&nbsp;. , <em>X<sub>m</sub></em>, <em>Y</em><sub>1</sub>,
+.&nbsp;.&nbsp;. , <em>Y<sub>n</sub></em>} are independent, identically
+distributed continuous random variables, and let {<em>S</em><sub>1</sub>,
+.&nbsp;.&nbsp;. , <em>S<sub>n</sub></em> be the ranks of the <em>X</em>'s among
+the <em>N</em> variables. Then for any subset {<em>s</em><sub>1</sub>,
+.&nbsp;.&nbsp;. , <em>s<sub>n</sub></em>} of size <em>n</em> of the integers
+{1, 2, .&nbsp;.&nbsp;. , <em>N</em>}, </p>
+
+<p align=center style='text-align:center'>P(<em>S</em><sub>1</sub> = <em>s</em><sub>1</sub>,
+<em>S</em><sub>2</sub> = <em>s</em><sub>2</sub>, .&nbsp;.&nbsp;. , <em>S<sub>n</sub></em>
+= <em>s<sub>n</sub></em>) = 1/<em><sub>N</sub></em>C<em><sub>n</sub></em>. </p>
+
+<p>For a proof, see Lehmann (1998, p.&nbsp;58). The crucial idea is that under
+the strong null hypothesis, the distribution of all <em>N</em> variables is
+symmetric, so the <em>n</em> ranks {<em>s</em><sub>1</sub>, .&nbsp;.&nbsp;. , <em>s<sub>n</sub></em>}
+are equally likely to be the ranks of any <em>n</em> of the <em>N</em>
+variables. </p>
+
+<p>Thus all the results about the null distribution of rank-based statistics
+such as the Wilcoxon rank-sum derived for the randomization model also apply to
+the population model under the assumption of random sampling and random
+assignment, provided the parent population is sufficiently large and the
+distribution of the data is continuous. The resulting tests remain
+nonparametric: the significance levels do not depend on the form of <em>F</em>=<em>F</em><sub>X</sub>=<em>F</em><sub>Y</sub>.
+</p>
+
+<p>When the distribution of the data is not continuous, and the probability of
+ties among the data is greater than zero, the null distribution of the
+mid-ranks indeed depends on <em>F</em>=<em>F</em><sub>X</sub>=<em>F</em><sub>Y</sub>,
+because <em>F</em> determines the null probability of tied observations. If we
+condition on the list of midranks, however, the conditional distribution of the
+allocation of midranks to treatment and control is the same as it is for the
+randomization model, so we can construct tests at conditional significance
+levels using the same computations as before. The unconditional significance
+level of such tests is a weighted average of the conditional significance
+levels, because if {<em>A<sub>j</sub></em>: <em>j</em>=1, .&nbsp;.&nbsp;. , <em>K</em>}
+is a partition of the whole outcome space, then for any event <em>A</em> (and
+in particular the event that we commit a type I error), </p>
+
+<p align=center style='text-align:center'>P(<em>A</em>) = P(<em>A</em><sub>1</sub>)&times;P(<em>A</em>|<em>A</em><sub>1</sub>)
++ P(<em>A</em><sub>2</sub>)&times;P(<em>A</em>|<em>A</em><sub>2</sub>) +
+.&nbsp;.&nbsp;. + P(<em>A<sub>K</sub></em>)&times;P(<em>A</em>|<em>A<sub>K</sub></em>).
+</p>
+
+<p>The unconditional significance level is thus between the smallest and
+largest conditional significance levels, but it depends on unknown properties
+of the population distribution <em>F</em>, because the configuration of ties
+determines the conditional significance levels that are attainable. The set of
+attainable conditional significance levels tends to grow more dense as the
+sample sizes <em>n</em> and <em>n</em> increase, making it possible to get more
+nearly unconditional tests. The conditional significance levels are
+asymptotically unconditional as <em>m</em> and <em>n</em> both increase. </p>
+
+<p>The population model can be used to test the hypothesis that <em>F</em><sub>X</sub>=<em>F</em><sub>Y</sub>
+even when the assignment to &quot;treatment&quot; is not at random, but is just
+a labeling of the subjects. However, even if we reject the null hypothesis, we
+cannot conclude <em>why</em> the two distributions differ. For example, suppose
+we want to test the hypothesis that getting more than 50% of one's calories
+from fat is associated with obesity, as defined by body mass index (BMI =
+(weight in kg)/(height in m)<sup>2</sup>. BMI &gt; 25 is considered overweight.
+BMI &gt; 30 is considered obese.) We could take a random sample of people,
+determine their dietary fat intake by monitoring their diet to determine
+whether their dietary fat intake exceeds 50% of their daily caloric intake, and
+measuring their BMI. We can think of this as taking random samples from the
+population of people with low dietary fat intake and the population of people
+with high dietary fat intake, and measuring a binary response (obesity) for
+each subject. We could use Fisher's exact test to assess (conditionally on the
+overall incidence of obesity and on <em>n</em> and <em>m</em>) whether the
+incidence of obesity differs between the two populations. However, even if we
+conclude that it does, we should not conclude that high dietary fat intake <em>causes</em>
+obesity, because many other factors are likely to be different between the two
+groups, and the &quot;assignment&quot; of subjects to low or high dietary fat
+intake was not at random---the subjects choose their own diets. </p>
+
+<p>Lehmann (1998, p.&nbsp;64--65) identifies five models for five problems, all
+of which lead to the same (conditional) null distribution of ranks: </p>
+
+<ol start=1 type=1>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo2;tab-stops:list 36.0pt'>Randomization model for
+     comparing two treatments. <em>N</em> subjects are given and fixed; <em>n</em>
+     are assigned at random to treatment and <em>m</em>=<em>N</em>-<em>n</em>
+     to control. </li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo2;tab-stops:list 36.0pt'>Population model for
+     comparing two treatments. <em>N</em> subjects are a drawn as a simple
+     random sample from a much larger population; <em>n</em> are assigned at
+     random to treatment and <em>m</em>=<em>N</em>-<em>n</em> to control.
+     Condition on the configuration of ties if there are ties among the data. </li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo2;tab-stops:list 36.0pt'>Comparing two
+     sub-populations using a sample from each. A simple random sample of <em>n</em>
+     subjects is drawn from one much larger population with many more than <em>N</em>
+     members, and a simple random sample of <em>m</em> subjects is drawn from
+     another population with many more than <em>m</em> members. Condition on
+     the configuration of ties if there are ties among the data. </li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo2;tab-stops:list 36.0pt'>Comparing two
+     sub-populations using a sample from the pooled population. A simple random
+     sample of <em>N</em> subjects is drawn from the pooled population, giving
+     random samples from the two populations but with random sample sizes.
+     Condition on the sample sizes and, if there are ties, on the configuration
+     of the ties. </li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo2;tab-stops:list 36.0pt'>Comparing two sets of
+     measurements. Independent sets of <em>n</em> and <em>m</em> measurements
+     come from two sources. Condition on the configuration of ties if there are
+     ties among the data. </li>
+</ol>
+
+<h2>Power of the Wilcoxon rank-sum test</h2>
+
+<p>To find the power of the Wilcoxon rank sum test in the randomization model,
+we needed to assume very specifically how treatment affected each subject, for
+example, assuming that each subject's response was shifted by the same amount.
+The resulting power calculation depended on the actual observed response
+values. In contrast, in the population model, we can compute the power against
+some alternatives without knowing the responses, because the distributions <em>F</em><sub>X</sub>
+and <em>F</em><sub>Y</sub> tell us what to expect the data to be like. </p>
+
+<p>To compute the power, it is most convenient to work with the Mann-Whitney
+form of the Wilcoxon rank-sum test. Recall that </p>
+
+<p align=center style='text-align:center'>W<sub>XY</sub> = #{ (<em>i</em>, <em>j</em>)
+: &nbsp; 1 &lt;= <em>i</em>&lt;= <em>m</em>, 1 &lt;= <em>j</em>&lt;= <em>n</em>,
+and <em>X<sub>i</sub></em> &lt; <em>Y<sub>j</sub></em>} </p>
+
+<p>is the number of (control, treatment) pairs with the control response less
+than the treatment response. Let <em>c</em> denote the critical value for the
+one-sided test based on the Mann-Whitney statistic, so we reject the null
+hypothesis if </p>
+
+<p align=center style='text-align:center'>W<sub>XY</sub> &gt; <em>c</em>, </p>
+
+<p>and suppose that the significance level of this test is <em>a</em>, so that
+under the strong null hypothesis, </p>
+
+<p align=center style='text-align:center'>P(W<sub>XY</sub> &gt; <em>c</em>) = <em>a</em>.
+</p>
+
+<p>Consider the <em>shift model</em>, in which </p>
+
+<p align=center style='text-align:center'><em>F</em><sub>Y</sub>(<em>y</em>) = <em>F</em><sub>X</sub>(<em>y</em>-<em>d</em>)
+for some <em>d</em> &gt; 0. </p>
+
+<p>In this model, treatment increases every subject's response by the same
+amount <em>d</em>. In this model, if we know <em>F</em><sub>X</sub> and <em>d</em>,
+we know <em>F</em><sub>Y</sub>. Consider the power of the test against this
+alternative, as a function of <em>d</em>, keeping <em>F</em><sub>X</sub> fixed:
+</p>
+
+<p align=center style='text-align:center'><span lang=ES style='mso-ansi-language:
+ES'>P<em><sub>F</sub></em><sub>X</sub>(<em>d</em>) = P</span><span lang=ES
+style='font-size:13.5pt;mso-ansi-language:ES'>(</span><em><span lang=ES
+style='mso-ansi-language:ES'>W</span></em><sub><span lang=ES style='mso-ansi-language:
+ES'>XY</span></sub><span lang=ES style='mso-ansi-language:ES'> &gt; <em>c</em>
+| <em>F</em><sub>Y</sub>(<em>y</em>) = <em>F</em><sub>X</sub>(<em>y</em>-<em>d</em>)
+</span><span lang=ES style='font-size:13.5pt;mso-ansi-language:ES'>)</span><span
+lang=ES style='mso-ansi-language:ES'>. <o:p></o:p></span></p>
+
+<p>This is well defined even when <em>d</em> &lt;= 0. We hope that the power of
+the test increases as <em>d</em> increases---that the test has a better chance
+of finding a large effect than a small effect, and this is so. </p>
+
+<p><strong>Theorem</strong>. (Lehmann, 1998, p.&nbsp;67) P<em><sub>F</sub></em><sub>X</sub>(<em>d</em>)
+is monotonically nondecreasing in <em>d</em>. </p>
+
+<p><strong>Proof</strong>. Suppose <em>d</em><sub>0</sub> &lt; <em>d</em><sub>1</sub>.
+.&nbsp;.&nbsp;. [FIX ME!] </p>
+
+</form>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+</div>
+
+</body>
+
+</html>
+</body>
+</html>

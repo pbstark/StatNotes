@@ -1,0 +1,1073 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:pref="http://www.w3.org/2002/Math/preference"
+      pref:renderer="css">
+
+<head>
+<script language="JavaScript1.4" type="text/javascript"><!--
+        pageModDate = "Wednesday 23 April 2008 10:22 PDT";
+        // copyright 1997-2008 by P.B. Stark, statistics.berkeley.edu/~stark.
+    // All rights reserved.
+// -->
+</script>
+
+
+<script language="JavaScript1.4" type="text/javascript" src="../../../Java/irGrade.js">
+</script>
+<script language="JavaScript1.4" type="text/javascript"><!--
+    var cNum = "240.6";
+    writeChapterHead('SeEd',cNum,'Statistics 240 Notes, part 6',false,'../../../SticiGui/',false);
+// -->
+</script>
+</head>
+
+<body onload="setApplets()" onunload="killApplets()">
+<script language="JavaScript1.4" type="text/javascript"><!--
+//    writeChapterNav('../..');
+    writeChapterTitle();
+// -->
+</script>
+<noscript>
+    You need a browser that supports JavaScript and Java to use this site,
+    and you must enable JavaScript and Java in your browser.
+</noscript>
+
+<meta HTTP-EQUIV="expires" CONTENT="0">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<form method="post">
+<h2>Paired Comparisons and Multiple Treatments</h2>
+<p>
+    Reference: Lehmann, E.L. (1998). Nonparametrics: Statistical Methods Based on Ranks,
+    Prentice Hall, Upper Saddle River, NJ.
+</p>
+
+
+<h3>The sign test</h3><a id="sign_test"></a>
+
+
+<p>
+    The rank sum test has the most power when the population is relatively homogeneous.
+    If the population is extremely heterogeneous, the variability of responses across
+    individuals can make it hard to detect a real treatment effect.
+    When the population is heterogeneous, sometimes we can have more power to detect
+    a real treatment effect by dividing the population into subgroups that are
+    less heterogeneous than the population, making comparisons within subgroups,
+    and then combining the results across subgroups.
+    The farthest this idea can go is to divide the population into pairs of subjects
+    as similar as possible to each other in the values of some measured variables.
+</p>
+
+<p>
+    Suppose we form pairs of subjects according to the values of some
+    variables that might affect the outcome, then randomly assign one
+    member of each pair to treatment and one to control, by a fair coin toss,
+    for example.
+    Let there be <em>n</em> pairs of subjects.
+    Suppose the assignment to treatment or control is independent across pairs.
+    We will look at two approaches to testing whether treatment affects the
+    response.
+    The first method, the sign test, works well even when different pairs
+    are heterogeneous.
+    (However, see <em>Freedman</em>, 2005. FIX ME!)
+    The second method, the Wilcoxon signed rank test, works better when
+    the different pairs are homogeneous.
+</p>
+
+<p>
+    Let <em>S</em> denote the number of pairs for which the response of the
+    treated subject is larger than the response of the subject assigned to control.
+    Suppose for the moment that there are no ties within pairs.
+    Under the null hypothesis that treatment makes no difference, <em>S</em>
+    has a binomial probability distribution with parameters <em>n</em> and <em>p</em>=&frac12;.
+    If treatment has a positive effect, we would expect <em>S</em> to be larger than
+    <em>n</em>/2, so we would reject for large values of <em>S</em>.
+    Critical values can be calculated from the binomial distribution.
+    This gives the <em>sign test</em> based on paired samples.
+</p>
+
+<p>
+    Suppose now that there are ties within pairs.
+    Consider the test statistic <em>S</em>' = <em>S</em> + &frac12;<em>S</em><sub>0</sub>,
+    where <em>S</em><sub>0</sub> is the number of ties.
+    Under the strong null hypothesis, pairs are not separated, so the number of
+    ties <em>S</em><sub>0</sub> is always the same: the probability distribution of
+    <em>S</em>' is that of a constant
+    plus a binomial random variable with parameters <em>n</em>&minus;<em>S</em><sub>0</sub> and
+    <em>p</em>=&frac12;.
+    Critical values for the test thus can be computed using the binomial distribution
+    (but for <em>n</em>&minus;<em>S</em><sub>0</sub> trials).
+    (Ties might instead be broken at random independently; it turns out
+    that discarding ties leads to the more powerful test.)
+</p>
+
+<p>
+    A nice feature of the test is that within pairs, one only needs to be able to
+    judge which subject's response is better&mdash;that is, one only needs to rank
+    pairs of observations.
+    That is equivalent to using just the sign of the difference between the two
+    responses, which is why this is called the sign test.
+    However, because the test does not use the magnitude of the difference,
+    typically there are tests with better power when quantitative differences
+    are available; see below.
+    Thus the primary application of the sign test is to situations where only
+    the sign of the difference is observed.
+</p>
+
+<div class="example">
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var qStr = 'Applying the sign test for paired comparisons.';
+    writeExampleCaption(qStr);
+    var ns = listOfDistinctRandInts(2, 10, 15);
+    var n = ns[0];
+    var maxHrs = 8;
+    var minHrs = 2;
+    qStr = '<p>Suppose we have ' + cardinals[n] + ' subjects in a test of a headache remedy.  Each subject ' +
+           'suffers from chronic headaches.  Each subject is given two pills.  One is a purported remedy; ' +
+           'the other is a placebo. The pills are labeled &quot;A&quot; and &quot;B&quot; but otherwise ' +
+           'appear identical.  Which pill is labeled &quot;A&quot; is determined by a coin toss. ' +
+           'The subject is instructed to take pill A the next time he or she gets a headache, ' +
+           'and to record the number of hours until the pain stops.  When the subject gets a second ' +
+           'headache, he or she is to take pill B and record when the pain stops.  The two duration data are ' +
+           'reported back to the investigator, who knows for each subject whether pill A or pill B ' +
+           'was the placebo. This results in ' + cardinals[n] + ' pairs of observations, as follows:</p>';
+    document.writeln(qStr);
+    var header = ['placebo','remedy'];
+    var list = new Array(2);
+    list[0] = listOfRandInts(n, minHrs+1, maxHrs+minHrs);
+    list[1] = listOfRandInts(n, 1, maxHrs);
+    var pairs = 0;
+    var S = 0;
+    for (i=0; i < n; i++) {
+        if (list[0][i] == list[1][i]) {
+            pairs++;
+        } else if (list[0][i] > list[1][i]) {
+            S++;
+        }
+    }
+    if (pairs == 0) {             // force at least one tie
+        if (list[0][1] > list[1][1]) {
+            S--;
+        }
+        list[0][1] = list[1][1];
+        pairs++;
+    }
+    var tailProb = roundToDig(100*binomialTail(n-pairs, 0.5, S),1);
+    var beWord = ' are ';
+    var tieWord = ' ties ';
+    if (pairs == 1) {
+        beWord = ' is ';
+        tieWord = ' tie ';
+    }
+    listToTable(header, list, 'transpose', 'center');
+    nPrime = n - pairs;
+    qStr = '<p><font color="green">Find the <em>P</em>-value of these data for the null hypothesis ' +
+           ' of no treatment effect using a sign test against the alternative that remedy ' +
+           'decreases duration of the headache.</font></p>' +
+           '<p><strong>Solution</strong>. There ' + beWord + cardinals[pairs] + tieWord +
+           ' among these data, so, under the strong ' +
+           ' null hypothesis, the probability distribution of the number of subjects for which ' +
+           ' headache duration with the remedy is less than headache duration with placebo ' +
+           ' is binomial with parameters <em>n</em>= ' + nPrime.toString() +
+           ' and <em>p</em> = &frac12;.  The duration with remedy is less than the duration with ' +
+           'placebo in ' +
+           S.toString() + ' of the pairs.  Under the strong null hypothesis, the probability ' +
+           ' of so many or more &quot;wins&quot; for the remedy is ' + tailProb + '%, as shown in ' +
+           citeFig(null,false) + '.  This is thus the <em>P</em>-value of the null hypothesis ' +
+           'for these data.</p>';
+    document.writeln(qStr);
+    qStr = 'Distribution of the number of &quot;wins&quot; for the remedy under the strong ' +
+           'null hypothesis,  ' + citeExample(xCtr-1, false);
+    writeFigureCaption(qStr);
+    qStr = '<p align="center"><applet code="HistHiLite.class" codebase="../../../Java/" ' +
+           'align="baseline" width="600" height="320" archive="PbsGui.zip">' +
+           '<param name="hiLiteLo" value="' + roundToDig(S-0.5,2) +
+           '"><param name="hiLiteHi" value="' + roundToDig(nPrime+0.5,2) + '">' +
+           '<param name="n" value="' + nPrime.toString() + '"><param name="normalControls" value="false">' +
+           '<param name="p" value=".5">You need Java to see this.</applet></p>';
+    document.writeln(qStr);
+    var appNum = (document.applets.length - 1).toString();
+    sectionContext += 'document.applets[' + appNum + '].setNP(' + nPrime.toString() + ', 0.5);\n' +
+              'document.applets[' + appNum + '].setLimits(' + roundToDig(S-0.5,2) + ', ' +
+              roundToDig(nPrime+0.5,2) + ');\n';
+// -->
+</script>
+</div>
+
+<div class="example">
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var qStr = 'Power of the sign test for paired comparisons for a shift alternative.';
+    writeExampleCaption(qStr);
+    var n = ns[1]; // ns has to be set in the previous problem!
+    var maxHrs = 8;
+    var minHrs = 2;
+    var shift = 2.2;
+    qStr = '<p>(Continues headache study.) Suppose that there were ' + cardinals[n] + ' subjects in the ' +
+           'headache study described above, giving ' + cardinals[n] + ' pairs of observations ' +
+           'as follows:</p>';
+    document.writeln(qStr);
+    var header = ['placebo','remedy'];
+    var list = new Array(2);
+    list[0] = listOfRandInts(n, minHrs+1, maxHrs+minHrs);
+    list[1] = listOfRandInts(n, 1, maxHrs);
+    var pairs = 0;
+    var S = 0;
+    for (i=0; i < n; i++) {
+        if (list[0][i] == list[1][i]) {
+            list[0][i] = list[1][i]+1;
+            S++
+        } else if (list[0][i] > list[1][i]) {
+            S++;
+        }
+    }
+    listToTable(header, list, 'transpose', 'center');
+    var sig = 0;
+    var thresh = n;
+    while (sig <= 0.05) {
+        sig += binomialPmf(n, 0.5, thresh--);
+    }
+    thresh++;
+    sig = binomialTail(n, 0.5, thresh);
+    sig = roundToDig(100*sig, 1);
+    qStr = '<p><font color="green">Find the power of a significance level ' + sig.toString() +
+           '% one-sided sign test against the alternative that the remedy ' +
+           'decreases headache duration by exactly ' + shift.toString() + ' hours for each ' +
+           'subject.</font></p>' +
+           '<p><strong>Solution</strong>. There are no ties among these pairs, so, under the strong ' +
+           ' null hypothesis, the probability distribution of the number of subjects for which ' +
+           ' headache duration with the remedy is less than headache duration with the placebo ' +
+           ' is binomial with parameters <em>n</em>= ' + n.toString() +
+           ' and <em>p</em> = &frac12;. The critical value for the number of &quot;wins&quot; ' +
+           'for the remedy for a significance level ' + sig.toString() + '% test is thus ' +
+           thresh.toString() + ', as shown in ' + citeFig(null,false) + '.</p>';
+    document.writeln(qStr);
+    qStr = 'Distribution of the number of &quot;wins&quot; for the remedy under the strong ' +
+           'null hypothesis,  ' + citeExample(xCtr-1, false);
+    writeFigureCaption(qStr);
+    qStr = '<p align="center"><applet code="HistHiLite.class" codebase="../../../Java/" ' +
+           'align="baseline" width="600" height="320" archive="PbsGui.zip">' +
+           '<param name="hiLiteLo" value="' + roundToDig(thresh-0.5,2) +
+           '"><param name="hiLiteHi" value="' + roundToDig(n+0.5,2) + '">' +
+           '<param name="n" value="' + n.toString() + '"><param name="normalControls" value="false">' +
+           '<param name="p" value=".5">You need Java to see this.</applet></p>';
+    document.writeln(qStr);
+    var appNum = (document.applets.length - 1).toString();
+    sectionContext += 'document.applets[' + appNum + '].setNP(' + n.toString() + ', 0.5);\n' +
+              'document.applets[' + appNum + '].setLimits(' + roundToDig(thresh-0.5,2) + ', ' +
+              roundToDig(n+0.5,2) + ');\n';
+    var list2 = list;
+    list = new Array(7);
+    list[0] = list2[0];
+    list[1] = roundToDig(vScalarSum(list2[0], -shift), 2);
+    list[2] = list2[1];
+    list[3] = roundToDig(vScalarSum(list2[1], shift), 2);
+    list[4] = new Array(n);
+    list[5] = new Array(n);
+    list[6] = new Array(n);
+    var altTies = 0;
+    var winWays;
+    var certainWin = 0;
+    var certainLose = 0;
+    for (var i = 0; i < n; i++) {
+        list[4][i] = 0;
+        list[5][i] = 0;
+        if (list[2][i] < list[0][i]) { // treatment wins
+            list[4][i] = 1;
+        }
+        if (list[1][i] < list[3][i]) { // treatment wins in the other assignment
+            list[5][i] = 1;
+        } else if (list[3][i] == list[1][i]) {
+            altTies++;
+        }
+        winWays = list[4][i] + list[5][i];
+        if (winWays == 0) {
+            list[6][i] = 0;
+            certainLose++;
+        } else if (winWays == 1) {
+            list[6][i] = 0.5;
+        } else if (winWays == 2) {
+            list[6][i] = 1;
+            certainWin++;
+        }
+    }
+    var nPrime = n - certainWin - certainLose;
+    var altPower = roundToDig(100*binomialTail(nPrime, 0.5, thresh-certainWin), 1);
+    header = ['control','control if treated','treated','treated if in control','remedy wins',
+              'remedy wins if reversed','P\'(remedy wins)'];
+    qStr = '<p>To find the power against the alternative that the remedy decreases the duration of ' +
+           'any headache by ' + shift.toString()  + ' hours, consider what the durations of the ' +
+           'headaches would have been had the coin tosses landed the other way: The headaches ' +
+           'treated with the remedy would have lasted ' + shift.toString() + ' hours longer, and ' +
+           'the headaches treated with the placebo would have been ' + shift.toString() +
+           ' hours shorter. ' + citeTable(null, false) + ' shows the possibilities, and whether ' +
+           'the duration with remedy is less than the duration with placebo as the experiment ' +
+           'turned out, and as it would have turned out under the alternative hypothesis had the ' +
+           'randomization of each pair given the opposite assignment of remedy and placebo.  Note that ' +
+           'for these data and this value of the shift, there will never be any ties within pairs, no ' +
+           'matter which headache is treated with the placebo and which with the remedy.';
+    document.writeln(qStr);
+    qStr = 'Headache durations under the alternative hypothesis that the remedy shortens headaches by ' +
+           minHrs.toString() + ' hours, and probability (under the alternative hypothesis) that ' +
+           'the headache treated with the remedy is shorter than the headache treated with the placebo.';
+    writeTableCaption(qStr);
+    listToTable(header, list, 'transpose', 'center');
+    var loseSubjectWord = 'subjects';
+    var winSubjectWord = 'subjects';
+    if (certainLose == 1) {
+        loseSubjectWord = 'subject';
+    }
+    if (certainWin == 1) {
+        winSubjectWord = 'subject';
+    }
+    qStr = '<p>Thus under the alternative hypothesis, for ' + certainLose.toString() + ' ' +
+           loseSubjectWord + ', the headache treated with the placebo will always be shorter, while for ' +
+           certainWin.toString() + ' ' + winSubjectWord + ', the headache treated with the remedy ' +
+           ' will always be shorter.  For the remaining ' + nPrime.toString() + ' subjects, ' +
+           'there is a 50% chance that the headache treated with the remedy will be shorter than ' +
+           'the headache treated with the placebo.  Therefore, the distribution of the number ' +
+           'of subjects for which the headache treated with the remedy is shorter is ';
+    if (certainWin > 0) {
+        qStr += 'that of a constant (' + certainWin.toString() + ') plus a ';
+    }
+    qStr += 'binomial with <em>n</em>=' + nPrime.toString() + ' and <em>p</em>=50%.  The chance under the ' +
+            'alternative hypothesis that the number of wins for the remedy is ' + thresh.toString() +
+            ' or greater is the chance that such a binomial is at least ' + (thresh-certainWin).toString() +
+            ', which is ' + altPower.toString() + '%, as shown in ' + citeFig(null, false) + '.</p>';
+    document.writeln(qStr);
+    qStr = 'Power of the sign test for the shift alternative, ' + citeExample(xCtr-1, false);
+    writeFigureCaption(qStr);
+    qStr = '<p align="center"><applet code="HistHiLite.class" codebase="../../../Java/" ' +
+           'align="baseline" width="600" height="320" archive="PbsGui.zip">' +
+           '<param name="hiLiteLo" value="' + roundToDig(thresh-certainWin-0.5,2) +
+           '"><param name="hiLiteHi" value="' + roundToDig(nPrime+0.5,2) + '">' +
+           '<param name="n" value="' + nPrime.toString() + '"><param name="normalControls" value="false">' +
+           '<param name="p" value=".5">You need Java to see this.</applet></p>';
+    document.writeln(qStr);
+    var appNum = (document.applets.length - 1).toString();
+    sectionContext += 'document.applets[' + appNum + '].setNP(' + nPrime.toString() + ', 0.5);\n' +
+              'document.applets[' + appNum + '].setLimits(' + roundToDig(thresh-certainWin-0.5,2) + ', ' +
+              roundToDig(nPrime+0.5,2) + ');\n';
+// -->
+</script>
+
+</div>
+
+<div class="example">
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var qStr = 'Power of the sign test for paired comparisons.';
+    writeExampleCaption(qStr);
+    var n = (listOfRandInts(1, 10, 20))[0];
+    var pDec = listOfRandInts(1, 6, 9)[0];
+    var p = 10*pDec;
+    pDec = pDec/10.0;
+    var sig = 0;
+    var thresh = n;
+    while (sig <= 0.05) {
+        sig += binomialPmf(n, 0.5, thresh--);
+    }
+    sig = roundToDig(100*sig, 1);
+    thresh++;
+    pow = roundToDig(100*binomialTail(n, (p+0.0)/100.0, thresh), 1);
+    qStr = '<p>Suppose we have ' + cardinals[n] + ' pairs of observations, with no ties within pairs. ' +
+           ' <font color="green">For a significance level ' + sig + '% one-sided sign test ' +
+           'against the alternative that treatment increases the response, what is the power against ' +
+           'the alternative that, in each pair, there is a ' + p.toString() + '% chance that ' +
+           'the treatment response exceeds the control response?</font></p>' +
+           '<p><strong>Solution</strong>. The critical value for the sign test is ' + thresh.toString() +
+           ', as we can see from ' + citeFig(null,false) + '.</p>';
+    document.writeln(qStr);
+    qStr = 'Null distribution of the sign test statistic for ' + citeExample(xCtr-1, false);
+    writeFigureCaption(qStr);
+    qStr = '<p align="center"><applet code="HistHiLite.class" codebase="../../../Java/" ' +
+           'align="baseline" width="600" height="320" archive="PbsGui.zip">' +
+           '<param name="hiLiteLo" value="' + roundToDig(thresh-0.5,2) +
+           '"><param name="hiLiteHi" value="' + roundToDig(n+0.5,2) + '">' +
+           '<param name="n" value="' + n.toString() + '"><param name="normalControls" value="false">' +
+           '<param name="p" value=".5">You need Java to see this.</applet></p>';
+    document.writeln(qStr);
+    var appNum = (document.applets.length - 1).toString();
+    sectionContext += 'document.applets[' + appNum + '].setNP(' + n.toString() + ', 0.5);\n' +
+              'document.applets[' + appNum + '].setLimits(' + roundToDig(thresh-0.5,2) + ', ' +
+              roundToDig(n+0.5,2) + ');\n';
+    qStr = '<p>Under the alternative hypothesis, the probability distribution of the number of ' +
+           'pairs for which treatment exceeds control is binomial with parameters <em>n</em>= ' +
+           n.toString() + ' and <em>p</em>=' + p + '%.  The probability under the alternative ' +
+           'that that number exceeds ' + thresh.toString() + ', so that the null is rejected, is ' +
+           pow + '%, as shown in ' + citeFig(null, false) + '.</p>';
+    document.writeln(qStr);
+    qStr = 'Distribution of the sign test statistic under the alternative hypothesis <em>p</em>= ' +
+           p.toString() + '% for ' + citeExample(xCtr-1, false);
+    writeFigureCaption(qStr);
+     qStr = '<p align="center"><applet code="HistHiLite.class" codebase="../../../Java/" ' +
+           'align="baseline" width="600" height="320" archive="PbsGui.zip">' +
+           '<param name="hiLiteLo" value="' + roundToDig(thresh-0.5,2) +
+           '"><param name="hiLiteHi" value="' + roundToDig(n+0.5,2) + '">' +
+           '<param name="n" value="' + n.toString() + '"><param name="normalControls" value="false">' +
+           '<param name="p" value="' + pDec.toString() + '">You need Java to see this.</applet></p>';
+    document.writeln(qStr);
+    var appNum = (document.applets.length - 1).toString();
+    sectionContext += 'document.applets[' + appNum + '].setNP(' + n.toString() + ', ' + pDec.toString() +
+              ');\n' +
+              'document.applets[' + appNum + '].setLimits(' + roundToDig(thresh-0.5,2) + ', ' +
+              roundToDig(n+0.5,2) + ');\n';
+
+// -->
+</script>
+
+</div>
+
+<p>
+    Like the Wilcoxon rank sum test, the sign test also makes sense in some population
+    models, not just the randomization model.
+    With suitable restrictions, the critical values are the same, and one can calculate
+    the power against various alternatives.
+</p>
+
+<p>
+    Suppose we draw <em>n</em> pairs of subjects from a population of pairs, and assign one
+    from each pair to treatment and one to control, at random with probability &frac12;,
+    independently across pairs.
+    Let <em>X</em><sub><em>j</em></sub> denote the response of the subject assigned to
+    control from the <em>j</em>th pair, and let  <em>Y</em><sub><em>j</em></sub> denote the
+    response of the subject assigned to treatment from the <em>j</em>th pair.
+    The pairs {(<em>X</em><sub><em>j</em></sub>, <em>Y</em><sub><em>j</em></sub>): 1 &le; <em>j</em>
+    &le; <em>n</em>} are identically distributed.
+    Following Lehmann's notation, define
+</p>
+
+<p align="center">
+    M(<em>x</em>,<em>y</em>) = P(<em>X</em><sub><em>j</em></sub> &le; <em>x</em> and
+                                <em>Y</em><sub><em>j</em></sub> &le; <em>y</em>).
+</p>
+
+<p>
+    Let <em>Z</em><sub><em>j</em></sub> = <em>Y</em><sub><em>j</em></sub>&minus;<em>X</em><sub><em>j</em></sub>.
+    The random sampling assumption implies that {<em>Z</em><sub><em>j</em></sub>} are
+    identically disributed.
+    Let <em>F</em><sub>Z</sub> denote their common cdf.
+    If there is no treatment effect, <em>X</em><sub><em>j</em></sub> and <em>Y</em><sub><em>j</em></sub>
+    are exchangeable, so the distribution of <em>Z</em><sub><em>j</em></sub> is the same
+    as the distribution of &minus;<em>Z</em><sub><em>j</em></sub>.
+    That is, under the hypothesis that treatment has no effect, <em>F</em><sub>Z</sub>(<em>z</em>) =
+    1 &minus; <em>F</em><sub>Z</sub>(&minus;<em>z</em>): the distribution of <em>Z</em><sub><em>j</em></sub>
+    is symmetric about zero.
+    If treatment tends to increase the response, the distribution of <em>Z</em><sub><em>j</em></sub>
+    will favor positive values.
+</p>
+
+<p>
+    Suppose the population of pairs is large enough compared with <em>n</em>
+    that we can neglect the fact that the sample of <em>n</em> pairs is drawn without replacement,
+    so that the pairs are effectively iid, not just identically distributed.
+    Then {<em>Z</em><sub><em>j</em></sub>} are also iid.
+    This is the <em>population model</em>; the null hypothesis is that the distribution
+    of the <em>Z</em><sub><em>j</em></sub> is symmetric about zero; the alternative hypothesis
+    is that it favors positive values.
+    Suppose that <em>F</em><sub>Z</sub> is continuous so that the probability that
+    <em>Z</em><sub><em>j</em></sub>=0 is 0.
+    Then, under the null hypothesis,
+</p>
+
+<p align="center">
+    P(<em>Z</em><sub><em>j</em></sub> &gt; 0) = P(<em>Z</em><sub><em>j</em></sub> &lt; 0 ) = &frac12;.
+</p>
+
+<p>
+    The <em>Z</em><sub><em>j</em></sub>'s are independent, so the null probability distribution
+    of the number of strictly positive <em>Z</em><sub><em>j</em></sub>'s is binomial with
+    parameters <em>n</em> and &frac12;.
+    Under the alternative that the probability that <em>Z</em><sub><em>j</em></sub>&gt;0
+    is larger than &frac12;, the number of positive <em>Z</em><sub><em>j</em></sub>'s
+    will tend to be larger;
+    its probability distribution is binomial with parameters <em>n</em> and
+    <em>p</em>=1&minus;<em>F</em><sub>Z</sub>(0)&gt;&frac12;.
+    Thus the sign test derived above is applicable; the power of the test is clearly
+    monotone in <em>p</em>, so the test is unbiased against alternatives <em>p</em>&gt;&frac12;.
+    In the shift model <em>F</em><sub>Z</sub>(<em>z</em>) =
+    <em>F</em><sub>0</sub>(<em>z</em>&minus;<em>d</em>),
+    where <em>F</em><sub>0</sub> is the cdf of a continuous distribution that is symmetric about zero,
+    the level <em>a</em> sign test of the hypothesis that the distribution of the <em>Z</em>'s
+    is symmetric about zero against the alternative that positive values are favored is also a
+    level <em>a</em> test of the null hypothesis <em>d</em>&le;0 against the
+    alternative <em>d</em>&gt;0.
+</p>
+
+<p>
+    The number of positive <em>Z</em><sub><em>j</em></sub> also has a binomial
+    distribution with parameters <em>n</em> and &frac12; in other situations,
+    for example, when the <em>Z</em><sub><em>j</em></sub>'s are independent,
+    not necessarily identically distributed, but each has probability &frac12; of being
+    positive or negative (for example, each has a probability distribution that
+    is symmetric about zero).
+    Then the sign test is a level <em>a</em> test of the null hypothesis against the
+    alternative that the distributions of the <em>Z</em><sub><em>j</em></sub>'s favor
+    positive values.
+    See Divenyi, Stark and Haupt, 2005. Decline of Speech Understanding and
+    Auditory Thresholds in the Elderly, <em>J. Acoustical Soc. Am.</em>, <em>118</em>,
+    1089&ndash;1100, for examples.
+</p>
+
+
+<p>
+    Note that the kinds of violations of the null hypothesis that the sign test is sensitive to
+    are those for which the median is positive&mdash;other violations of symmetry
+    result in power equal to the significance level.
+</p>
+
+<p>
+    As before, when ties are possible, the null distribution of the number of
+    strictly positive <em>Z</em><sub><em>j</em></sub>'s given the number of zero
+    <em>Z</em><sub><em>j</em></sub>'s is binomial with parameters <em>n</em>&minus;(#ties) and
+    &frac12;, so we can use the same approach we used for the Wilcoxon rank sum test
+    to get conditional tests in the presence of ties.
+</p>
+
+<p>
+    The sign test also can be used to test hypotheses about the median of a continuous distribution
+    from iid observations {<em>Z</em>'<sub>j</em></sub>: 1 &le; <em>j</em> &le; <em>n</em>},
+    because then the variables <em>Z</em><sub>j</em></sub> = <em>Z</em>'<sub>j</em></sub> &minus; <em>d</em>
+    are iid with P(<em>Z</em><sub>j</em></sub> &lt; 0) = P(<em>Z</em><sub>j</em></sub> &gt;0) if
+    <em>d</em> is their median.
+    This is essentially a special case of the approach we used to find confidence
+    intervals for quantiles from iid observations.
+</p>
+
+<h3>The Wilcoxon Signed-Rank Test</h3>
+
+<p>
+    The sign test ignores all information but the signs of the differences between
+    treatment and control.
+    That allows the pairs to be completely different from each other.
+    When there is some homogeneity across pairs, it can help to retain some
+    quantitative information about the response: the difference between
+    the control and treatment responses for each pair, or at least the
+    rank of the difference.
+    Suppose there are <em>n</em> pairs of subjects, as before, with one member of
+    each pair assigned to treatment and one to control, at random, with probability
+    50%, independently across pairs.
+    We are interested in the alternative hypothesis that treatment increases the
+    response.
+    Let <em>t</em> be the number of pairs for which the treatment response
+    &quot;wins&quot;&mdash;exceeds the control response&mdash;and let
+    <em>c</em>&nbsp;=&nbsp;<em>n</em>&minus;<em>t</em> denote the number of wins for
+    control.
+    For the moment, we assume that there are no ties among the differences,
+    and that none of the differences is zero.
+    We rank the response differences by absolute value, then give each
+    rank the sign of the corresponding difference.
+    Let <em>R</em><sub>1</sub> &lt; <em>R</em><sub>2</sub> &lt;
+    &hellip;<em>R</em><sub><em>c</em></sub> be the ranks with
+    negative signs, and let <em>S</em><sub>1</sub> &lt; <em>S</em><sub>2</sub> &lt;
+    &hellip;&lt;&nbsp;<em>S</em><sub><em>t</em></sub> be the ranks with
+    positive signs.
+    Then
+</p>
+
+<p class="math">
+    {<em>R</em><sub>1</sub>, <em>R</em><sub>2</sub>,
+        &hellip;<em>R</em><sub><em>c</em></sub>,
+        <em>S</em><sub>1</sub>, <em>S</em><sub>2</sub>, &hellip;,
+        <em>S</em><sub><em>t</em></sub> } = {1, 2, &hellip;, <em>n</em>}.
+</p>
+
+<p>
+    There are 2<sup><em>n</em></sup> possible sign combinations for the ranks,
+    &plusmn;1, &plusmn;2, &hellip;, &plusmn;<em>n</em>.
+    Specifying a combination of signs is equivalent to listing the positive-signed
+    ranks {<em>S</em><sub>1</sub>, <em>S</em><sub>2</sub>, &hellip;,
+        <em>S</em><sub><em>t</em></sub> }.
+    If treatment has no effect, the <em>rank</em> of the response difference
+    of each pair is fixed, but the <em>signs</em> of the response differences
+    are iid, positive with probability &frac12; and negative with probability &frac12;.
+    Under the null hypothesis, each of the 2<sup><em>n</em></sup> assignments
+    of signs is equally likely; each corresponds to a number
+    <em>N</em><sub>+</sub> = <em>x</em> &le;<em>n</em> of
+    positive differences, and a subset {<em>S</em><sub>1</sub>, &hellip;,
+    <em>S</em><sub>x</sub>} of <em>x</em> of the <em>n</em> ranks.
+    Thus, under the strong null hypothesis,
+</p>
+
+<p class="math">
+    P(<em>N</em><sub>+</sub> = <em>x</em>; <em>S</em><sub>1</sub>=<em>s</em><sub>1</sub>,
+        <em>S</em><sub>2</sub>=<em>s</em><sub>2</sub>, &hellip;,
+        <em>S</em><sub><em>x</em></sub>=<em>s</em><sub><em>x</em></sub> ) =
+        1/2<sup><em>n</em></sup>.
+</p>
+
+<p>
+    On the other hand, if treatment tends to increase the response, we would expect more
+    and larger treatment differences to be positive.
+    That is, we would expect
+</p>
+
+<p class="math">
+    <em>V</em><sub><em>s</em></sub> = <em>S</em><sub>1</sub> +
+        <em>S</em><sub>2</sub> +  &hellip; +
+        <em>S</em><sub><em>t</em></sub>
+</p>
+
+<p>
+    to be large.
+    Note that under the strong null hypothesis, <em>t</em> is random.
+    The test statistic <em>V</em><sub><em>s</em></sub> leads to the
+    Wilcoxon signed rank test:  reject the strong null hypothesis if
+    <em>V</em><sub><em>s</em></sub> &ge; <em>C</em>, where <em>C</em>
+    is chosen so that the test has the right significance level.
+    The critical values for the Wilcoxon signed rank test are not the
+    same as the critical values for the Wilcoxon rank sum test.
+</p>
+
+<div class="example">
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var qStr = 'The Wilcoxon Signed Rank Test, <em>N</em>=3.';
+    writeExampleCaption(qStr);
+// -->
+</script>
+
+<p>
+    When there are three pairs of subjects, the possible ranks of the absolute
+    values of the three treatment differences are {1, 2, 3}, and the possible
+    signed ranks are {&plusmn;1, &plusmn;2, &plusmn;3}.
+    Table
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    citeTable();
+// -->
+</script>
+    shows all 2<sup>3</sup>=8 possible signed rank combinations, and the
+    corresponding values of the sum of the positive signed ranks.
+</p>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var qStr = 'Possible signed ranks and values of the sum of the positive signed ' +
+               'ranks, <em>N</em>=3';
+    writeTableCaption(qStr);
+    var header = ['Signed ranks', 'v (sum of positive ranks)'];
+    var data = new Array(2);
+    data[0] = new Array(8);
+    data[1] = new Array(8);
+    data[0] = ['-1, -2, -3', '1, -2, -3', '-1, 2, -3', '-1, -2, 3',
+               '1, 2, -3',   '1, -2, 3',  '-1, 2, 3',  '1, 2, 3'];
+    data[1] = [0, 1, 2, 3, 3, 4, 5, 6];
+    listToTable(header,data,"standard","center");
+// -->
+</script>
+
+<p>
+    Under the strong null hypothesis, all 8 assignments of signed ranks are
+    equally likely, so the chance of each is 1/8.
+    The null distribution of the sum of the positive signed ranks is therefore
+    the distribution in table
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    citeTable();
+// -->
+</script>.
+</p>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var qStr = 'Null distribution of the sum of positive signed ranks, <em>N</em>=3';
+    writeTableCaption(qStr);
+    var header = ['V', 'P(V=v)'];
+    var data = new Array(2);
+    data[0] = new Array(8);
+    data[1] = new Array(8);
+    data[0] = [0, 1, 2, 3, 4, 5, 6];
+    data[1] = ['1/8', '1/8', '1/8', '1/4', '1/8', '1/8', '1/8'];
+    listToTable(header,data,"transpose","center");
+// -->
+</script>
+
+<p>
+    Thus to test the null hypothesis at significance level 12.5% against the
+    alternative that treatment increases the response, we would reject
+    if <em>V</em>&nbsp;=&nbsp;6.
+</p>
+</div>
+
+<p>
+    The Wilcoxon signed rank test tends to be more powerful than the sign test.
+    Critical values are in Lehmann (1998); they can also be estimated by
+    simulation.
+    There is a normal approximation as well: under the strong null hypothesis,
+</p>
+
+<p class="math">
+    <strong>E</strong>(<em>V</em>) = <em>N</em>(<em>N</em>+1)/4;
+    Var(<em>V</em>) = <em>N</em>(<em>N</em>+1)(2<em>N</em>+1)/24.
+</p>
+
+<p>
+    See Lehmann (1998).
+    The Wilcoxon signed rank test can be extended to allow for ties by using midranks
+    rather than ranks; the null distribution of the test statistic then depends
+    on the configuration of ties, as it does for the Wilcoxon rank sum test and the
+    sign test.
+    Simulation is straightforward.
+    Here is sample code in R:
+</p>
+
+<div class="code">
+<p>
+<pre>
+        midRanks <- function(x) {
+        # P.B. Stark, 10/5/05.  statistics.berkeley.edu/~stark
+        #
+        # calculates vector of midranks
+            sapply(x, function(z){(sum(x <= z) + sum(x < z) + 1)/2});
+        }
+
+        signedRankSum <- function(x,y) {
+        # P.B. Stark, 10/5/05.  statistics.berkeley.edu/~stark
+        #
+        # signed rank sum for control responses x and treatment
+        # responses y.
+        # Calls midRanks().
+            r <- midRanks(abs(y-x));
+            sum(r[(y-x)>0]);
+        }
+
+        wilcoxonSignedRankSim <- function(x, y, iter) {
+        # P.B. Stark, 10/5/05.  statistics.berkeley.edu/~stark
+        #
+        # simulated one-sided P-value for the Wilcoxon signed rank
+        # test using midranks.
+        #
+        # x: vector of control responses
+        # y: vector of treatment responses
+        # iter: number of replications
+        #
+        # Calls midRanks()
+            r <- midRanks(abs(y-x));
+            v <- sum(r[(y-x) > 0]);
+            sum(replicate(iter, sum(r[runif(x) > 0.5])) >= v)/iter
+        }
+</pre>
+</p>
+</div>
+
+<h3>Combining dissimilar blocks of homogeneous subjects</h3>
+
+<p>
+    We have been working with pairs, which are the finest-grained blocks
+    possible.
+    Pairing is helpful when the population is extremely heterogeneous;
+    it lets us control for differences that might influence the effect
+    of treatment, provided we can find pairs of individuals who are
+    similar with respect to those differences.
+    Earlier (in the discussion that led to the Wilcoxon rank sum test),
+    we assumed that individuals were homogeneous.
+    Between these two extremes, we might have dissimilar blocks of homogeneous
+    individuals, which we consider here.
+</p>
+
+<p>
+    Suppose we have <em>b</em> blocks.
+    The <em>j</em>th block contains <em>N</em><sub><em>j</em></sub> subjects.
+    Of those, <em>n</em><sub><em>j</em></sub> are assigned at random to
+    treatment, and the remaining
+    <em>m</em><sub><em>j</em></sub> = <em>N</em><sub><em>j</em></sub> &minus;
+    <em>n</em><sub><em>j</em></sub> are assigned to control.
+    There are
+</p>
+
+<p class="math">
+    <em>N</em> = <em>N</em><sub>1</sub> + <em>N</em><sub>1</sub> +
+    &hellip; <em>N</em><sub><em>b</em></sub>
+</p>
+
+<p>
+    subjects in all, of which
+</p>
+
+<p class="math">
+    <em>n</em> = <em>n</em><sub>1</sub> + <em>n</em><sub>1</sub> +
+    &hellip; <em>n</em><sub><em>b</em></sub>
+</p>
+
+<p>
+    are assigned at random (within blocks) to treatment and
+</p>
+
+<p class="math">
+    <em>m</em> = <em>m</em><sub>1</sub> + <em>m</em><sub>1</sub> +
+    &hellip; <em>m</em><sub><em>b</em></sub>
+</p>
+
+<p>
+    are assigned to control.
+    In this scheme, there are
+</p>
+
+<p class="math">
+    <em>N</em><sub>assign</sub> = <sub><em>N</em><sub>1</sub></sub>C<sub><em>n</em><sub>1</sub></sub>
+    &times;
+    <sub><em>N</em><sub>2</sub></sub>C<sub><em>n</em><sub>2</sub></sub> &times;
+    &hellip; &times;
+    <sub><em>N</em><sub><em>b</em></sub></sub>C<sub><em>n</em><sub><em>b</em></sub></sub>
+</p>
+
+<p>
+    equally likely possible assignments of subjects to treatment and control.
+    To allow for heterogeneity across blocks, but combine evidence from different
+    blocks, we could calculate the Wilcoxon rank sum statistic separately for
+    each block, then form a weighted sum of the statistics across blocks.
+    Let <em>W</em><sub><em>j</em></sub> be the Wilcoxon rank sum calculated
+    for block <em>j</em> by itself.
+    One choice of test statistics for the collection of blocks is
+</p>
+
+<p class="math">
+    <em>W</em> = <em>W</em><sub>1</sub>/(<em>N</em><sub>1</sub>+1) +
+                 <em>W</em><sub>2</sub>/(<em>N</em><sub>2</sub>+1) +
+                 &hellip; +
+                 <em>W</em><sub><em>b</em></sub>/(<em>N</em><sub><em>b</em></sub>+1).
+</p>
+
+<p>
+    This choice downweights blocks with larger numbers of subjects.
+    The null distribution of this statistic can be calculated using the fact that
+    under the null hypothesis, the <em>N</em><sub>assign</sub> assignments of ranks
+    are equally likely;
+    alternatively, the null distribution can be simulated using random sampling.
+</p>
+
+<h3>More than two treatments: the Kruskal-Wallis Test</h3>
+
+<p>
+    Suppose there are <em>s</em> mutually exclusive categories, and let
+</p>
+
+<p class="math">
+    <em>n</em> = <em>n</em><sub>1</sub> + <em>n</em><sub>2</sub> + &hellip; +
+    <em>n</em><sub><em>s</em></sub>.
+</p>
+
+<p>
+    How many ways can the <em>n</em> objects be placed into the <em>s</em> categories, so
+    that <em>n</em><sub>1</sub> are assigned to cetegory 1, <em>n</em><sub>2</sub>
+    are assigned to category 2, etc.?
+    There are <sub><em>n</em></sub>C<sub><em>n</em><sub>1</sub></sub> ways of
+    selecting <em>n</em><sub>1</sub> of the objects to assign to the first category;
+    once that is done, there are
+    <sub><em>n</em>&minus;<em>n</em><sub>1</sub></sub>C<sub><em>n</em><sub>2</sub></sub>
+    ways of selecting <em>n</em><sub>2</sub> of the remaining
+    <em>n</em>&minus;<em>n</em><sub>1</sub> objects to assign to the second category,
+    and so on.
+    Finally, only <em>n</em><sub><em>s</em></sub> objects remain for the
+    <em>s</em>th category.
+    The total number of possible assignments is thus
+</p>
+
+<p class="math">
+    <sub><em>n</em></sub>C<sub><em>n</em><sub>1</sub>,<em>n</em><sub>2</sub>,&hellip;,
+    <em>n</em><sub><em>s</em></sub></sub> =
+    <sub><em>n</em></sub>C<sub><em>n</em><sub>1</sub></sub> &times;
+    <sub><em>n</em>&minus;<em>n</em><sub>1</sub></sub>C<sub><em>n</em><sub>2</sub></sub> &times;
+    &hellip; &times;
+    <sub><em>n</em>&minus;<em>n</em><sub>1</sub>&minus;<em>n</em><sub>2</sub>
+    &minus; &hellip;&minus;
+    <em>n</em><sub><em>s</em>&minus;1</sub></sub>C<sub><em>n</em><sub><em>s</em></sub></sub>
+    =
+    <em>n</em>!/(<em>n</em><sub>1</sub>!<em>n</em><sub>2</sub>!
+      &hellip;&nbsp;<em>n</em><sub><em>s</em></sub>!)
+</p>
+
+<p>
+    This is the <em>multinomial coefficient</em>.
+</p>
+
+<p>
+    Suppose we wish to compare <em>s</em> different treatments using <em>n</em> subjects.
+    We select <em>n</em><sub>1</sub> at random and assign them to the first treatment;
+    we select <em>n</em><sub>2</sub> at random and assign them to the second treatment,
+    and so on.
+    Suppose that there are no ties among the responses.
+    Under the strong null hypothesis that all the treatments are the same,
+    all <sub><em>n</em></sub>C<sub><em>n</em><sub>1</sub>,<em>n</em><sub>2</sub>,
+    &hellip;&nbsp;,
+    <em>n</em><sub><em>s</em></sub></sub> assignments of the <em>n</em> ranks among the
+    treatments are equally likely.
+</p>
+
+<p>
+    Consider the ranks of the pooled responses, and suppose for the moment that there
+    are no ties (we will generalize to midranks presently).
+    Let <em>R</em><sup><em>j</em></sup> denote the mean of the ranks of the responses
+    to treatment <em>j</em>.
+    Under the null hypothesis, the expected value of <em>R</em><sup><em>j</em></sup>
+    is the average of all the ranks (if there are no tied observations, this is
+    (<em>n</em>+1)/2; more generally, the expected mean rank for each treatment is the
+    average of the midranks of the pooled responses).
+    Let <em>r</em> denote this expected value.
+    We can test the null hypothesis using a weighted sum of squares of the
+    deviations of the treatment mean ranks from their expected value:
+</p>
+
+<p class="math">
+    <em>K</em> = <big>(</big>12/(<em>n</em>(<em>n</em>+1))<big>)</big>
+                 <big>(</big>
+                 <em>n</em><sub>1</sub>(<em>R</em><sup>1</sup>&minus;<em>r</em>)<sup>2</sup>
+                 + <em>n</em><sub>2</sub>(<em>R</em><sup>2</sup>&minus;<em>r</em>)<sup>2</sup>
+                 + &hellip;;
+                 + <em>n</em><sub><em>s</em></sub>(<em>R</em><sup><em>s</em></sup>&minus;<em>r</em>)<sup>2</sup>
+                 <big>)</big>.
+</p>
+
+<p>
+    We reject the null hypothesis if <em>K</em>&ge;<em>C</em>, where <em>C</em> is chosen
+    to get the right significance level.
+    If there are no ties, under the null hypothesis <em>K</em> converges in distribution
+    to a chi-square random variable with <em>s</em>&minus;1 degrees of freedom as
+    <em>n</em><sub>1</sub>,&hellip;,<em>n</em><sub><em>s</em></sub> grow.
+    If there are ties, a different definition is usually used; see Lehmann (1998).
+</p>
+
+<p>
+    Here is R code to simulate the null distribution of <em>K</em> computed using midranks.
+</p>
+
+<div class="code">
+<p>
+<pre>
+        kruskalWallisSim <- function(x, iter) {
+        # P.B. Stark, 10/5/05.  statistics.berkeley.edu/~stark
+        #
+        # Simulated P-value for the Kruskal-Wallis test using midranks.
+        # Does not normalize the Kruskal-Wallis statistic.
+        #
+        # Calls midRanks()
+        #
+        # x: list of arrays of observed responses. The number
+        #    of arrays is the number of treatments.
+        # iter: number of iterations in the simulation
+        #
+            names(x) <- 1:length(x);
+            resp <- stack(x);
+            resp[,1] <- midRanks(resp[,1]);
+            resp[,2] <- factor(resp[,2]);
+            exRank <- mean(resp[,1]);          # expected mean rank for each treatment
+            sqComp <- function(z){length(z)*(mean(z)-exRank)^2}
+            ts <- sum(tapply(resp[,1],resp[,2],sqComp))
+            sum(replicate(iter,(sum(tapply(sample(resp[,1]),resp[,2],sqComp))>=ts)))/iter;
+        }
+</pre>
+</p>
+</div>
+
+<div class="example">
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var qStr = 'The Kruskal-Wallis statistic, <em>s</em>=3, ' +
+               '<em>n</em><sub><em>j</em></sub>=6.  Comparing car waxes.';
+    writeExampleCaption(qStr);
+// -->
+</script>
+
+<p>
+    We want to compare two car waxes and control (no wax).
+    We have 6 new cars.
+    We select two at random to get wax A, two at random to get wax B, and
+    leave two unwaxed.
+    After a year, a judge who does not know which car received which treatment
+    ranks the finishes of the cars.
+    The ranks are as shown in table
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    citeTable();
+// -->
+</script>
+</p>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var header = ['treatment','ranks'];
+    var list = [['no wax','wax A','wax B'], ['1, 3', '2, 6', '4, 5']];
+    qStr = 'Rankings of the finishes of the 6 cars after a year';
+    writeTableCaption(qStr);
+    listToTable(header, list, 'transpose', 'center');
+// -->
+</script>
+
+<p>
+    There are <sub>6</sub>C<sub>2,2,2</sub> = 90 possible assignments of the 6
+    cars among the 3 treatments with 2 cars per treatment.
+    The average rank&mdash;which is the expected mean rank in each treatment under the
+    null hypothesis&mdash;is <em>r</em>=3&frac12;.
+</p>
+
+<p class="math">
+    <em>K</em> = (12/(6&times;7)) &times; <big>(</big>
+                2(2 &minus; 3&frac12;)<sup>2</sup> +
+                2(4 &minus; 3&frac12;)<sup>2</sup> +
+                2(4&frac12; &minus; 3&frac12;)<sup>2</sup> <big>)</big> = 2.
+</p>
+
+<p>
+    We could find the <em>P</em>-value for these data by enumerating the value of
+    <em>K</em> for all 90 assignments; because the number of subjects assigned to each
+    treatment is the same, there are lots of symmetries that reduce the work.
+    Because the three treatments all have the same number of subjects, each assignment
+    corresponds to 3! arrangements of the subjects that have the same value of the
+    test statistic and the same probability under the null hypothesis.
+    Thus we need consider only 90/6=15 arrangements, as shown in Table
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    citeTable();
+// -->
+</script>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var header = ['Outcome','1','2','3','4','5','6','7','8','9','10',
+                  '11','12','13','14','15'];
+    var list = [['treatment 1','treatment 2','treatment 3','<em>K</em>'],
+                ['1, 2', '3, 4', '5, 6', '4.57'],
+                ['1, 2', '3, 5', '4, 6', '3.71'],
+                ['1, 2', '3, 6', '4, 5', '3.43'],
+                ['1, 3', '2, 4', '5, 6', '3.71'],
+                ['1, 3', '2, 5', '4, 6', '2.57'],
+                ['1, 3', '2, 6', '4, 5', '2'   ],
+                ['1, 4', '2, 3', '5, 6', '3.43'],
+                ['1, 4', '2, 5', '3, 6', '1.14'],
+                ['1, 4', '2, 6', '3, 5', '0.86'],
+                ['1, 5', '2, 3', '4, 6', '2'],
+                ['1, 5', '2, 4', '3, 6', '0.86'],
+                ['1, 5', '2, 6', '3, 4', '0.29'],
+                ['1, 6', '2, 3', '4, 5', '1.14'],
+                ['1, 6', '2, 4', '3, 5', '0.29'],
+                ['1, 6', '2, 5', '3, 4', 0]
+               ];
+    qStr = 'Rank assignments corresponding to possible values of the Kruskal-Wallis ' +
+           'statistic';
+    writeTableCaption(qStr);
+    listToTable(header, list, 'standard', 'center');
+// -->
+</script>
+
+<p>
+    In 8 of the 15 equally-likely outcomes, <em>K</em>&ge;2, so the exact
+    <em>P</em>-value for these data is 8/15&nbsp;=&nbsp;0.533.
+    The approximate <em>P</em>-value found using the R code above, with 10,000
+    iterations, is 0.533.
+    The chi-square approximation to the <em>P</em>-value, using <em>df</em>=2,
+    is 0.368.
+</p>
+
+</div>
+
+
+
+
+
+<h3>Other topics</h3>
+
+<p>
+        2 &times; <em>t</em> contingency tables: See Lehmann (1998).
+</p>
+
+</form>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    writeMiscFooter(false);
+// -->
+</script>
+</body>
+</html>

@@ -1,0 +1,985 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:pref="http://www.w3.org/2002/Math/preference"
+      pref:renderer="css">
+
+<head>
+<script language="JavaScript1.4" type="text/javascript"><!--
+        pageModDate = "Thursday 21 February 2008 10:00 PST";
+        // copyright 1997-2008 by P.B. Stark, statistics.berkeley.edu/~stark.
+    // All rights reserved.
+// -->
+</script>
+
+
+<script language="JavaScript1.4" type="text/javascript" src="../../../Java/irGrade.js">
+</script>
+<script language="JavaScript1.4" type="text/javascript"><!--
+    var cNum = "240.5";
+    writeChapterHead('SeEd',cNum,'Statistics 240 Notes, part 5',false,'../../../SticiGui/',false);
+// -->
+</script>
+</head>
+
+<body onload="setApplets()" onunload="killApplets()">
+<script language="JavaScript1.4" type="text/javascript"><!--
+//    writeChapterNav('../..');
+    writeChapterTitle();
+// -->
+</script>
+<noscript>
+    You need a browser that supports JavaScript and Java to use this site,
+    and you must enable JavaScript and Java in your browser.
+</noscript>
+
+<meta HTTP-EQUIV="expires" CONTENT="0">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<form method="post">
+
+<h2>The population model</h2>
+
+<p>
+    Reference:
+    Lehmann, E.L. (1998). <em>Nonparametrics: Statistical Methods Based on Ranks</em>,
+    Prentice Hall, Upper Saddle River, NJ.
+</p>
+
+<p>
+    So far, we have been considering the subjects to be a given collection
+    of <em>N</em> individuals, assigned at random to
+    treatment and control.
+    This leads to simple probability calculations under the strong null hypothesis,
+    because the only source of randomness is in the assignment, which behaves like a simple
+    random sample of size <em>n</em> from a fixed population of <em>N</em> subjects.
+    However, conclusions about the effect of treatment apply only to the <em>N</em>
+    subjects studied.
+    If we wish to generalize beyond these <em>N</em> to a larger population
+    (which is often the goal), we need to know how the subjects
+    in the study are related to that larger population.
+</p>
+
+<p>
+    In this chapter we consider what happens if the <em>N</em> subjects are
+    themselves a simple random sample from that larger &quot;parent&quot; population.
+    We shall assume that the larger population is much much larger than <em>N</em>.
+    Of the <em>N</em> subjects drawn from the parent population, a random
+    sample of size <em>n</em> is assigned to
+    treatment, and the other <em>m</em> = <em>N</em>&minus;<em>n</em> are assigned to
+    control.
+    As before, let {<em>Y</em><sub>1</sub>, &hellip; , <em>Y</em><sub><em>n</em></sub>}
+    denote the responses of the subjects assigned to treatment and let
+    {<em>X</em><sub>1</sub>, &hellip; , <em>X</em><sub><em>m</em></sub>}
+    denote the responses of the subjects assigned to control.
+    Because the subjects are drawn at random from the parent population, the probability
+    distribution of the responses of the treated subjects is the same, as is the
+    probability distribution of the responses of the control subjects.
+</p>
+
+<p>
+    The responses are not strictly independent because the subjects are drawn
+    without replacement from the larger population, but if the larger population
+    is large enough compared to
+    <em>N</em>, it is reasonable to treat the responses as if they were independent.
+    Under this assumption, we have the <em>population model</em> for comparing
+    two treatments.
+</p>
+
+<p>
+    Let <em>F</em><sub>X</sub> denote the cumulative distribution function
+    (cdf) of the control responses and let <em>F</em><sub>Y</sub> denote the
+    cdf of the treatment responses.
+    The strong null hypothesis in this context is that
+    <em>F</em><sub>X</sub>=<em>F</em><sub>Y</sub>.
+    A weaker null hypothesis is that <strong>E</strong><em>X</em>=<strong>E</strong><em>Y</em>,
+    that is, that
+    the expected values of the two distributions are the same.
+    If <em>F</em><sub>X</sub> and <em>F</em><sub>Y</sub> are continuous distributions
+    then the probability of ties among the data is zero.
+</p>
+
+<p>
+    Let <em>N</em>=<em>n</em>+<em>m</em>.
+    Suppose {<em>X</em><sub>1</sub>, &hellip; , <em>X</em><sub><em>m</em></sub>,
+    <em>Y</em><sub>1</sub>, &hellip; , <em>Y</em><sub><em>n</em></sub>} are
+    independent, identically distributed continuous random variables, and let
+    {<em>S</em><sub>1</sub>, &hellip; , <em>S</em><sub><em>n</em></sub>} be the ranks
+    of the <em>Y</em>'s among the <em>N</em> variables.
+    Then for any subset {<em>s</em><sub>1</sub>, &hellip; , <em>s</em><sub><em>n</em></sub>}
+    of size <em>n</em> of the integers {1, 2, &hellip; , <em>N</em>},
+</p>
+
+<p class="math">
+    P(<em>S</em><sub>1</sub> = <em>s</em><sub>1</sub>, <em>S</em><sub>2</sub> = <em>s</em><sub>2</sub>,
+    &hellip; , <em>S</em><sub><em>n</em></sub> = <em>s</em><sub><em>n</em></sub>) =
+    1/(<sub><em>N</em></sub>C<sub><em>n</em></sub>).
+</p>
+
+<p>
+    For a proof, see Lehmann (1998, p.&nbsp;58).
+    The crucial idea is that under the strong null hypothesis, the distribution of all
+    <em>N</em> variables is symmetric, so the <em>n</em> ranks
+    {<em>s</em><sub>1</sub>, &hellip; , <em>s</em><sub><em>n</em></sub>}
+    are equally likely to be the ranks of any <em>n</em> of the <em>N</em> variables.
+</p>
+
+<p>
+    Thus all the results about the null distribution of rank-based statistics (such as the
+    Wilcoxon rank-sum)
+    derived for the randomization model also apply to the population model under the
+    assumption of random sampling and random assignment, provided the parent population
+    is sufficiently large and the distribution of the data is continuous.
+    The resulting tests remain nonparametric: the significance levels do not depend on
+    the form of <em>F</em>=<em>F</em><sub>X</sub>=<em>F</em><sub>Y</sub>.
+</p>
+
+<p>
+    When the distribution of the data is not continuous, and the probability of
+    ties among the data is greater than zero, the null distribution of the mid-ranks indeed
+    depends on <em>F</em>=<em>F</em><sub>X</sub>=<em>F</em><sub>Y</sub>, because
+    <em>F</em> determines the null probability of tied observations.
+    If we condition on the list of midranks, however, the conditional distribution
+    of the allocation of midranks to treatment and control is the same as it is
+    for the randomization model, so we can construct tests at conditional
+    significance levels using the same computations as before.
+    The unconditional significance level of such tests is a weighted average of
+    the conditional significance levels, because if {<em>A</em><sub><em>j</em></sub>: <em>j</em>=1,
+    &hellip; , <em>K</em>} is a partition of the whole outcome space, then
+    for any event <em>A</em> (and in particular the event that we commit a type I error),
+</p>
+
+<p class="math">
+    P(<em>A</em>) = P(<em>A</em><sub>1</sub>)&times;P(<em>A</em>|<em>A</em><sub>1</sub>) +
+    P(<em>A</em><sub>2</sub>)&times;P(<em>A</em>|<em>A</em><sub>2</sub>) + &hellip; +
+    P(<em>A</em><sub><em>K</em></sub>)&times;P(<em>A</em>|<em>A</em><sub><em>K</em></sub>).
+</p>
+
+<p>
+    The unconditional significance level is thus between the smallest and largest
+    conditional significance levels, but it depends on unknown properties of
+    the population distribution <em>F</em>, because the configuration of ties determines
+    the conditional significance levels that are attainable.
+    If there are few observations, a large proportion of which are tied,
+    only large (conditional) significance levels are attainable.
+    The set of attainable conditional significance levels tends to get denser as
+    the sample sizes <em>m</em> and <em>n</em> increase, making it possible to get more
+    nearly unconditional tests.
+    The conditional significance levels are asymptotically unconditional
+    as <em>m</em> and <em>n</em> both increase.
+</p>
+
+<p>
+    The population model can be used to test the hypothesis that
+    <em>F</em><sub>X</sub>=<em>F</em><sub>Y</sub> even when the assignment
+    to &quot;treatment&quot; is not at random, but is just a labeling of the
+    subjects.
+    However, even if we reject the null hypothesis, we cannot infer
+    <em>why</em> the two distributions differ.
+    For example, suppose we want to test the hypothesis that, in some population,
+    getting more than 50% of one's calories from fat
+    is associated with obesity, as defined by body mass index, BMI.
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"> <!--
+    var fStr = '(BMI = (weight in kg)/(height in m)<sup>2</sup>. ' +
+               'BMI &gt; 25 is considered overweight. BMI &gt; 30 is considered obese.';
+    writeFootnote(fCtr++, fCtr.toString(), fStr);
+// -->
+</script>
+    We could take a random sample of people from that population, determine their
+    dietary fat intake by monitoring their diet to determine whether their dietary
+    fat intake exceeds 50% of their daily caloric intake, and measuring their BMI.
+    We can think of this as taking random samples from the subpopulation of
+    people with low dietary fat intake and the subpopulation of people with high
+    dietary fat intake, and measuring a binary response (obesity) for each
+    subject&mdash;the two sample sizes are random, but they sum to <em>N</em>.
+    We could use Fisher's exact test to assess (conditionally on the overall
+    incidence of obesity and on <em>n</em> and <em>m</em>) whether the incidence
+    of obesity differs between the two subpopulations.
+    Suppose we conclude that the incidence of obesity does differ.
+    We still should not conclude that high dietary fat intake <em>causes</em>
+    obesity, because many other
+    factors are likely to be different between the two groups, and the &quot;assignment&quot;
+    of subjects to low or high dietary fat intake was not at random&mdash;the subjects
+    choose their own diets.
+</p>
+
+<p>
+    Lehmann (1998, p.&nbsp;64&ndash;65) identifies five models for five problems, all of which lead
+    to the same (conditional) null distribution of ranks:
+</p>
+
+<ol>
+    <li>
+        Randomization model for comparing two treatments.
+        <em>N</em> subjects are given and fixed; <em>n</em> are assigned at random to treatment
+        and <em>m</em>=<em>N</em>&minus;<em>n</em> to control.
+    </li>
+    <li>
+        Population model for comparing two treatments. <em>N</em> subjects are a drawn as a
+        simple random sample from a much larger population;
+        <em>n</em> are assigned at random to treatment and
+        <em>m</em>=<em>N</em>&minus;<em>n</em> to control.
+        Condition on the configuration of ties if there are ties among the data.
+    </li>
+    <li>
+        Comparing two sub-populations using a sample from each.
+        A simple random sample of <em>n</em> subjects is drawn from one much larger population
+        with many more than <em>N</em> members, and
+        a simple random sample of <em>m</em> subjects is drawn from another population with
+        many more than <em>m</em> members.
+        Condition on the configuration of ties if there are ties among the data.
+    </li>
+    <li>
+        Comparing two sub-populations using a sample from the pooled population.
+        A simple random sample of <em>N</em> subjects is drawn from the pooled population,
+        giving random samples from the two populations but with random sample sizes.
+        Condition on the sample sizes and, if there are ties, on the configuration of the ties.
+    </li>
+    <li>
+        Comparing two sets of measurements. Independent sets of <em>n</em> and <em>m</em>
+        measurements come from two sources.
+        Condition on the configuration of ties if there are ties among the data.
+</ol>
+
+<h2>Power of the Wilcoxon rank-sum test</h2>
+
+<p>
+    Reference: Lehmann, E.L. (1998). Nonparametrics: Statistical Methods Based on Ranks,
+    Prentice Hall, Upper Saddle River, NJ.
+</p>
+
+<p>
+    To find the power of the Wilcoxon rank sum test in the randomization model,
+    we needed to assume very specifically how treatment affected each subject,
+    for example, that treatment adds the same amount to each subject's response.
+    The resulting power calculation depended on the actual observed response values.
+    In contrast, in the population model, we can compute the power against some
+    alternatives without knowing the responses, because the distributions
+    <em>F</em><sub>X</sub>
+    and <em>F</em><sub>Y</sub> tell us what to expect the data to be like.
+</p>
+
+<p>
+    To compute the power, it is most convenient to work with the Mann-Whitney form
+    of the Wilcoxon rank-sum test, which uses the statistic <em>W</em><sub>XY</sub>.
+    Recall that
+</p>
+
+<p class="math">
+    <em>W</em><sub>XY</sub> = #{ (<em>i</em>, <em>j</em>) :
+    &nbsp; 1 &le; <em>i</em>&le; <em>m</em>,
+    1 &le; <em>j</em>&le; <em>n</em>, and
+    <em>X</em><sub><em>i</em></sub> &lt; <em>Y</em><sub><em>j</em></sub>}
+</p>
+
+<p>
+    is the number of (control, treatment) pairs with the control response less than the
+    treatment response.
+    Let <em>c</em> denote the critical value for the one-sided test based on the Mann-Whitney
+    statistic <em>W</em><sub>XY</sub>, so we reject the null hypothesis if
+</p>
+
+<p class="math">
+    W<sub>XY</sub> &ge; <em>c</em>.
+</p>
+
+<p>
+    Suppose that the significance level of this test is &alpha;, so that
+    under the strong null hypothesis,
+</p>
+
+<p class="math">
+    P(W<sub>XY</sub> &ge; <em>c</em>) = &alpha;.
+</p>
+
+<p>
+    Consider the <em>shift alternative</em>, in which treatment
+    increases every subject's response by the same amount <em>d</em>&gt;0.
+    It follows that
+</p>
+
+<p class="math">
+    <em>F</em><sub>Y</sub>(<em>y</em>) = <em>F</em><sub>X</sub>(<em>y</em>&minus;<em>d</em>).
+</p>
+
+<p>
+    Under this alternative, if we know <em>F</em><sub>X</sub> and <em>d</em>, we know
+    <em>F</em><sub>Y</sub>.
+    Consider the power of the Wilcoxon rank-sum test against this alternative, as a
+    function of <em>d</em>, keeping <em>F</em><sub>X</sub> fixed:
+</p>
+
+<p class="math">
+    &Phi;<sub><em>F</em><sub>X</sub></sub>(<em>d</em>) = P<big>(</big><em>W</em><sub>XY</sub> &ge;
+    <em>c</em> |
+    <em>F</em><sub>Y</sub>(<em>y</em>) = <em>F</em><sub>X</sub>(<em>y</em>&minus;<em>d</em>) <big>)</big>.
+</p>
+
+<p>
+    This is well defined even when <em>d</em>&nbsp;&le;&nbsp;0.
+    We hope that &Phi;(<em>d</em>), the power of the test against the shift alternative,
+    increases as <em>d</em> increases&mdash;that the test has
+    a better chance of finding a large effect than a small effect&mdash;and this is indeed true.
+</p>
+
+<p>
+    <strong>Theorem</strong>. (Lehmann, 1998, p.&nbsp;67)
+    &Phi;<sub><em>F</em><sub>X</sub></sub>(<em>d</em>) is monotonically nondecreasing in <em>d</em>.
+</p>
+
+<p>
+    <strong>Proof</strong>.
+    Suppose <em>d</em><sub>1</sub> &lt; <em>d</em><sub>2</sub>.
+    Let <em>X</em><sub>1</sub>, &hellip; , <em>X</em><sub><em>m</em></sub> be iid
+    <em>F</em><sub>X</sub> and let <em>Y</em><sub>1</sub>, &hellip; ,
+    <em>Y</em><sub><em>n</em></sub> be iid <em>F</em><sub>X+<em>d</em><sub>1</sub></sub>.
+    Let <em>Z</em><sub><em>j</em></sub> =
+    <em>Y</em><sub><em>j</em></sub>&nbsp;+&nbsp;(<em>d</em><sub>2</sub>&minus;<em>d</em><sub>1</sub>),
+    <em>j</em> = 1, &hellip; , <em>n</em>.
+    Note that
+</p>
+
+<p class="math">
+    <em>F</em><sub>Z</sub>(<em>y</em>) = P(<em>Z</em><sub><em>j</em></sub> &le; <em>y</em>)
+    = P(<em>X</em><sub>i</sub> &le; <em>y</em> &minus; (<em>d</em><sub>1</sub> +
+    (<em>d</em><sub>2</sub>&minus;<em>d</em><sub>1</sub>)) )
+    = P(<em>X</em><sub>i</sub> &le; <em>y</em> &minus; <em>d</em><sub>2</sub> )
+    = <em>F</em><sub>X</sub>(<em>y</em>&minus;<em>d</em><sub>2</sub>).
+</p>
+
+<p>
+    Thus
+</p>
+
+<p class="math">
+    &Phi;<sub><em>F</em><sub>X</sub></sub>(<em>d</em><sub>2</sub>) =
+    P(<em>W</em><sub>XZ</sub> &ge; <em>c</em>).
+</p>
+
+<p>
+    But point by point, <em>Z</em><sub><em>j</em></sub>&gt;<em>Y</em><sub><em>j</em></sub>,
+    so <em>W</em><sub>XZ</sub> &ge; <em>W</em><sub>XY</sub>, and thus
+    &Phi;<sub><em>F</em><sub>X</sub></sub>(<em>d</em><sub>2</sub>) &ge;
+    &Phi;<sub><em>F</em><sub>X</sub></sub>(<em>d</em><sub>1</sub>).
+</p>
+
+<p>
+    It follows from the theorem that the Wilcoxon rank-sum test is <em>unbiased</em>
+    against shift alternatives with positive shift <em>d</em>:
+    the power against all such alternatives is at least &alpha;, the significance
+    level of the test.
+    (A test is unbiased if the chance of correctly rejecting the null hypothesis
+    when the alternative is true is at least as large as the chance of a type I
+    error&mdash;erroneously rejecting the null hypothesis when the null hypothesis is true.)
+    The result also shows that the power against shift alternatives with negative
+    shift is no larger than the significance level; i.e., that the one-sided
+    Wilcoxon test is actually a significance level &alpha; test
+    of the null hypothesis <em>H</em>: <em>d</em> &le; 0 against the
+    alternative <em>H</em>': <em>d</em> &gt; 0.
+</p>
+
+<p>
+    Essentially the same proof shows that if the treatment effect depends on <em>x</em> but is
+    nonnegative for every <em>x</em>, the power of the Wilcoxon test is at least &alpha;.
+    That is, suppose that
+</p>
+
+<p class="math">
+    <em>F</em><sub>Y</sub>(<em>x</em>) =
+    <em>F</em><sub>X</sub>(<em>x</em> + <em>d</em>(<em>x</em>)),
+</p>
+
+<p>
+    where <em>d</em>(<em>x</em>) &ge; 0 for all <em>x</em>.
+    Then P(<em>W</em><sub>XY</sub> &ge; <em>c</em>) &ge; &alpha;.
+    Similarly, if <em>d</em>(<em>x</em>) &le; 0 for all <em>x</em> then
+    P(<em>W</em><sub>XY</sub> &ge; <em>c</em>) &le; &alpha;,
+    so the Wilcoxon test is a significance level &alpha; test of the
+    null hypothesis <em>H</em>: <em>d</em>(<em>x</em>) &le; 0 for all <em>x</em>
+    against the alternative hypothesis <em>H</em>': <em>d</em>(<em>x</em>) &gt; 0 for all <em>x</em>
+</p>
+
+<p>
+    A similar result holds whenever the response to treatment is stochastically larger than
+    the response to control, i.e., whenever
+    <em>F</em><sub>Y</sub>(<em>x</em>) &le; <em>F</em><sub>X</sub>(<em>x</em>) for all <em>x</em>.
+</p>
+
+<h2>Asymptotic Power and Comparison with Student's <em>t</em> Test</h2>
+
+<p>
+    Reference: Lehmann, E.L. (1998). <em>Nonparametrics: Statistical Methods Based on Ranks</em>,
+    Prentice Hall, Upper Saddle River, NJ.
+</p>
+
+<p>
+    Define <em>p</em><sub>1</sub> = P(<em>X</em> &lt; <em>Y</em>), where <em>X</em> and
+    <em>Y</em> are independent random variables distributed as <em>F</em><sub>X</sub> and
+    <em>F</em><sub>Y</sub> respectively.
+    When <em>F</em><sub>X</sub> and <em>F</em><sub>Y</sub> are continuous
+    distributions, the probability distribution of the standardized Mann-Whitney statistic
+    is asymptotically a standard normal distribution provided <em>p</em><sub>1</sub> is strictly
+    between 0 and 1.
+    The expected value of <em>W</em><sub>XY</sub> is <em>mnp</em><sub>1</sub>;
+    <em>W</em><sub>XY</sub>/(<em>m</em><em>n</em>) is an unbiased estimate
+    of <em>p</em><sub>1</sub>.
+</p>
+
+<p>
+    Define <em>p</em><sub>2</sub> = P( <em>X</em> &lt; <em>Y</em> and <em>X</em> &lt; <em>Y</em>')
+    and
+    <em>p</em><sub>3</sub> = P( <em>X</em> &lt; <em>Y</em> and <em>X</em>' &lt; <em>Y</em>),
+    where <em>X</em>, <em>X</em>', <em>Y</em> and <em>Y</em>' are independent,
+    <em>X</em> and <em>X</em>' have distribution <em>F</em><sub>X</sub>, and <em>Y</em> and
+    <em>Y</em>' have distribution <em>F</em><sub>Y</sub>.
+    Then
+</p>
+
+<p class="math">
+    Var(<em>W</em><sub>XY</sub>) = <em>mnp</em><sub>1</sub>(1&minus;<em>p</em><sub>1</sub>) +
+        <em>mn</em>(<em>n</em>&minus;1)(<em>p</em><sub>2</sub> &minus;
+        <em>p</em><sub>1</sub><sup>2</sup>)
+        + <em>mn</em>(<em>m</em>&minus;1)(<em>p</em><sub>3</sub> &minus;
+        <em>p</em><sub>1</sub><sup>2</sup>).
+</p>
+
+<p>
+    Both the expected value and variance of the Mann-Whitney statistic depend
+    on properties of the data distributions that are in principle unknown.
+    With additional assumptions, more can be said; there are also approximations.
+    For example, if the critical value of a right-tailed test using the Mann-Whitney
+    statistic is <em>c</em>, then the normal approximation (with continuity correction)
+    to the power of the test against a fixed alternative <em>G</em>&ne;<em>F</em> is
+</p>
+
+<p class="math">
+    &Phi;(<em>F</em>, <em>G</em>) approx. 1 &minus; <em>z</em><big>(</big>
+        (<em>c</em>&minus;&frac12;&minus;<em>m</em><em>n</em><em>p</em><sub>1</sub>)/SE(<em>W</em><sub>XY</sub>)
+        <big>)</big>,
+</p>
+
+<p>
+    where <em>z</em>(<em>x</em>) is the standard normal cdf.
+    In the shift model, for small shift <em>d</em>,
+</p>
+
+<p class="math">
+    &Phi;<sub>F<sub>X</sub></sub>(<em>d</em>) approx. <em>z</em> <big>(</big>
+        (12<em>m</em><em>n</em>/(<em>N</em>+1))<sup>&frac12;</sup><em>f</em><sup>*</sup>(0)
+        <em>d</em> &minus; <em>z</em><sub>1&minus;&alpha;</sub> <big>)</big>,
+</p>
+
+<p>
+    where <em>z</em> is the standard normal cdf, <em>z</em><sub>&alpha;</sub> is the
+    1&minus;&alpha; quantile of the standard normal distribution, and <em>f</em><sup>*</sup>
+    is the density of the difference between two independent random variables each
+    with distribution <em>F</em><sub>X</sub>.
+</p>
+
+<p>
+    Student's <em>t</em>-test is as follows: reject the hypothesis that treatment has
+    no effect when
+</p>
+
+<p class="math">
+    (<em>Y</em> &minus; <em>X</em>)/<big>(</big> <em>S</em>(1/<em>m</em> + 1/<em>n</em>)<sup>&frac12;</sup>
+    <big>)</big> &ge; <em>c</em>,
+</p>
+
+<p>
+    where <em>X</em> is the sample mean of the control observations, <em>Y</em> is the
+    sample mean of the treatment observations, and
+    <em>S</em> is the square-root of the pooled sample variance
+</p>
+
+<p class="math">
+    <em>S</em><sup>2</sup> = <big>(</big> (<em>X</em><sub>1</sub>&minus;<em>X</em>)<sup>2</sup>
+     + (<em>X</em><sub>2</sub>&minus;<em>X</em>)<sup>2</sup> + &hellip;
+     + (<em>X</em><sub><em>m</em></sub>&minus;<em>X</em>)<sup>2</sup> +
+     (<em>Y</em><sub>1</sub>&minus;<em>Y</em>)<sup>2</sup> +
+     (<em>Y</em><sub>2</sub>&minus;<em>Y</em>)<sup>2</sup> + &hellip;
+     + (<em>Y</em><sub><em>n</em></sub>&minus;<em>Y</em>)<sup>2</sup> <big>)</big>/(<em>m</em> + <em>n</em> &minus; 2).
+ </p>
+
+ <p>
+    The critical value <em>c</em> is the &alpha; quantile of Student's <em>t</em>-distribution
+    with <em>m</em>+<em>n</em>&minus;2 degrees of freedom.
+    Under the null hypothesis that the control and treatment observations are independent
+    with normal distributions and have the same variance, that control observations have
+    the same mean, and that the treatment observations have the same mean (which differs
+    from the mean of the control observations by <em>d</em>), Student's <em>t</em>-test
+    has level &alpha; and is the uniformly most powerful unbiased level &alpha; test of
+    the hypothesis <em>d</em>=0 against the alternative <em>d</em>&gt;0.
+</p>
+
+<p>
+    Student's <em>t</em>-test is asymptotically distribution-free:
+    even when <em>F</em><sub>X</sub> is not normal,
+    under the null hypothesis that <em>F</em><sub>X</sub>&nbsp;=&nbsp;<em>F</em><sub>Y</sub>,
+    provided the observations are iid and the variance of <em>F</em><sub>X</sub>
+    is finite, the distribution of the <em>t</em>-test statistic is asymptotically
+    normal with mean zero and variance one.
+</p>
+
+<p>
+    Suppose that <em>F</em><sub>X</sub> is given and consider the shift alternative
+    with shift <em>d</em>.
+    Let <em>n</em>=<em>m</em> and fix the significance level &alpha;.
+    Let &Phi; denote the power of the Wilcoxon test, and consider the
+    sample size <em>n</em>'=<em>m</em>' that would be required for Student's <em>t</em>-test
+    to have power &Phi; for the same level &alpha;, the same shift <em>d</em>,
+    and the same distribution <em>F</em><sub>X</sub> for the control
+    observations.
+    The ratio <em>e</em>=<em>n</em>'/<em>n</em> is called the <em>efficiency of
+    the Wilcoxon test relative to Student's <em>t</em>-test</em>.
+    Low efficiency means many more observations are required for the Wilcoxon test
+    to have the same performance (significance level and power) as Student's
+    <em>t</em>-test.
+</p>
+
+<p>
+    Perhaps surprisingly, when <em>F</em><sub>X</sub> is normal,
+    the efficiency of the Wilcoxon test is pretty large: Table 2.2 of Lehmann (1998)
+    shows that for <em>n</em>=<em>m</em>=25, &alpha;=0.01, and <em>d</em> between about
+    0.14 and 1.3, the approximate efficiency is between 0.85 and 0.96.
+    For <em>n</em>=<em>m</em>=5 and &alpha;=4/126 and <em>d</em> between
+    0.5 and 4, the efficiency is between about 0.96 and 0.98.
+</p>
+
+<p>
+    Thus (for this range of parameters) if the true distribution of the
+    control and treatment observations really is normal, little is lost in
+    using the nonparametric Wilcoxon test, while if the true distribution is
+    not normal, the Wilcoxon test has the advantage of maintaining level &alpha;,
+    whereas Student's <em>t</em>-test can have a radically different true level.
+</p>
+
+<p>
+    When the distribution <em>F</em><sub>X</sub> is not normal, the Wilcoxon
+    test can have better performance than Student's <em>t</em>-test.
+    Asymptotically in <em>n</em> and <em>m</em>, the efficiency does not
+    depend on the target power or the significance level, provided the significance
+    is less than the power (the limit is called the Pitman efficiency or the
+    asymptotic relative efficiency).
+    The Pitman efficiency of the Wilcoxon test relative to the
+    Student <em>t</em>-test is
+    about 1.1 for the logistic distribution, 1.5 for the double exponential distribution, 1
+    for the uniform distribution, and 3 for the exponential distribution
+    (Lehmann, 1998, p.&nbsp;80).
+    The performance of the Wilcoxon test is remarkably good (compared to that of
+    Student's <em>t</em>-test) for long-tailed distributions.
+    Moreover, the performance of the Wilcoxon test is never much worse than
+    that of the Student <em>t</em>-test: provided the variance of <em>F</em><sub>X</sub>
+    is finite, the asymptotic relative efficiency is at least 0.864 (see Lehmann, 1998,
+    p.&nbsp;377).
+</p>
+
+<h2>The normal scores test</h2>
+
+<p>
+    Reference: Lehmann (1998, pp.&nbsp;96&ndash;97).
+</p>
+
+<p>
+    The idea of the normal scores test is to replace each order statistic by the
+    expected value of the corresponding order statistic of a normal distribution,
+    then to compute Student's <em>t</em>-statistic for those substituted data.
+    The critical values for the resulting test are not the critical values for
+    the Student <em>t</em>-distribution, but they have been tabulated.
+    The remarkable result is that this test, which depends only on the ranks of
+    the observations, has an asymptotic (Pitman)
+    efficiency greater than or equal to one relative to Student's <em>t</em>-test
+    <em>whatever be</em> <em>F</em><sub>X</sub>.
+    The asymptotic relative efficiency is one when <em>F</em><sub>X</sub> is normal.
+</p>
+
+<h2>Estimating the shift <em>d</em></h2>
+
+<p>
+    Reference: Lehmann, E.L. (1998). Nonparametrics: Statistical Methods Based on Ranks,
+    Prentice Hall, Upper Saddle River, NJ.
+</p>
+
+<p>
+    Assume that the effect of treatment is just a shift <em>d</em>.
+    Then distribution of {<em>X</em><sub><em>j</em></sub>: <em>j</em>= 1, &hellip; <em>m</em>}
+    is the same as that of {(<em>Y</em><sub><em>j</em></sub>&minus;<em>d</em>):
+    <em>j</em>= 1, &hellip; <em>n</em>}.
+    Consider a two-sided test of H: <em>d</em>=0.
+    Suppose that the null distribution of <em>W</em><sub>XY</sub> is symmetric about
+    some value &mu;, so we would reject H if <em>W</em><sub>XY</sub>&ge;&mu;+<em>c</em>
+    or if <em>W</em><sub>XY</sub>&le;&mu;&minus;<em>c</em>.
+    Then a reasonable estimate of <em>d</em> is the value <em>d</em>' for which the
+    statistic <em>W</em><sub>X,Y&minus;<em>d</em>'</sub> is closest to &mu;.
+    This value <em>d</em>' turns out to be the median of the <em>m</em><em>n</em> differences
+    <em>D</em><sub><em>ij</em></sub>&nbsp;=&nbsp;<em>Y</em><sub><em>j</em></sub>&minus;<em>X</em><sub><em>i</em></sub>,
+    if we define the median of an even number of observations to be the mean of the two
+    central observations in the sorted list.
+</p>
+
+<p>
+    Lehmann (1998) shows that the distribution of the error in this estimator, (<em>d</em>'&minus;<em>d</em>),
+    is independent of <em>d</em>:
+</p>
+
+<p class="math">
+    <em>d</em>'&minus;<em>d</em> =
+    med(<em>Y</em><sub><em>j</em></sub> &minus; <em>X</em><sub><em>i</em></sub>) &minus; <em>d</em>
+</p>
+
+<p class="math">
+    = med(<em>Y</em><sub><em>j</em></sub> &minus; <em>d</em> &minus; <em>X</em><sub><em>i</em></sub>)
+</p>
+
+<p class="math">
+    = med((<em>Y</em><sub><em>j</em></sub> &minus; <em>d</em>) &minus; <em>X</em><sub><em>i</em></sub>),
+</p>
+
+<p>
+    but the distributions of (<em>Y</em><sub><em>j</em></sub> &minus; <em>d</em>) and
+    <em>X</em><sub><em>i</em></sub> don't depend on <em>d</em>.
+</p>
+
+<p>
+    The estimator <em>d</em>' is unbiased and median unbiased (at least) if
+    the distribution <em>F</em><sub>X</sub> is symmetric or if <em>n</em>=<em>m</em>,
+    because then the distribution of <em>d</em>' is symmetric about <em>d</em>.
+</p>
+
+<h2>Confidence intervals for the shift <em>d</em></h2>
+
+<p>
+    The approach here is based on the duality between tests and confidence sets.
+    Suppose we have a family of level &alpha; tests of the null hypotheses
+    H<sub><em>d</em>'</sub>: <em>d</em>=<em>d</em>' for all real <em>d'</em>.
+    Let <em>S</em>(<em>y</em>) denote the set of values of <em>d</em>' for which
+    the test of the corresponding hypothesis <em>d</em>=<em>d</em>' would not rejected
+    the null hypothesis if the data were
+    <em>y</em> (here <em>y</em> is generic; in the problems we have been considering,
+    <em>y</em> specifies all the treatment responses and all the control responses).
+    Then <em>S</em>(<em>Y</em>) is a 1&minus;&alpha; confidence set for <em>d</em>.
+</p>
+
+<p>
+    <strong>Proof</strong>.
+    If <em>f</em> is the true value of <em>d</em>, then the probability (under <em>f</em>)
+    that the corresponding test rejects the hypothesis <em>d</em>=<em>f</em> is
+    at most &alpha;.
+    The probability that the test does not reject is at least 1&minus;&alpha;, so with probability
+    1&minus;&alpha; under <em>f</em>, the value <em>f</em> is in <em>S</em>(<em>Y</em>).
+    That is,
+</p>
+
+<p class="math">
+    P<sub><em>f</em></sub> <big>(</big> <em>S</em>(<em>Y</em>) contains <em>f</em> <big>)</big>
+    &ge; 1&minus;&alpha;.
+</p>
+
+<p>
+    The shape and size of the confidence set are tied to the family of hypothesis tests
+    that are being &quot;inverted.&quot;
+    No matter what, the procedure gives a 1&minus;&alpha; confidence set, but it
+    can be large or bizarre (e.g., consist of disjoint pieces) according to the
+    nature of the tests.
+    The duality between tests and confidence sets can be exploited to produce
+    confidence sets with desirable properties; see, for example,
+    Benjamini and Stark (1996. Non-equivariant simultaneous confidence intervals
+    less likely to contain zero, <em>J. Amer. Stat. Assoc.</em>, <em>91</em>, 329&ndash;337);
+    Benjamini, Hochberg and Stark (1998. Confidence Intervals with more Power
+    to determine the Sign: Two Ends constrain the Means, <em>J. Amer. Stat. Assoc.</em>,
+    <em>93</em>, 309&ndash;317); or Evans, Hansen and Stark (2005.
+    Minimax Expected Measure Confidence Sets for Restricted Location Parameters,
+    <em>Bernoulli, 11,</em> 571&ndash;590).
+</p>
+
+<p>
+    To use this result to find a confidence set for <em>d</em>, we need a family of
+    level &alpha; tests of the hypotheses <em>d</em>=<em>d</em>'.
+</p>
+
+<p>
+    Consider the Mann-Whitney statistic <em>W</em><sub>XY</sub>.
+    Under the strong null hypothesis, the expected value of <em>W</em><sub>XY</sub>
+    is <em>m</em><em>n</em>/2.
+    Suppose that the critical values for the two-sided test of the hypothesis
+    that <em>d</em>=0 are <em>m</em><em>n</em>/2&minus;<em>c</em> and <em>m</em><em>n</em>/2+<em>c</em>.
+    Note that under the hypothesis that <em>d</em>=<em>d</em>', the distribution of
+    the Mann-Whitney statistic for the data
+</p>
+
+<p class="math">
+    {<em>X</em><sub>1</sub>, &hellip; , <em>X</em><sub><em>m</em></sub>,
+     <em>Y</em><sub>1</sub>&minus;<em>d</em>', &hellip; ,
+     <em>Y</em><sub><em>n</em></sub> &minus; <em>d</em>'},
+</p>
+
+<p>
+    which we denote <em>W</em><sub>X,Y&minus;<em>d</em>'</sub>, is the same as the distribution of
+    <em>W</em><sub>XY</sub> under the strong null hypothesis.
+    A two-sided level-&alpha; test of the hypothesis <em>d</em>=<em>d</em>' thus would reject
+    if <em>W</em><sub>X, Y&minus;<em>d</em>'</sub>&nbsp;&le;&nbsp;<em>m</em><em>n</em>/2&minus;<em>c</em>
+    and if <em>W</em><sub>X, Y&minus;<em>d</em>'</sub>&nbsp;&ge;&nbsp;<em>m</em><em>n</em>/2+<em>c</em>.
+    This is a family of tests on which we can base the confidence set.
+</p>
+
+<p>
+    We can find a confidence interval for <em>d</em> using these tests as follows:
+    Let <em>d</em>' be the estimated treatment effect, the median of the <em>m</em><em>n</em>
+    differences <em>D</em><sub><em>ij</em></sub>.
+    Subtract <em>d</em>' from the treatment observations; compute the
+    ranks of this new data set; perform a two-sided Wilcoxon rank sum test of
+    the null hypothesis of no treatment effect using these new data.
+    If the test does not reject, include <em>d</em>' in the confidence set.
+    Increase <em>d</em>' systematically until the test rejects, to get the
+    upper endpoint of the confidence interval; decrease <em>d</em>' systematically
+    until the test rejects, to get the lower endpoint of the confidence interval.
+</p>
+
+<p>
+    It is clear that the only values of <em>d</em>' that could be endpoints of the confidence
+    interval are those that cause the ranks of the treatment observations to
+    change&mdash;only those values
+    change the value of <em>W</em><sub>XY</sub>.
+    We can exploit this to find a confidence interval for <em>d</em> with less trial-and-error
+    searching.
+</p>
+
+<p>
+    To change the value of <em>W</em><sub>XY&minus;<em>d'</em></sub>, we need to change
+    <em>d</em> by enough to change the number of
+    pairs (<em>i</em>, <em>j</em>) such that
+    <em>X</em><sub><em>i</em></sub>&lt;<em>Y</em><sub><em>j</em></sub>&minus;<em>d'</em>.
+    The values of <em>d</em>' that change the ranks are precisely the differences
+</p>
+
+<p class="math">
+    <em>D</em><sub><em>ij</em></sub>&nbsp;=&nbsp;
+    <em>Y</em><sub><em>j</em></sub>&nbsp;&minus;&nbsp;<em>X</em><sub><em>i</em></sub>.
+</p>
+
+<p>
+    Let <em>D</em><sub>(1)</sub>, &hellip; , <em>D</em><sub>(<em>mn</em>)</sub>
+    denote the order statistics of the <em>m</em><em>n</em> differences
+    <em>D</em><sub><em>ij</em></sub>,
+    and define <em>D</em><sub>(0)</sub> = &minus;&infin; and
+    <em>D</em><sub>(<em>mn</em>+1)</sub>= &infin;.
+    Then
+</p>
+
+<p class="math">
+    <em>D</em><sub>(<em>k</em>)</sub> &le; <em>d</em> &lt; <em>D</em><sub>(<em>k</em>+1)</sub>
+    if and only if <em>W</em><sub>XY&minus;<em>d</em></sub> = <em>m</em><em>n</em> &minus; <em>k</em>.
+</p>
+
+<p>
+    To see this, note that <em>W</em><sub>XY&minus;<em>d</em></sub> &le; <em>m</em><em>n</em>&minus;<em>k</em>
+    if <em>m</em><em>n</em>&minus;<em>k</em> of the differences
+    (<em>Y</em><sub><em>j</em></sub> &minus; <em>d</em> &minus; <em>X</em><sub><em>i</em></sub>) are at
+    least zero;
+    that is, if <em>D</em><sub>(<em>k</em>)</sub> &le; <em>d</em>.
+    The distribution of <em>W</em><sub>XY&minus;<em>d</em></sub> when <em>d</em> is the
+    true shift does not depend on <em>d</em>&mdash;it is the same as the
+    distribution of <em>W</em><sub>XY</sub> under the strong null hypothesis, as
+    asserted previously.
+    Using the symmetry of the null distribution of <em>W</em><sub>XY</sub>, we see
+    that for any <em>d</em>,
+</p>
+
+<p class="math">
+    P<sub><em>d</em></sub>(<em>D</em><sub>(<em>k</em>)</sub> &le; <em>d</em> &lt;
+    <em>D</em><sub>(<em>k</em>+1)</sub>)
+    = P<sub>0</sub>(<em>W</em><sub>XY</sub> = <em>m</em><em>n</em> &minus; <em>k</em>) =
+    P<sub>0</sub>(<em>W</em><sub>XY</sub> = <em>k</em>).
+</p>
+
+<p>
+    Thus the random differences <em>D</em><sub><em>ij</em></sub>
+    carve the real line into random intervals with known probabilities of containing
+    the true value of <em>d</em> (if the shift alternative is true!).
+    To find a confidence interval for <em>d</em>, we can start with (one of) the interval
+    [<em>D</em><sub>(<em>k</em>)</sub>, <em>D</em><sub>(<em>k</em>+1)</sub>)
+    with the largest chance of containing <em>d</em>, then append intervals in
+    decreasing order of their probability of containing <em>d</em> until the
+    sum of their probabilities is at least 1&minus;&alpha;.
+    Because of the unimodality of the distribution (recall the power calculations),
+    these intervals will be contiguous; let
+    [<em>D</em><sub>(<em>l</em>)</sub>, <em>D</em><sub>(<em>u</em>)</sub>)
+    denote the interval.
+    Alternatively, we could choose the intervals to try to have symmetric
+    non-coverage probabilities; that is, so that
+</p>
+
+<p class="math">
+    P<sub>d</sub>(<em>D</em><sub>(<em>l</em>)</sub> &gt; <em>d</em> )
+    is as close as possible to
+    P<sub>d</sub>(<em>D</em><sub>(<em>u</em>)</sub> &lt; <em>d</em> ).
+</p>
+
+<p>
+    (I don't know whether these two approaches differ; I think the former corresponds to
+    inverting the two-sided Wilcoxon test.)
+    All the probability calculations are implicit in calculating the distribution of
+    <em>W</em><sub>XY</sub> under the strong null hypothesis.
+    In fact, one need not even calculate the entire distribution; see Lehmann
+    (1998, pp.&nbsp;92ff) for shortcuts.
+</p>
+
+<h3>Confidence intervals for quantiles from iid observations</h3>
+
+<p>
+    The approach illustrated above for finding a confidence interval for the
+    shift <em>d</em> is very similar to a nonparametric approach to
+    finding confidence intervals for a quantile of a probability distribution.
+    Let {<em>X</em><sub><em>j</em></sub>: 1 &le; <em>j</em> &le; <em>n</em>}
+    be iid with continuous cdf <em>F</em>.
+    For 0&lt;<em>q</em>&lt;1,
+    let <em>x</em><sub><em>q</em></sub>=<em>F</em><sup>&minus;1</sup>(<em>q</em>) denote the
+    <em>q</em>th quantile of the common distribution of the data.
+    We shall find a confidence interval for <em>q</em> that does not depend on
+    any other assumptions about <em>F</em>.
+</p>
+
+<p>
+    If <em>x</em><sub><em>q</em></sub>=<em>x</em>, the probability that each
+    datum <em>X</em><sub><em>j</em></sub> will be at most <em>x</em> is <em>q</em>.
+    The data are independent, so the number <em>N</em>(<em>x</em>) of data that are less
+    than or equal to <em>x</em> has a binomial distribution with parameters <em>n</em>
+    and <em>q</em>.
+    Let
+</p>
+
+<p class="math">
+    <em>p</em><sub><em>n</em>,<em>q</em></sub>(<em>k</em>) =
+    <sub><em>n</em></sub>C<sub><em>k</em></sub> &times;
+    <em>q</em><sup><em>k</em></sup> &times; (1&minus;<em>q</em>)<sup><em>n</em>&minus;<em>k</em></sup> =
+    P<sub><em>x</em><sub><em>q</em></sub>=<em>x</em></sub> <big>(</big> <em>N</em>(<em>x</em>)=
+    <em>k</em> <big>)</big>, &nbsp;&nbsp;<em>k</em> = 0, 1, &hellip; , <em>n</em>.
+</p>
+
+<p>
+    Note that P<sub><em>x</em><sub><em>q</em></sub>=<em>x</em></sub> <big>(</big>
+    <em>N</em>(<em>x</em>)=
+    <em>k</em> <big>)</big> does not depend on <em>x</em><sub><em>q</em></sub>.
+    The probability distribution of <em>N</em>(<em>x</em>)
+    is unimodal; we could build a level &alpha;
+    test of the hypothesis that <em>x</em><sub><em>q</em></sub>=<em>x</em>
+    by assigning to the rejection region the values of <em>k</em> for which
+    <em>p</em><sub><em>n</em>,<em>q</em></sub>(<em>k</em>) is smallest,
+    subject to the constraint that the sum of the probabilities is at most &alpha;.
+</p>
+
+<p>
+    To find a confidence interval for <em>x</em><sub><em>q</em></sub>, we could start
+    with the <em>k</em>th order statistic <em>X</em><sub>(<em>k</em>)</sub> as a trial
+    value for <em>x</em>, where
+    <em>k</em> is as close as possible to <em>q</em>&times;<em>n</em>, then work
+    &quot;outward&quot; as before, increasing and decreasing <em>x</em> until the
+    test of the hypothesis <em>x</em><sub><em>q</em></sub>=<em>x</em> rejects.
+</p>
+
+<p>
+    We can streamline the approach in the same way as we did to find a confidence
+    interval for the treatment effect <em>d</em>.
+    The values of <em>x</em> at which <em>N</em>(<em>x</em>) changes
+    are the order statistics <em>X</em><sub>(<em>j</em>)</sub>, so it suffices to
+    consider them when searching for the endpoints of the confidence interval.
+    Now
+</p>
+
+<p class="math">
+    <em>N</em>(<em>x</em>) = <em>k</em> &nbsp;&nbsp;iff&nbsp;
+    <em>X</em><sub>(<em>k</em>)</sub> &le; <em>x</em>
+    &lt; <em>X</em><sub>(<em>k</em>+1)</sub>, &nbsp;&nbsp;<em>k</em> = 0, 1,
+    &hellip; , <em>n</em>,
+</p>
+
+<p>
+    where <em>X</em><sub>(0)</sub> = &minus;&infin; and <em>X</em><sub>(<em>n</em>+1)</sub> = &infin;.
+    Thus
+</p>
+
+<p class="math">
+    P<sub><em>x</em><sub><em>q</em></sub></sub> <big>(</big>
+     <em>X</em><sub>(<em>k</em>)</sub> &le; <em>x</em><sub><em>q</em></sub>
+    &lt; <em>X</em><sub>(<em>k</em>+1)</sub><big>)</big> =
+    <sub><em>n</em></sub>C<sub><em>k</em></sub>  &times;
+    <em>q</em><sup><em>k</em></sup> &times; (1&minus;<em>q</em>)<sup><em>n</em>&minus;<em>k</em></sup>.
+</p>
+
+<p>
+    The order statistics carve the real line into intervals with known chances of
+    containing the true value of <em>x</em><sub><em>q</em></sub>.
+    Those chances are determined by the binomial distribution with parameters
+    <em>n</em> and <em>q</em>.
+    We can find a confidence interval for <em>x</em><sub><em>q</em></sub>
+    by starting with the interval
+    [<em>X</em><sub>(<em>k</em>)</sub>, <em>X</em><sub>(<em>k</em>+1)</sub>)
+    with the largest chance of containing <em>x</em><sub><em>q</em></sub>, then appending
+    intervals in decreasing order of their probability of containing <em>x</em><sub><em>q</em></sub>
+    until the sum of their probabilities is at least 1&minus;&alpha;.
+</p>
+
+<div class="example">
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var qStr = 'Confidence interval for the median from <em>n</em>=20 observations.';
+    writeExampleCaption(qStr);
+// -->
+</script>
+<p>
+    For the median, <em>q</em>=0.5, and the probability distribution of the number
+    of data that are less than or equal to <em>x</em><sub><em>q</em></sub> is
+    symmetric about <em>n</em>/2.
+    Consider a confidence interval for the median on the basis of <em>n</em>=20 iid
+    observations.
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    citeFig();
+// -->
+</script>
+    shows the binomial distribution with parameters <em>n</em>=20 and <em>p</em>=0.5.
+    One can see from the figure that the probability of between
+    8 and 12 successes is 73.7%.
+    Eight &quot;successes&quot; corresponds to the interval
+    [<em>X</em><sub>(8)</sub>, <em>X</em><sub>(9)</sub>) containing the true median;
+    twelve successes corresponds to the interval [<em>X</em><sub>(12)</sub>, <em>X</em><sub>(13)</sub>)
+    containing the median, so the interval [<em>X</em><sub>(8)</sub>, <em>X</em><sub>(13)</sub>)
+    from the eighth order statistic to the thirteenth order statistic is a 73.7% confidence
+    interval for the median of the parent distribution on the basis of 20 iid observations.
+    Note that this confidence interval trims off the 7 smallest and 7 largest observations.
+</p>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var qStr = 'Binomial probability distribution.';
+    writeFigureCaption(qStr);
+// -->
+</script>
+
+<p align="center">
+    <applet code="HistHiLite.class" codebase="../../../Java/"
+        align="baseline" width="600" height="320" archive="PbsGui.zip">
+    <param name="hiLiteLo" value="7.5">
+    <param name="hiLiteHi" value="12.5">
+    <param name="n" value="20">
+    <param name="normalControls" value="false">
+    <param name="p" value=".5">
+    You need Java to see this.
+    </applet>
+</p>
+
+</div>
+
+<p>
+    <strong>Exercise</strong>.  Generalize this approach to finding
+    confidence intervals for quantiles to find conservative confidence
+    intervals for quantiles when the cdf <em>F</em> is not necessarily continuous.
+</p>
+
+
+</form>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    printFootnotes();
+    writeMiscFooter(false);
+// -->
+</script>
+</body>
+</html>

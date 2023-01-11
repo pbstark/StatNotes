@@ -1,0 +1,1946 @@
+% last modified 11/23/10 by PBS
+
+\input{courseDefs}
+
+\section{Part 9: Robustness and related topics. ROUGH DRAFT}
+References:
+
+\noindent
+Hampel, F.R., Rousseeuw, P.J., Ronchetti, E.M., and Strahel, W.A., 1986.
+{\em Robust Statistics: The approach based on influence functions}, Wiley, NY.
+\\[.1in]
+Huber, P.J., 1981. {\em Robust Statistics}, Wiley, N.Y.
+
+\subsection{Heuristics}
+So far, we have been concerned with nonparametric tests and procedures:
+tests and procedures with minimal assumptions about the probability distribution
+that gives rise to the data.
+Examples of the kinds of assumptions we have made in various places are that the
+distribution is continuous, that
+the observations are iid, that subjects are randomized into treatment and control,
+{\em etc\/}.
+
+We now consider assumptions that are more restrictive, but still less
+restrictive than the parametric assumptions common to much of statistical theory.
+In a loose sense, an estimator or test is {\em robust\/} if its performance is
+good over a neighborhood of distributions including the family in which the
+truth is modeled to lie.
+
+Virtually every real data set has some ``gross errors,'' which are
+in some sense corrupted measurements.
+Data can be transcribed incorrectly,
+bits can be corrupted in transmission or storage, cosmic rays can hit satellite-borne
+instruments, power supplies can have surges, operators can miss their
+morning cups of coffee, {\em etc.}
+Hampel {\em et al.\/} (1986) quote studies that find gross errors comprise up to 20\%
+of many data sets in physical, medical, agricultural and social sciences, with typical
+rates of 6\% or more.
+
+Even  without gross errors, there is
+always a limit on the precision with which data are recorded, leading to
+truncation or rounding errors that make continuous models for data error
+distributions only approximate.
+Furthermore, parametric error models rarely are dictated by direct physical arguments;
+rather,  the central limit theorem is invoked, or some historical assumption
+becomes standard in the field.
+
+One early attempt to deal with gross outliers is due to Sir Harold
+Jeffreys, who (in the 1930s) modeled data errors as a mixture of two Gaussian distributions,
+one with variance tending to infinity.  
+The idea is that the high-variance Gaussian represents a fraction of gross outliers possibly
+present in the data; one wants to minimize the influence of such observations
+on the resulting estimate or test.
+Considerations in favor of fitting by minimizing mean
+absolute deviation instead of least squares go back much further.
+
+We will be looking at ways of quantifying robustness and of constructing
+procedures whose performance when the model is true is not much worse than
+the optimal procedure, but whose performance when the model is wrong (by a little
+bit) is not too bad, and is often much better than the performance of the
+optimal procedure when the model for which it is optimal 
+is wrong by a little bit.
+
+The kinds of questions typically asked in the robustness literature are:
+\begin{enumerate}
+    \item Is the procedure sensitive to small departures from the model?
+    \item To first order, what is the sensitivity?
+    \item How wrong can the model be before the procedure produces garbage?
+\end{enumerate}
+The first issue is that of qualitative robustness; the second is quantitative robustness;
+the third is the ``breakdown point.''
+
+\subsection{Resistance and Breakdown Point}
+{\em Resistance} has to do with changes to the observed data, rather than to the
+theoretical distribution underlying the data.
+A statistic is {\em resistant} if arbitrary changes to a few data (such as
+might be caused by {\em gross outliers}, or small changes
+to all the data (such as might be caused by rounding or truncation),
+result in only small changes to the value of the statistic.
+
+Suppose we are allowed to change the values of the observations in the sample.
+What is the smallest fraction would we need to change to make the 
+estimator take an arbitrary value?
+The answer is the {\em breakdown point\/} of the estimator.
+
+For example, consider the sample mean $\bar{X} = \frac{1}{n} \sum_{j=1}^n X_j$
+as an estimator of the mean of $F$. 
+(The mean can be written as a functional of
+the distribution: $T(F) = \int x dF$; $\theta = T(F_\theta)$.)
+Corrupting a single observation can make the sample mean take any real value:
+the breakdown point is $\frac{1}{n}$.
+
+In contrast, consider the ``$\alpha$-trimmed mean,'' defined as follows:
+Let $k_\ell = \lfloor \alpha n \rfloor$ and $ k_h = \lceil (1-\alpha) n \rceil$.
+Let $X_{(j)}$ be the $j$th order statistic of the data.
+Define
+\beq
+    \bar{X}_\alpha = \frac{1}{k_h - k_\ell + 1} \sum_{j = k_\ell}^{k_h} X_{(j)} .
+\eeq
+This measure of location is less sensitive to outliers than the sample mean is:
+Its breakdown point is $n^{-1} \min(k_\ell, n-k_h + 1)$.
+An alternative, not necessarily equivalent, definition of the $\alpha$-trimmed
+mean is through the functional
+\beq
+    T(F) = \frac{1}{1-2\alpha}\int_\alpha^{1-\alpha} F^{-1}(t) dt.
+\eeq
+This version has breakdown point  $\alpha$.
+
+We shall make the notion of breakdown point more precise presently; a few definitions
+are required.
+
+\begin{Definition}
+        The L\`{e}vy distance between two distribution functions $F$ and $G$
+        on $\bfR$ is
+        \beq
+            \lambda(F, G) = \inf\{ \epsilon : F(x-\epsilon) - \epsilon \le G(x) \le F(x+\epsilon) +
+            \epsilon, \;\;\forall x \in \bfR \}.
+        \eeq
+\end{Definition}
+
+The L\'{e}vy distance makes sense for probability distributions on the real line, where
+we can define the cdf.
+We want to extend this kind of notion to probability distributions on more complicated
+sample spaces, including $\bfR^k$.
+Ultimately, we want a metric on probability distributions on Polish spaces,
+which are defined below.
+To do that, we need a bit more abstract structure.
+
+The following definitions are given to refresh your memory.
+For more detail, see Rudin, W. (1974). {\em Real and Complex Analysis\/},
+2nd edition, McGraw-Hill, N.Y., pages 636--650 of Le Cam, L. (1986). {\em Asymptotic Methods in
+Statistical Decision Theory\/}, Springer-Verlag, NY, or Halmos, P.R. (1974). {\em Measure Theory\/},
+Springer-Verlag, N.Y.
+
+\begin{Definition}
+    A {\em topology\/} $\calV$ on a space $\calX$ is a collection of subsets $V$ of $\calX$ such
+    that
+    \begin{enumerate}
+        \item $\emptyset \in \calV$.
+        \item If $V_j \in \calV$, $j = 1, \ldots, n$, then $\cap_{j=1}^n V_j \in \calV$.
+        \item For any collection $\{V_\alpha\}_{\alpha \in A}$ of elements of $\calV$,
+            $\cup_{\alpha \in A} V_\alpha \in \calV$.
+    \end{enumerate}
+    The elements of $\calV$ are called {\em open sets\/}, and we call $\calX$ a
+    {\em topological space\/}.
+    Complements of elements of $\calV$ are called {\em closed sets\/}.
+    Every open set $V$ that contains $x \in \calX$ is called a {\em neighborhood\/} of
+    $x$.
+    The collection of sets $\calB \subset \calV$ is a {\em base\/}
+    if for every $x \in \calX$ and every neighborhood
+    $V$ of $x$, $x \in B \subset V$ for some $B \in \calB$.
+    The space $\calX$ is {\em separable\/} if it has a countable base.
+    Let $A$ be a subset of $\calX$.
+    The largest open set contained in $A$ is called the
+    {\em interior\/} of $A$, denoted $A^\circ$.
+    The smallest closed set that contains $A$ is called the {\em closure\/} of
+    $A$, denoted $\bar{A}$.
+\end{Definition}
+
+\begin{Definition}
+    Let $\calX$ be a topological space with topology $\calV$ and let $\calY$ be
+    a topological space with topology $\calW$. A mapping $f: \calX \rightarrow \calY$
+    is {\em continuous\/} if $f^{-1}(W) \in \calV$ for every $W \in \calW$.
+\end{Definition}
+
+That is, a function from one topological space into another is continuous if the
+preimage of every open set is an open set.
+(The preimage of a set $A \subset \calY$ under the mapping $f: \calX \rightarrow \calY$
+is $f^{-1}(A) \equiv \{ x \in \calX : f(x) \in A \}$.
+Note that the preimage of a set that contains a single point can be a set
+containing more than one point.)
+
+\begin{Definition}
+    A collection $\calM$ of subsets of a set $\calX$ is a {\em $\sigma$-algebra\/}
+    on $\calX$ if
+    \begin{enumerate}
+        \item $\calX \in \calM$
+        \item $A \in \calM$ implies $A^c \in \calM$
+        \item if $A_j \in \calM$, $j = 1, 2, 3, \ldots$, then $\cup_{j=1}^\infty A_j \in \calM$
+    \end{enumerate}
+    If $\calM$ is a $\sigma$-algebra on $\calX$, then we call $\calX$ a {\em measurable space\/}
+    and we call the elements of $\calM$ the {\em measurable sets\/} of $\calX$.
+    If $\calX$ is a measurable space with $\sigma$-algebra $\calM$ and $\calY$ is a topological
+    space with topology $\calW$ then
+    $f: \calX \rightarrow \calY$ is a {\em measurable function\/} if $f^{-1}(W) \in \calM$ for
+    every $W \in \calW$.
+\end{Definition}
+
+For any collection $\calF$ of subsets of a set $\calX$, there is a smallest $\sigma$-algebra
+containing $\calF$.
+
+\begin{Theorem}
+        If each member of a sequence $\{f_j\}_{j=1}^\infty$ is a measurable function from
+        a measurable space $\calX$ into $[-\infty, \infty]$, then so is
+        $\sup_j f_j$ and so is $\limsup_j f_j$.
+\end{Theorem}
+
+
+\begin{Definition}
+        A real-valued function $s: \calX \rightarrow \Re^+$ on a measurable space $\calX$ is
+        {\em simple\/} if its range consists of finitely many points in $\Re^+$.
+        Such a function can be written in the form
+        \beq \label{eq:simpleDef}
+                s(x) = \sum_{j=1}^n a_j 1_{x \in A_j}
+        \eeq
+        for a set $\{a_j\}_{j=1}^n \subset \Re^+$ and a collection of subsets
+        $\{A_j\}_{j=1}^n$ of $\calX$.
+        If $\{A_j\}_{j=1}^n$ are measurable, then $s$ is a measurable simple function.
+\end{Definition}
+
+\begin{Definition}
+        A {\em positive measure\/} $\mu$ on a measurable space $\calX$ with $\sigma$-algebra
+        $\calM$ is a mapping from $\calM \rightarrow \Re^+$ such that
+        \begin{enumerate}
+                \item $\mu(A) \ge 0$ $\forall A \in \calM$
+                \item if $\{A_j\}_{j=1}^\infty$ are pairwise disjoint, then
+                \beq
+                        \mu(\cup_{j=1}^\infty A_j) = \sum_{j=1}^\infty \mu(A_j).
+                \eeq
+        \end{enumerate}
+        A positive measure $\mu$ for which $\mu(\calX) = 1$ is called a
+        {\em probability measure\/}.
+        A measurable space on which a measure is defined is called a {\em measure space\/}.
+\end{Definition}
+
+\begin{Definition}
+        The integral of a measurable simple function $s$ of the form \ref{eq:simpleDef}
+        with respect to the measure $\mu$ is
+        \beq
+                \int_\calX s d\mu \equiv \sum_{j=1}^n a_j \mu(A_j).
+        \eeq
+\end{Definition}
+
+Integrals of more general measurable functions are defined as limits of integrals
+of simple functions.
+
+\begin{Theorem}
+        Every nonnegative real-valued measurable function $f$ is the limit of an
+        increasing sequence $\{s_n\}$
+        of measurable simple functions.
+\end{Theorem}
+
+\begin{Definition}
+        The integral of a nonnegative measurable function $f$ with respect to the measure $\mu$
+        is
+        \beq
+               \int_\calX f d\mu \equiv \sup_{s \le f, s \mbox{ simple }} \int_\calX s d\mu.
+        \eeq
+\end{Definition}
+
+The {\em positive part} $f^+$ of a real-valued function $f$ is $f^+(x) \equiv \max(f(x),0)
+\equiv f \vee 0$.
+The {\em negative part} $f^-$ of a real-valued function $f$ is $f^-(x) \equiv -\min(f(x),0)
+\equiv f \wedge 0$.
+If $f$ is measurable, so are $|f|$, $f^+$ and $f^-$.
+
+\begin{Definition}
+        The integral of a measurable function $f$ with respect to the measure $\mu$
+        is
+        \beq
+               \int_\calX f d\mu \equiv \int_\calX f^+ d\mu - \int_\calX f^- d\mu
+        \eeq
+        if $\int_\calX |f| d\mu < \infty$.
+\end{Definition}
+
+The following three theorems are the workhorses of the theory:
+
+\begin{Theorem}[Lebesgue's Monotone Convergence Theorem.]
+        Let $\{f_j\}_{j=1}^\infty$ be a nonnegative sequence of functions such that
+        for every $x \in \calX$,
+        $f_1(x) \le f=2(x) \le \cdots \le \infty$ and $f_j(x) \rightarrow f(x)$ as
+        $j \rightarrow \infty$.
+        Then $f$ is measurable and $\int_\calX f_j d\mu \rightarrow \int_\calX f d\mu$.
+\end{Theorem}
+
+\begin{Theorem}[Fatou's Lemma.]
+        If $\{f_j\}$ is a sequence of nonnegative measurable functions, then
+        \beq
+                \int_\calX (\liminf_{j \rightarrow \infty} f_j) d\mu \le
+                \liminf_{j\rightarrow \infty} \int_\calX f_j d\mu.
+        \eeq
+\end{Theorem}
+
+\begin{Theorem}[Lebesgue's Dominated Convergence Theorem.]
+        Let $\{f_j\}_{j=1}^\infty$ be a sequence of measurable functions such that
+                for every $x \in \calX$,
+                $f(x) = \lim_j f_j(x)$ exists.
+                If there is a function $g$ such that $\int_\calX |g| d\mu < \infty$ and
+                $|f_j(x)| \le g(x)$ for all $x \in \calX$ and all $j \ge 1$, then
+                $\int_\calX |f| d\mu < \infty$, $\lim_j \int_\calX | f_j - f | d\mu = 0$,
+                and $\lim_j \int_\calX f_j d\mu = \int_\calX f d\mu$.
+\end{Theorem}
+
+\begin{Definition}
+    If $\calX$ is a topological space with topology $\calV$, the {\em Borel $\sigma$-algebra\/}
+    $\calB$ on $\calX$ is the smallest $\sigma$-algebra containing $\calV$.
+    The elements of $\calB$ are called the {\em Borel sets\/} of $\calX$.
+\end{Definition}
+
+\begin{Definition}
+    A {\em metric space\/} is a set $\calX$ and a {\em metric\/} function
+    $d: \calX \times \calX \rightarrow \bfR^+$ such that
+    \begin{enumerate}
+        \item  $d(x, x) = 0$
+        \item  $d(x, y) = 0$ implies $x = y$
+        \item  $d(x, y) = d(y, x)$, for all $x, y \in \calX$ (symmetry)
+        \item  $d(x, y) \le d(x, z) + d(y, z)$ for all
+               $x, y, z \in \calX$ (triangle inequality)
+    \end{enumerate}
+    If $d$ satisfies all these axioms but (2), it is called a {\em pseudometric\/}.
+\end{Definition}
+
+An {\em open ball\/} with radius $\epsilon \ge 0$ centered at the point $x$ in the metric space $\calX$
+is the set $B_\epsilon(x) = \{ y \in \calX : d(x, y) < \epsilon\}$.
+If $\calX$ is a metric space and $\calV$ is the collection of all sets in
+$\calX$ that are unions of open balls, then $\calV$ is a topology on $\calX$; it
+is called the {\em topology induced by $d$\/}.
+
+If $\calV$ is a topology on $\calX$ such that there exists a metric $d$ on $\calX$
+for which $\calV$ is the topology induced by $d$, then $\calV$ is {\em metrizable\/}.
+
+\begin{Definition}
+    A sequence $\{ x_j \}_{j=1}^\infty$ of elements of a metric space $\calX$ is
+    a {\em Cauchy sequence\/} if for every $\epsilon > 0$ there exists an integer
+    $N = N(\epsilon)$ such that $d(x_n, x_m) < \epsilon$ if $\min(n, m) > N$.
+\end{Definition}
+
+\begin{Definition}
+    A sequence $\{ x_j \}_{j=1}^\infty$ of elements of a metric space $\calX$
+    {\em converges to $x \in \calX$\/} if
+    \beq
+        \lim_{j \rightarrow \infty} d(x_j, x) = 0.
+    \eeq
+\end{Definition}
+
+\begin{Definition}
+    A metric space $\calX$ is {\em complete\/} if every Cauchy sequence in $\calX$ converges
+    to an element of $\calX$.
+\end{Definition}
+
+\begin{Definition}
+    A subset $D$ of a metric space $\calX$ is {\em dense\/} if for every element $x$
+    of $\calX$ and every $\epsilon > 0$, there exists $y \in D$ such that
+    $d(y, x) < \epsilon$.
+\end{Definition}
+
+\begin{Definition}
+    A metric space $\calX$ is {\em separable\/} if it contains a countable dense subset.
+\end{Definition}
+
+\begin{Definition}
+    A {\em vector space over the real numbers\/} is an Abelian group $\calX$ of {\em vectors\/}
+    with the group operation $(+ : \calX \times \calX \rightarrow \calX,\; (x, y) \mapsto x+y)$,
+    together with the operation of scalar multiplication
+    ($: \Re \times \calX \rightarrow \calX,\;\; (\lambda, x)
+    \mapsto \lambda x$),
+    such that for all $\lambda, \mu \in \Re$ and all $x, y \in \calX$,
+    \begin{enumerate}
+        \item $\lambda(x + y) = \lambda x + \lambda y$
+        \item $(\lambda + \mu)x = \lambda x + \mu x$
+        \item $\lambda(\mu x) = (\lambda \mu) x$
+        \item $1x = x$
+        \item $0x = 0$
+    \end{enumerate}
+\end{Definition}
+
+\begin{Definition}
+    A function $\| \cdot \|: \calX \rightarrow \bfR^+$ on a vector space $\calX$
+    is a {\em norm\/} if for all $x, y \in \calX$ and all $\lambda \in \bfR$,
+    \begin{enumerate}
+        \item $\| x \| \ge 0$ (positive semidefinite)
+        \item $\| x \| = 0$ implies $x = 0$ (with (1), this means the norm is positive definite)
+        \item $\| \lambda x \| = | \lambda | \| x \|$ (positive scalar homogeneity)
+        \item $\| x + y \| \le \|x\| + \|y\|$ (triangle inequality)
+    \end{enumerate}
+    If $\| \cdot \|$ satisfies all but (2), it is a {\em seminorm\/}.
+    If $\| \cdot \|$ is a norm on a vector space $\calX$, we call $\calX$ a
+    normed (linear) vector space.
+\end{Definition}
+
+A normed linear vector space is a metric space under the metric $d(x, y) \equiv \| x-y\|$.
+
+\begin{Definition}
+    A {\em Banach space\/} is a complete normed linear vector space.
+\end{Definition}
+
+\begin{Definition}
+    A {\em Polish space} $\calX$ is a separable
+    topological space whose topology is metrizable
+    by a metric $d$ with respect to which $\calX$ is complete.
+\end{Definition}
+
+Equivalently, a Polish space is a topological space that is homeomorphic
+to a separable Banach space.
+
+Examples of Polish spaces include $\bfR^k$.
+Let $\calM$ denote the space of probability measures on the Borel $\sigma$-algebra
+$\calB$ of subsets of $\calX$. 
+(The Borel $\sigma$-algebra is the smallest $\sigma$-algebra containing
+all the open sets in $\calX$.)
+Let $\calM'$ denote the set of finite signed measures on  $(\calX, \calB)$; this is
+the linear space of measures generated by $\calM$.
+The measures in $\calM'$ are {\em regular} in the sense that for every $F \in \calM'$,
+\beq
+    \sup_{C \subset A;\;C \mbox{ compact }} F(C) = F(A) = \inf_{G \supset A; \; G \mbox{ open }}
+    F(G).
+\eeq
+The weak-star topology in $\calM'$ is the weakest topology for which the functional
+\beq
+    \int \psi dF
+\eeq
+is continuous for every continuous, bounded function $\psi: \calX \rightarrow \bfR$.
+
+In this section, we assume that the space $\calX$ of possible data
+is a Polish space, and that all measures are defined on $\calB$.
+An overbar  ({\em e.g.\/}, $\bar{A}$) denotes topological closure,
+the superscript $\circ$ ({\em e.g.\/}, $A^\circ$) denotes the topological interior,
+and the superscript $c$ will denote complementation
+($A^c = \{ x \in \calX: x \not \in A\}$).
+
+
+\begin{Definition}
+    For any subset $A$ of a metric space $\calX$ with metric $d: \calX \times \calX
+    \rightarrow \bfR^+$, the {\em closed $\epsilon$-neighborhood of $A$} is
+    \beq
+        A^\epsilon = \{ x \in \calX : \inf_{a \in A} d(x,a) \le \epsilon \}.
+    \eeq
+\end{Definition}
+It will be important presently that
+\beq
+    A^\epsilon = \bar{A}^\epsilon = \overline{A^\epsilon} =
+    \overline{\bar{A}^\epsilon}.
+\eeq
+
+\begin{Definition}
+    The Prohorov distance between two measures $F$ and $G$ defined on a common
+    algebra $\calA$ of subsets of a metric space $\calX$ is
+    \beq
+        \pi(F,G) = \inf \{ \epsilon \ge 0 : F(A) \le G(A^\epsilon) + \epsilon,\;  \;\forall A \in \calA \}
+    \eeq
+\end{Definition}
+
+Expanding the events by $\epsilon$ to form $A^\epsilon$
+corresponds to the measure $G$ being ``shifted'' slightly
+from $F$, for example, by rounding.
+The addition of $\epsilon$ corresponds to
+a fraction $\epsilon$ of the observations being from a completely
+different distribution.
+
+We shall verify that the Prohorov distance really is a metric if the sample
+space $\calX$ is a Polish space.
+Clearly, it is nonnegative, and $\pi(F,F) = 0$.
+We need to show symmetry, the triangle inequality, and that $\{\pi(F,G) = 0 \}\Rightarrow
+\{F = G\}$.   The following proof follows that in Huber (1981).
+
+\noindent
+{\bf Symmetry.}
+This will follow immediately if we can show
+that if $F(A) \le G(A^\epsilon) + \epsilon$ for all $A \in \calA$, then
+$G(A) \le F(A^\epsilon) + \epsilon$ for all $A \in \calA$.
+Recall that because $\calA$ is an algebra, if $A \in \calA$, then $A^c \in \calA$
+as well.
+Take any $\delta > \epsilon$, and consider $A = (B^\delta)^c = B^{\delta c}$ for any
+$B \in \calA$.
+Note that $A \in \calA$, so by the premise,
+\beq
+    F(B^{\delta c}) \le G(B^{\delta c\epsilon}) + \epsilon ,
+\eeq
+or
+\begin{eqnarray}
+    1 - F(B^\delta) &\le& 1 - G(B^{\delta c \epsilon c}) + \epsilon \\
+    G(B^{\delta c \epsilon c}) &\le & F(B^\delta) + \epsilon.
+\end{eqnarray}
+However, $B \subset B^{\delta c \epsilon c} $, as we shall see.
+This statement is equivalent to $B^{\delta c \epsilon} \subset B^c$.
+This is essentially immediate from $\delta > \epsilon$: if $x \in B^{\delta c \epsilon}$,
+then $\exists y \not \in B^\delta$ s.t. $d(x,y) < \epsilon$ (typo in Huber here).
+Thus $x \in B^c$, because otherwise $d(x, y) > \delta > \epsilon$.
+Thus
+\beq
+    G(B) \le G(B^{\delta c \epsilon c}) \le  F(B^\delta) + \epsilon .
+\eeq
+But $B^\epsilon = \cap_{\delta > \epsilon} B^{\delta}$, so the result follows.
+\\[2ex]
+
+\noindent
+{\bf Positive definite.}
+To show that $(\pi(F,G) = 0) \Rightarrow (F = G)$, note that
+the closure of $A$ is $\bar{A} = \cap_{\epsilon > 0} A^\epsilon$.
+Thus  $\pi(F,G) = 0 $ implies $F(A) \le G(A)$ and $G(A) \le F(A)$ for all
+closed sets $A \in \calA$.
+\\[2ex]
+
+\noindent
+{\bf Triangle inequality.}
+If $\pi(F, G) \le \epsilon$ and $\pi(G, H) \le \delta$, then for every $A \in \calA$,
+\beq
+    F(A) \le G(A^\epsilon) + \epsilon \le H((A^\epsilon)^\delta) + \epsilon +
+    \delta.
+\eeq
+But by the triangle inequality for the metric $d$ on $\calX$,
+$ (A^\epsilon)^\delta  \subset A^{\epsilon+\delta}$, so we are done.
+
+Note that the Prohorov distance between $\hat{F}_n$ and the ``contaminated''
+empirical distribution one gets by changing $k$ of the data by an
+arbitrary amount is $\frac{k}{n}$.
+
+\begin{Theorem}(Strassen, 1965; see Huber Thm 2.3.7.)
+    The following are equivalent:
+    \begin{enumerate}
+        \item
+            $F(A) \le G(A^\delta) + \epsilon$ for all $A \in \calB$
+        \item
+            There are (possibly) dependent $\calX$-valued random variables $X$, $Y$  such that
+            $\calL(X) = F$, $\calL(Y) = G$, and $\Prob\{d(X,Y) \le \delta\} \ge 1 - \epsilon$.
+            (Here, $\calL(X)$ denotes the probability law of $X$, {\em etc.})
+    \end{enumerate}
+\end{Theorem}
+
+\begin{Definition}
+Suppose that the distance function $d$ on $\calX \times \calX$ is bounded by one
+(one can replace $d$ by $d(x,y)/(1 + d(x, y))$ to make this so). The
+{\em bounded Lipschitz metric} on $\calM$ is
+\beq
+    d_{BL}(F,G) = \sup_{\psi: |\psi(x) - \psi(y)| \le d(x, y)} \left |
+    \int \psi  dF - \int \psi dG \right | .
+\eeq
+\end{Definition}
+
+The bounded Lipschitz metric is truly a metric on $\calM'$.
+
+
+\begin{Theorem}
+    The set of regular Borel measures $\calM'$ on a Polish space $\calX$ is itself
+    a Polish space with respect to the weak topology, which is
+    metrizable by the Prohorov metric and by the bounded Lipschitz metric.
+\end{Theorem}
+
+Consider a collection of probability distributions indexed by $\epsilon$, such as
+the Prohorov neighborhood
+\beq
+    \calP_\pi(\epsilon; F) = \{ G \in \calM : \pi(F, G ) \le \epsilon \}
+\eeq
+or the ``gross error contamination neighborhood'' (not truly a neighborhood in the
+weak topology)
+\beq
+    \calP_{\mbox{gross error}}(\epsilon; F) = \{ G \in \calM : G = (1-\epsilon)F + \epsilon H,
+    H \in \calM \} .
+\eeq
+
+
+Let $M(G, T_n)$ denote the median of the distribution of $T_n(G) - T(F)$.
+Let $A(G, T_n)$ denote some fixed percentile of the distribution of
+$|T_n(G) - T(F)|$ .
+If $T(F_\theta) = \theta, \;$ $\forall \theta \in \Theta$, we say that $T$ is
+{\em Fisher consistent\/} for $\theta$.
+
+
+\begin{Definition}
+    Consider a sequence $\{ T_n \}$ of estimators that is Fisher consistent and
+    converges in probability to a functional statistic $T$.
+    The {\em maximum bias of $\{ T_n\}$ at $F$ over the collection
+    $\calP(\epsilon)$} is
+    \beq
+        b_1(\epsilon) = b_1(\epsilon, \calP, F) =
+        \sup_{G \in \calP(\epsilon)} |T(G) - T(F) | .
+    \eeq
+    The {\em maximum asymptotic bias of $\{ T_n\}$ at $F$ over the collection
+    $\calP(\epsilon)$} is
+    \beq
+        b(\epsilon) = b(\epsilon, \calP, F) =  \lim_{n \rightarrow \infty}
+        \sup_{G \in \calP(\epsilon)} |M(G, T_n) | .
+    \eeq
+\end{Definition}
+
+If $b_1$ is well defined, $b(\epsilon ) \ge b_1(\epsilon)$.
+Note that for the gross-error model and for the L\`{e}vy and Prohorov distances,
+$b(\epsilon) \le b(1)$, because the set $\calP(1) = \calM$.
+
+\begin{Definition}
+    (Following Huber, 1981.)
+    For a given collection $\calP(\epsilon)$ of distributions indexed by $\epsilon \ge 0$,
+    the {\em asymptotic breakdown point} of $T$ at $F$ is
+    \beq
+        \epsilon^* \equiv \epsilon^*(F, T, \calP(\cdot)) =
+        \sup \{ \epsilon : b(\epsilon, \calP(\epsilon), F) < b(1) \} .
+    \eeq
+\end{Definition}
+
+
+\begin{Definition}
+    (Following Hampel {\em et al.}, 1986.)
+    The {\em breakdown point} of a sequence of estimators $\{ T_n \}$ of a parameter
+    $\theta \in \Theta$
+    at the distribution $F$
+    is
+    \beq
+        \epsilon^*(T_n, F) \equiv \sup \{\epsilon \le 1 : \exists K_\epsilon \subseteq
+        \Theta, \; K_\epsilon \mbox{ compact, s.t. }
+        \pi(F,G) < \epsilon \Rightarrow G(\{T_n \in K_\epsilon \}) \rightarrow 1
+        \;\mbox{ as } n \rightarrow \infty \} .
+    \eeq
+\end{Definition}
+
+That is, the breakdown point is the largest Prohorov distance from $F$ a distribution
+can be, and still have the estimators almost surely take values in some
+compact set as $n \rightarrow \infty$.
+
+\begin{Definition}
+    The {\em finite-sample breakdown point of the estimator $T_n$ at $x = (x_j)_{j=1}^n$ }
+    is
+    \beq
+        \epsilon^*(T_n, x) \equiv \frac{1}{n}  \max \left \{ m : \max_{i_1, \ldots, i_m}
+        \sup_{y_1, \ldots, y_m \in \calX} | T_n(z_1, \ldots, z_n)| < \infty \right \},
+    \eeq
+    where
+    \beq
+        z_j = \left \{ \begin{array}{ll}
+        x_j, & j \not \in \{ i_k \}_{k=1}^m \\
+        y_k, & j = i_k \mbox{ for some } k.
+        \end{array}
+        \right .
+    \eeq
+\end{Definition}
+
+This definition makes precise the notion that corrupting
+some fraction of the measurements can corrupt the value of the statistic
+arbitrarily.
+Note that the finite-sample breakdown point is a function not of a distribution,
+but of the sample and the estimator.
+Typically, its value does not depend on the sample.
+It is this ``breakdown point'' that we saw was zero for the sample mean; it is
+a measure of {\em resistance}, not {\em robustness}.
+
+\begin{Definition}
+    A sequence of estimators $\{T_n\}$ is {\em qualitatively robust at $F$} if for
+    every $\epsilon > 0$, $\exists \delta >0$ such that for all $G \in \calM$ and
+    all $n$,
+    \beq
+        \pi(F,G) < \delta \Rightarrow \pi(\calL_F(T_n), \calL_G(T_n)) < \epsilon .
+    \eeq
+    That is, $\{T_n\}$ is qualitatively robust at $F$ if the distributions of $T_n$ are
+    equicontinuous w.r.t. $n$.
+\end{Definition}
+
+\subsection{The Influence Function}
+The next few sections follow Hampel {\em et al.} (Ch2) fairly closely.
+Consider an estimator of a real parameter $\theta \in \Theta$,
+where $\Theta$ is an open convex subset of $\bfR$, based on a sample $X_n$
+of size $n$.
+The sample space for each observation is $\calX$.
+We consider a family $\calF$ of distributions $\{ F_\theta : \theta \in \Theta \}$,
+which are assumed to have densities $\{ f_\theta : \theta \in \Theta \}$ with respect
+to a common dominating measure.
+
+In our treatment of the bootstrap, we considered problems in which it suffices
+to know the empirical distribution of the data: the estimator
+could be assumed to be a function of the empirical distribution---at least
+asymptotically.
+We do the same here.
+Consider estimators $\hat{\theta} = T_n(\hat{F}_n)$ that asymptotically can
+be replaced by functional estimators.
+That is, either $T_n(\hat{F}_n) = T(\hat{F}_n)$ for all $n$, or there is a functional
+$T:  \dom(T) \rightarrow \bfR$
+such that if the components of $X_n$ are iid $G$,
+with $G \in \dom(T)$, then
+\beq
+    T_n (\hat{G}_n) \rightarrow T(G)
+\eeq
+in probability as $n \rightarrow \infty$.
+$T( G)$ is the asymptotic value of $\{ T_n \}$ at $G$.
+We assume that $T(F_\theta) = \theta,$ $\forall \theta \in \Theta$
+(this is Fisher consistency of the estimator $T$).
+
+
+\begin{Definition}
+    A functional $T$ defined on probability measures is G\^{a}teaux differentiable at
+    the measure $F$ in $\dom(T)$ if there exists a function $a: \calX \rightarrow \bfR$ s.t.
+    $\forall G \in \dom(T)$,
+    \beq
+        \lim_{t \rightarrow 0} \frac{T((1-t)F + tG) - T(F)}{t} = \int a(x) dG(x).
+    \eeq
+    That is,
+    \beq
+        \frac{\partial}{\partial t}   T((1-t)F + tG) |_{t=0} =   \int a(x) dG(x).
+    \eeq
+\end{Definition}
+
+G\^{a}teaux differentiability is weaker than Fr\'{e}chet differentiability.
+Essentially,  \gto  differentiability at $F$ ensures that the directional derivatives
+of $T$ exist in all directions that (at least infinitesimally) stay in the domain
+of $T$.
+
+Let $\delta_x$ be a point mass at $x$.
+
+\begin{Definition}
+    The {\em influence function} of $T$ at $F$ is
+    \beq    \label{eq:IFdef}
+        \IF(x; T, F)  \equiv \lim_{t \rightarrow 0}  \frac{T((1-t)F + t\delta_x) - T(F)}{t}
+    \eeq
+    at the points $x \in \calX$ where the limit exists.
+\end{Definition}
+
+The influence function is similar to the \gto derivative,
+but it can exist even when the \gto derivative does not, because the
+set of directions it involves is not as rich.
+The influence function gives the effect on $T$ of an infinitesimal perturbation to the data
+at the point $x$.
+This leads to a ``Taylor series'' expansion of $T$ at $F$:
+\beq
+    T(G) = T(F) + \int \IF(x; T, F) d(G-F)(x) + \mbox{ remainder} .
+\eeq
+(Note that $\int \IF(x; T, F) dF(x) = 0$.)
+
+\subsubsection{Heuristics using $\IF(x; T, F)$}
+
+Consider what happens for large sample sizes.
+The empirical distribution $\hat{F}_n$ tends to the theoretical
+distribution $F$, and
+$T_n(\hat{F}_n)$ tends to $T(\Fhatn)$.
+We will use $\Fhatn$ to denote both the empirical cdf and the
+empirical measure, so $\Fhatn = \frac{1}{n}\sum_{j=1}^n \delta_{X_j}$.
+Thus
+\beq
+    (T_n(\Fhatn) - T(F) ) \approx \frac{1}{n} \sum_{j=1}^n \IF(X_j; T, F) + \mbox{ remainder},
+\eeq
+or
+\beq
+    \sqrt{n}  (T_n(\Fhatn) - T(F) ) \approx
+        \frac{1}{\sqrt{n}} \sum_{j=1}^n \IF(X_j; T, F) + \mbox{ remainder}.
+\eeq
+Now $\{ \IF(X_j; T, F) \}_{j=1}^n$ are $n$ iid random variables with mean zero
+and finite variance, so
+their sum is asymptotically normal.  If the remainder vanishes asymptotically
+(not that easy to verify, typically, but often true), then
+$\sqrt{n}(T_n(\Fhatn) - T(F))$ is also asymptotically normal, with asymptotic variance
+\beq    \label{eq:IFasympVar}
+    V(T,F) = \int \IF(x; T, F)^2 dF(x).
+\eeq
+
+When the relationship holds, an asymptotic form of the Cram\'{e}r-Rao bound relates
+asymptotic efficiency to the influence function.
+Suppose $T$ is Fisher consistent.
+Recall that the Fisher information at $F_{\theta_0}$ is
+\beq
+    I(F_{\theta_0} ) = \int
+    \left ( \left . \frac{\partial}{\partial \theta} \ln f_\theta(x) \right |_{\theta_0}
+    \right )^2 dF_{\theta_0} .
+\eeq
+The Cram\'{e}r-Rao information inequality says that
+(under regularity conditions on $\{F_\theta\}_{\theta \in \Theta}$,
+including being dominated by a common measure $\mu$, sharing a common support, and
+having densities $f_\theta (x)$ w.r.t. $\mu$ that are differentiable in $\theta$)
+for any statistic $T$ with $\EE_\theta T^2 < \infty$ for which
+\beq
+    \frac{d}{d\theta}\EE_\theta T = \int \frac{\partial}{\partial \theta} T f_\theta \mu(dx),
+\eeq
+\beq
+    V(T, F_\theta) \ge \frac{\left [ \frac{\partial}{\partial \theta} \EE_\theta T \right ]^2}{I(F_\theta)}.
+\eeq
+Thus $T$ is asymptotically efficient only if
+\beq
+    \IF(x; T, F) = I(F_{\theta_0})^{-1} \frac{\partial}{\partial\theta}(\ln
+    f_\theta(x))|_{\theta_0}.
+\eeq
+
+\subsubsection{Relation to the Jackknife}
+There is an asymptotic connection between the jackknife estimate of variance and
+the influence function as well.
+Recall that
+for a functional statistic $T_n = T(\hat{F}_n)$, we define the $j$th pseudovalue by
+\beq
+    T_{nj}^* = nT(\hat{F}_n) - (n-1) T(\hat{F}_{(j)}),
+\eeq
+where $\hat{F}_{(j)}$ is the cdf of the data with the $j$th datum omitted.
+The jackknife estimate is
+\beq
+    T_n^* = \frac{1}{n} \sum_{j=1}^n T_{nj}^*.
+\eeq
+The (sample) variance of the pseudovalues is
+\beq
+    V_n = \frac{1}{n-1} \sum_{j=1}^n (T_{nj}^* - T_n^*)^2.
+\eeq
+The jackknife estimate of the variance of $T_n$ is $\frac{1}{n}V_n$.
+Plugging into the definition \ref{eq:IFdef} and taking $t = \frac{-1}{n-1}$ gives
+\begin{eqnarray}
+    \frac{n-1}{-1} \left ( T\left ( (1 - \frac{-1}{n-1})\hat{F}_n
+    + \frac{-1}{n-1} \delta_{x_j}   \right )  - T(\hat{F}_n) \right ) &=&
+    (n-1) [ T(\hat{F}_n) - T(\hat{F}_{(j)}) ] \nonumber \\
+    &=& T_{nj}^* - T(\hat{F}_n).
+\end{eqnarray}
+(Note that $(1 - \frac{-1}{n-1})\hat{F}_n + \frac{-1}{n-1} \delta_{x_j} = \hat{F}_{(j)}$.)
+The jackknife pseudovalues thus give an approximation to the influence function.
+
+\subsubsection{Robustness measures defined from $\IF(x; T, F)$}
+The {\em gross error sensitivity of $T$ at $F$} is
+\beq
+    \gamma^* = \gamma^*(T, F) = \sup_{\{x: \IF(x; T, F) \mbox{ exists}\}} | \IF(x; T, F) |.
+\eeq
+This measures the  maximum change to $T$ a small perturbation to $F$ at a point can
+induce, which is a bound on the asymptotic  bias of $T$ in a neighborhood of $F$.
+If $\gamma^*(T,F) < \infty$, $T$ is {\em B-robust} at $F$ (B is for bias).
+For Fisher-consistent estimators, there is typically a minimum possible value of
+$\gamma^*(T, F)$, leading to the notion of {\em most B-robust} estimators.
+There is usually a tradeoff between efficiency and B-robustness: for a given upper
+bound on $\gamma^*$, there is a most efficient estimator.
+
+The gross error sensitivity measures what can happen when the difference between what is
+observed and $F$ can be anywhere (perturbing part of an observation by an
+arbitrary amount).
+There is a different notion of robustness related to
+changing the observed values slightly.
+The (infinitesimal) effect of moving an observation from $x$ to $y$   is
+$\IF(y; T, F) - \IF(x; T, F)$.
+This can be standardized by the distance from $y$ to $x$
+to give the {\em local shift sensitivity}
+\beq
+    \lambda^* = \lambda^*(T, F) =
+    \sup_{\{x \ne y : \IF(x; T, F) \mbox{ and } \IF(y; T, F) \mbox{ both exist}\}}
+    \frac{| \IF(y; T, F) - \IF(x; T, F)|}{| y - x|} .
+\eeq
+This is the Lipschitz constant of the influence function.
+(A real function $f$ with domain $\dom(f)$
+is {\em Lipschitz continuous at $x$} if there exists a constant
+$C > 0$ such that $|f(x) - f(y)| \le C | x-y|$ for all $y \in \dom(f)$.
+A real function $f$ is Lipschitz continuous if it is Lipschitz continuous at every
+$x \in \dom(f)$.
+The {\em Lipschitz constant\/} of a Lipschitz-continuous function $f$ is
+the smallest $C$ such that $|f(x) - f(y)| \le C | x-y|$ for all $x, y \in \dom(f)$.
+These definitions extend to functions defined on metric spaces, and to bounding 
+$|f(x) - f(y)|$ by a multiple of $| x - y |^\nu$ with $\nu \ne 1$.)
+
+Another measure of robustness involving the influence function is the
+{\em rejection point}
+\beq
+    \rho^* = \rho^*(T, F) = \inf \{ r > 0 : \IF(x; T, F) = 0, \;\;\forall |x| > r \}.
+\eeq
+This measures how large an observation must be before the estimator ignores it
+completely.
+If very large observations are almost certainly
+gross errors, it is good for $\rho^*$ to be finite.
+
+\subsubsection{Examples}
+Suppose $X \sim N(\theta, 1)$; $\theta \in \Theta = \bfR$; $\theta_0 = 0$;
+$F = \Phi$;
+$T_n(X_n) = \bar{X} = \frac{1}{n} \sum_{j=1}^n X_j$;
+\beq
+    T(G) \equiv \int x dG(x).
+\eeq
+The functional $T$ is Fisher-consistent.
+Calculating $\IF$ gives
+\begin{eqnarray}
+    \IF(x; T, F)  &=& \lim_{t \rightarrow 0}
+    \frac{\int u d((1-t) \Phi + t \delta_x ) (u) - \int u d\Phi(u)}{t} \nonumber \\
+    &=& \lim_{t \rightarrow 0 } \frac{(1-t) \int u d\Phi(u) + t \int u d\delta_x(u) - \int u
+    d\Phi(u)}{t} \nonumber \\
+    &=& \lim_{t \rightarrow 0} \frac{tx}{t} \nonumber \\
+    &=& x.
+\end{eqnarray}
+The Fisher information of the standard normal with unknown mean is $I(\Phi) =1$, so
+\beq
+    \int \IF^2(x; T, \Phi) d\Phi = 1 = I^{-1}(\Phi),
+\eeq
+and $\IF \propto (\partial/\partial \theta) (\ln f_\theta)|_0$.
+The arithmetic mean is the MLE and is asymptotically efficient.
+The gross-error sensitivity is $\gamma^* = \infty$, the local shift sensitivity
+is $\lambda^* = 1$, and the   rejection point is $\rho^* = \infty$.
+
+Suppose $\calX = \{0, 1, 2, \ldots \}$, $\lambda(A) = \#A$,
+$\{X_j\}_{j=1}^n \mbox{ iid } \mbox{Poisson}(\theta)$, $\theta \in \Theta = (0, \infty)$.
+Then $f_\theta(k) = e^{-\theta} \theta^k/k!$.
+The MLE of $\theta$ is
+\begin{eqnarray}
+   \hat{\theta} &=& \arg \max_{\eta \in (0, \infty)} \prod_{j=1}^n f_\eta(X_j) \nonumber \\
+                &=& \arg \max_\eta e^{-n\eta} \prod_j \eta^{X_j}/X_j! \nonumber \\
+                &=& \arg \max_\eta e^{-n\eta} \eta^{n\sum_j X_j} \prod_j 1/X_j! \nonumber \\
+                & \equiv & \max_\eta L(\eta | \{X_j\}_{j=1}^n).
+\end{eqnarray}
+Stationarity requires
+\begin{eqnarray}
+   0 &=& \partial/\partial \eta L(\eta | \{X_j\}_{j=1}^n) |_{\hat{\theta}} \nonumber \\
+     &\propto& e^{-n{\hat{\theta}}} \sum_j X_j {\hat{\theta}}^{\sum_j X_j - 1} - n e^{-n{\hat{\theta}}} {\hat{\theta}}^{\sum_j X_j}.
+\end{eqnarray}
+Which reduces to
+\beq
+	\sum_j X_j {\hat{\theta}}^{-1} - n = 0; \mbox{ i.e., } \hat{\theta} = \frac{1}{n} \sum_j X_j = \bar{X}.
+\eeq
+This can be written as the functional estimator $T(\hat{F}_n)$ where $T$ is defined by
+\beq
+	T(F) \equiv \int_\calX x f(x) \lambda(dx)
+\eeq
+This estimator is clearly Fisher consistent because
+\beq
+	T(F_\theta) = \sum_{k=0}^\infty k e^{-\theta} \theta^k/k! = \theta, \;\; \forall \theta \in \Theta.
+\eeq
+The influence function is defined only at points $x \in \calX$.
+The functional $T$ is linear, so
+\begin{eqnarray}
+	\IF(x; T, F_\theta) &\equiv& \lim_{t \rightarrow 0} 
+	    \frac{T((1-t)F_\theta + t \delta_x)) - T(F_\theta)}{t} \nonumber \\
+	    & = & \lim_{t \rightarrow 0} 
+	    \frac{(1-t) T(F_\theta) + t T(\delta_x) - T(F_\theta)}{t} \nonumber \\
+	    & = & x - \theta, \;\; x \in \calX.
+\end{eqnarray}
+
+\subsection{$M$-estimators}
+We shall consider in more detail what is needed for an $M$-estimator
+to be robust.
+An $M$-estimator is one of the form
+\beq \label{eq:MestDef}
+    T_n(X) = \arg \min_{U_n} \sum_{j=1}^n \rho(X_j, U_n),
+\eeq
+where $\rho$ is a function on $\calX \times \Theta$.
+$M$-estimators generalize maximum likelihood estimators.
+Maximum likelihood estimators minimize the negative log-likelihood, which
+for independent data would be of the form just given, with
+$\rho(X_j, U_n) = -\log f(x; \theta)$.
+If $\rho$ is differentiable in $\theta$, with
+\beq
+    \psi(x, \theta) = \frac{\partial}{\partial\theta}\rho(x, \theta),
+\eeq
+then $T_n$ is a stationary point, so it satisfies
+\beq  \label{eq:MestDerivDef}
+    \sum_{j=1}^n \psi(X_j, T_n) = 0.
+\eeq
+An estimator that can be characterized as the solution of an 
+equation in the form of either
+\ref{eq:MestDef} or \ref{eq:MestDerivDef} is an {\em $M$-estimator}.
+The two are not quite equivalent:
+If $\rho$ is not differentiable, there is no corresponding $\psi$.
+Conversely, $\psi$ need not be the partial derivative of some $\rho$.
+An $M$-estimator is characterized by (and identified with) $\rho$ or $\psi$.
+
+Consider the second form, based on $\psi$.
+Define $T$ implicitly as the functional for which
+\beq \label{eq:implicitTdefM}
+    \int \psi(x, T(G)) dG = 0
+\eeq
+for all $G$ for which the integral exists; then the estimator is $T(\hat{F}_n)$.
+We calculate the $\IF$ at $F$ of an $M$-estimator of this form.
+Define $F_{t,x} \equiv (1-t)F + t\delta_x$.
+We want 
+\beq
+    T' \equiv \lim_{t \rightarrow 0} \frac{T(F_{t,x}) - T(F)}{t}.
+\eeq
+Assume we can interchange
+integration and differentiation;
+then we can differentiate \ref{eq:implicitTdefM}
+to get
+\beq
+    \int \psi(x, T(F)) d(\delta_x - F) + \int \left . \frac{\partial}{\partial\theta}
+    \psi(x, \theta) \right |_{T(F)} dF \cdot \left .
+    \frac{\partial}{\partial t} T(F_{t,x}) \right |_{t=0} = 0.
+\eeq
+This yields
+\beq \label{eq:IFfromPsi}
+    \IF(x; \psi, F) = \frac{\psi(x, T(F))}{- \int
+    \left . \frac{\partial}{\partial\theta}  \psi(y,\theta)\right |_{T(F)} dF(y)},
+\eeq
+if the denominator is not zero.
+It turns out that even when $\psi$ is not smooth, equation \ref{eq:IFfromPsi}
+holds.
+
+The estimator given by $\psi$ is $B$-robust iff $\psi(\cdot, T(F))$ is
+bounded.
+The asymptotic variance of the $M$-estimate defined by $\psi$ is
+\beq
+    V(T, F) = \frac{\int \psi^2(x, T(F)) dF(x)}{\left ( \int \left . \partial \psi(y, \theta)/\partial \theta
+    \right |_{T(F)} dF(y) \right )^2}.
+\eeq
+
+The maximum likelihood estimate (MLE) is a special case of an $M$-estimate,
+taking
+\beq
+    \rho(x, \theta) = -\ln f_\theta(x).
+\eeq
+The $\IF$ of the MLE is
+\beq
+    \IF(x; T, F_\theta) =
+    \frac{\left . \partial \ln f_\gamma / \partial \gamma \right |_{\theta}}{V(T, F_\theta)}.
+\eeq
+The asymptotic variance is in this case the reciprocal of the Fisher information $J(F_\theta)$,
+which shows the asymptotic efficiency of the MLE.
+
+The {\em maximum likelihood scores function\/} $s(x, \theta)$ is
+\beq
+    s(x, \theta) \equiv \left . \frac{\partial \ln f_\gamma (x)}{\partial \gamma} \right |_{\theta};
+\eeq
+the MLE solves
+\beq
+    \sum_{j=1}^n s(X_j, \mbox{MLE}_n) = 0.
+\eeq
+
+For estimates of location parameters,  $\psi$ typically depends on $x$ and $\theta$
+only through their difference:
+$\psi(x; \theta) = \psi(x-\theta)$.
+For the estimate to be Fisher-consistent, we need $\int \psi dF = 0$;
+then
+\beq
+    \IF(x; F, T) = \frac{\psi(x - T(F))}{\int \psi'(x - T(F)) dF}.
+\eeq
+The influence function is proportional to $\psi$.
+(We might as well take $\psi$ to be the $\IF$.)
+
+Therefore, $M$-estimates have finite gross error sensitivity only if
+$\psi$ is bounded, and have a finite rejection point only if $\psi$
+{\em redescends\/} to zero for large values of its argument.
+For the mean, this does not occur.
+
+The asymptotic variance of such an $M$-estimate of a location parameter is
+\beq
+    V(\psi, F) = \frac{\int \psi^2 dF}{\left ( \int \psi' dF \right )^2}.
+\eeq
+
+
+\subsubsection{Robustness of $M$-estimates}
+See Huber, Ch3 for more details; this is drawn from there.
+
+Let's calculate $b_1(\epsilon)$ for the L\'{e}vy metric for an $M$-estimate
+of location, with $\psi(x;t) = \psi(x-t)$, with $\psi$ monotonically increasing.
+We will use $\lambda$ to denote something new in this section, so let $d_L(F,G)$
+denote the L\'{e}vy distance between
+distributions (or cdfs) $F$ and $G$.
+Accordingly, we take $\calP(\epsilon) \equiv \{ G : d_L(F,G) \le \epsilon \}$.
+Assume that $T(F) = 0$.
+Define
+\beq
+    b_+(\epsilon) = \sup_{G \in \calP(\epsilon)}T(G)
+\eeq
+and
+\beq
+    b_-(\epsilon) = \inf_{G \in \calP(\epsilon)}T(G) .
+\eeq
+Then $b_1 (\epsilon) = \max\{-b_-(\epsilon), b_+(\epsilon) \}$ (because $T(F) = 0$).
+Define
+\beq
+    \lambda(t; G) = \EE_G \psi(X-t) = \int \psi(x-t) dG(x).
+\eeq
+Because $\psi$ is monotonic, $\lambda$ is decreasing in $t$, but not necessarily strictly
+decreasing, so the solution of $\lambda(t;G) = 0$ is not necessarily unique.
+Define
+\beq
+    T^*(G) = \sup \{ t : \lambda(t;G) > 0 \}
+\eeq
+and
+\beq
+    T^{**}(G) = \inf \{ t : \lambda(T;G) < 0 \}.
+\eeq
+Then $T^*(G) \le T(G) \le T^{**}(G)$.
+Note that $\lambda(t; G)$ increases if $G$ is made stochastically larger.
+The stochastically largest element of $\{ G: d_L(F, G) \le \epsilon \}$ is
+\beq
+    F_1(x) = (F(x - \epsilon) - \epsilon)_+ =
+    \left \{
+    \begin{array}{ll}
+        0, & x \le x_0 + \epsilon \\
+        F(x-\epsilon) - \epsilon & x > x_0 + \epsilon ,
+    \end{array}
+    \right .
+\eeq
+where $x_0$ solves $F(x_0) = \epsilon$.
+(Assume that $x_0$ exists; the discontinuous
+case introduces some additional bookkeeping.)
+Note that this distribution puts mass $\epsilon$ at $x = \infty$.
+For $G \in \calP(\epsilon)$,
+\beq
+    \lambda(t; G) \le \lambda(t; F_1) = \int_{x_0}^\infty \psi(x - t + \epsilon)dF(x)
+    + \epsilon \psi(\infty).
+\eeq
+It follows that
+\begin{eqnarray}
+    b_+(\epsilon) &=& \sup_{G \in \calP(\epsilon)} T(G) \nonumber \\
+    &= & T^{**}(F_1) \nonumber \\
+    &= & \inf \{ t : \lambda(t; F_1) < 0 \}.
+\end{eqnarray}
+Note that
+\beq
+    \ell_+ = \lim_{t \rightarrow \infty} \lambda(t; F_1) =
+    (1 - \epsilon) \psi(-\infty) + \epsilon \psi(\infty) .
+\eeq
+Provided $\ell_+ < 0$ and $\psi(\infty) < \infty$,
+$b_+(\epsilon) < b_+(1) = \infty$.
+Thus to avoid breakdown from above we need
+\beq \label{eq:MUpBreakdown}
+    \frac{\epsilon}{1-\epsilon} <  -\frac{\psi(- \infty)}{\psi(\infty)}.
+\eeq
+We can calculate $b_-(\epsilon)$ in the same way:
+the stochastically smallest element of $\calP_(\epsilon)$ is
+\beq
+    F_{-1} = (F(x + \epsilon) + \epsilon) \wedge 1 =
+    \left \{
+        \begin{array}{ll}
+             F(x + \epsilon) + \epsilon, & x \le x_1 - \epsilon \\
+            1, & x > x_1 - \epsilon ,
+        \end{array}
+    \right .
+\eeq
+where $x_1$ solves $F(x_1) = 1- \epsilon$.
+This distribution assigns mass $\epsilon$ to $x = -\infty$.
+We have
+\beq
+    \lambda(t; G) \ge \lambda(t; F_{-1}) = \epsilon \psi(-\infty) +
+    \int_{-\infty}^{x_1}\psi(x - t - \epsilon)dF(x).
+\eeq
+Thus
+\begin{eqnarray}
+    b_-(\epsilon) &=& \inf_{G \in \calP(\epsilon)} T(G) \nonumber \\
+    &= & T^{*}(F_{-1}) \nonumber \\
+    &= & \sup \{ t : \lambda(t; F_{-1}) > 0 \}.
+\end{eqnarray}
+Note that
+\beq
+    \ell_- = \lim_{t \rightarrow -\infty} \lambda(t; F_{-1}) =
+    \epsilon \psi(-\infty) + (1-\epsilon) \psi(\infty) .
+\eeq
+To avoid breakdown from below,
+we need  $\psi(- \infty) > - \infty$ and $\ell_- > 0$, which leads to
+\beq
+    \frac{\epsilon}{1-\epsilon} >  -\frac{\psi(\infty)}{\psi(-\infty)}.
+\eeq
+Combining this with \ref{eq:MUpBreakdown} gives
+\beq
+    -\frac{\psi(\infty)}{\psi(-\infty)} < \frac{\epsilon}{1-\epsilon}
+    <  -\frac{\psi(- \infty)}{\psi(\infty)}.
+\eeq
+Define
+\beq
+    \eta \equiv \min \left \{ - \frac{\psi(-\infty)}{\psi(\infty)}, -
+    \frac{\psi(\infty)}{\psi(-\infty)} \right \}.
+\eeq
+The breakdown point is then
+\beq
+    \epsilon^* = \frac{\eta}{1 + \eta} .
+\eeq
+The maximum possible value
+$\epsilon^*  = 1/2$ is attained if $\psi(\infty) = - \psi(-\infty)$.
+The breakdown point is $\epsilon^* = 0$ if $\psi$ is unbounded.
+
+This calculation also shows that if $\psi$ is bounded and $\lambda(t; F)$ has a unique
+zero at $t = T(F)$, then $T$ is continuous at $F$; otherwise, $T$ is not continuous at
+$F$.
+
+Things are much more complicated for non-monotone functions $\psi$, 
+including ``redescending influence functions,'' which we shall examine presently.
+
+\subsubsection{Minimax Properties for location estimates}
+It is straightforward to find the minimax bias location estimate for symmetric
+unimodal distributions; the solution is the sample median (see Huber, \S4.2).
+Minimizing the maximum variance is somewhat more difficult.
+Define
+\beq
+    v_1 (\epsilon) = \sup_{G \in \calP(\epsilon)} A(G,T),
+\eeq
+where
+$A(G,T)$ is the asymptotic variance of $T$ at $G$.
+Assume the observations are iid $G( \cdot - \theta)$.  The
+shape varies over the family $\calP(\epsilon)$; the parameter varies over the
+reals.
+Such families are not typically compact in the weak topology.  Huber uses
+the {\em vague} topology to surmount this problem.
+The {\em vague} topology is the weakest topology on the set $\calM_+$ of
+sub-probability measures for which $F \rightarrow \int \psi dF$
+is continuous for all continuous functions $\psi$ with compact support.
+(A subprobability measure can have total mass less than one, but is otherwise the same
+as a probability measure.)
+Because $\bfR$ is locally compact, $\calM_+$ is compact.
+
+Define $F_0$ to be the distribution in $\calP(\epsilon)$ with smallest
+Fisher information
+\beq
+    I(G) = \sup_{\psi \in \calC_K^1} \frac{(\int \psi' dG)^2}{\int \psi^2 dG},
+\eeq
+where $\calC_K^1$ is the set of all compactly supported,
+continuously differentiable functions $\psi$ s.t. $\int \psi^2 dF > 0$.
+This extends the definition of the Fisher information beyond measures that
+have densities; in fact,
+$I(F) < \infty$ iff $F$ has an absolutely continuous density w.r.t. Lebesgue measure,
+and $\int (f'/f)^2 f dx < \infty$.
+
+\noindent
+{\bf Proof.} (Following Huber, pp78ff.)
+By assumption, $\int \psi^2 dx < \infty$.
+If   $\int (f'/f)^2 f dx < \infty$,
+\begin{eqnarray}
+    \left ( \int \psi' f dx \right )^2 & = &
+    \left (\psi f |_{-\infty}^\infty - \int \psi \frac{f'}{f} f dx \right )^2
+    \nonumber \\
+    &=& \left ( \int \psi \frac{f'}{f} f dx \right )^2
+    \nonumber \\
+    &\le & \left ( \int \psi^2 f dx\right ) \left ( \int  \left ( \frac{f'}{f}\right )^2
+        f dx \right ) ,
+\end{eqnarray}
+by the weighted Cauchy-Schwarz inequality.
+Thus $I(F) \le \int (f'/f)^2 f dx < \infty$.
+Now suppose $I(F) < \infty$.
+Then  $L(\psi)  = -\int \psi' dF$ is a bounded
+linear functional on the (dense) subset $\calC_K^1$ of $L_2(F)$, the Hilbert
+space of square-integrable functions w.r.t. $F$.
+By continuity, $L$ can be extended to a continuous linear functional on all
+of $L_2(F)$.  By the Riesz Representation Theorem, there then exists a function
+$g \in L_2(F)$ such that for all $\psi \in L_2(F)$,
+\beq
+    L\psi = \int \psi g dF.
+\eeq
+Clearly, $L1 = \int g dF = 0$.
+Define
+\beq
+f(x) \equiv \int_{y < x} g(y) F(dy) = \int 1_{y < x} g(y) F(dy).
+\eeq
+By the Cauchy-Schwarz inequality,
+\beq
+    | f(x) |^2 \le (\int 1_{y <x}^2 F(dy) ) (\int g(y)^2 F(dy) )  =
+    F((-\infty, x)) \int g^2 F(dy),
+\eeq
+which tends to zero as $x \rightarrow - \infty$;
+$|f(x)|$ also tends to zero as $x \rightarrow \infty$.
+For $\psi \in \calC_K^1$,
+\beq
+    - \int \psi'(x) f(x) dx = - \int_{y < x} \int \psi'(x) g(y) F(dy) dx =
+    \int \psi(y) g(y) F(dy) = L\psi
+\eeq
+by Fubini's theorem.
+Thus the measure $f(x) dx$   and the measure $F(dx)$ give the same linear functional
+on derivatives of functions in $\calC_K^1$. This set is dense in $L_2(F)$, so
+they define the same measure, and so $f$ is a density of $F$.
+We can now integrate the definition of the functional $L$ by parts to show that
+\beq
+    L\psi = - \int \psi' f dx = \int \psi \frac{f'}{f} f dx.
+\eeq
+Thus
+\beq
+    I(F) = \| L \|^2 = \int g^2 dF = \int \left ( \frac{f'}{f} \right )^2 f dx.
+\eeq
+
+The functional $I(G)$ is lower-semicontinuous with respect to the vague topology,
+so $I(G)$ attains its infimum on any vaguely compact set.
+Furthermore, $I(G)$ is a convex function of $G$.
+
+\begin{Theorem}
+(Huber, Proposition 4.5)
+Let $\calP$ be a set of measures on $\bfR$.
+Suppose $\calP$ is convex, $F_0 \in \calP$ minimizes $I(G)$ over $\calP$,
+$0 < I(F_0) < \infty$, and the set where the density $f_0$ of $F_0$ is strictly positive
+is (a) convex and (b) contains the support of every distribution in $\calP$.
+
+Then $F_0$ is the unique minimizer of $I(G)$ over $\calP$.
+\end{Theorem}
+
+The reciprocal of $I(F_0)$ lower-bounds the (worst) asymptotic variance of
+any estimator over all $G \in \calP$, so if one can find an estimator whose
+asymptotic variance is $1/I(F_0)$, it is minimax (for asymptotic variance).
+
+Finding $F_0$ can be cast as a variational problem; see Huber, \S 4.5.
+
+The least-informative distributions in neighborhoods of the normal
+tend to have thinner tails than the normal.  If one believes that outliers might be
+a problem, it makes sense to abandon minimaxity in favor of estimators that do
+somewhat better when the truth has thicker tails than the normal.
+That leads to considering {\em redescending influence functions}, for which
+$\psi = 0$  for $x$ sufficiently large.
+
+One can develop ``minimax'' estimators in this restricted class.
+For example, we could seek to minimize the asymptotic variance subject to
+$\psi(x) = 0$, $|x| > c$.
+For the $\epsilon$-contamination neighborhood of a normal, the minimax $\psi$
+in this class is
+\beq
+\psi(x) = - \psi(-x) = \left \{ \begin{array}{ll}
+x, & 0 \le x \le a \\
+b \tanh \left ( \frac{b(c-x)}{2} \right ) & a \le x \le c \\
+0, & x \ge c.
+\end{array}
+\right .
+\eeq
+The values of $a$ and $b$ depend on $\epsilon$.
+
+Other popular redescending influence functions include Hampel's piecewise linear influence
+functions:
+\beq
+    \psi(x) = - \psi(-x) = \left \{
+        \begin{array}{ll}
+            x, & 0 \le x \le a \\
+            a & a \le x \le b \\
+            a\frac{c-x}{c-b} & b \le x \le c \\
+            0, & x \ge c,
+        \end{array}
+    \right .
+\eeq
+and Tukey's ``biweight''
+\beq
+    \psi(x) = \left \{
+    \begin{array}{ll}
+        x(1-x^2)^2, & | x | \le 1 \\
+        0, & |x | > 1.
+    \end{array}
+\right .
+\eeq
+A complication in using redescending influence functions is that scaling (some
+form of Studentizing) is much more important for them to
+be efficient than it is for monotone influence functions.
+The slope of the influence function in the descending regions also can
+inflate the asymptotic variance (recall that $(\int \psi'  dF)^2$ is in the
+denominator of $A(F, T)$).
+
+
+\subsection{Estimates of Scale}
+We require that a scale estimate $S_n$ be equivariant under changes of scale, so that
+\beq
+    S_n (aX) = a S_n(X), \;\; \forall a > 0 .
+\eeq
+It is common also to require that a scale estimate be invariant under sign
+changes and translations, so that
+\beq
+    S_n(-X) = S_n(X) = S_n(X+b{\bf 1}),
+\eeq
+where $b \in \bfR$ and ${\bf 1}$ is an $n$-vector of ones.
+The most common need for a scale estimate is to remove scale as a nuisance
+parameter in a location estimate, by Studentizing.
+
+It turns out that the bias properties of a scale estimate are more important for
+studentizing than the variance properties. That leads to considering something
+involving the median deviation.
+The most widely used robust scale estimator is
+the median absolute deviation (MAD).
+Let $M_n(x)$ be the median of the list of the elements
+of $x$: $\med\{x_j\}_{j=1}^n$.
+Then
+\beq
+    \MAD_n (x) = \med \{ | x_j - M_n(x) | \}_{j=1}^n.
+\eeq
+The breakdown point of the MAD is $\epsilon^* = 1/2$.
+Typically, the MAD is multiplied by 1.4826 ($1/\Phi^{-1}(3/4)$)
+to make its expected value unity for a standard normal.
+
+
+\subsection{Robust Regression}
+This section follows Hampel {\em et al.\/} (1986), Chapter 6, rather closely.
+Suppose we have a linear statistical model: we observe $\{(X_j, Y_j)\}_{j=1}^n$
+iid with $Y_j \in \bfR$, $X_j \in \bfR^p$ ($p \ge 1$), and
+\beq
+    Y = X\theta + \epsilon,
+\eeq
+where $Y = (Y_j)_{j=1}^n$, $X$ is an $n$ by $p$ matrix with entries
+$X_{jk} = (X_j)_k$, $1 \le j \le n$, $1 \le k \le p$,
+$\theta \in \Theta \subset \bfR^p$ is unknown, $\Theta$ is an open convex subset of
+$\bfR^p$, and $\epsilon \in \bfR^n$ is a
+vector of iid noise with mean zero.
+We assume that $\epsilon_j$ is independent of $X_j$, that the common distribution
+of the noise components is symmetric about zero and continuous.
+Let $K$ be the common distribution of $\{X_j\}$, and let $k$ be the density of $K$
+with respect to Lebesgue measure on $\bfR$.
+The joint density of $(X_j, Y_j)$ with respect to Lebesgue measure on $\bfR^2$ is
+\beq
+    f_\theta(x, y) = \sigma^{-1} g\left ( (y - x\theta)/\sigma\right ) k(x).
+\eeq
+Let $F_\theta(x, y)$ be the corresponding measure.
+For now, we take $X$ and $Y$ to be random (we don't condition on $X$).
+
+The least-squares (LS) estimate of $\theta$ is
+\beq
+    \hat{\theta}_{LS} \equiv
+    \arg \min_{\gamma \in \Theta} \sum_{j=1}^n \left ( (y_j - x_j\gamma) / \sigma \right )^2.
+\eeq
+The least squares estimate minimizes the 2-norm of the residuals.
+The Gauss-Markov theorem says that if $\EE \epsilon_j = 0$, $1 \le j \le n$, and
+$cov(\epsilon) = \sigma^2 I$, then $b\hat{\theta}_{LS}$ is
+the unique minimum variance unbiased linear estimator
+of any estimable linear functional $b\theta$ of $\theta$.
+The restriction to linear estimators is severe---for example,
+the MLE is nonlinear for many distributions.
+When the error distribution is normal, the minimum variance estimate
+is in fact linear, but otherwise, there can be a large loss of efficiency in
+restricting to linear estimators.
+
+Moreover, a single outlier can influence the least-squares estimate arbitrarily---the least-squares
+estimate is neither robust nor resistant.
+(See {\tt http://statistics.berkeley.edu/users/stark/Java/Correlation.htm\/}
+for an interactive demonstration.)
+
+Huber (1973, Robust regression: asymptotics, conjectures, and Monte Carlo.
+{\em Ann. Stat.\/}, {\em 1\/}, 799--821.)
+proposed using least squares with weights on the residuals computed iteratively
+to reduce the influence of extreme observations.
+The weights are
+\beq
+    w_j = \min (1, c/|r_j|),
+\eeq
+where $c$ is a positive constant and $r_j$ is the $j$th residual.
+This is a special case of the estimator
+\beq
+    \hat{\theta}_{\rho} \equiv \arg \min_{\gamma \in \Theta}
+        \sum_{j=1}^n \rho \left ( (y_j - x_j\gamma)/\sigma \right ),
+\eeq
+where $\rho$ is a nonnegative function.
+The case $\rho(r) = r^2/2$ is least squares.
+The case $\rho(r) = \rho_c(r) = w r^2$ yields the MLE when the errors have density proportional
+to $\exp(-\rho_c(r))$.
+
+The case $\rho(r) = |r|$ is minimum $L_1$ estimation, which is resistant.
+Minimum $L_1$ regression can also be performed using linear programming.
+We shall use linear programming in our discussion of density estimation
+later, so I'll take a bit of space here to set up the $L_1$ regression problem as
+a linear program.
+
+Linear programming solves the problem
+\beq
+    \min_{z: z \ge 0, Az = b} \ell z,
+\eeq
+where $z, \ell \in \bfR^k$, $A$ is an $m$ by $k$ matrix, and $b \in \bfR^m$.
+(There are other canonical forms for linear programs, such as
+$\min_{z: Az \le b} \ell z$.)
+Linear programming and its infinite-dimensional extensions play a central
+role in game theory and minimax statistical estimation.
+
+Linear programming involves minimizing a convex functional over a
+convex set, so any local minimum attains the global minimal value.
+However, neither the constraint set nor the objective functional
+is strictly convex, so in general more than one parameter vector
+attains the global minimal value of the objective functional.
+The nonnegativity constraint and the linear equality constraints
+restrict the solution to lie within a convex {\em polytope\/}, which
+is analogous to a convex polygon in $\bfR^2$: it is the intersection
+of a collection of closed half-spaces.
+The fundamental theorem of linear programming says that if the
+linear program is consistent (if there is some vector $z$ that
+satisfies all the constraints), then some vertex of the polytope
+attains the global minimal value of $\ell$.
+
+We seek to cast the problem
+\beq
+    \min_{\gamma \in \bfR^p} \sum_{j=1}^n | X_j \gamma - y_j|
+\eeq
+as a linear program.
+The minimizing $\gamma$ is the $L_1$ regression estimate of $\theta$.
+Define
+\beq
+    A = [X\;\; -X\;\; I\;\; -I],
+\eeq
+\beq
+    b = y,
+\eeq
+\beq
+    z = [f\;\; g\;\; d\;\; e]^T,
+\eeq
+(with $f, g \in \bfR^p$ and $d, e \in \bfR^n$), and
+\beq
+    \ell = [\bf0\;\; \bf1]
+\eeq
+(with $\bf0 \in \bfR^{2p}$ and $\bf1 \in \bfR^{2n}$).
+Then
+\beq
+    Az = b \Longleftrightarrow X(f-g) + d - e = y,
+\eeq
+and minimal value of $\ell z$ minimizes
+\beq
+    \sum_{j=1}^n (d_j + e_j).
+\eeq
+Note that if, for some $j$, both $d_j$ and $e_j$ are greater
+than zero, then replacing the smaller of the two with 0
+and the larger of the two with $|d_j - e_j|$ reduces
+$\ell z$ but does not change the value of $Az$.
+Thus for the optimal $z$, either $d_j=0$ or $e_j=0$ (or both) for each $j$.
+Therefore, at the optimum, $|d_j - e_j| = d_j + e_j$; i.e.,
+\beq
+    | X_j(f-g) - y_j | = d_j + e_j,
+\eeq
+and
+\beq
+    \sum_{j=1}^n | X_j(f-g) - y_j | = \ell z.
+\eeq
+The $L_1$ regression estimate of $\theta$ is clearly $\hat{\theta}_{L_1} = f - g$,
+where $f$ and $g$ are the first $p$ and second $p$ components of $z^*$,
+the solution to the linear programming problem above.
+
+Linear programming also can solve $L_\infty$ regression problems:
+\beq
+    \min_{\gamma} \max_j | X_j\gamma - y_j|.
+\eeq
+$L_\infty$ regression is extremely non-resistant.
+
+The most popular algorithm for solving linear programs is
+the simplex algorithm.
+The simplex algorithm starts with a feasible point, then moves
+from vertex to vertex of the polytope defined by the linear
+constraints, continually decreasing the value of $\ell z$.
+(The fundamental theorem of linear programming guarantees
+that there is a vertex that attains the optimal value.)
+At each vertex, the algorithm checks the Kuhn-Tucker conditions, which
+say that at an optimal solution, every direction of descent
+points out of the constraint set.
+
+We continue with the discussion of robust regression for a more general weight
+function $\rho$.
+If $\rho$ is differentiable with derivative $\partial \rho(r)/\partial r = \psi(r)$,
+then $\hat{\theta}_\rho$ can be characterized as
+a stationary point
+\beq
+    \sum_{j=1}^n \psi \left ( ( y_j - x_j \hat{\theta}_\rho )/\sigma \right ) x_j = 0.
+\eeq
+(Note that for $L_1$ regression, $\rho$ is not differentiable at 0.)
+
+Typically, $\sigma$ is not known.
+It could be estimated together with $\theta$; I think it is more common to
+use the MAD of the residuals, estimated iteratively for a few iterations, then
+``frozen'' for the rest of the iterations in the estimation of $\theta$.
+
+For the Huber estimate using the weight function $w$, the influence of the residual
+is bounded, but the influence of the $x$-coordinate of a datum is not bounded.
+(See Fig. 1, p.~314, in {\em Hampel et al.\/})
+If we want to use the errors-in-variables model, that should be considered as well.
+The influence function can be factored into the influence of the residual (IR)
+and the influence of position in factor space (IP)--analogous to the leverage
+of the point.
+
+{\em Hampel et al.\/} (1986, ch.~6.3, p.~315) define an $M$-estimator $T_n$ for linear
+models as the solution to the equation
+\beq
+    \sum_{j=1}^n \eta \left (X_j, (y_j - X_jT_n)/\sigma \right ) x_j = 0,
+\eeq
+where $\eta: \bfR^p \times \bfR \rightarrow \bfR$ is suitably well behaved:
+\begin{enumerate}
+    \item
+        For every $x \in \bfR^p$, $\eta(x, \cdot)$ is continuous except possibly
+        at a finite set, where it has finite left and right limits.
+    \item
+        For every $x \in \bfR^p$, $\eta(x, r)$ is an odd function of $r$, and is
+        nonnegative for nonnegative $r$.
+    \item
+        For every $x \in \bfR^p$, the set of points at which
+        $\eta'(x, r) \equiv \partial \eta(x, r)/\partial r$ fails to exist or fails to
+        be continuous, is a finite set.
+    \item
+        $M \equiv \EE \eta'(x, r) x x^T$ exists and is a nonsingular matrix.
+    \item
+        $Q \equiv \EE \eta^2(x, r) x x^T$ exists and is a nonsingular matrix.
+\end{enumerate}
+This is more restrictive than the general $M$-estimation set up: the function
+$\psi(X_j, y_j, \theta)$ that this implicitly defines has the same direction
+as $X_j$, and depends on $y_j$ only through the residual $y_j - X_j \theta$.
+
+According to {\em Hampel et al.\/}, the functions $\eta$ that have
+been proposed in the literature all factor into a weight that depends on
+$x$ and function of the residual weighted by a different function of $x$:
+\beq
+    \eta(x, r) = w(x) \psi(r v(x)),
+\eeq
+where $w: \bfR^p \rightarrow \bfR^+$, $v: \bfR^p \rightarrow \bfR^+$,
+and $\psi: \bfR \rightarrow \bfR$.
+Three different types of $\eta$ functions are sketched on p.~322 of
+{\em Hampel et al.\/}:
+\begin{enumerate}
+    \item The Huber estimator discussed above takes $w(x)=v(x)=1$:
+        \beq
+            \sum_{j=1}^n \psi_c(r_j) X_j = 0.
+        \eeq
+        This estimator does not limit the influence of position.
+    \item The Mallows estimator takes $v(x)=1$:
+        \beq
+            \sum_{j=1}^n \psi_c(r_j) w_j X_j = 0.
+        \eeq
+        This estimator limits the leverage of a datum regardless of
+        the size of the residual at that design point.
+    \item The Hampel-Krasker estimator takes $w(x) = 1/v(x)$:
+        \beq
+            \sum_{j=1}^n \psi_c(r_j/u_j) u_j X_j = \sum_{j=1}^n \psi_{cu_j}(r_j) X_j = 0.
+        \eeq
+\end{enumerate}
+Figure 2 on p.~323 of {\em Hampel et al.\/} illustrates the difference in the
+fitted regression function for these three estimators for the bivariate case with one
+outlier with large leverage.
+
+Below is a collection of Matlab routines that solve iteratively reweighted
+least squares using robust estimates of scale.
+The routines do not bound the influence of position; they just bound
+the influence of the residuals.
+(The extension to weight by position is straightforward.)
+Included are Matlab routines to calculate Tukey's Biweight and the weight
+function for minimum $L_1$ regression by reweighting.
+At the end is a routine for minimum $L_1$ regression using linear
+programming.
+I wrote this code in 1997 and would write it differently now $\ldots$
+
+\begin{verbatim}
+
+function [ b, res, wssr, it ] = irwls(y,X,wfunc,param,start)
+% irwls    iteratively re-weighted least squares
+%          Can solve "robust" regression problems using
+%          robust weights.
+% Usage:
+%        [b, res, wssr, it ] = irwls(y,X,wfunc,param,start)
+%
+% Arguments:
+%       y  n-vector of data
+%       X      nxp design matrix
+%       wfunc  the name of the weight function subroutine, passed as a string
+%               W = wfunc(res, scale, param) must take three arguments:
+%           res     vector of residuals
+%           scale   resistant estimate of scale (MAD/.6745)
+%           param   array of particular parameters passed by caller
+%           wfunc must return a vector W of the same dimension as res
+%       param  a vector of parameters to pass to wfunc.
+%           DEFAULT = 1.
+%       start  a flag for what to use as a starting model to get
+%       the estimate of scale that is passed to the weight
+%       function. To get the estimate of scale, the algorithm
+%       uses the median absolute deviation (MAD) of the residuals,
+%       standardized to that of the normal distribution.
+%       If start = 'ols', the median absolute deviation of
+%       the residuals from the ordinary least-squares regression
+%       function are used.
+%       If start = 'median', the median absolute deviation
+%       of the residuals from the median are used, completely
+%       ignoring the possible variation of the "true" function.
+%       If start = 'one-step', the first estimate of scale
+%       is the same as for 'median', but the scale estimate is
+%       updated based on the residuals from the first step
+%       of the least squares fit using that scale (the scale estimate
+%       is only updated once, after the first wls).
+%       DEFAULT = 'ols'
+%
+% Output:
+%       b      p-vector of fitted coefficients
+%       res    n-vector of final residuals
+%       wssr   final sum of squared weighted residuals
+%       it     number of iterations taken
+
+% P.B. Stark    stark@stat.berkeley.edu
+% 9 July 1997
+
+chgTol = 0.001;                 % tolerance for convergence
+                                % of coefficients
+maxit = 500;                    % maximum number of iterations
+
+% check dimensions
+    [n,p] = size(X);
+    [ny, py] = size(y);
+
+    if (n ~= ny),
+        error('number of rows of y ~= number of rows of X')
+    end
+
+    if (py ~= 1),
+        error('y has more than one column')
+    end
+
+    if (nargin < 3),
+        param = 1;
+        start = 'ols';
+    elseif (nargin < 4),
+        start = 'ols';
+    end
+
+    if (~(strcmp(start,'ols') | strcmp(start,'median') | ...
+        strcmp(start,'one-step'))),
+        error(['start = ', start, ' not supported'])
+    end
+
+    %
+    if (strcmp(start,'ols')),
+        W = ones(n,1);              % initial weight matrix
+        [b, res, wssr] = wls(y,X,W);        % initial regression
+        scale = 1.483*median(abs(res-median(res)));
+    elseif (strcmp(start,'median')),
+        res = y - median(y);
+        scale = 1.4843*median(abs(res-median(res)));
+        W = diag(sqrt(feval(wfunc,res,scale,param)));
+        [b, res, wssr] = wls(y, X, W);
+    elseif (strcmp(start,'one-step')),
+        res = y - median(y);
+        scale = 1.4843*median(abs(res-median(res)));
+        W = diag(sqrt(feval(wfunc,res,scale,param)));
+        [b, res, wssr] = wls(y, X, W);
+        scale = 1.4843*median(abs(res-median(res)));
+    end
+
+% loop
+    relchg = 1;                         % relative change in coefficients
+    it = 0;
+    while (relchg > chgTol & it < maxit),       % stop when the relative change in
+                                        % regression coefficients between
+                                        % iterations is small enough
+        lastB = b;
+        it = it + 1;
+            W = diag(sqrt(feval(wfunc,res,scale,param)));
+        [b, res, wssr] = wls(y, X, W);
+        relchg = max( abs( b - lastB ) ./ abs(b));
+    end
+    if (it == maxit ),
+        error(['maximum number of iterations (' num2str(maxit) ...
+             ') exceeded'])
+    end
+return
+
+
+function [b, res, wssr] = wls(y,X,W)
+%  wls  Multiple linear regression using weighted least squares.
+%
+%  Usage:
+%   [b, res, wssr] = wls(y,X,W) returns the p-vector b of
+%       regression coefficients such that
+%           (Xb - y)' W'W (Xb - y)    (**)
+%       is minimal, along with the residual n-vector
+%           res = y - Xb,
+%       and the weighted sum of squared residuals
+%           wssr = (Xb - y)'  W  (Xb - y).
+%  Arguments:
+%   y   n-vector of observations
+%   X   nxp design matrix
+%   W   nxn positive semi-definite square matrix of weights,
+%       or a vector of nonnegative weights.
+%       Note that W is the square-root of what one would think
+%       of as the data error covariance matrix.
+%
+%
+%  Algorithm:   Uses the QR decomposition as follows.
+%       Define Z = WX and d = Wy. Then (**) can
+%       be written as an OLS (ordinary least squares)
+%       problem: minimize
+%           || Zb - d ||^2.
+%       If [Q, R] is the QR decomposition of Z,
+%       stationarity yields
+%           2Z'(Zb - d) = 0,
+%       or  Z'Zb = Z'd.
+%       The QR decomposition gives
+%           R'Rb = R'Q'd; for nonsingular R,
+%           Rb = Q'd.
+%       Matlab can solve this triangular system stably using
+%           b = R\(Q'd).
+%
+
+    if  nargin < 3,
+        error('wls requires three input arguments.');
+    end
+
+% Check that X, y, and W have compatible dimensions
+    [n,p] = size(X);
+    [ny,py] = size(y);
+    [nW,pW] = size(W);
+    dimW = max(nW, pW);
+    minDimW = min(nW, pW);
+    %
+    if (n ~= ny),
+        error( 'The number of rows in y must equal the number of rows in X' );
+    elsif ( py ~= 1 ),
+        error( 'y must be a vector, not a matrix' );
+    elsif ( minDimW > 1 & nW ~= pW ),
+        error( 'W must be a square matrix or a vector' );
+    elsif ( dimW ~= n ),
+        error( 'W must have the same number of rows as X and y' );
+    elsif ( minDimW == 1 & min(W) < 0 ),
+        error( 'W must be nonnegative' );
+    end
+
+% build the weighted design matrix and data
+
+    if ( minDimW == 1),
+        W = diag(W);        % in case W is a vector
+    end
+
+    Z = W*X;
+    d = W*y;
+
+    [Q, R] = qr(Z, 0);
+    b = R\(Q'*d);
+
+    yHat = X*b;             % predicted data values
+    res = y - yHat;         % residuals
+    wssr = norm(W*res);     % weighted sum of squared residuals
+
+return;
+
+
+function W = l1wght(res, scale, param)
+% function W = l1wght(res, scale, param)
+%
+% computes the weight function for minimum l_1 regression
+% for iteratively reweighted least squares: scale/|res|
+%
+% arguments:
+%       res:    vector of residuals
+%       scale:  robust estimate of scale such as MAD
+%       param:  not used--present only for consistent
+%           calling signature with other weights
+%
+% returns:
+%       W:  the vector of l_1 weights
+%
+%
+% P.B. Stark  stark@stat.berkeley.edu
+% 11 July 1997.
+    thresh = eps^(1/3);
+
+    unit = ones(size(res))*thresh;
+    res(abs(res) <= thresh ) = unit(abs(res) <= thresh);
+    W = (abs(res)).^(-1);
+return;
+
+function W = biwght(res, scale, param)
+% function W = biwght(res, scale, param)
+%
+% computes Tukey's biweight function for robust regression
+%
+% biwght(x) =   (1-x^2/param^2)^2 , |x| < param; 0, |x| >= param.
+%
+% arguments:
+%       res:    vector of residuals
+%       scale:  robust estimate of scale, such as MAD
+%       param:  parameter of the biweight function.
+%           8 is a reasonable number, and is the
+%           default.
+%
+% returns:
+%       W:  the vector of biweight weights
+%
+%
+% P.B. Stark  stark@stat.berkeley.edu
+% 11 July 1997.
+
+    p = 8;
+    if (nargin == 3),
+        p = param;
+    end
+
+    res = res/scale;
+    W = (ones(size(res)) - res.^2/p^2).^2 .* (abs(res) < p);
+
+return;
+
+
+\end{verbatim}
+
+Here is an implementation of $L_1$ regression using Matlab's linear programming
+routine.
+Note that this requires the Optimization Toolbox.
+
+\begin{verbatim}
+function [ b, res, msft ] = l1rgres(y, X, verb, alg)
+% l1rgres   minimum l_1 misfit regression using linear programming
+%
+%   WARNING: Matlab's lp implementation is unstable!
+%
+% Usage:
+%        [ b, res, msft ] = l1rgres(y, X, verb, alg)
+%
+% Input:
+%        y  n-vector of data
+%        X      nxp design matrix
+%        verb   if verb = -1, LP runs silently.
+%        alg    string for the linear programming algorithm to use.
+%            If alg == 'lp', uses the MATLAB Optimization toolbox
+%            LP.M routine.
+%            Defaults to 'lp'.
+%
+%
+% Output:
+%        b      p-vector of fitted coefficients
+%        res    n-vector of final residuals
+%        msft   l_1 misfit of solution
+%
+% P.B. Stark    stark@stat.berkeley.edu
+% 10 July 1997
+
+
+%
+% check dimensions
+    [n,p] = size(X);
+    [ny, py] = size(y);
+
+    if (n ~= ny),
+        error('number of rows of y ~= number of rows of X')
+    end
+
+    if (py ~= 1),
+        error('y has more than one column')
+    end
+
+% output level?
+    talk = 0;
+    if (nargin >= 3),
+        talk = verb;
+    end;
+
+%
+% set up slack variables and their bounds
+%
+% want  to minimize
+%   sum_{j=1}^n ( pos_j + neg_j )
+% subject to
+%   y = Ab + pos - neg
+%   0 <= pos <= infty
+%   0 <= neg <= infty
+%
+% what to do depends on the linear programming algorithm used.
+%
+    lpalg = 'lp';
+    if (nargin == 4),
+        lpalg = alg;
+        if (~strcmp(lpalg,'lp') ),
+            error(['1: the algorithm ' lpalg ' is not supported'])
+        end;
+    end;
+
+%
+% use ols to get a cheap feasible starting model
+    [xols, olsres, rssols] = wls(y, X, ones(n,1));
+
+% the residuals give the values of the slacks
+    pos = zeros(size(olsres));
+    neg = pos;
+    pos(olsres > 0) = olsres(olsres > 0);
+    neg(olsres < 0) = -olsres(olsres < 0);
+    clear olsres;               % free the memory
+
+% now the lp phase
+    if (talk >= 0),
+        disp('starting LP phase')
+    end
+
+% cases, by LP algorithm invoked
+%
+    if (strcmp(lpalg,'lp')),
+        lpn = p + 2*n;          % number of variables, including slacks
+        lpm = n;            % total number of constraints
+        neq = n;            % number of equality constraints
+        f = [zeros(1,p) ones(1,2*n)];   % objective vector (a row vector)
+        vlb = [-inf * ones(p,1); ...
+                zeros(2*n,1) ];     % lower bounds on variables
+        vub = inf * ones(lpn,1);    % upper bounds
+        A = [X ones(n) -ones(n)];   % add the slacks to the constraints
+                        % this gets HUGE quickly!
+        x0 = [xols; pos; neg];
+        lpx = lp(f, A, y, vlb, vub, x0, neq, talk);
+        msft = f * lpx;
+        b = lpx(1:p);           % extract solution
+        res = y - X*b;
+    else
+        error(['impossible error: algorithm ', alg, ' not supported'])
+    end;
+
+return
+
+\end{verbatim}
+
+
+\end{document}
+
+

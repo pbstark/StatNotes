@@ -1,0 +1,798 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:pref="http://www.w3.org/2002/Math/preference"
+      pref:renderer="css">
+
+<head>
+<script language="JavaScript1.4" type="text/javascript"><!--
+        pageModDate = "30 September 2010 6:15 PDT";
+        // copyright 1997-2010 by P.B. Stark, statistics.berkeley.edu/~stark.
+    // All rights reserved.
+// -->
+</script>
+
+
+<script language="JavaScript1.4" type="text/javascript" src="../../../Java/irGrade.js">
+</script>
+<script language="JavaScript1.4" type="text/javascript"><!--
+    var cNum = "240.7";
+    writeChapterHead('SeEd',cNum,'Statistics 240 Notes, part 7',false,'../../../SticiGui/',false);
+// -->
+</script>
+</head>
+
+<body onload="setApplets()" onunload="killApplets()">
+<script language="JavaScript1.4" type="text/javascript"><!--
+//    writeChapterNav('../..');
+    writeChapterTitle();
+// -->
+</script>
+
+<noscript>
+    You need a browser that supports JavaScript and Java to use this site,
+    and you must enable JavaScript and Java in your browser.
+</noscript>
+
+<meta HTTP-EQUIV="expires" CONTENT="0">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<form method="post">
+
+
+<h2>Tests of Randomness and Independence</h2><a id="independence_test"></a>
+
+<p>
+    References:
+</p>
+
+<ul>
+    <li>
+        Lehmann, E.L. (1998). Nonparametrics: Statistical Methods Based on Ranks,
+        Prentice Hall, Upper Saddle River, NJ.
+    </li>
+</ul>
+
+<h3>The null hypothesis; models</h3><a id="null"></a>
+
+<p>
+    Suppose a treatment has <em>N</em> ordered levels, and one response is
+    observed per treatment level, with <em>N</em> subjects assigned at random,
+    one to each treatment level.
+    Let <em>T</em><sub><em>j</em></sub> denote the rank among the responses of the
+    response of the subject assigned to the treatment level with rank <em>j</em>.
+    Then we have a set of pairs of ranks of treatments and responses:
+</p>
+
+<p class="math">
+    {(<em>j</em>, <em>T</em><sub><em>j</em></sub>): <em>j</em>= 1, 2, &hellip;
+    <em>N</em>}
+</p>
+
+<p>
+    There are <em>N</em>! possible sets of pairs, depending on which treatment
+    rank goes with with response rank.
+    If treatment has no effect, all <em>N</em>! pairings are equally likely; each
+    has probability 1/<em>N</em>!.
+    This is the &quot;Hypothesis of Randomness.&quot;
+</p>
+
+<p>
+    Now consider drawing a random sample of <em>N</em> subjects from a population,
+    and assigning one to each of the <em>N</em> treatment levels.
+    Let <em>Z</em><sub><em>j</em></sub> denote the response of the subject assigned
+    treatment <em>j</em>.
+</p>
+
+<p class="math">
+    P(<em>Z</em><sub><em>j</em></sub> &le; <em>z</em>) = F<sub><em>j</em></sub>(<em>z</em>),
+    <em>j</em>= 1, 2, &hellip; <em>N</em>.
+</p>
+
+<p>
+    If treatment has no effect,
+</p>
+
+<p class="math">
+    F<sub>1</sub> = F<sub>2</sub> = &hellip; = F<sub><em>N</em></sub>.
+</p>
+
+<p>
+    If the size of the population is much much larger than <em>N</em>, we can ignore the
+    dependence among the subjects.
+    That leads to the <em>population model</em>, in which
+</p>
+
+<p class="math">
+    {<em>Z</em><sub><em>j</em></sub>: <em>j</em>= 1, 2,&nbsp;&hellip;&nbsp; <em>N</em>}
+</p>
+
+<p>
+    are independent.
+    Under the null hypothesis, they are thus iid, and so the null distribution of
+    the pairs {(<em>j</em>, <em>T</em><sub><em>j</em></sub>)} is the same as
+    it is for the hypothesis of randomness.
+</p>
+
+<p>
+    Consider a third statistical model: we make two measurements
+    (<em>X</em><sub><em>j</em></sub>, <em>Y</em><sub><em>j</em></sub>)
+    on each of a set of <em>N</em> subjects.
+    Under the null hypothesis, the <em>X</em>s are identically distributed,
+    the <em>Y</em>s are identically distributed, and the measurements are independent.
+    This also leads to the same joint distribution for the pairs
+    {(<em>j</em>, <em>T</em><sub><em>j</em></sub>)},
+    where <em>T<sub>j</sub></em> is the rank of the <em>Y</em> measurement corresponding
+    to the <em>X</em> measurement with rank <em>j</em>.
+    The key here is that one set of measurements is <em>exchangeable</em> given the
+    other.
+</p>
+
+<h3>Tests for Trend</h3><a id="trend_tests"></a>
+
+<p>
+    We are going to examine tests for a <em>trend</em>: the alternative hypothesis is
+    that increasing levels of treatment are associated with increasing (or decreasing)
+    levels of response.
+</p>
+
+<h4>The Spearman rank correlation &amp; related statistics</h4>
+
+<p>
+    The first statistic we consider counts the pairs
+    (<em>T</em><sub><em>i</em></sub>,<em>T</em><sub><em>j</em></sub>) with
+    <em>i</em>&lt;<em>j</em> for which
+    <em>T</em><sub><em>i</em></sub>&lt;<em>T</em><sub><em>j</em></sub>.
+    Let
+</p>
+
+<p class="math">
+    U<sub>ij</sub> &equiv; {1, T<sub>i</sub>&lt;T<sub>j</sub>; 0, T<sub>i</sub>&ge;T<sub>j</sub>}
+</p>
+
+<p>
+    and
+</p>
+
+<p class="math">
+    B &equiv; &sum;<sub>i&lt;j</sub> U<sub>ij</sub>.
+</p>
+
+<p>
+    Then <em>B</em> tends to be large when larger responses are associated with larger
+    treatment indices <em>j</em>.
+    A more common test statistic is <em>D'</em>:
+</p>
+
+<p class="math">
+    D' &equiv; &sum;<sub>i&lt;j</sub> (j&minus;i) U<sub>ij</sub>.
+</p>
+
+<p>
+    This puts more weight on larger differences (<em>j</em>&minus;<em>i</em>).
+    Now,
+</p>
+
+<p class="math">
+    D' = (1/6) N(N<sup>2</sup> &minus; 1) &minus;
+         &frac12; &sum;<sub>i=1</sub><sup>N</sup> (T<sub>i</sub> &minus; i)<sup>2</sup>.
+</p>
+
+<p>
+    Thus a test based on <em>D'</em> would reject when
+</p>
+
+<p class="math">
+    D &equiv; &sum;<sub>i=1</sub><sup>N</sup> (T<sub>i</sub> &minus; i)<sup>2</sup>
+</p>
+
+<p>
+    is small.  Note that <em>D</em> takes only even values:
+</p>
+
+<p class="math">
+    D = &sum;<sub>i=1</sub><sup>N</sup> (T<sub>i</sub><sup>2</sup> &minus; 2iT<sub>i</sub>
+                                           + i<sup>2</sup>)
+</p>
+
+<p class="math">
+    = 2 [ &sum;<sub>i=1</sub><sup>N</sup> i<sup>2</sup> &minus;
+        &sum;<sub>i=1</sub><sup>N</sup>iT<sub>i</sub>]
+</p>
+
+<p class="math">
+    = [N(N+1)(2N+1)/3] &minus; 2&sum;<sub>i=1</sub><sup>N</sup>(iT<sub>i</sub>).
+</p>
+
+<p>
+    Thus to reject when <em>D</em> is small is to reject when
+    <em>&sum;<sub>i=1</sub><sup>N</sup>iT<sub>i</sub></em> is big.
+    Equivalently, it is to reject when
+    <em>&sum;<sub>i=1</sub><sup>N</sup>(R<sub>i</sub>T<sub>i</sub>)</em>
+    is big, where <em>R<sub>i</sub></em> is the rank of the <em>i</em>th
+    treatment and <em>S<sub>i</sub></em> is the rank of the <em>i</em>th response.
+    Let
+</p>
+
+<p class="math">
+     r &equiv; (1/N) &sum;<sub>i=1</sub><sup>N</sup> R<sub>i</sub> =
+     s &equiv; (1/N) &sum;<sub>i=1</sub><sup>N</sup> S<sub>i</sub> = (N+1)/2,
+</p>
+
+<p>
+    so
+</p>
+
+<p class="math">
+    (1/N) &sum;<sub>i</sub>(R<sub>i</sub> &minus; r)<sup>2</sup> =
+    (1/N) &sum;<sub>i</sub>(S<sub>i</sub> &minus; s)<sup>2</sup> =
+    (1/N) (N<sup>3</sup>&minus;N)/12 = (N<sup>2</sup>&minus;1)/12.
+</p>
+
+<p>
+    Spearman's rank correlation is
+</p>
+
+<p class="math">
+    r<sub>S</sub> &equiv;
+    <big>[</big>(1/N) &sum;<sub>i</sub>
+        (R<sub>i</sub> &minus; r)(S<sub>i</sub> &minus; s)<big>]</big>/<big>[</big>
+    &radic;[(1/n)&sum;(R<sub>i</sub>&minus;r)<sup>2</sup>]
+    &radic;[(1/n)&sum;(S<sub>i</sub>&minus;s)<sup>2</sup>]
+    <big>]</big>
+</p>
+
+<p class="math">
+    = &sum;<big>[</big>R<sub>i</sub>S<sub>i</sub>
+     &minus; r S<sub>i</sub> &minus; R<sub>i</sub>s + rs <big>]</big>/[(N<sup>3</sup>&minus;N)/12]
+</p>
+
+<p class="math">
+    = [12/(N<sup>3</sup>&minus;N)] <big>[</big> &sum; R<sub>i</sub>T<sub>i</sub>
+        &minus; N(N+1)<sup>2</sup>/4
+                             <big>]</big>.
+</p>
+
+<p>
+    A bit more algebra shows that
+</p>
+
+<p class="math">
+    r<sub>S</sub> = 1 &minus; 6D/(N<sup>3</sup> &minus; N).
+</p>
+
+<p>
+    If there are ties, we can define analogous test statistics using midranks instead of
+    ranks.
+    Note that if the null hypothesis is true and there are no ties,
+    <em><strong>E</strong>r<sub>S</sub> = 0</em>, and
+</p>
+
+<p class="math">
+    r<sub>S</sub> &radic;[(N&minus;2)/(1&minus;r<sub>S</sub><sup>2</sup>)] &rarr; t<sub>N&minus;2</sub>,
+</p>
+
+<p>
+    where the limit is in distribution.  This approximation is pretty good for <em>N</em>&ge;10 or so.
+    Alternatively, one can simulate critical values for a test based on Spearman's <em>r<sub>S</sub></em>
+    by computing the usual correlation coefficient between <em>{1, &hellip; N}</em> and
+    random permutations of <em>{1, &hellip; N}</em>.
+</p>
+
+<p>
+    For a bivariate normal distribution of (<em>X</em>,<em>Y</em>), the Pitman efficiency of
+    <em>r<sub>S</sub></em> relative to the usual Pearson correlation coefficient is
+    (3/&pi;)<sup>2</sup> &cong; 0.912.
+</p>
+
+<p>
+    If there is serial correlation, the null distribution is quite different.
+</p>
+
+<p>
+    One alternative to Spearman's rank correlation coefficient is to use Pearson's correlation
+    coefficient, but to compute critical values by simulation using random permutations of
+    the responses to treatment <em>{Y<sub>j</sub>}</em> relative to the treatments
+    <em>{X<sub>j</sub>}</em>.
+</p>
+
+
+
+<h4>The run test</h4>
+
+<p>
+    For many alternatives, high values tend to cluster and low values tend to cluster, leading
+    to &quot;runs.&quot;
+    We can use this to test the hypothesis of randomness by looking at the lengths and numbers
+    of runs.
+    For example, suppose we toss a (possibly biased) coin <em>N</em> times.
+    We can think of this as <em>N</em> trials.
+    We consider the outcome of the <em>j</em>th trial to be 1 if the coin lands heads on
+    the <em>j</em>th toss and 0 otherwise.
+    Under the null hypothesis, the <em>N</em> outcomes are iid Bernoulli(<em>p</em>)
+    random variables, where <em>P</em> is the chance that the coin lands heads.
+</p>
+
+<p>
+    Let <em>R</em> denote the number of <em>runs</em>.
+    For example, the sequence HHTHTTTHTH has 7 runs: HH, T, H, TTT, H, T and H.
+    Condition on the number <em>n</em> of heads among the tosses.
+    If the null hypothesis is true, each arrangement of the <em>n</em> heads among
+    the <em>N</em> tosses has probability <em>1/(<sub>N</sub>C<sub>n</sub>)</em>.
+    We will compute the (conditional) probability distribution of <em>R</em> given
+    <em>n</em>, under the null hypothesis of independence.
+</p>
+
+<p>
+    Clearly, if <em>n</em>=<em>N</em> or if <em>n</em> = 0, <em>R</em>&nbsp;&equiv;&nbsp;1.
+    If <em>k</em>&nbsp;=&nbsp;1, there are only two possibilities: first all the heads,
+    then all the tails, or first all the tails, then all the heads.
+    I.e., the sequence is either
+</p>
+
+<p class="math">
+    (HH &hellip; HTT &hellip; T) or (TT &hellip; THH &hellip; H).
+</p>
+
+<p>
+    where there are <em>n</em> Hs and <em>m&nbsp;&equiv;&nbsp;N&minus;n</em> Ts in all.
+    The probability that <em>R=1</em> is thus <em>2/(<sub>N</sub>C<sub>n</sub>)</em>,
+    if the null hypothesis is true.
+</p>
+
+<p>
+    How can <em>R</em> be even, i.e., <em>R</em>&nbsp;=&nbsp;2<em>k</em>?
+    If the sequence starts with a head, we need to choose where to break the
+    sequence of heads to insert tails,
+    then where to break that sequence of tails to insert heads, etc.
+    If the sequence starts with a tail, we need to choose where to break the
+    sequence of tails to insert heads,
+    then where to break that sequence of heads to insert tails, etc.
+    We need to break the <em>n</em> heads into <em>k</em> groups,
+    which means picking <em>k&nbsp;&minus;&nbsp;1</em> breakpoints,
+    but the first breakpoint needs to come after the first H, and the
+    last breakpoint needs to come before the <em>n</em>th H, so there are only
+    <em>n&nbsp;&minus;&nbsp;1</em> places those <em>k&nbsp;&minus;&nbsp;1</em>
+    breakpoints can be.
+    And we need to break the <em>m</em> tails into <em>k</em> groups,
+    which means picking <em>k&nbsp;&minus;&nbsp;1</em> breakpoints,
+    but the first needs to be after the first T and the last needs to be
+    before the <em>m</em>th T, so there are only <em>m&nbsp;&minus;&nbsp;1</em>
+    places those <em>k&nbsp;&minus;&nbsp;1</em> breakpoints can be.
+    The number of sequences with <em>R</em>&nbsp;=&nbsp;2<em>k</em> that
+    start with H is thus
+</p>
+
+<p class="math">
+    <sub>n&minus;1</sub>C<sub>k&minus;1</sub> &times; <sub>m&minus;1</sub>C<sub>k&minus;1</sub>.
+</p>
+
+<p>
+    The number of sequences with <em>R</em>&nbsp;=&nbsp;2<em>k</em> that
+    start with T is the same (just read right-to-left instead of left-to-right).
+    Thus, if the null hypothesis is true,
+</p>
+
+<p class="math">
+    P(R = 2k) = 2 &times; <sub>n&minus;1</sub>C<sub>k&minus;1</sub>
+                &times; <sub>m&minus;1</sub>C<sub>k&minus;1</sub>/<sub>N</sub>C<sub>n</sub>.
+</p>
+
+<p>
+    Now consider how we can have <em>R&nbsp;=&nbsp;2k+1</em>.
+    Either the sequence starts and ends with H or it starts and ends with T.
+    Suppose it starts with H.
+    Then we need to break the string of <em>n</em> heads in <em>k</em> places to form
+    <em>k + 1</em> groups using <em>k</em> groups of tails formed
+    by breaking the <em>m</em> tails in <em>k&minus;1</em> places.
+    If the sequence starts with T, we need to break the <em>m</em> tails in <em>k</em>
+    places to form <em>k + 1</em> groups using <em>k</em> groups of heads formed
+    by breaking the <em>n</em> heads in <em>k&minus;1</em> places.
+    Thus, under the null hypothesis,
+</p>
+
+<p class="math">
+    P(R = 2k+1) = <big>[</big> <sub>n&minus;1</sub>C<sub>k</sub>
+                &times; <sub>m&minus;1</sub>C<sub>k&minus;1</sub> +
+                 <sub>n&minus;1</sub>C<sub>k&minus;1</sub>
+                &times; <sub>m&minus;1</sub>C<sub>k</sub>
+                  <big>]</big>/<sub>N</sub>C<sub>n</sub>
+</p>
+
+<p>
+    Note that nothing in this derivation used the probability of heads.
+    The conditional distribution under the null hypothesis depends only
+    on the fact that the tosses are iid, not that the coin is fair.
+</p>
+
+
+<p>
+    Let <em>I<sub>j</sub></em> be the indicator of the event that
+    the outcome of the <em>j+1</em>st toss differs from the outcome of
+    the <em>j</em>th toss, <em>j=1, &hellip;, N&minus;1</em>.
+    Then
+</p>
+
+<p class="math">
+    R = 1+ &sum;<sub>j=1</sub><sup>N&minus;1</sup> I<sub>j</sub>.
+</p>
+
+<p>
+    Under the null, conditional on <em>n</em>,
+</p>
+
+<p class="math">
+    P(I<sub>j</sub> = 1) = P(I<sub>j</sub> = 1 | jth toss lands H, n)P(jth toss lands H | n) +
+                           P(I<sub>j</sub> = 1 | jth toss lands T, n)P(jth toss lands T | n)
+</p>
+
+<p class="math">
+                   = P(j+1st toss lands T | jth toss lands H, n)P(jth toss lands H | n) +
+                     P(j+1st toss lands H | jth toss lands T, n)P(jth toss lands T | n)
+</p>
+
+<p class="math">
+                   = [m/(N&minus;1)]&times;[n/N] + [n/(N&minus;1)]&times;[m/N] = 2nm/[N(N&minus;1)].
+</p>
+
+<p>
+    The indicators <em>{I<sub>j</sub>}</em> are identically distributed under the null hypothesis,
+    so if the null holds,
+</p>
+
+<p class="math">
+    <strong>E</strong>R = <strong>E</strong>[ 1 + &sum;<sub>j=1</sub><sup>N&minus;1</sup> I<sub>j</sub>] =
+          1 + (N-1) &times; 2nm/[N(N&minus;1)] = 1 + 2nm/N.
+</p>
+
+
+<div class="example">
+<script language="JavaScript1.4" type="text/javascript"><!--
+    var qStr = 'Using the run test for independence.';
+    writeExampleCaption(qStr);
+// -->
+</script>
+<p>
+    Air temperature is measured at noon in a climate-controlled room for 20
+    days in a row.
+    We want to test the null hypothesis that temperatures on different
+    days are independent and identically distributed.
+</p>
+
+<p>
+    Let <em>T<sub>j</sub></em> be the temperature on day <em>j</em>,
+    <em>j = 1, &hellip;, 20</em>.
+    If the measurements were iid, whether each day's temperature is
+    above or below a given temperature <em>t</em> is like a toss of
+    a possibly biased coin, with tosses on
+    different days independent of each other.
+    We could consider a temperature above <em>t</em> to be a head and
+    a temperature below <em>t</em> to be a tail.
+</p>
+
+<p>
+    Let's take <em>t</em> to be the median of the 20 measurements.
+    In this example, <em>n</em>=10, <em>m</em>=10, <em>N</em>=20.
+    We will suppose that there are no ties among the measured temperatures.
+    Under the null hypothesis, the expected number of runs is
+</p>
+
+<p class="math">
+     <strong>E</strong>R = 1+2mn/N = 11.
+</p>
+
+<p>
+    The minimum possible number of runs is 2 and the maximum is 20.
+    Since we expect temperature on successive days to have positive serial
+    correlation (think about it!), we might expect to see fewer runs than
+    we would if temperatures on different days were independent.
+    So, let's do a one-sided test that rejects if there are too few runs.
+    We will aim for a test at significance level 5%.
+</p>
+
+<p class="math">
+    P(R = 2) = 2/<sub>20</sub>C<sub>10</sub> =  1.082509e-05.
+</p>
+
+<p class="math">
+    P(R = 3) = 2&times;<sub>9</sub>C<sub>1</sub>&times;<sub>9</sub>C<sub>0</sub>/<sub>20</sub>C<sub>10</sub>
+             = 9.74258e-05.
+</p>
+
+<p class="math">
+    P(R = 4) = 2&times;<sub>9</sub>C<sub>1</sub>&times;<sub>9</sub>C<sub>1</sub>/<sub>20</sub>C<sub>10</sub>
+             = 8.768321e-04.
+</p>
+
+<p class="math">
+    P(R = 5) = 2&times;<sub>9</sub>C<sub>2</sub>&times;<sub>9</sub>C<sub>1</sub>/<sub>20</sub>C<sub>10</sub>
+             =  0.003507329.
+</p>
+
+<p class="math">
+    P(R = 6) = 2&times;<sub>9</sub>C<sub>2</sub>&times;<sub>9</sub>C<sub>2</sub>/<sub>20</sub>C<sub>10</sub>
+             =  0.01402931.
+</p>
+
+<p class="math">
+    P(R = 7) = 2&times;<sub>9</sub>C<sub>3</sub>&times;<sub>9</sub>C<sub>2</sub>/<sub>20</sub>C<sub>10</sub>
+             =  0.03273507.
+</p>
+
+<p class="math">
+   P(R &le; 6) = 2&times;(2+9+81+324+1296)/<sub>20</sub>C<sub>10</sub> &asymp; 0.0185.
+</p>
+
+<p>
+    So, we should reject the null hypothesis if <em>R &le; 6</em>, which gives a
+    significance level of 1.9%.
+    Including 7 in the rejection region would make the significance level slightly too big:
+    5.1%.
+</p>
+</div>
+
+<p>
+    When <em>N</em>, <em>n</em> and <em>m</em> are large, the combinatorics can be
+    difficult to evaluate numerically.
+    There are at least two options: asymptotic approximation and simulation.
+    There is a normal approximation to the null distribution of <em>R</em>.
+    As <em>n</em> and <em>m</em>&rarr;&infin; and <em>m</em>/<em>n</em>&rarr;&gamma;,
+</p>
+
+<p class="math">
+    [R &minus; 2m/(1+&gamma;)]/&radic;[4&gamma;m/(1+&gamma;)<sup>3</sup>]
+    &rarr; N(0, 1)
+</p>
+
+<p>
+    in distribution.
+</p>
+
+<p>
+    Here is an R function to simulate the null distribution of the number <em>R</em> of runs,
+    and evaluate the <em>P</em>-value of the observed value of <em>R</em> conditional
+    on <em>n</em>, for a one-sided test against the alternative that the distribution
+    produces fewer runs than independent trials would tend to produce.
+    The input is a vector of length <em>N</em>; each element is equal to
+    either &quot;1&quot; (for heads) or &quot;-1&quot; (for tails).
+    The test statistic is calculated by finding
+    <em>1&nbsp;+&nbsp;&sum;<sub>j=1</sub><sup>N&minus;1</sup> I<sub>j</sub></em>,
+    as we did above in finding <em><strong>E</strong>R</em>.
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        simRunTest <- function(x, iter) {
+            N <- length(x);
+            ts <- 1 + sum(x != c(x[2:N],x[N]));   # test statistic: count
+                                                  #  transitions I_j.
+            sum(replicate(iter, {
+                                  xp <- sample(x);
+                                  ((1 + sum(xp != c(xp[2:N],xp[N]))) <= ts)
+                                }
+                         )
+               )/iter
+        }
+    </pre>
+</p>
+</div>
+
+<p>
+    As an example, suppose the observed sequence is
+    <em>x</em>&nbsp;=&nbsp;(-1, -1,  1,  1,  1, -1,  1),
+    for which <em>N&nbsp;=&nbsp;7</em>, <em>n&nbsp;=&nbsp;4</em>, <em>m&nbsp;=&nbsp;3</em>
+    and <em>R&nbsp;=&nbsp;4</em>.
+    In one trial with <em>iter&nbsp;=&nbsp;10,000</em>, the simulated
+    <em>P</em>-value using simRunTest was 0.5449.
+    Exact calculation gives:
+</p>
+
+<p class="math">
+    P<sub>0</sub>(R &le; 4) = (2 + 5 + 12)/35 = 19/35 &asymp; 0.5429.
+</p>
+
+<p>
+    The standard error of the estimated probability is thus
+</p>
+
+<p class="math">
+    SE = &radic;[(19/35&times;16/35)/10000] &asymp;0.005.
+</p>
+
+<p>
+    The simulation was off by about
+    (0.5449 &minus; 0.5429)/0.005&nbsp;&asymp;&nbsp;0.41SE.
+</p>
+
+
+<h3>Tests for independence between time series</h3>
+
+<p>
+    The crucial element of the null hypothesis that leads to the null distribution
+    of the Spearman rank correlation is that one of the sets of measurements is
+    conditionally exchangeable given the other.
+    Then, if the null hypothesis is true, all pairings
+    <em>(X<sub>i</sub>, Y<sub>j</sub>)</em> are equally likely.
+    However, time series data often have serial correlation, such as trends.
+    Suppose we have two independent time series, each of which has a trend.
+    For example, we might observe the pairs
+    (<em>X<sub>j</sub>,Y<sub>j</sub>)<sub>j=1</sub><sup>N</sup></em>,
+    where
+</p>
+
+<p class="math">
+    X<sub>j</sub> = j + &epsilon;<sub>j</sub>, j=1, &hellip; N,
+</p>
+
+<p class="math">
+    Y<sub>j</sub> = j + &nu;<sub>j</sub>, j=1, &hellip; N,
+</p>
+
+<div class="indent">
+<p class="inline">
+    and the <span class="math">2N</span> &quot;noise&quot; terms <span class="math">{&epsilon;<sub>j</sub>}</span>
+    and <span class="math">{&nu;<sub>j</sub>}</span> are iid with zero mean and finite variance.
+    Even though the time series <span class="math">{X<sub>j</sub>}</span> and 
+    <span class="math">{Y<sub>j</sub>}</span>
+    are independent, neither <span class="math">{X<sub>j</sub>}</span> nor <span class="math">{Y<sub>j</sub>}</span>
+    are exchangeable.
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var fStr = 'A collection of <em>N</em> random variables <em>{X<sub>j</sub>}</em> is ' +
+               '<em>exchangeable</em> if for every permutation &pi; of {1, &hellip; N}, ' +
+               'the joint distribution of <em>(X<sub>&pi;(j)</sub>)</em> is the same.';
+    writeFootnote(fCtr++, fCtr.toString(), fStr);
+// -->
+</script>
+    As a result, the Spearman rank correlation test will tend to reject the hypothesis
+    of independence, not because the two sets of measurements are dependent, but because
+    a different feature of the null hypothesis is false.
+    The trend makes pairings
+    <span class="math">(X<sub>i</sub>, Y<sub>j</sub>)</span> with both 
+    <span class="math">X</span> and <span class="math">Y</span> larger
+    than average or both smaller than average more likely than pairings where one
+    is relatively large and the other is relatively small.
+</p>
+</div>
+
+<h4>Walther's Examples</h4>
+
+<p>
+    The following examples are from Walther (1997, 1999).
+    Suppose that <em>{X<sub>j</sub>}<sub>j=1</sub><sup>100</sup></em> and
+    <em>{Y<sub>j</sub>}<sub>j=1</sub><sup>100</sup></em> are iid N(0,1).
+    Define
+</p>
+
+<p class="math">
+     S<sub>k</sub> &equiv; &sum;<sub>{j=1}</sub><sup>k</sup> X<sub>j</sub> and
+     T<sub>k</sub> &equiv; &sum;<sub>{j=1}</sub><sup>k</sup> Y<sub>j</sub>.
+</p>
+
+<p>
+    Then
+</p>
+
+<p class="math">
+    P(r<sub>S</sub>(S, T) &gt; c<sub>0.01</sub>) &asymp; 0.67,
+</p>
+
+<p>
+    where <em>c<sub>0.01</sub></em> is the critical value for a one-sided
+    level 0.01 test against the alternative of positive association.
+    That is, even though the two series are independent,
+    the probability that the Spearman rank correlation coefficient exceeds
+    the 0.01 critical value for the test is over 2/3.
+    That is because the two series <em>S</em> and <em>T</em> each have
+    serial correlation, so not all pairings <em>(S<sub>i</sub>, T<sub>j</sub>)</em>
+    are equally likely&mdash;even though the two series are independent.
+</p>
+
+<p>
+    Serial correlation is not the only way that exchangeability can break down.
+    For example, if the mean or the noise level varies with time, that violates
+    the null hypothesis.
+    Here is an example of the latter.
+    Take <em>X = (1, 2, 3, 4)</em> to be fixed.
+    Let <em>(Y<sub>1</sub>, Y<sub>2</sub>, Y<sub>3</sub>, Y<sub>4</sub>)</em>
+    be independent, jointly Gaussian with zero mean, SD(<em>Y<sub>j</sub></em>) = 1,
+    <em>j</em> = 1, 2, 3, and Var(<em>Y<sub>4</sub></em>) = 4.
+    Then
+</p>
+
+<p class="math">
+    P<sub>0</sub>(r<sub>S</sub>(X, Y) = 1) = 1/4! = 1/24 &asymp; 4.17%.
+</p>
+
+<p>
+   Note that in this example, <em>r<sub>S</sub></em> = 1 whenever
+   <em>Y<sub>1</sub>&lt;Y<sub>2</sub>&lt;Y<sub>3</sub>&lt;Y<sub>4</sub></em>.
+   Simulation shows that in fact <em>P(r<sub>S</sub>(X, Y)=1)</em> is about 7%:
+   </p>
+
+<div class="code">
+<p>
+    <pre>
+        iter <- 10000;
+        s <- c(1,1,1,4);
+        sum(replicate(iter, {
+                             x <- rnorm(length(s), sd=s);
+                             !is.unsorted(x)  # r_S=1 if x is ordered
+                            }
+                     )
+           )/iter
+    </pre>
+    </p>
+</div>
+
+<p>
+	In a similar vein, take <em>X = (1, 2, 3, 4, 5)</em> to be fixed,
+    let <em>(Y<sub>1</sub>, Y<sub>2</sub>, Y<sub>3</sub>, Y<sub>4</sub>, Y<sub>5</sub>)</em>
+    be independent, jointly Gaussian with zero mean and SDs 1, 1, 1, 3, and 5, respectively.
+    Then, under the (false) null hypothesis that every <em>(X, Y)</em> pairing is
+    equally likely,
+</p>
+
+<p class="math">
+     P<sub>0</sub>{r<sub>S</sub>(X, Y) = 1} = 1/5! &asymp; 0.83%,
+</p>
+
+<p>
+	but simulation shows that the actual probability is about 2.1%.
+    In these examples, the null hypothesis is false, but not because
+    <em>X</em> and <em>Y</em> are dependent.
+	It is false because not all pairings <em>(X<sub>i</sub>,Y<sub>j</sub>)</em>
+	are equally likely.
+	It is the &quot;identically distributed&quot; part of the null hypothesis
+	that fails.
+</p>
+
+<h4>The solar neutrino problem</h4>
+
+<p>
+    Sun emits neutrinos as a byproduct of nuclear fusion in the solar core.
+    Nuclear theory predicted a given neutrino flux; observations showed a rather
+    lower flux than predicted.
+    Why?
+    Scientists speculated about mechanisms for many years.
+    There is an apparent negative association between sunspot number (a measure
+    of the activity of magnetic fields in Sun) and neutrino flux.
+    As of about 2002, the Homestake experiment had collected about 30 years of
+    data on the solar neutrino flux by measuring daily production of
+    <sup>37</sup>Ar production (atoms per day).
+    (They published upper and lower 68% confidence limits.)
+</p>
+
+<p>
+    In the early 2000's, physicists found that neutrinos have mass.
+    Neutrino mass could explain the apparent deficit of solar neutrinos through
+    state oscillations.
+</p>
+
+
+
+<h3>
+    References
+</h3>
+
+<p>
+    Walther, G., 1997.
+    Absence of correlation between the solar neutrino flux and the sunspot number,
+    <em>Phys. Rev. Lett.</em>, <em>79</em>, 4522&ndash;4524.
+</p>
+<p>
+    Walther, G., 1999.
+    On the solar-cycle modulation of the Homestake solar neutrino capture rate and the
+    shuffle test,
+    <em>Astrophys. J.</em>, <em>513</em>, 990&ndash;996.
+</p>
+
+
+</form>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    writeMiscFooter(false);
+// -->
+</script>
+</body>
+</html>

@@ -1,0 +1,1200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:pref="http://www.w3.org/2002/Math/preference"
+      pref:renderer="css">
+
+<head>
+<script language="JavaScript1.4" type="text/javascript"><!--
+        pageModDate = "Saturday 1 March 2008 10:15 PST";
+        // copyright 1997-2008 by P.B. Stark, statistics.berkeley.edu/~stark.
+    // All rights reserved.
+// -->
+</script>
+
+
+<script language="JavaScript1.4" type="text/javascript" src="../../../Java/irGrade.js">
+</script>
+<script language="JavaScript1.4" type="text/javascript"><!--
+    var cNum = "240.4";
+    writeChapterHead('SeEd',cNum,'Statistics 240 Notes, part 4',false,'../../../SticiGui/',false);
+// -->
+</script>
+</head>
+
+<body onload="setApplets()" onunload="killApplets()">
+<script language="JavaScript1.4" type="text/javascript"><!--
+//    writeChapterNav('../..');
+    writeChapterTitle();
+// -->
+</script>
+<noscript>
+    You need a browser that supports JavaScript and Java to use this site,
+    and you must enable JavaScript and Java in your browser.
+</noscript>
+
+<meta HTTP-EQUIV="expires" CONTENT="0">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<form method="post">
+
+<ul>
+        <li>
+            Ranks. Behavior under the null and under a shift alternative.
+        </li>
+        <li>
+            The Wilcoxon rank-sum test against a shift alternative.
+            Connection to permutation tests including Fisher's exact test.
+        </li>
+        <li>
+            The Siegel-Tukey test for an alternative that the dispersions differ.
+        </li>
+        <li>
+            The Smirnov test against the omnibus alternative.
+        </li>
+</ul>
+
+<p>
+        References: Lehmann, E.L., 1998. <em>Nonparametrics: Statistical
+        Methods Based on Ranks</em>. Upper Saddle River, N.J.: Prentice Hall;
+        <a href="http://statistics.berkeley.edu/~stark/SticiGui">SticiGui</a>
+        <a href="http://statistics.berkeley.edu/~stark/SticiGui/Text/ch19.htm">Chapter 19</a>.
+</p>
+
+<h2>Ranks</h2>
+
+<p>
+    The <em>rank</em> of an observation is its position in the list of observations
+    after sorting the observations from smallest to largest.
+    The <em>j</em>th smallest observation is the observation with rank <em>j</em>.
+    If the data are
+    {&nbsp;<em>t</em><sub>1</sub>, &hellip; <em>t</em><sub><em>N</em></sub>&nbsp;},
+    then <em>t</em><sub>(<em>j</em>)</sub> is the observation with rank <em>j</em>,
+    for <em>j</em>=1, 2, &hellip; , <em>N</em>.
+    Thus
+</p>
+
+<p class="math">
+    <em>t</em><sub>(1)</sub> &le; <em>t</em><sub>(2)</sub> &le; &hellip; &le;
+    <em>t</em><sub>(<em>N</em>)</sub>.
+</p>
+
+<p>
+    Ties can be broken arbitrarily.
+    The smallest datum is <em>t</em><sub>(1)</sub> and the largest observation is
+    <em>t</em><sub>(<em>N</em>)</sub>.
+</p>
+
+<p>
+    A large class of nonparametric methods is based on working with the ranks of
+    the data instead of the original values of the data.
+    That is, <em>t</em><sub>(1)</sub> is replaced by 1, <em>t</em><sub>(2)</sub>
+    is replaced by 2, and so on.
+</p>
+
+<h2>Why Rank-based methods?</h2>
+
+<p>
+    In some problems, only the ranks of the data are observed.
+    This often happens in situations where it is possible to make comparative
+    judgements about outcomes, but not absolute judgements.
+    For example, a doctor might be able to rank a collection of patients
+    according to the severity with which they suffer from some disease they share,
+    but might not be able to rate the severity on an objective quantitative
+    scale&mdash;and certainly not a scale for which
+    5 is &quot;better than&quot; 4 by the same amount that 2 is &quot;better than&quot; 1.
+    Similarly, a consumer might be able to order a collection of items by preference:
+    she prefers A to B, B to C and C to D, for example.
+    Yet she might not be able to quantify the strength of her preferences.
+    Having techniques for dealing with ranks is then useful.
+</p>
+
+<p>
+    Working with ranks is also gives a useful replacement for the permutation test
+    we derived in the previous chapter:
+    The null distribution of <em>Y</em> for the permutation test
+    depended on the observed responses, but the ranks of <em>N</em>
+    distinct observations are always the integers from 1 to <em>N</em>.
+    Thus if we replace each observation by its rank and then perform a
+    permutation test, the null distribution of the new test statistic depends only on
+    <em>N</em> and <em>n</em>.
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"> <!--
+    var fStr = 'This assumes that there are no ties among the responses&mdash;we treat ' +
+               ' ties later.';
+    writeFootnote(fCtr++, fCtr.toString(), fStr);
+// -->
+</script>
+    That lets us tabulate critical values for the test.
+    (This is less important than it once was, because modern computers allow us to
+    simulate the null distribution of the test statistic economically.)
+    Moreover, the normal approximation to the test statistic based
+    on the sum of the ranks of the responses of the treated subjects is
+    good, which can be very useful.
+</p>
+
+<p>
+    In the following exposition, the notation and most of the derivations follow
+    Lehmann, E.L. (1998. <em>Nonparametrics: Statistical
+        Methods Based on Ranks</em>. Upper Saddle River, N.J.: Prentice Hall).
+</p>
+
+<h2><a id="wilcoxon"></a>The Wilcoxon rank-sum test</h2>
+
+<p>
+    In the randomization model we have been discussing, let
+    <em>S</em><sub>1</sub>, &hellip; <em>S</em><sub><em>n</em></sub> be
+    the ranks of the <em>n</em> responses of the treatment group among the
+    <em>N</em> responses of all subjects.
+    That is, <em>S</em><sub>1</sub> is the rank of the response of the first treated subject,
+    <em>S</em><sub>2</sub> is the rank of the response of the second treated subject,
+    and so on.
+    Each <em>S</em><sub><em>j</em></sub> takes a value between 1 and <em>N</em>, inclusive.
+    Assume for the moment that no two responses are equal, so that the ranks are not
+    ambiguous.
+    Define
+</p>
+
+<p class="math">
+    <em>W</em><sub>s</sub> &equiv; <em>S</em><sub>1</sub> + <em>S</em><sub>2</sub> +
+    <em>S</em><sub>3</sub> +
+    &hellip; + <em>S</em><sub><em>n</em></sub>.
+</p>
+
+<p>
+    The statistic <em>W</em><sub>s</sub> is the <em>Wilcoxon rank-sum</em>.
+    We can base a test of the strong null hypothesis on <em>W</em><sub>s</sub>.
+    To test against the alternative that treatment tends to increase responses,
+    we would reject for large values of <em>W</em><sub>s</sub>.
+    To test against the alternative that treatment tends to decrease responses,
+    we would reject for small values of <em>W</em><sub>s</sub>.
+    The critical value of the test is set using the probability distribution of
+    <em>W</em><sub>s</sub> on the assumption that the strong null hypothesis is
+    true.
+    For a level-alpha test against the alternative that treatment increases
+    responses, we would find the smallest <em>c</em> such that, if the
+    strong null is true, P(<em>W</em><sub>s</sub> &ge; <em>c</em>) &le; &alpha;.
+    We would then reject the strong null if the observed value of
+    <em>W</em><sub>s</sub> is <em>c</em> or greater.
+    Recall that
+</p>
+
+<p class="math">
+	1 + 2 + &hellip; + <em>k</em> = <em>k</em>(<em>k</em>+1)/2.
+</p>
+
+<p>
+	If the treated subjects have the smallest possible ranks, 1 to <em>n</em>,
+	then
+</p>
+
+<p class="math">
+	<em>W</em><sub>s</sub>= 1 + 2 + &hellip; + <em>n</em> = <em>n</em>(<em>n</em>+1)/2.
+</p>
+
+<p>
+	If the treated subjects have the largest possible ranks,
+	<em>N</em>&minus;<em>n</em>+1 to <em>N</em>, then
+</p>
+
+<p class="math">
+	<em>W</em><sub>s</sub>= (<em>N</em>&minus;<em>n</em>+1) + (<em>N</em>&minus;<em>n</em>+2) +
+	                        &hellip; + <em>N</em>
+</p>
+<p class="math">
+        = (<em>N</em>&minus;<em>n</em>) + 1 + (<em>N</em>&minus;<em>n</em>) + 2 + &hellip; +
+          (<em>N</em>&minus;<em>n</em>) + <em>n</em>
+</p>
+<p class="math">
+        = <em>n</em>(<em>N</em>&minus;<em>n</em>) + (1 + 2 + &hellip; + <em>n</em>)
+</p>
+<p class="math">
+        = <em>n</em>(<em>N</em>&minus;<em>n</em>) + <em>n</em>(<em>n</em>+1)/2.
+</p>
+
+<p>
+    All the integers between <em>n</em>(<em>n</em>+1)/2 and
+    <em>n</em>(<em>N</em>&minus;<em>n</em>) + <em>n</em>(<em>n</em>+1)/2 are possible values
+    of <em>W</em><sub>s</sub>.
+    The null distribution of <em>W</em><sub>s</sub> under the strong null
+    hypothesis is symmetric about
+    <em>n</em>(<em>N</em>+1)/2.
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"> <!--
+    var fStr = 'In the randomization model, each subset of <em>n</em> of the <em>N</em> ranks is ' +
+               ' equally likely to be the ranks of the treatment group.  The probability ' +
+               'that the treatment ranks are 1, 2, &hellip; , <em>n</em> is equal to the ' +
+               'probability that the treatment ranks are <em>N</em>, <em>N</em>&minus;1, &hellip; , ' +
+               '<em>N</em>&minus;<em>n</em>+1.  More generally, consider re-labeling the <em>j</em>th-ranked ' +
+               'observation to be the <em>N</em>&minus;<em>j</em>+1st-ranked observation.  The labels of ' +
+               'the observations would still be 1, 2, &hellip; , <em>N</em>, so the probability ' +
+               'distribution of the sum of the labels on the treated subjects would be the same ' +
+               'as the probability distribution of <em>W</em><sub>s</sub> under the strong null ' +
+               'hypothesis.  However, if the sum of the treatment ranks was <em>W</em><sub>s</sub>, ' +
+               'the sum of the new labels would be </p>' +
+               '<p class="math"><em>n</em>&times;(<em>N</em>+1)&minus;<em>W</em><sub>s</sub>.</p>' +
+               '<p>Thus</p><p class="math">P(<em>W</em><sub>s</sub> = <em>k</em>) = ' +
+               'P(<em>W</em><sub>s</sub> = <em>n</em>&times;(<em>N</em>+1) &minus; <em>k</em>)</p>' +
+               '<p>That is, the probability distribution of <em>W</em>>sub>s</sub> ' +
+               'is symmetric about <em>n</em>&times;(<em>N</em>+1)/2.  This argument is ' +
+               'essentially that in Lehmann, E.L., 1998. <em>Nonparametrics: Statistical ' +
+               'Methods Based on Ranks</em>. Upper Saddle River, N.J.: Prentice Hall, ' +
+               'pp.&nbsp;12-13.</p>';
+    writeFootnote(fCtr++, fCtr.toString(), fStr);
+// -->
+</script>
+    Thus the expected value of <em>W</em><sub>s</sub> under the null hypothesis
+    is <em>n</em>&times;(<em>N</em>+1)/2.
+    (This also follows from the fact that the expected value of the sample sum of
+    a simple random sample of size <em>n</em> from a box of <em>N</em> numbers is
+    equal to <em>n</em> times the mean of the <em>N</em> numbers; the mean of the
+    integers 1 to <em>N</em> is (<em>N</em>+1)/2.)
+    The variance of <em>W</em><sub>s</sub> under the strong null hypothesis
+    is <em>m</em><em>n</em>(<em>N</em>+1)/12.
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"> <!--
+    var fStr = 'This follows from the fact that the variance of the sample sum ' +
+               'of a simple random sample of size <em>n</em> from a list of <em>N</em> ' +
+               'numbers is </p><p class="math">' +
+               '(<em>N</em>&minus;<em>n</em>)&times;<em>n</em>&times;(variance of list)/(<em>N</em>&minus;1) = ' +
+               '<em>m</em>&times;<em>n</em>&times;(variance of list)/(<em>N</em>&minus;1).</p><p>' +
+               'The variance of the list of the integers 1 to <em>N</em> is </p><p class="math">' +
+               '(<em>N</em><sup>2</sup>&minus;1)/12 = (<em>N</em>&minus;1)&times;(<em>N</em>+1)/12,</p><p>' +
+               'so the variance of <em>W</em><sub>s</sub> is </p><p class="math">' +
+               '<em>m</em>&times;<em>n</em>(<em>N</em>&minus;1)&times;(<em>N</em>+1)/(12&times;(<em>N</em>&minus;1)) ' +
+               '= <em>m</em>&times;<em>n</em>&times;(<em>N</em>+1)/12.</p>';
+    writeFootnote(fCtr++, fCtr.toString(), fStr);
+// -->
+</script>
+</p>
+
+<p>
+    Define <em>W</em><sub>r</sub> to be the sum of the control ranks.
+    Because the treatment ranks and control ranks together comprise all the ranks,
+</p>
+
+<p class="math">
+    <em>W</em><sub>r</sub> + <em>W</em><sub>s</sub> = 1 + 2 + &hellip; + <em>N</em>
+    = <em>N</em>(<em>N</em>+1)/2.
+</p>
+
+<p>
+	Thus,
+</p>
+
+<p class="math">
+    <em>W</em><sub>r</sub>  = <em>N</em>(<em>N</em>+1)/2 &minus; <em>W</em><sub>s</sub>.
+</p>
+
+<p>
+    It follows that the (null) expected value of <em>W</em><sub>r</sub> is
+</p>
+
+<p class="math">
+    <em>N</em>(<em>N</em>+1)/2 &minus; <em>n</em>(<em>N</em>+1)/2 = <em>m</em>(<em>N</em>+1)/2,
+</p>
+
+<p>
+    and that the (null) variance of <em>W</em><sub>r</sub> is also
+    <em>m</em><em>n</em>(<em>N</em>+1)/12.
+    When <em>n</em> and <em>m</em> are both large, the normal approximations to the
+    null distributions of
+    <em>W</em><sub>r</sub> and to <em>W</em><sub>s</sub> tend to be accurate.
+    We can check this by simulation using the sampling applet; see
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    citeFig();
+// -->
+</script>.
+    You can change the contents of the box on the right and you can change the sample size to
+    see how the approximation varies with <em>N</em> and <em>n</em>.
+    To check the approximation, first draw 10,000 samples to get an approximation to the
+    null probability distribution of <em>W</em><sub>s</sub>.
+    Then highlight various intervals using the scrollbars in the figure and compare the
+    area under the histogram with the area under the normal curve.
+</p>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var qStr = 'Simulated null distribution of the Wilcoxon rank-sum <em>W</em><sub>s</sub> and its ' +
+               'normal approximation for <em>N</em>=20, <em>n</em>=<em>m</em>=10.';
+    writeFigureCaption(qStr);
+// -->
+</script>
+
+<p align="center">
+    <applet code="SampleDist.class" codebase="../../../Java/" align="baseline" width="640"
+       archive="PbsGui.zip" height="360">
+    <param name="variables" value="sum">
+    <param name="startWith" value="sum">
+    <param name="boxContents" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20">
+    <param name="showBoxHist" value="false">
+    <param name="boxHistControl" value="false">
+    <param name="sources" value="box">
+    <param name="replaceControl" value="false">
+    <param name="replace" value="false">
+    <param name="curveControls" value="true">
+    <param name="showCurve" value="true">
+    <param name="sampleSize" value="10">
+    You need Java to see this.
+    </applet>
+</p>
+
+<p>
+	The Wilcoxon rank-sum test is exactly what you get if you replace each observation by its
+	rank, then do a permutation test using the sum of the (ranks of the) responses in the
+	treatment group.
+	Thus, the code in the previous chapter can be used to simulate the null distribution,
+	by replacing the raw data with their ranks.
+	However, the normal approximation to the null distribution
+	of <em>W</em><sub>s</sub> can be better than the normal approximation to the null
+	distribution of the sample sum of the responses to treatment, because the ranks
+	are evenly spread out, whereas the raw responses can be highly skewed or multimodal.
+</p>
+
+<h2><a id="mann_whitney"></a>Mann-Whitney Statistics</h2>
+
+<p>
+    Define <em>W</em><sub>XY</sub> &equiv; <em>W</em><sub>s</sub> &minus; <em>n</em>(<em>n</em>+1)/2.
+    This subtracts from <em>W</em><sub>s</sub> its minimum possible value.
+    Let <em>W</em><sub>YX</sub> &equiv; <em>W</em><sub>r</sub> &minus; <em>m</em>(<em>m</em>+1)/2,
+    <em>W</em><sub>r</sub> minus its minimum possible value.
+    Under the strong null hypothesis, the probability distribution of <em>W</em><sub>XY</sub>
+    is the same as the probability distribution of <em>W</em><sub>YX</sub>,
+    a consequence of the symmetry of the probability distribution of <em>W</em><sub>s</sub>.
+    The statistics <em>W</em><sub>XY</sub> and <em>W</em><sub>YX</sub> are called
+    the <em>Mann-Whitney</em> statistics.
+</p>
+
+<p>
+    Let {&nbsp;<em>X</em><sub>1</sub>, &hellip; , <em>X</em><sub><em>m</em></sub>&nbsp;} denote
+    the control responses and let
+    {&nbsp;<em>Y</em><sub>1</sub>, &hellip; , <em>Y</em><sub><em>n</em></sub>&nbsp;}
+    denote the treatment responses as before.
+    Consider
+</p>
+
+<p class="math">
+    #{&nbsp;(<em>i</em>, <em>j</em>) : &nbsp; 1 &le; <em>i</em>&le; <em>m</em>,
+    1 &le; <em>j</em>&le; <em>n</em>, and
+    <em>X</em><sub><em>i</em></sub> &lt; <em>Y</em><sub><em>j</em></sub>&nbsp;}.
+</p>
+
+<p>
+    This is the number of (control, treatment) pairs such that the control
+    response is less than the treatment response.
+</p>
+
+<p>
+    Let {&nbsp;<em>S</em><sub><em>j</em></sub>: <em>j</em> = 1, &hellip; , <em>n</em>&nbsp;}
+    be the ranks of the treatment responses as
+    before, and let
+    {&nbsp;<em>R</em><sub><em>j</em></sub>: <em>j</em> = 1, &hellip; , <em>m</em>&nbsp;}
+    be the control responses.
+    Let {&nbsp;<em>S</em><sub>(<em>j</em>)</sub>: <em>j</em> = 1, &hellip; , <em>n</em>&nbsp;}
+    and {&nbsp;<em>R</em><sub>(<em>j</em>)</sub>: <em>j</em> = 1, &hellip; , <em>m</em>&nbsp;}
+    be the corresponding ordered ranks.
+    Use the value of the treatment response to partition the set of (control, treatment)
+    pairs for which the control response is less than the treatment response: The total number of
+    such pairs for which the control response is less than the treatment response
+    is the number of pairs where the control response is less than the smallest treatment
+    response, plus the number of pairs where the control response is less than the second-smallest
+    treatment response, and so on.
+    This will help us count the pairs.
+</p>
+
+<p>
+    How many response values are less than <em>S</em><sub>(1)</sub>, the rank of the smallest
+    treatment response?
+    By definition, there are <em>S</em><sub>(1)</sub>&minus;1 of them&mdash;all of which are control
+    responses.
+    The number of response values that are less than <em>S</em><sub>(2)</sub> is
+    <em>S</em><sub>(2)</sub>&minus;1, one of which is <em>S</em><sub>(1)</sub>, so the
+    total number of control responses that are less than <em>S</em><sub>(2)</sub> is
+    <em>S</em><sub>(2)</sub>&minus;2.
+    The total number of control responses that are less than <em>S</em><sub>(<em>j</em>)</sub>
+    is <em>S</em><sub>(<em>j</em>)</sub> &minus; <em>j</em>, so the total number of (control, treatment)
+    pairs with the control response less than the treatment response is
+</p>
+
+<p class="math">
+    <em>S</em><sub>(1)</sub>&minus;1 + <em>S</em><sub>(2)</sub>&minus;2 + &hellip; +
+    <em>S</em><sub>(<em>n</em>)</sub> &minus; <em>n</em> = <em>W</em><sub>s</sub> &minus;
+    (1 + 2  + &hellip; + <em>n</em>) =
+    <em>W</em><sub>s</sub> &minus; <em>n</em>(<em>n</em>+1)/2 = <em>W</em><sub>XY</sub>.
+</p>
+
+<p>
+	Thus
+</p>
+
+<p class="math">
+    <em>W</em><sub>XY</sub> =
+    #{&nbsp;(<em>i</em>, <em>j</em>) : &nbsp; 1 &le; <em>i</em>&le; <em>m</em>,
+    1 &le; <em>j</em>&le; <em>n</em>, and
+    <em>X</em><sub><em>i</em></sub> &lt; <em>Y</em><sub><em>j</em></sub>&nbsp;}.
+</p>
+
+<p>
+	The Mann-Whitney statistic <em>W</em><sub>XY</sub> (and the Wilcoxon rank sum
+	<em>W</em><sub>s</sub>, up to an additive constant)
+	measures the number of (control, treatment) pairs for which the treatment response
+	is at least as large as the control response.
+	The larger the positive effect of treatment, the larger the Mann-Whitney and Wilcoxon
+	rank sum statistics tend to be.
+</p>
+
+<h2>Tied observations</h2>
+
+<p>
+    If the control and treatment responses are random samples from continuous distributions,
+    the chance of ties among the data is zero.
+    However, ties can and do occur in practice, if only because of limits on the
+    precision with which data can be recorded.
+    When there are tied observations, the ranks are not uniquely defined.
+    We can patch the rank-sum approach by assigning each set of tied observations
+    the <em>mid-rank</em> of the set.
+    For example, if the sorted data are {1, 2, 3, 4, 4} as above, the mid-rank of the
+    last two observations (tied at 4) would be 4.5.
+    If the sorted data were {1, 2, 3, 3, 3, 4, 4, 5}, the corresponding mid-ranks would
+    be 1, 2, 4, 4, 4, 6.5, 6.5, and 8.
+    The Wilcoxon rank-sum statistic generalized to use mid-ranks is denoted
+    <em>W</em><sub>s</sub><sup>*</sup>.
+    Once there are ties, the null distribution of the rank sum depends on the observations:
+    which mid-ranks are represented.
+    When there are ties, the normal approximation to the null probability distribution
+    of the rank-sum tends to be worse, because there are fewer possible values of
+    the rank sum (the null probability distribution is &quot;chunkier&quot;).
+</p>
+
+<p>
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    citeFig();
+// -->
+</script>
+    shows the sampling applet again, for the mid-ranks of the data set {1, 2, 3, 4, 4},
+    namely, {1, 2, 3, 4.5, 4.5}, with <em>N</em>=5, <em>n</em>=2.
+    Draw 10,000 samples to see the simulated null distribution of the rank sum.
+    Note that the distribution of the rank-sum is skewed in this case.
+    Compare the simulated null distribution of the rank-sums with and without
+    midranks by replacing the contents of the box by {1, 2, 3, 4, 5}, which
+    would be the ranks if there were no ties in the data.
+    Note that the distribution is then symmetric.
+    Replace the contents of the box with the mid-ranks
+    1, 2, 4, 4, 4, 6.5, 6.5, and 8 and change the sample size (<em>n</em>) to 4.
+    Compare the simulated sampling distribution of the rank sum with that
+    for ranks 1, 2, 3, 4, 5, 6, 7, 8,
+    and check the accuracy of the normal approximation in both cases.
+</p>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var qStr = 'Simulated null distribution of <em>W</em><sub>s</sub><sup>*</sup>, the Wilcoxon ' +
+               ' rank sum generalized for ties.';
+    writeFigureCaption(qStr);
+// -->
+</script>
+
+<p align="center">
+    <applet code="SampleDist.class" codebase="../../../Java/" align="baseline" width="640"
+       archive="PbsGui.zip" height="360">
+    <param name="variables" value="sum">
+    <param name="startWith" value="sum">
+    <param name="boxContents" value="1,2,3,4.5,4.5">
+    <param name="showBoxHist" value="false">
+    <param name="boxHistControl" value="false">
+    <param name="bins" value="10">
+    <param name="sources" value="box">
+    <param name="replaceControl" value="false">
+    <param name="replace" value="false">
+    <param name="curveControls" value="true">
+    <param name="showCurve" value="true">
+    <param name="sampleSize" value="2">
+    You need Java to see this.
+    </applet>
+</p>
+
+<p>
+    Calculating midranks seems to involve a number of steps: sort the observations,
+    identify ties, and average the ranks of each group of ties.
+    An alternative point of view makes the computation much simpler.
+    If an observation is not tied, its rank is equal to the number of
+    observations that are less than or equal to it.
+    That is, suppose the data are <em>z</em><sub>1</sub>, &hellip; , <em>z</em><sub><em>N</em></sub>.
+    If the multiplicity of the value <em>z</em><sub><em>k</em></sub> is one,
+    then
+</p>
+
+<p class="math">
+    rank(<em>z</em><sub><em>k</em></sub>) = #{&nbsp;<em>j</em>: <em>z</em><sub><em>j</em></sub> &le;
+    <em>z</em><sub><em>k</em></sub>&nbsp;}.
+</p>
+
+<p>
+	On the other hand, if there are <em>M</em>(<em>z</em><sub><em>k</em></sub>)
+	observations in all whose values are
+    equal to <em>z</em><sub><em>k</em></sub>, then the midrank of <em>z</em><sub><em>k</em></sub>
+    is
+</p>
+
+<p class="math">
+    midrank(<em>z</em><sub><em>k</em></sub>) =
+    #{&nbsp;<em>j</em>: <em>z</em><sub><em>j</em></sub> &le; <em>z</em><sub><em>k</em></sub>&nbsp;} &minus;
+    (<em>M</em>(<em>z</em><sub><em>k</em></sub>)&minus;1)/2.
+</p>
+
+<p>
+    We can calculate <em>M</em>(<em>z</em><sub><em>k</em></sub>) by
+</p>
+
+<p class="math">
+    <em>M</em>(<em>z</em><sub><em>k</em></sub>) = #{&nbsp;<em>j</em>: <em>z</em><sub><em>j</em></sub> &le;
+    <em>z</em><sub><em>k</em></sub>&nbsp;} &minus;
+    #{&nbsp;<em>j</em>: <em>z</em><sub><em>j</em></sub> &lt; <em>z</em><sub><em>k</em></sub>&nbsp;}.
+</p>
+
+<p>
+    Thus
+</p>
+
+<p class="math">
+    midrank(<em>z</em><sub><em>k</em></sub>) = <big>(</big>
+    #{&nbsp;<em>j</em>: <em>z</em><sub><em>j</em></sub> &le; <em>z</em><sub><em>k</em></sub>&nbsp;} +
+    #{&nbsp;<em>j</em>: <em>z</em><sub><em>j</em></sub> &lt; <em>z</em><sub><em>k</em></sub>&nbsp;} +
+    1 <big>)</big>/2.
+</p>
+
+<p>
+    Here is a <a href="http://www.mathworks.com">Matlab</a> function to compute the
+    midranks of a list:
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        function r = midRanks(x)
+        % function r = midRanks(x)
+        % P.B. Stark, statistics.berkeley.edu/~stark  2/17/2003
+        % vector of midranks of a vector x.
+        % midrank is (#<=) - ((#=) - 1)/2 = ((#<=) + (#<) + 1)/2
+            for j = 1:length(x),
+                r(j) = sum(x <= x(j)) - (sum(x == x(j)) - 1)/2;
+            end;
+        return;
+    </pre>
+</p>
+</div>
+
+<p>
+	Here is an R function to do the same thing:
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        midRanks <- function(x) {
+        # P.B. Stark, statistics.berkeley.edu/~stark  2/5/2008
+        # vector of midranks of a vector x.
+            mr <- array(0,length(x));
+            for (j in 1:length(x)) {
+                mr[j] <- sum(x <= x[j]) - (sum(x == x[j]) - 1)/2;
+            }
+            mr
+        }
+    </pre>
+</p>
+</div>
+
+<p>
+    Here is a Matlab function to simulate the distribution of the sample
+    sum of a simple random sample of size <em>n</em> from a population of size <em>N</em>.
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        function dist = simSampleSum(z, n, iter)
+        % function dist = simSampleSum(z, n, iter)
+        % P.B. Stark, statistics.berkeley.edu/~stark  2/17/2003
+        % Simulate the sampling distribution of the sum of n of the elements of z
+            dist = zeros(iter,1);
+            N = length(z);
+            if (n > N)
+                disp(['error in simSampleSum: sample size exceeds population size']);
+                return;
+            elseif (n == N)
+                dist = dist + sum(z);    % constant random variable
+            elseif (n == 0)
+                return;                  % zero
+            else
+                for i=1:iter
+                    zp = z(randperm(length(z)));  % random permutation of data
+                    dist(i) = sum(zp(1:n));       % add the first n
+                end;
+            end;
+        return;
+    </pre>
+</p>
+</div>
+
+<p>
+    Here is a Matlab function to simulate the null distribution of the Wilcoxon
+    rank sum using midranks.
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        function dist = simWilcox(x, y, iter)
+        % function dist = simWilcox(x, y, iter)
+        % P.B. Stark, statistics.berkeley.edu/~stark  2/17/2003
+        %  simulates the null distribution of the Wilcoxon rank sum using midranks,
+        %  for data x (control) and y (treatment) using iter pseudorandom samples
+            z = midRanks([x, y]);
+            n = length(y);
+            dist = simSampleSum(z, n, iter);
+        return;
+    </pre>
+</p>
+</div>
+
+<p>
+    Here's an example of using the Matlab functions just defined to approximate
+    the 1-sided (upper tail) <em>P</em>-value for the Wilcoxon rank sum statistic
+    with midranks:
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        iter = 10000;
+        zr = midRanks([x y]);  % the control responses are x; the treatment
+                               % responses are y. zr now has their midranks.
+        dist = simWilcox(x, y, iter);
+        pVal = sum(dist >= sum(zr[(length(x)+1):length(zr)]) )/iter;
+    </pre>
+</p>
+</div>
+
+<h2>The Siegel-Tukey Test</h2>
+
+<p>
+    When the alternative is that the dispersion of the control responses differs
+    from the dispersion of the treatment responses, the Wilcoxon rank-sum statistic
+    has poor power.
+    We could imagine a permutation test based on the inter-quartile range of the
+    responses in the treatment group or the standard deviation of the responses
+    of the treatment group; under the strong null hypothesis, we could find
+    the distribution of that test statistic by calculation or simulation.
+    The randomization, in which every subset of <em>n</em> of the <em>N</em>
+    responses equally is likely to be the treatment responses, makes such calculations
+    and tests straightforward, at least conceptually.
+</p>
+
+<p>
+    There is a clever way to relabel the data that allows us to use the
+    calculations and tables for the Wilcoxon rank-sum statistic to test against
+    the dispersion alternative&mdash;we just redefine what we mean by &quot;rank.&quot;
+    Suppose that the alternative is that the treatment decreases the dispersion of
+    the responses around some common measure of location (such as the median).
+    Then responses far from the middle rank should be less likely to occur in the
+    treatment group than in the control group.
+    Label the smallest observation &quot;1&quot;, the largest &quot;2&quot;,
+    the second-smallest &quot;3&quot;, the second-largest &quot;4&quot;, and so on,
+    ignoring the possibility of ties for the moment.
+    Consider the sum <em>T</em> of the <em>n</em> labels of the treated subjects.
+    The null distribution of <em>T</em> is the same as the null distribution of
+    the Wilcoxon rank-sum statistic <em>W</em><sub>s</sub>, and under the alternative
+    that treatment decreases dispersion, <em>T</em> tends to be large.
+    Therefore, rejecting the strong null hypothesis when
+</p>
+
+<p class="math">
+    <em>T</em> &gt; <em>c</em>
+</p>
+
+<p>
+    where <em>c</em> is the appropriate quantile of the null distribution of the
+    Wilcoxon rank-sum statistic, is a reasonable test
+    against this alternative.
+    This is the <em>Siegel-Tukey</em> test.
+</p>
+
+<p>
+    However, labeling the largest observation &quot;1&quot;, the smallest &quot;2&quot;,
+    the second-largest &quot;3&quot;, the second-smallest &quot;4&quot;, and so on,
+    leads to a test statistic with the same distribution under the strong null hypothesis,
+    but that typically gives a different <em>P</em>-value for a given set of data.
+    A different test statistic that is more symmetric is to assign the smallest and largest
+    observations the label 1.5, the second-smallest and second-largest the label 3.5,
+    the third-smallest and third-largest 5.5, and so on.
+    Ties can be treated as they are in the generalization of the Wilcoxon rank-sum
+    statistic <em>W</em><sub>s</sub><sup>*</sup>, by using &quot;mid-labels&quot;
+    (just like mid-ranks).
+    To find significance levels or <em>P</em>-values when <em>N</em> is large,
+    it is sometimes necessary to resort to simulation and settle for an approximation.
+</p>
+
+<p>
+    The Siegel-Tukey test tacitly assumes that the treatment responses and the
+    control responses are scattered about a common typical value&mdash;that is,
+    that there is no shift difference between the two groups.
+    If there is a known shift between control and treatment, it could be subtracted
+    before ranking the data.
+    If the shift is unknown, it could be estimated from the data, but then the
+    nominal significance level of the test will not be its real level.
+    For large samples, the difference might be unimportant.
+</p>
+
+<h2>The Smirnov Test</h2>
+
+<p>This material is from Lehmann (1998). </p>
+
+<p>
+    We have considered shift and dispersion alternatives; now we move to the
+    omnibus alternative.
+    The Smirnov test is based on the difference between the
+    empirical cumulative distribution function (cdf) of the treatment responses
+    and the empirical cdf of the control responses.
+    It has some power against all kinds of violations of the strong null hypothesis.
+    However, it has less power than <em>W</em><sub>s</sub> against
+    the alternatives for which the Wilcoxon rank-sum test is designed.
+    Let <em>F</em><sub>Y,<em>n</em></sub>
+    denote the empirical cdf of the treatment responses:
+</p>
+
+<p class="math">
+    <em>F</em><sub>Y,<em>n</em></sub>(<em>y</em>)
+    &equiv; #{&nbsp;<em>y</em><sub><em>j</em></sub>:
+       <em>y</em><sub><em>j</em></sub> &le; <em>y</em>&nbsp;}/<em>n</em>,
+</p>
+
+<p>
+    and define <em>F</em><sub>X,<em>m</em></sub> analogously as the empirical cdf of the
+    control responses.
+    If there are no ties within the treatment group, <em>F</em><sub>Y,<em>n</em></sub>
+    jumps by 1/<em>n</em> at each treatment response value.
+    If there are no ties within the control group,
+    <em>F</em><sub>X,<em>m</em></sub> jumps by 1/<em>m</em> at each control response value.
+    If <em>k</em> of the treatment responses are tied and
+    equal to <em>y</em><sub>0</sub>, then <em>F</em><sub>Y,<em>n</em></sub> jumps by <em>k</em>/<em>n</em>
+    at <em>y</em><sub>0</sub>.
+    The Smirnov test statistic is
+</p>
+
+<p class="math">
+    <em>D</em><sub><em>m</em>,<em>n</em></sub> &equiv; sup |<em>F</em><sub>Y,<em>n</em></sub>(<em>y</em>)
+    &minus; <em>F</em><sub>X,<em>m</em></sub>(<em>y</em>) |,
+</p>
+
+<p>
+    where the supremum is over all real values of <em>y</em>.
+    It is easy to see that the supremum is attained at one of the data values.
+    We can also see that
+    the supremum depends only on the ranks of the data, because the
+    order of the jumps matters, but the precise values of <em>y</em> at which the jumps occur
+    do not matter.
+    Therefore, the test
+</p>
+
+<p class="math">
+    Reject if <em>D<sub>m</sub></em><sub>,<em>n</em></sub>
+    &gt; <em>c</em>,
+</p>
+
+<p>
+    for an appropriately chosen value of <em>c</em>, is a nonparametric test of
+    the strong null hypothesis.
+</p>
+
+<p>
+    Let's calculate the null distribution of <em>D<sub>m</sub></em><sub>,<em>n</em></sub>
+    for <em>n</em>=3, <em>m</em>=2.
+    There are <sub>5</sub>C<sub>3</sub>=10 possible
+    assignments of 3 of the subjects to treatment, each of which has probability
+    1/10 under the strong null hypothesis.
+    Let us assume that the 5 data are distinct (no ties).
+    Then
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript">
+<!--
+    citeTable();
+// -->
+</script>
+    lists the possibilities and the corresponding values of <em>D<sub>m</sub></em><sub>,<em>n</em></sub>.
+</p>
+
+<p><script language="JavaScript1.4" type="text/javascript" type="text/javascript">
+<!--
+    var qStr = 'Possible values of <em>D</em><sub><em>m</em>,<em>n</em></sub> for <em>n</em>=3, ' +
+               '<em>m</em>=2';
+    writeTableCaption(qStr);
+    var header = ['treatment ranks', 'control ranks', '<em>D</em><sub><em>m</em>,<em>n</em></sub>'];
+    var list = new Array(3);
+    list[0] = ['1, 2, 3', '1, 2, 4', '1, 2, 5', '1, 3, 4', '1, 3, 5',
+               '1, 4, 5', '2, 3, 4', '2, 3, 5', '2, 4, 5', '3, 4, 5'
+              ];
+    list[1] = ['4, 5',    '3, 5',    '3, 4',    '2, 5',    '2, 4',
+               '2, 3',    '1, 5',    '1, 4',    '1, 3',    '1, 2'
+              ];
+    list[2] = ['1',       '2/3',     '2/3',     '1/2',     '1/3',
+               '2/3',     '1/2',     '1/2',     '2/3',     '1'
+              ];
+    listToTable(header, list, 'transpose', 'center');
+// -->
+</script>
+
+<p>
+    The null probability distribution of <em>D<sub>m</sub></em><sub>,<em>n</em></sub>
+    is given in
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    citeTable();
+// -->
+</script>
+</p>
+
+<p><script language="JavaScript1.4" type="text/javascript" type="text/javascript">
+<!--
+    var qStr = 'Null probability distribution of <em>D</em><sub>2,3</sub>';
+    writeTableCaption(qStr);
+    var header = ['<em>d</em>', 'P(<em>D</em><sub>2,3</sub>=<em>d</em>)'];
+    var list = new Array(2);
+    list[0] = ['1/3',  '1/2',   '2/3',    '1'];
+    list[1] = ['1/10', '3/10',  '4/10', '2/10'];
+    listToTable(header, list, 'transpose', 'center');
+// -->
+</script>
+
+<p>
+    Thus a Smirnov test (against the omnibus alternative) with
+    significance level 0.2 would reject the strong null hypothesis when
+    <em>D</em><sub>2,3</sub>=1;
+    smaller significance levels are not attainable when <em>n</em> and <em>m</em> are so small.
+    Critical values can be calculated analytically fairly easily when
+    <em>n</em>=<em>m</em> (when the treatment and control groups are the same size)
+    and the significance level is an integer multiple <em>a</em> of 1/<em>n</em>.
+    Let <em>k</em> = &lfloor; <em>n</em>/<em>a</em> &rfloor; be the largest integer such that <em>n</em>
+    &minus; <em>k</em>&times;<em>a</em> &ge; 0.
+    Then, under the strong null hypothesis, provided there are no ties,
+</p>
+
+<p class="math">
+    P(<em>D<sub>m</sub></em><sub>,<em>n</em></sub>
+    &gt; <em>a</em>/<em>n</em>) = <big>(</big>
+    <sub>2<em>n</em></sub>C<em><sub>n</sub></em><sub>&minus;<em>a</em></sub>
+    &minus; <sub>2<em>n</em></sub>C<em><sub>n</sub></em><sub>&minus;2<em>a</em></sub> +
+    <sub>2<em>n</em></sub>C<em><sub>n</sub></em><sub>&minus;3<em>a</em></sub>
+    &minus; &hellip; + (&minus;1)<em><sup>k</sup></em><sup>&minus;1</sup>&times;
+    <sub>2<em>n</em></sub>C<em><sub>n</sub></em><sub>&minus;<em>ka</em></sub>
+    <big>)</big>/(2&times;<sub>2<em>n</em></sub>C<em><sub>n</sub></em>).
+</p>
+
+<p>
+    When there are ties, <em>D<sub>m</sub></em><sub>,<em>n</em></sub> tends to
+    be smaller, so tail probabilities from this expression still give conservative
+    tests.
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    var fStr = 'If both members of a tie are assigned to the same group (treatment or control)' +
+               'the tie does not change the value of <em>D</em><sub><em>m</em>,<em>n</em></sub> ' +
+               'from the value it would have had if the pair differed slightly. ' +
+               'If one member of a tie is assigned to treatment and one to control, the tie ' +
+               'can decrease the value of <em>D</em><sub><em>m</em>,<em>n</em></sub> from the ' +
+               'value it would have had if the observations differed slightly. Thus ' +
+               '<em>D</em><sub><em>m</em>,<em>n</em></sub> is stochastically smaller when there ' +
+               'are ties.';
+    writeFootnote(fCtr++, fCtr.toString(), fStr);
+// -->
+</script>
+    There are also limit theorems that give asymptotic approximations; see
+    <em>Lehmann</em> (1998, pp.&nbsp;37ff., 421).
+    When <em>n</em> is not equal to <em>m</em>,
+    the calculations are harder and the asymptotics change.
+    Of course, we can
+    always approximate the null distribution of <em>D<sub>m</sub></em><sub>,<em>n</em></sub>
+    by simulation.
+</p>
+
+<p>
+    Here is a <a href="http://www.mathworks.com">Matlab</a> m-file to calculate the Smirnov
+    statistic.
+    Let <em>x</em>=(<em>x</em><sub>1</sub>, &hellip; , <em>x</em><sub><em>m</em></sub>)
+    denote the vector of control responses and let
+    <em>y</em>=(<em>y</em><sub>1</sub>, &hellip; , <em>y</em><sub><em>n</em></sub>)
+    denote the vector of treatment responses.
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        function s = smirnov(x, y)
+        % function s = smirnov(x, y)
+        % P.B. Stark, statistics.berkeley.edu/~stark  2/17/2003
+        % calculates the Smirnov distance between two vectors of data
+            m = length(x);
+            n = length(y);
+            z = [x y];
+            s = 0;
+            for j=1:m+n,
+                s = max(s, abs(sum(x <= z(j))/m - sum(y <= z(j))/n));
+            end;
+        return;
+    </pre>
+</p>
+</div>
+
+<p>
+    The following Matlab function simulates the null distribution of the Smirnov statistic.
+    Again, the data are <em>x</em> and <em>y</em>.
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        function dist = simSmir(x, y, iter)
+        % function dist = simSmir(x, y, iter)
+        % P.B. Stark, statistics.berkeley.edu/~stark  2/17/2003
+        %  simulates the null distribution of the Smirnov distance for data x and y
+        %  using iter pseudorandom samples
+            dist = zeros(iter,1);
+            m = length(x);
+            n = length(y);
+            z = [x y];                                  % pool the N = m+n observations
+            for i=1:iter
+                zp = z(randperm(length(z)));            % random permutation of the data
+                dist(i) = smirnov(zp(1:m),zp(m+1:m+n)); % first m control, last n treatment
+            end;
+        return;
+    </pre>
+</p>
+</div>
+
+<p>
+    Using these functions, you can find an approximate <em>P</em>-value for
+    the Smirnov test using the following script, which assumes that the data are
+    already in the vectors <em>x</em> and <em>y</em> and that <em>iter</em> has
+    been set (to a number like 10,000).
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        testVal = smirnov(x, y);
+        simDist = simSmir(x, y, iter);
+        pValue = sum(simDist >= testVal)/iter;
+    </pre>
+</p>
+</div>
+
+<p>
+	Here are versions of the functions in R:
+</p>
+
+<div class="code">
+<p>
+	<pre>
+    smirnov <- function(x, y) {
+    # P.B. Stark, statistics.berkeley.edu/~stark  9/8/2006
+		z <- c(x,y);
+		s <- 0;
+		for (j in 1:length(z)) {
+			s <- max(s, abs(sum(x <= z[j])/length(x) - sum(y <= z[j])/length(y)));
+		}
+		s
+    }
+    </pre>
+</p>
+
+<p>
+	<pre>
+    simSmir <- function(x, y, iter) {
+    # P.B. Stark, statistics.berkeley.edu/~stark  9/8/2006
+		dist <- array(0, iter);
+		z <- c(x,y);
+		for (i in 1:iter) {
+			zp = sample(z);
+			dist[i] <- smirnov(zp[1:length(x)],zp[(length(x)+1):length(z)]);
+		}
+		dist
+     }
+     </pre>
+</p>
+
+<p>
+    <pre>
+        testVal <- smirnov(x, y);
+        simDist <- simSmir(x, y, iter);
+        pValue <- sum(simDist >= testVal)/iter;
+    </pre>
+</p>
+</div>
+
+<p>
+	Here is a more cryptic &quot;seven at one blow&quot; version:
+</p>
+
+<div class="code">
+<p>
+	<pre>
+    simSmirnovTest <- function(x, y, iter) {
+    # P.B. Stark, statistics.berkeley.edu/~stark  9/8/2006
+        ts <- smirnov(x,y)
+        z <- c(x, y)                 # pooled responses
+        sum(replicate(iter, {
+                              zp <- sample(z);
+                              (smirnov(zp[1:length(x)],zp[(length(x)+1):length(z)]) >= ts)
+                            }
+                     )
+            )/iter
+    }
+    </pre>
+</p>
+</div>
+
+<p>
+    We can also estimate the power of the Smirnov statistic against a shift alternative
+    by simulation.
+    Suppose that the effect of treatment is to increase each subject's response by <em>d</em>,
+    no matter what the response would have been in control.
+    (Remember, this is an absurdly restrictive assumption, but the results might be suggestive anyway.)
+    Then the responses <em>y</em>=(<em>y</em><sub>1</sub>, &hellip; <em>y</em><sub><em>n</em></sub>)
+    of the treated subjects would have been
+</p>
+
+<p class="math">
+    <em>y</em>&minus;<em>d</em>=(<em>y</em><sub>1</sub> &minus; <em>d</em>, &hellip;,
+       <em>y</em><sub><em>n</em></sub> &minus; <em>d</em>)
+</p>
+
+<p>
+    had they been in the control group, and the responses <em>x</em> of the control group would
+    have been <em>x</em>+<em>d</em> had they been in the treatment group.
+    The following Matlab function simulates the distribution of the Smirnov statistic under
+    the shift alternative.  It assumes that <em>x</em>, <em>y</em> and <em>d</em> are already
+    defined.
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        function altD = simSmirShift(x, y, d, iter)
+        % function altD = simSmirShift(x, y, d, iter)
+        % P.B. Stark, statistics.berkeley.edu/~stark  2/17/2003
+        % simulates the distribution of the Smirnov statistic under the
+        % shift alternative.  x and y are the data, d is the shift.
+        % Uses iter pseudorandom samples.
+            altD = zeros(iter,1);
+            m = length(x);
+            n = length(y);
+            z = [x y-d];                                   % pool observations. Under the shift
+                                                           % alternative, treatment effect is d
+            for i=1:iter
+                zp = z(randperm(length(z)));               % random permutation of data
+                altD(i) = smirnov(zp(1:m),zp(m+1:m+n)+d);  % first m control; last n treatment
+                                                           % treatment is shifted by d
+            end;
+        return;
+    </pre>
+</p>
+</div>
+
+<p>
+    Note that this reduces to the null distribution when <em>d</em>=0, so we really
+    don't need the function simSmir&mdash;we can just call simSmirShift with <em>d</em>=0.
+    To find the power of the test, we need to remember that the shift can change the number
+    of ties, depending on which subjects are assigned to treatment and which to control.
+    Thus, for each assignment, we need (in principle) to calculate a new critical value for
+    the test.
+    The following Matlab script does that.
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        function p = simSmirPower(x, y, d, alpha, iter)
+        % function p = simSmirPower(x, y, d, alpha, iter)
+        %
+        % P.B. Stark, statistics.berkeley.edu/~stark 3/3/03
+        % finds the approximate power of a level alpha Smirnov
+        % test against the alternative hypothesis that treatment
+        % shifts the response by exactly d for all subjects.
+        %
+        % x is the vector of control observations
+        % y is the vector of treatment observations
+        % the lengths of x and y determine the sizes of the control and treatment
+        %  groups
+        % alpha is the significance level
+        % iter is the number of replications of each simulation--note: there are
+        %  two nested simulations.
+            p = 0;
+            z = [x y-d];
+            for i=1:iter
+                dist = zeros(1,iter);
+                zp = z(randperm(length(z)));
+                xp = zp(1:length(x));
+                yp = zp(length(x)+1:length(x)+length(y)) + d;
+                dist = simSmirShift(xp, yp, 0, iter);
+                if (sum(dist >= smirnov(xp, yp))/iter <= alpha)
+                    p = p+1;
+                end;
+            end;
+            p = p/iter;
+        return;
+    </pre>
+</p>
+</div>
+
+<p>
+    The following Matlab script finds a critical value for a conservative level <em>a</em>;
+    test, the <em>P</em>-value, and the power of the test against a shift alternative with
+    shift <em>d</em>.
+    It assumes that <em>x</em>, <em>y</em>, <em>a</em>, <em>d</em> and <em>iter</em>
+    are already defined.
+    It uses the function upperCriticalVal(), whose definition follows.
+</p>
+
+<div class="code">
+<p>
+    <pre>
+        testVal = smirnov(x, y);                    % value of the test statistic
+        simDist = simSmirShift(x, y, 0, iter);      % simulated null distribution
+        critVal = upperCriticalVal(simDist, a);     % find critical value for the test
+        pValue = sum(simDist >= testVal)/iter;      % approximate p-value
+        power = simSmirPower(x, y, d, alpha, iter); % estimated power
+    </pre>
+</p>
+
+<p>
+    <pre>
+        function cv = upperCriticalVal(list, alpha)
+        % function upperCriticalValue(list, alpha)
+        %
+        % P.B. Stark statistics.berkeley.edu/~stark  2/22/08
+        % Finds a value cv in the list such that at most a
+        %   fraction alpha of elements of the list are greater
+        %   than or equal to cv
+            n = length(list);
+            if (alpha <= sum(list == max(list))/n | alpha > 1)
+                disp(['Error in upperCriticalVal: unattainable fraction ' num2str(alpha)]);
+                cv = NaN;
+            elseif (alpha == 1)
+                cv = min(list);
+            else
+                list = sort(list);
+                trialInx = ceil(n*(1-alpha));             % first guess at critical value,
+                                                          % but there could be duplicates.
+                cv = list(trialInx);                      % first guess at critical value
+                sigAttain = sum(list >= cv)/n; % attained estimated significance
+                while (sigAttain > a & trialInx < n)   % for conservative level-a test
+                    trialInx = trialInx + 1;
+                    cv = list(trialInx);
+                    sigAttain = sum(list >= cv)/n;
+                end;
+            end;
+        return;
+    </pre>
+</p>
+</div>
+
+
+</form>
+
+<script language="JavaScript1.4" type="text/javascript" type="text/javascript"><!--
+    printFootnotes();
+    writeMiscFooter(false);
+// -->
+</script>
+</body>
+</html>
