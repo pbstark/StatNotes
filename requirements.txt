@@ -1,0 +1,6 @@
+numpy
+scipy >= 0.17.1
+pandas
+matplotlib
+cryptorandom >= 0.2
+ipywidgets
