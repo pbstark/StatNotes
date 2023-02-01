@@ -1,0 +1,44 @@
+#######################################################################################
+# A default configuration that will be loaded for all jupyter books
+# See the documentation for help and more options: 
+# https://jupyterbook.org/customize/config.html
+
+#######################################################################################
+# Book settings
+title                       : An Idiosyncratic Subset of Statistics  # The title of the book. Will be placed in the left navbar.
+author                      : Philip B. Stark  # The author of the book
+copyright                   : "2023"  # Copyright year to be placed in the footer
+logo                        : logo.png  # A path to the book logo
+
+execute:
+  execute_notebooks: 'off'
+
+# TODO: the below should be disabled and instead the sphinx section activated
+# after we upgrade to j-book newer than 0.9.1 and its dependencies.  For now
+# this gives us the equivalent of html_images fixes, but without version
+# conflicts that currently arise from trying to use it.
+parse:
+  myst_extended_syntax: true
+
+# Sphinx section commented out for now as per above todo, will activate it
+# later. 
+
+# sphinx:
+#   config:
+#     bibtex_bibfiles: 
+#       - references.bib
+#     myst_enable_extensions: 
+#     - amsmath
+#     - dollarmath
+#     - html_image
+#     - html_admonition
+
+
+# sphinx:
+#   config:
+#     bibtex_bibfiles: 
+#       - references.bib
+#     myst_enable_extensions: 
+#     - amsmath
+#     - dollarmath
+#     - html_image
