@@ -1,20 +1,17 @@
-# Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
-
-# First entry here is the website/book's landing page.
-- file: overview
-
-# The rest is structured in *parts* that then have chapters/sections.
-
-- part: Overview
+format: jb-book
+root: index
+parts:
+- caption: Index of Notes
   chapters:
-  - file: schedule
-  
-- part: Syllabus Statistics 240, spring 2023)
+  - file: index
+  - file: 
+- caption: Syllabus Statistics 240, spring 2023
   chapters:
   - file: 240-spring-2023/syllabus
-
-- part: Homework Assignments
+  - file: 240-spring-2023/assignments
+  - file: 240-spring-2023/reading
+  - file: 240-spring-2023/index
+- caption: Assignments
   numbered: true
   chapters:
   - file: 240-spring-2023/assignments
@@ -22,11 +19,6 @@
   - file: 240-spring-2023/Hw/ps02-binary-experiments
   - file: 240-spring-2023/Hw/cp01-tests
   - file: 240-spring-2023/Hw/cp02-function
-
-- part: Lecture Notes (full)
-  chapters:
-  - file: index
-  
-- part: Lecture Notes (240, spring 2023)
+- caption: Lecture Notes (240, spring 2023)
   chapters:
   - file: 240-spring-2023/index
