@@ -19,12 +19,7 @@ parse:
     - colon_fence
     - substitution
 
-# Uncomment this later if bibliographic references are desired
-sphinx:
-  config:
-    bibtex_bibfiles:
-      - references.bib
-
+# Add links to GitHub repo
 # For more info: https://jupyterbook.org/en/stable/basics/repository.html
 repository:
   url: https://github.com/pbstark/StatNotes
@@ -32,3 +27,12 @@ repository:
 html:
   use_repository_button: true
   use_issues_button: true
+
+# Uncomment this later if bibliographic references are desired
+# See: https://jupyterbook.org/en/stable/tutorials/references.html
+
+# bibtex_bibfiles:
+#   - references.bib
+# sphinx:
+#   config:
+#     bibtex_reference_style: author_year
