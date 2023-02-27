@@ -3,22 +3,17 @@ root: index
 parts:
 - caption: Index of Notes
   chapters:
-  - file: index
-  - file: 
+  - file: index-app-stats
+  - file: 240-spring-2023/index
 - caption: Syllabus Statistics 240, spring 2023
   chapters:
   - file: 240-spring-2023/syllabus
   - file: 240-spring-2023/assignments
   - file: 240-spring-2023/reading
-  - file: 240-spring-2023/index
-- caption: Assignments
+- caption: Assignments for Stat 240, spring 2023
   numbered: true
   chapters:
-  - file: 240-spring-2023/assignments
   - file: 240-spring-2023/Hw/ps01-background
   - file: 240-spring-2023/Hw/ps02-binary-experiments
   - file: 240-spring-2023/Hw/cp01-tests
   - file: 240-spring-2023/Hw/cp02-function
-- caption: Lecture Notes (240, spring 2023)
-  chapters:
-  - file: 240-spring-2023/index
