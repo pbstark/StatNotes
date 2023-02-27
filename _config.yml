@@ -1,9 +1,11 @@
 #############################################################################
 # JupyterBook settings
-title                       : An Idiosyncratic Subset of Statistics  # The title of the book. Will be placed in the left navbar.
-author                      : Philip B. Stark  # The author of the book
-copyright                   : "2023"  # Copyright year to be placed in the footer
-logo                        : logo.png  # A path to the book logo
+# See: https://jupyterbook.org/en/stable/customize/config.html
+#
+title     : An Idiosyncratic Subset of Statistics  # The title of the book. Will be placed in the left navbar.
+author    : Philip B. Stark  # The author of the book
+copyright : "2023"  # Copyright year to be placed in the footer
+logo      : logo.png  # A path to the book logo
 
 execute:
   execute_notebooks: 'off'
@@ -18,21 +20,25 @@ parse:
     - linkify
     - colon_fence
     - substitution
+    - tasklist
 
 # Add links to GitHub repo
 # For more info: https://jupyterbook.org/en/stable/basics/repository.html
 repository:
-  url: https://github.com/pbstark/StatNotes
-  branch: main
+  url    : https://github.com/pbstark/StatNotes
+  branch : main
+
 html:
-  use_repository_button: true
-  use_issues_button: true
+  use_repository_button : true
+  use_issues_button     : true
+  announcement          : "" # A banner announcement at the top of the site.
 
 # Uncomment this later if bibliographic references are desired
 # See: https://jupyterbook.org/en/stable/tutorials/references.html
 
 # bibtex_bibfiles:
 #   - references.bib
+#
 # sphinx:
 #   config:
 #     bibtex_reference_style: author_year
