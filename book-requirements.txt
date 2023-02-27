@@ -1,0 +1,11 @@
+# These are _just_ the requirements to build the JupyterBook site, not to
+# actually run any of the code therein. They are kept minimal to ensure
+# the build runs quickly on GitHub Actions.
+jupyter-book
+jupyter-sphinx
+markdown-it-py
+markupsafe
+myst-nb
+myst-parser
+sphinx
+sphinx-jupyterbook-latex
