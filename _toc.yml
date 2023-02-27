@@ -1,7 +1,7 @@
 format: jb-book
 root: index
 parts:
-- caption: Index of Notes
+- caption: Index of Lecture Notes
   chapters:
   - file: index-app-stats
   - file: 240-spring-2023/index
