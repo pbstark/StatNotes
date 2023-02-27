@@ -1,12 +1,6 @@
 numpy
-scipy >= 0.17.1
+scipy
 pandas
 matplotlib
-cryptorandom >= 0.2
 ipywidgets
-colorama
-xlrd
-jupyter-book == 0.9.1
-Jinja2 < 3.1
-scikit-learn
-scikit-image
+cryptorandom >= 0.2

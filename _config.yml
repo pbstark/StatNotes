@@ -1,44 +1,44 @@
-#######################################################################################
-# A default configuration that will be loaded for all jupyter books
-# See the documentation for help and more options: 
-# https://jupyterbook.org/customize/config.html
-
-#######################################################################################
-# Book settings
-title                       : An Idiosyncratic Subset of Statistics  # The title of the book. Will be placed in the left navbar.
-author                      : Philip B. Stark  # The author of the book
-copyright                   : "2023"  # Copyright year to be placed in the footer
-logo                        : logo.png  # A path to the book logo
+#############################################################################
+# JupyterBook settings
+# See: https://jupyterbook.org/en/stable/customize/config.html
+#
+title     : An Idiosyncratic Subset of Statistics  # The title of the book. Will be placed in the left navbar.
+author    : Philip B. Stark  # The author of the book
+copyright : "2023"  # Copyright year to be placed in the footer
+logo      : logo.png  # A path to the book logo
 
 execute:
   execute_notebooks: 'off'
 
-# TODO: the below should be disabled and instead the sphinx section activated
-# after we upgrade to j-book newer than 0.9.1 and its dependencies.  For now
-# this gives us the equivalent of html_images fixes, but without version
-# conflicts that currently arise from trying to use it.
+# Enable some myst extensions beyond the default.
 parse:
-  myst_extended_syntax: true
+  myst_enable_extensions: 
+    - amsmath
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify
+    - colon_fence
+    - substitution
+    - tasklist
 
-# Sphinx section commented out for now as per above todo, will activate it
-# later. 
+# Add links to GitHub repo
+# For more info: https://jupyterbook.org/en/stable/basics/repository.html
+repository:
+  url    : https://github.com/pbstark/StatNotes
+  branch : main
 
+html:
+  use_repository_button : true
+  use_issues_button     : true
+  announcement          : "" # A banner announcement at the top of the site.
+
+# Uncomment this later if bibliographic references are desired
+# See: https://jupyterbook.org/en/stable/tutorials/references.html
+
+# bibtex_bibfiles:
+#   - references.bib
+#
 # sphinx:
 #   config:
-#     bibtex_bibfiles: 
-#       - references.bib
-#     myst_enable_extensions: 
-#     - amsmath
-#     - dollarmath
-#     - html_image
-#     - html_admonition
-
-
-# sphinx:
-#   config:
-#     bibtex_bibfiles: 
-#       - references.bib
-#     myst_enable_extensions: 
-#     - amsmath
-#     - dollarmath
-#     - html_image
+#     bibtex_reference_style: author_year
