@@ -3,13 +3,13 @@ root: index
 parts:
 - caption: Index of Lecture Notes
   chapters:
-  - file: index-app-stats
-  - file: 240-spring-2023/index
+  - file: index-all
 - caption: Syllabus Statistics 240, spring 2023
   chapters:
   - file: 240-spring-2023/syllabus
   - file: 240-spring-2023/assignments
   - file: 240-spring-2023/reading
+  - file: 240-spring-2023/index
 - caption: Assignments for Stat 240, spring 2023
   numbered: true
   chapters:
